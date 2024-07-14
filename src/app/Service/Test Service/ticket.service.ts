@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TicketModel } from '../../Models/Ticket/Ticket.Model';
 import { Observable, map } from 'rxjs';
+import { Configs } from '../../Core/Utility/Config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TicketService {
-  private apiUrl = 'http://deliveryportal.runasp.net/api/v1/Ticket';  // Mock API endpoint
+  private apiUrl = Configs.apiUrl+'/v1/Ticket';  // Mock API endpoint
 
   constructor(private http: HttpClient) { }
 

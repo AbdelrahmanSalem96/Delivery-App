@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 import { CaptinDtoModel, DeleteCaptinDtoModel } from '../../Models/Captin/Captin.Model';
+import { Configs } from '../../Core/Utility/Config';
 
 export class Captin {
   id?: string;
@@ -47,7 +48,7 @@ export class Captin {
   providedIn: 'root'
 })
 export class CaptinService {
-  private apiUrl = 'http://deliveryportal.runasp.net/api/v1/Captin';  // Mock API endpoint
+  private apiUrl = Configs.apiUrl+'/v1/Captin';  // Mock API endpoint
 
   constructor(private http: HttpClient) { }
 

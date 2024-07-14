@@ -4,12 +4,13 @@ import { Observable } from 'rxjs';
 import { ClientContactPositionDtoModel } from '../../Models/ClientContactPosition/ClientContactPosition.Model';
 import { SearchObj } from '../../Core/SearchControls/Common/SearchObj';
 import { map } from 'rxjs/operators';
+import { Configs } from '../../Core/Utility/Config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientContactPositionService {
-  private apiUrl = 'http://deliveryportal.runasp.net/api/v1/ClientContactPosition/GetLite';  // Mock API endpoint
+  private apiUrl = Configs.apiUrl+'/v1/ClientContactPosition/GetLite';  // Mock API endpoint
 
   constructor(private http: HttpClient) { }
 

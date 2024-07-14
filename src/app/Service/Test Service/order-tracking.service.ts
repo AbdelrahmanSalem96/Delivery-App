@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Configs } from '../../Core/Utility/Config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderTrackingService {
 
-  private apiUrl = 'http://deliveryportal.runasp.net/api/v1/OrderTracking';
+  private apiUrl = Configs.apiUrl+'/v1/OrderTracking';
 
   constructor(private http: HttpClient) { }
 

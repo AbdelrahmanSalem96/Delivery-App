@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, tap } from 'rxjs';
+import { Configs } from '../../Core/Utility/Config';
 
 export interface LoginModel{
   email:string;
@@ -14,7 +15,7 @@ export interface LoginModel{
 
 export class AuthService {
 
-  private apiUrl = 'http://deliveryportal.runasp.net/api/v1/Authentication';
+  private apiUrl = Configs.apiUrl+'/v1/Authentication';
 
   private tokenKey = 'authToken';
   private roleKey = 'userRole';

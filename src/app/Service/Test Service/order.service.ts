@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { Configs } from '../../Core/Utility/Config';
 
 export class Order {
   id?: string;
@@ -27,7 +28,7 @@ export class Order {
   providedIn: 'root',
 })
 export class OrderService {
-  private apiUrl = 'http://deliveryportal.runasp.net/api/v1/Order'; // Mock API endpoint
+  private apiUrl = Configs.apiUrl+"/v1/Order"; // Mock API endpoint
 
   private ordersSubject = new BehaviorSubject<Order[]>([]);
   public orders$ = this.ordersSubject.asObservable();

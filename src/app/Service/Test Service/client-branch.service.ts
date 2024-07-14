@@ -4,12 +4,13 @@ import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/internal/operators/map';
 import { HttpClient } from '@angular/common/http';
 import { SearchObj } from '../../Core/SearchControls/Common/SearchObj';
+import { Configs } from '../../Core/Utility/Config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientBranchService {
-  private apiUrl = 'http://deliveryportal.runasp.net/api/v1/ClientBranch';
+  private apiUrl = Configs.apiUrl+'/v1/ClientBranch';
 
   constructor(private http: HttpClient) { }
 

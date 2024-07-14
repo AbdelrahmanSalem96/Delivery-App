@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { InitialConstants } from '../../Core/Constant/InitialConstant';
+import { Configs } from '../../Core/Utility/Config';
 
 export class Vehicle{
   id?:string;
@@ -33,7 +34,7 @@ export class DeleteVehicleDtoModel{
 })
 export class VehicleService {
 
-  private apiUrl = 'http://deliveryportal.runasp.net/api/v1/Vehicle';  // Mock API endpoint
+  private apiUrl = Configs.apiUrl+'/v1/Vehicle';  // Mock API endpoint
 
   constructor(private http: HttpClient) { }
 

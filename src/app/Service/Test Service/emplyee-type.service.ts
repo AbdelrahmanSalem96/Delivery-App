@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { EmployeeModel } from '../../Models/Employee/Employee.Model';
 import { Observable, map } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Configs } from '../../Core/Utility/Config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmplyeeTypeService {
 
-  private apiUrl = 'http://deliveryportal.runasp.net/api/v1/EmploymentType';  // Mock API endpoint
+  private apiUrl = Configs.apiUrl+'/v1/EmploymentType';  // Mock API endpoint
 
   constructor(private http: HttpClient) { }
 

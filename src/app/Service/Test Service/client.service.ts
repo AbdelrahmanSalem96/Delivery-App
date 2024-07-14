@@ -4,12 +4,13 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ClientModel, DeleteClientModel, getLightClientModel } from '../../Models/Client/Client.Model';
 import { SearchObj } from '../../Core/SearchControls/Common/SearchObj';
+import { Configs } from '../../Core/Utility/Config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientService {
-  private apiUrl = 'http://deliveryportal.runasp.net/api/v1/Client';  // Mock API endpoint
+  private apiUrl = Configs.apiUrl+'/v1/Client';  // Mock API endpoint
 
   constructor(private http: HttpClient) { }
 

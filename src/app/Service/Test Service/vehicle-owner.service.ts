@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { VehicleOwnerLiteModel } from '../../Models/VehicleOwner/VehicleOwner.Model';
+import { Configs } from '../../Core/Utility/Config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class VehicleOwnerService {
 
-  private apiUrl = 'http://deliveryportal.runasp.net/api/v1/VehicleOwner';  // Mock API endpoint
+  private apiUrl = Configs.apiUrl+'/v1/VehicleOwner';  // Mock API endpoint
 
   constructor(private http: HttpClient) { }
 

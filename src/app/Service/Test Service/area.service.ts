@@ -4,6 +4,7 @@ import { Observable, map } from 'rxjs';
 import { AreaDtoModel } from '../../Models/Area/Area.Model';
 import { SearchObj } from '../../Core/SearchControls/Common/SearchObj';
 import { InitialConstants } from '../../Core/Constant/InitialConstant';
+import { Configs } from '../../Core/Utility/Config';
 
 export class Area{
   id:string= InitialConstants.DefaultString;
@@ -15,7 +16,7 @@ export class Area{
 })
 
 export class AreaService {
-  private apiUrl = 'http://deliveryportal.runasp.net/api/v1/Area';  // Mock API endpoint
+  private apiUrl = Configs.apiUrl+'/v1/Area';  // Mock API endpoint
 
   constructor(private http: HttpClient) { }
 

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
+import { Configs } from '../../Core/Utility/Config';
 
 
 export class OrderLogModel{
@@ -15,9 +16,9 @@ export class OrderLogModel{
 })
 
 export class OrderLogService {
-  private apiUrl = 'http://deliveryportal.runasp.net/api/v1/OrderLog';
+  private apiUrl = Configs.apiUrl+'/v1/OrderLog';
 
-  private logUrl = 'http://deliveryportal.runasp.net/api/v1/OrderLog/GetAllOrderLogsForOneOrderQuery'
+  private logUrl = Configs.apiUrl+'/v1/OrderLog/GetAllOrderLogsForOneOrderQuery'
 
   constructor(private http: HttpClient) { }
 
