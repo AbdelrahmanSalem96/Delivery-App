@@ -15,8 +15,8 @@ import {
 
 @Component({
   selector: 'app-dialogbody',
-  templateUrl: './dialogbody.component.html',
-  styleUrls: ['./dialogbody.component.css'],
+  templateUrl: './DialogBody.Component.html',
+  styleUrl: './DialogBody.Component.css',
   standalone: true,
   imports: [MatDialogActions, MatDialogClose, MatDialogTitle, MatDialogContent],
 })

@@ -7,8 +7,8 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-rightsidemenu',
-  templateUrl: './rightsidemenu.component.html',
-  styleUrls: ['./rightsidemenu.component.css']
+  templateUrl: './RightSideMenu.Component.html',
+  styleUrl: './RightSideMenu.component.css'
 })
 
 export class RightSideMenuComponent implements OnInit {

@@ -13,9 +13,6 @@ import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
-import { RightSideMenuComponent } from './Components/Shared/RightSideMenu/RightSideMenu.Component';
-import { NavmenuComponent } from './Components/Shared/NavMenu/NavMenu.Component';
-
 // Material components
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
@@ -113,6 +110,8 @@ import { VehicleUpdateComponent } from './Components/Vehicles/vehicle/vehicle-up
 import { OrderStateComponent } from './Components/Orders/order-state/order-state.component';
 import { AuthInterceptor } from './Gard/auth.interceptor';
 import { AuthService } from './Service/Test Service/auth.service';
+import { NavmenuComponent } from './Components/Shared/NavMenu/NavMenu.Component';
+import { RightSideMenuComponent } from './Components/Shared/RightSideMenu/RightSideMenu.Component';
 
 @NgModule({
   declarations: [

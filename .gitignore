@@ -45,3 +45,6 @@ src/app/DB/orderDB.json
 src/app/DB/captinDB.json
 src/app/DB/clientDB.json
 DB.json
+
+# Local Netlify folder
+.netlify

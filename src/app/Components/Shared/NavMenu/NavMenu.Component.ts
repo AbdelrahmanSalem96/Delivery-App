@@ -7,8 +7,8 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navmenu',
-  templateUrl: './navmenu.component.html',
-  styleUrls: ['./navmenu.component.css']
+  templateUrl: './NavMenu.Component.html',
+  styleUrl: './NavMenu.Component.css'
 })
 export class NavmenuComponent implements OnInit {
 

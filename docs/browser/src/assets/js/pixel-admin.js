@@ -3,7 +3,7 @@
 
     /*
      * Determines whether a string ends with the specified suffix.
-     * 
+     *
      * @param  {String} suffix
      * @return Boolean
      */
@@ -16,7 +16,7 @@
 
     /*
      * Removes whitespace from both sides of a string.
-     * 
+     *
      * @return {String}
      */
     String.prototype.trim = function() {
@@ -28,7 +28,7 @@
 
     /*
      * The indexOf() method returns the first index at which a given element can be found in the array, or -1 if it is not present.
-     * 
+     *
      * @param  {Variant} searchElement
      * @param  {Integer} fromIndex
      * @return {Integer}
@@ -113,7 +113,7 @@
 
   /*
    * Detect screen size.
-   * 
+   *
    * @param  {jQuery Object} $ssw_point
    * @param  {jQuery Object} $tsw_point
    * @return {String}
@@ -179,7 +179,7 @@
 
   /*
    * Start application. Method takes an array of initializers and a settings object(that overrides default settings).
-   * 
+   *
    * @param  {Array} suffix
    * @param  {Object} settings
    * @return this
@@ -223,7 +223,7 @@
 
   /*
    * Add initializer to the stack.
-   * 
+   *
    * @param  {Function} callback
    */
 
@@ -234,7 +234,7 @@
 
   /*
    * Initialize plugin and add it to the plugins list.
-   * 
+   *
    * @param  {String} plugin_name
    * @param  {Instance} plugin
    */
@@ -249,7 +249,7 @@
 
   /*
    * Save value in the localStorage/Cookies.
-   * 
+   *
    * @param  {String}  key
    * @param  {String}  value
    * @param  {Boolean} use_cookies
@@ -275,7 +275,7 @@
 
   /*
    * Save key/value pairs in the localStorage/Cookies.
-   * 
+   *
    * @param  {Object} pairs
    * @param  {Boolean} use_cookies
    */
@@ -308,7 +308,7 @@
 
   /*
    * Get value from the localStorage/Cookies.
-   * 
+   *
    * @param  {String} key
    * @param  {Boolean} use_cookies
    */
@@ -346,7 +346,7 @@
 
   /*
    * Get values from the localStorage/Cookies.
-   * 
+   *
    * @param  {Array} keys
    * @param  {Boolean} use_cookies
    */
@@ -1182,7 +1182,7 @@ FastClick.notNeeded = function(layer) {
 
 		if (FastClick.prototype.deviceIsAndroid) {
 			metaViewport = document.querySelector('meta[name=viewport]');
-			
+
 			if (metaViewport) {
 				// Chrome on Android with user-scalable="no" doesn't need FastClick (issue #89)
 				if (metaViewport.content.indexOf('user-scalable=no') !== -1) {
@@ -16178,7 +16178,7 @@ $.widget( "ui.tabs", {
 })(jQuery, window, document);
 ;
 /* =========================================================
- * bootstrap-tabdrop.js 
+ * bootstrap-tabdrop.js
  * http://www.eyecon.ro/bootstrap-tabdrop
  * =========================================================
  * Copyright 2012 Stefan Petre
@@ -16195,7 +16195,7 @@ $.widget( "ui.tabs", {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ========================================================= */
- 
+
 !function( $ ) {
 
 	var WinReszier = (function(){
@@ -16303,7 +16303,7 @@ $.widget( "ui.tabs", {
  *
  */
 if(jQuery) (function($) {
-	
+
 	// Defaults
 	$.minicolors = {
 		defaults: {
@@ -16324,25 +16324,25 @@ if(jQuery) (function($) {
 			theme: 'default'
 		}
 	};
-	
+
 	// Public methods
 	$.extend($.fn, {
 		minicolors: function(method, data) {
-			
+
 			switch(method) {
-				
+
 				// Destroy the control
 				case 'destroy':
 					$(this).each( function() {
 						destroy($(this));
 					});
 					return $(this);
-				
+
 				// Hide the color picker
 				case 'hide':
 					hide();
 					return $(this);
-				
+
 				// Get/set opacity
 				case 'opacity':
 					// Getter
@@ -16356,16 +16356,16 @@ if(jQuery) (function($) {
 						});
 					}
 					return $(this);
-				
+
 				// Get an RGB(A) object based on the current color/opacity
 				case 'rgbObject':
 					return rgbObject($(this), method === 'rgbaObject');
-				
+
 				// Get an RGB(A) string based on the current color/opacity
 				case 'rgbString':
 				case 'rgbaString':
 					return rgbString($(this), method === 'rgbaString');
-				
+
 				// Get/set settings on the fly
 				case 'settings':
 					if( data === undefined ) {
@@ -16379,12 +16379,12 @@ if(jQuery) (function($) {
 						});
 					}
 					return $(this);
-				
+
 				// Show the color picker
 				case 'show':
 					show( $(this).eq(0) );
 					return $(this);
-				
+
 				// Get/set the hex color value
 				case 'value':
 					if( data === undefined ) {
@@ -16397,7 +16397,7 @@ if(jQuery) (function($) {
 						});
 					}
 					return $(this);
-				
+
 				// Initializes the control
 				default:
 					if( method !== 'create' ) data = method;
@@ -16405,36 +16405,36 @@ if(jQuery) (function($) {
 						init($(this), data);
 					});
 					return $(this);
-				
+
 			}
-			
+
 		}
 	});
-	
+
 	// Initialize input elements
 	function init(input, settings) {
-		
+
 		var minicolors = $('<div class="minicolors" />'),
 			defaults = $.minicolors.defaults;
-		
+
 		// Do nothing if already initialized
 		if( input.data('minicolors-initialized') ) return;
-		
+
 		// Handle settings
 		settings = $.extend(true, {}, defaults, settings);
-		
+
 		// The wrapper
 		minicolors
 			.addClass('minicolors-theme-' + settings.theme)
 			.toggleClass('minicolors-with-opacity', settings.opacity);
-		
+
 		// Custom positioning
 		if( settings.position !== undefined ) {
 			$.each(settings.position.split(' '), function() {
 				minicolors.addClass('minicolors-position-' + this);
 			});
 		}
-		
+
 		// The input
 		input
 			.addClass('minicolors-input')
@@ -16443,11 +16443,11 @@ if(jQuery) (function($) {
 			.prop('size', 7)
 			.wrap(minicolors)
 			.after(
-				'<div class="minicolors-panel minicolors-slider-' + settings.control + '">' + 
-					'<div class="minicolors-slider">' + 
+				'<div class="minicolors-panel minicolors-slider-' + settings.control + '">' +
+					'<div class="minicolors-slider">' +
 						'<div class="minicolors-picker"></div>' +
-					'</div>' + 
-					'<div class="minicolors-opacity-slider">' + 
+					'</div>' +
+					'<div class="minicolors-opacity-slider">' +
 						'<div class="minicolors-picker"></div>' +
 					'</div>' +
 					'<div class="minicolors-grid">' +
@@ -16456,7 +16456,7 @@ if(jQuery) (function($) {
 					'</div>' +
 				'</div>'
 			);
-		
+
 		// The swatch
 		if( !settings.inline ) {
 			input.after('<span class="minicolors-swatch"><span class="minicolors-swatch-color"></span></span>');
@@ -16465,82 +16465,82 @@ if(jQuery) (function($) {
 				input.focus();
 			});
 		}
-		
+
 		// Prevent text selection in IE
 		input.parent().find('.minicolors-panel').on('selectstart', function() { return false; }).end();
-		
+
 		// Inline controls
 		if( settings.inline ) input.parent().addClass('minicolors-inline');
-		
+
 		updateFromInput(input, false);
-		
+
 		input.data('minicolors-initialized', true);
-		
+
 	}
-	
+
 	// Returns the input back to its original state
 	function destroy(input) {
-		
+
 		var minicolors = input.parent();
-		
+
 		// Revert the input element
 		input
 			.removeData('minicolors-initialized')
 			.removeData('minicolors-settings')
 			.removeProp('size')
 			.removeClass('minicolors-input');
-		
+
 		// Remove the wrap and destroy whatever remains
 		minicolors.before(input).remove();
-		
+
 	}
-	
+
 	// Shows the specified dropdown panel
 	function show(input) {
-		
+
 		var minicolors = input.parent(),
 			panel = minicolors.find('.minicolors-panel'),
 			settings = input.data('minicolors-settings');
-		
+
 		// Do nothing if uninitialized, disabled, inline, or already open
-		if( !input.data('minicolors-initialized') || 
-			input.prop('disabled') || 
-			minicolors.hasClass('minicolors-inline') || 
+		if( !input.data('minicolors-initialized') ||
+			input.prop('disabled') ||
+			minicolors.hasClass('minicolors-inline') ||
 			minicolors.hasClass('minicolors-focus')
 		) return;
-		
+
 		hide();
-		
+
 		minicolors.addClass('minicolors-focus');
 		panel
 			.stop(true, true)
 			.fadeIn(settings.showSpeed, function() {
 				if( settings.show ) settings.show.call(input.get(0));
 			});
-		
+
 	}
-	
+
 	// Hides all dropdown panels
 	function hide() {
-		
+
 		$('.minicolors-focus').each( function() {
-			
+
 			var minicolors = $(this),
 				input = minicolors.find('.minicolors-input'),
 				panel = minicolors.find('.minicolors-panel'),
 				settings = input.data('minicolors-settings');
-			
+
 			panel.fadeOut(settings.hideSpeed, function() {
 				if( settings.hide ) settings.hide.call(input.get(0));
 				minicolors.removeClass('minicolors-focus');
-			});			
-						
+			});
+
 		});
 	}
-	
+
 	// Moves the selected picker
 	function move(target, event, animate) {
-		
+
 		var input = target.parents('.minicolors').find('.minicolors-input'),
 			settings = input.data('minicolors-settings'),
 			picker = target.find('[class$=-picker]'),
@@ -16550,19 +16550,19 @@ if(jQuery) (function($) {
 			y = Math.round(event.pageY - offsetY),
 			duration = animate ? settings.animationSpeed : 0,
 			wx, wy, r, phi;
-			
+
 		// Touch support
 		if( event.originalEvent.changedTouches ) {
 			x = event.originalEvent.changedTouches[0].pageX - offsetX;
 			y = event.originalEvent.changedTouches[0].pageY - offsetY;
 		}
-		
+
 		// Constrain picker to its container
 		if( x < 0 ) x = 0;
 		if( y < 0 ) y = 0;
 		if( x > target.width() ) x = target.width();
 		if( y > target.height() ) y = target.height();
-		
+
 		// Constrain color wheel values to the wheel
 		if( target.parent().is('.minicolors-slider-wheel') && picker.parent().is('.minicolors-grid') ) {
 			wx = 75 - x;
@@ -16578,7 +16578,7 @@ if(jQuery) (function($) {
 			x = Math.round(x);
 			y = Math.round(y);
 		}
-		
+
 		// Move the picker
 		if( target.is('.minicolors-grid') ) {
 			picker
@@ -16598,57 +16598,57 @@ if(jQuery) (function($) {
 					updateFromControl(input, target);
 				});
 		}
-		
+
 	}
-	
+
 	// Sets the input based on the color picker values
 	function updateFromControl(input, target) {
-		
+
 		function getCoords(picker, container) {
-			
+
 			var left, top;
 			if( !picker.length || !container ) return null;
 			left = picker.offset().left;
 			top = picker.offset().top;
-			
+
 			return {
 				x: left - container.offset().left + (picker.outerWidth() / 2),
 				y: top - container.offset().top + (picker.outerHeight() / 2)
 			};
-			
+
 		}
-		
+
 		var hue, saturation, brightness, x, y, r, phi,
-			
+
 			hex = input.val(),
 			opacity = input.attr('data-opacity'),
-			
+
 			// Helpful references
 			minicolors = input.parent(),
 			settings = input.data('minicolors-settings'),
 			swatch = minicolors.find('.minicolors-swatch'),
-			
+
 			// Panel objects
 			grid = minicolors.find('.minicolors-grid'),
 			slider = minicolors.find('.minicolors-slider'),
 			opacitySlider = minicolors.find('.minicolors-opacity-slider'),
-			
+
 			// Picker objects
 			gridPicker = grid.find('[class$=-picker]'),
 			sliderPicker = slider.find('[class$=-picker]'),
 			opacityPicker = opacitySlider.find('[class$=-picker]'),
-			
+
 			// Picker positions
 			gridPos = getCoords(gridPicker, grid),
 			sliderPos = getCoords(sliderPicker, slider),
 			opacityPos = getCoords(opacityPicker, opacitySlider);
-		
+
 		// Handle colors
 		if( target.is('.minicolors-grid, .minicolors-slider') ) {
-			
+
 			// Determine HSB values
 			switch(settings.control) {
-				
+
 				case 'wheel':
 					// Calculate hue, saturation, and brightness
 					x = (grid.width() / 2) - gridPos.x;
@@ -16669,11 +16669,11 @@ if(jQuery) (function($) {
 						s: saturation,
 						b: brightness
 					});
-					
+
 					// Update UI
 					slider.css('backgroundColor', hsb2hex({ h: hue, s: saturation, b: 100 }));
 					break;
-				
+
 				case 'saturation':
 					// Calculate hue, saturation, and brightness
 					hue = keepWithin(parseInt(gridPos.x * (360 / grid.width()), 10), 0, 360);
@@ -16684,12 +16684,12 @@ if(jQuery) (function($) {
 						s: saturation,
 						b: brightness
 					});
-					
+
 					// Update UI
 					slider.css('backgroundColor', hsb2hex({ h: hue, s: 100, b: brightness }));
 					minicolors.find('.minicolors-grid-inner').css('opacity', saturation / 100);
 					break;
-				
+
 				case 'brightness':
 					// Calculate hue, saturation, and brightness
 					hue = keepWithin(parseInt(gridPos.x * (360 / grid.width()), 10), 0, 360);
@@ -16700,12 +16700,12 @@ if(jQuery) (function($) {
 						s: saturation,
 						b: brightness
 					});
-					
+
 					// Update UI
 					slider.css('backgroundColor', hsb2hex({ h: hue, s: saturation, b: 100 }));
 					minicolors.find('.minicolors-grid-inner').css('opacity', 1 - (brightness / 100));
 					break;
-				
+
 				default:
 					// Calculate hue, saturation, and brightness
 					hue = keepWithin(360 - parseInt(sliderPos.y * (360 / slider.height()), 10), 0, 360);
@@ -16716,18 +16716,18 @@ if(jQuery) (function($) {
 						s: saturation,
 						b: brightness
 					});
-					
+
 					// Update UI
 					grid.css('backgroundColor', hsb2hex({ h: hue, s: 100, b: 100 }));
 					break;
-				
+
 			}
-		
+
 			// Adjust case
 			input.val( convertCase(hex, settings.letterCase) );
-			
+
 		}
-		
+
 		// Handle opacity
 		if( target.is('.minicolors-opacity-slider') ) {
 			if( settings.opacity ) {
@@ -16737,51 +16737,51 @@ if(jQuery) (function($) {
 			}
 			if( settings.opacity ) input.attr('data-opacity', opacity);
 		}
-		
+
 		// Set swatch color
 		swatch.find('SPAN').css({
 			backgroundColor: hex,
 			opacity: opacity
 		});
-		
+
 		// Handle change event
 		doChange(input, hex, opacity);
-		
+
 	}
-	
+
 	// Sets the color picker values from the input
 	function updateFromInput(input, preserveInputValue) {
-		
+
 		var hex,
 			hsb,
 			opacity,
 			x, y, r, phi,
-			
+
 			// Helpful references
 			minicolors = input.parent(),
 			settings = input.data('minicolors-settings'),
 			swatch = minicolors.find('.minicolors-swatch'),
-			
+
 			// Panel objects
 			grid = minicolors.find('.minicolors-grid'),
 			slider = minicolors.find('.minicolors-slider'),
 			opacitySlider = minicolors.find('.minicolors-opacity-slider'),
-			
+
 			// Picker objects
 			gridPicker = grid.find('[class$=-picker]'),
 			sliderPicker = slider.find('[class$=-picker]'),
 			opacityPicker = opacitySlider.find('[class$=-picker]');
-		
+
 		// Determine hex/HSB values
 		hex = convertCase(parseHex(input.val(), true), settings.letterCase);
 		if( !hex ){
 			hex = convertCase(parseHex(settings.defaultValue, true), settings.letterCase);
 		}
 		hsb = hex2hsb(hex);
-		
+
 		// Update input value
 		if( !preserveInputValue ) input.val(hex);
-		
+
 		// Determine opacity value
 		if( settings.opacity ) {
 			// Get from data-opacity attribute and keep within 0-1 range
@@ -16789,18 +16789,18 @@ if(jQuery) (function($) {
 			if( isNaN(opacity) ) opacity = 1;
 			input.attr('data-opacity', opacity);
 			swatch.find('SPAN').css('opacity', opacity);
-			
+
 			// Set opacity picker position
 			y = keepWithin(opacitySlider.height() - (opacitySlider.height() * opacity), 0, opacitySlider.height());
 			opacityPicker.css('top', y + 'px');
 		}
-		
+
 		// Update swatch
 		swatch.find('SPAN').css('backgroundColor', hex);
-		
+
 		// Determine picker locations
 		switch(settings.control) {
-			
+
 			case 'wheel':
 				// Set grid position
 				r = keepWithin(Math.ceil(hsb.s * 0.75), 0, grid.height() / 2);
@@ -16811,16 +16811,16 @@ if(jQuery) (function($) {
 					top: y + 'px',
 					left: x + 'px'
 				});
-				
+
 				// Set slider position
 				y = 150 - (hsb.b / (100 / grid.height()));
 				if( hex === '' ) y = 0;
 				sliderPicker.css('top', y + 'px');
-				
+
 				// Update panel color
 				slider.css('backgroundColor', hsb2hex({ h: hsb.h, s: hsb.s, b: 100 }));
 				break;
-			
+
 			case 'saturation':
 				// Set grid position
 				x = keepWithin((5 * hsb.h) / 12, 0, 150);
@@ -16828,17 +16828,17 @@ if(jQuery) (function($) {
 				gridPicker.css({
 					top: y + 'px',
 					left: x + 'px'
-				});				
-				
+				});
+
 				// Set slider position
 				y = keepWithin(slider.height() - (hsb.s * (slider.height() / 100)), 0, slider.height());
 				sliderPicker.css('top', y + 'px');
-				
+
 				// Update UI
 				slider.css('backgroundColor', hsb2hex({ h: hsb.h, s: 100, b: hsb.b }));
 				minicolors.find('.minicolors-grid-inner').css('opacity', hsb.s / 100);
 				break;
-			
+
 			case 'brightness':
 				// Set grid position
 				x = keepWithin((5 * hsb.h) / 12, 0, 150);
@@ -16846,17 +16846,17 @@ if(jQuery) (function($) {
 				gridPicker.css({
 					top: y + 'px',
 					left: x + 'px'
-				});				
-				
+				});
+
 				// Set slider position
 				y = keepWithin(slider.height() - (hsb.b * (slider.height() / 100)), 0, slider.height());
 				sliderPicker.css('top', y + 'px');
-				
+
 				// Update UI
 				slider.css('backgroundColor', hsb2hex({ h: hsb.h, s: hsb.s, b: 100 }));
 				minicolors.find('.minicolors-grid-inner').css('opacity', 1 - (hsb.b / 100));
 				break;
-			
+
 			default:
 				// Set grid position
 				x = keepWithin(Math.ceil(hsb.s / (100 / grid.width())), 0, grid.width());
@@ -16865,39 +16865,39 @@ if(jQuery) (function($) {
 					top: y + 'px',
 					left: x + 'px'
 				});
-				
+
 				// Set slider position
 				y = keepWithin(slider.height() - (hsb.h / (360 / slider.height())), 0, slider.height());
 				sliderPicker.css('top', y + 'px');
-				
+
 				// Update panel color
 				grid.css('backgroundColor', hsb2hex({ h: hsb.h, s: 100, b: 100 }));
 				break;
-				
+
 		}
-		
+
 		// Fire change event, but only if minicolors is fully initialized
 		if( input.data('minicolors-initialized') ) {
 			doChange(input, hex, opacity);
 		}
-		
+
 	}
-	
+
 	// Runs the change and changeDelay callbacks
 	function doChange(input, hex, opacity) {
-		
+
 		var settings = input.data('minicolors-settings'),
 			lastChange = input.data('minicolors-lastChange');
-		
+
 		// Only run if it actually changed
 		if( !lastChange || lastChange.hex !== hex || lastChange.opacity !== opacity ) {
-			
+
 			// Remember last-changed value
 			input.data('minicolors-lastChange', {
 				hex: hex,
 				opacity: opacity
 			});
-			
+
 			// Fire change event
 			if( settings.change ) {
 				if( settings.changeDelay ) {
@@ -16913,9 +16913,9 @@ if(jQuery) (function($) {
 			}
 			input.trigger('change').trigger('input');
 		}
-	
+
 	}
-	
+
 	// Generates an RGB(A) object based on the input's value
 	function rgbObject(input) {
 		var hex = parseHex($(input).val(), true),
@@ -16925,7 +16925,7 @@ if(jQuery) (function($) {
 		if( opacity !== undefined ) $.extend(rgb, { a: parseFloat(opacity) });
 		return rgb;
 	}
-	
+
 	// Genearates an RGB(A) string based on the input's value
 	function rgbString(input, alpha) {
 		var hex = parseHex($(input).val(), true),
@@ -16939,12 +16939,12 @@ if(jQuery) (function($) {
 			return 'rgb(' + rgb.r + ', ' + rgb.g + ', ' + rgb.b + ')';
 		}
 	}
-	
+
 	// Converts to the letter case specified in settings
 	function convertCase(string, letterCase) {
 		return letterCase === 'uppercase' ? string.toUpperCase() : string.toLowerCase();
 	}
-	
+
 	// Parses a string and returns a valid hex string when possible
 	function parseHex(string, expand) {
 		string = string.replace(/[^A-F0-9]/ig, '');
@@ -16954,14 +16954,14 @@ if(jQuery) (function($) {
 		}
 		return '#' + string;
 	}
-	
+
 	// Keeps value within min and max
 	function keepWithin(value, min, max) {
 		if( value < min ) value = min;
 		if( value > max ) value = max;
 		return value;
 	}
-	
+
 	// Converts an HSB object to an RGB object
 	function hsb2rgb(hsb) {
 		var rgb = {};
@@ -16989,7 +16989,7 @@ if(jQuery) (function($) {
 			b: Math.round(rgb.b)
 		};
 	}
-	
+
 	// Converts an RGB object to a hex string
 	function rgb2hex(rgb) {
 		var hex = [
@@ -17002,19 +17002,19 @@ if(jQuery) (function($) {
 		});
 		return '#' + hex.join('');
 	}
-	
+
 	// Converts an HSB object to a hex string
 	function hsb2hex(hsb) {
 		return rgb2hex(hsb2rgb(hsb));
 	}
-	
+
 	// Converts a hex string to an HSB object
 	function hex2hsb(hex) {
 		var hsb = rgb2hsb(hex2rgb(hex));
 		if( hsb.s === 0 ) hsb.h = 360;
 		return hsb;
 	}
-	
+
 	// Converts an RGB object to an HSB object
 	function rgb2hsb(rgb) {
 		var hsb = { h: 0, s: 0, b: 0 };
@@ -17042,7 +17042,7 @@ if(jQuery) (function($) {
 		hsb.b *= 100/255;
 		return hsb;
 	}
-	
+
 	// Converts a hex string to an RGB object
 	function hex2rgb(hex) {
 		hex = parseInt(((hex.indexOf('#') > -1) ? hex.substring(1) : hex), 16);
@@ -17052,7 +17052,7 @@ if(jQuery) (function($) {
 			b: (hex & 0x0000FF)
 		};
 	}
-	
+
 	// Handle events
 	$(document)
 		// Hide on clicks outside of the control
@@ -17094,16 +17094,16 @@ if(jQuery) (function($) {
 			var input = $(this),
 				settings = input.data('minicolors-settings');
 			if( !input.data('minicolors-initialized') ) return;
-			
+
 			// Parse Hex
 			input.val(parseHex(input.val(), true));
-			
+
 			// Is it blank?
 			if( input.val() === '' ) input.val(parseHex(settings.defaultValue, true));
-			
+
 			// Adjust case
 			input.val( convertCase(input.val(), settings.letterCase) );
-			
+
 		})
 		// Handle keypresses
 		.on('keydown.minicolors', '.minicolors-input', function(event) {
@@ -17134,7 +17134,7 @@ if(jQuery) (function($) {
 				updateFromInput(input, true);
 			}, 1);
 		});
-	
+
 })(jQuery);;
 /*
     jQuery Masked Input Plugin
@@ -17160,13 +17160,13 @@ if(jQuery) (function($) {
     }, $.fn.extend({
         caret: function(begin, end) {
             var range;
-            if (0 !== this.length && !this.is(":hidden")) return "number" == typeof begin ? (end = "number" == typeof end ? end : begin, 
+            if (0 !== this.length && !this.is(":hidden")) return "number" == typeof begin ? (end = "number" == typeof end ? end : begin,
             this.each(function() {
-                this.setSelectionRange ? this.setSelectionRange(begin, end) : this.createTextRange && (range = this.createTextRange(), 
-                range.collapse(!0), range.moveEnd("character", end), range.moveStart("character", begin), 
+                this.setSelectionRange ? this.setSelectionRange(begin, end) : this.createTextRange && (range = this.createTextRange(),
+                range.collapse(!0), range.moveEnd("character", end), range.moveStart("character", begin),
                 range.select());
-            })) : (this[0].setSelectionRange ? (begin = this[0].selectionStart, end = this[0].selectionEnd) : document.selection && document.selection.createRange && (range = document.selection.createRange(), 
-            begin = 0 - range.duplicate().moveStart("character", -1e5), end = begin + range.text.length), 
+            })) : (this[0].setSelectionRange ? (begin = this[0].selectionStart, end = this[0].selectionEnd) : document.selection && document.selection.createRange && (range = document.selection.createRange(),
+            begin = 0 - range.duplicate().moveStart("character", -1e5), end = begin + range.text.length),
             {
                 begin: begin,
                 end: end
@@ -17181,9 +17181,9 @@ if(jQuery) (function($) {
                 autoclear: $.mask.autoclear,
                 placeholder: $.mask.placeholder,
                 completed: null
-            }, settings), defs = $.mask.definitions, tests = [], partialPosition = len = mask.length, 
+            }, settings), defs = $.mask.definitions, tests = [], partialPosition = len = mask.length,
             firstNonMaskPos = null, $.each(mask.split(""), function(i, c) {
-                "?" == c ? (len--, partialPosition = i) : defs[c] ? (tests.push(new RegExp(defs[c])), 
+                "?" == c ? (len--, partialPosition = i) : defs[c] ? (tests.push(new RegExp(defs[c])),
                 null === firstNonMaskPos && (firstNonMaskPos = tests.length - 1)) : tests.push(null);
             }), this.trigger("unmask").each(function() {
                 function seekNext(pos) {
@@ -17213,24 +17213,24 @@ if(jQuery) (function($) {
                 }
                 function keydownEvent(e) {
                     var pos, begin, end, k = e.which;
-                    8 === k || 46 === k || iPhone && 127 === k ? (pos = input.caret(), begin = pos.begin, 
-                    end = pos.end, 0 === end - begin && (begin = 46 !== k ? seekPrev(begin) : end = seekNext(begin - 1), 
-                    end = 46 === k ? seekNext(end) : end), clearBuffer(begin, end), shiftL(begin, end - 1), 
-                    e.preventDefault()) : 27 == k && (input.val(focusText), input.caret(0, checkVal()), 
+                    8 === k || 46 === k || iPhone && 127 === k ? (pos = input.caret(), begin = pos.begin,
+                    end = pos.end, 0 === end - begin && (begin = 46 !== k ? seekPrev(begin) : end = seekNext(begin - 1),
+                    end = 46 === k ? seekNext(end) : end), clearBuffer(begin, end), shiftL(begin, end - 1),
+                    e.preventDefault()) : 27 == k && (input.val(focusText), input.caret(0, checkVal()),
                     e.preventDefault());
                 }
                 function keypressEvent(e) {
                     var p, c, next, k = e.which, pos = input.caret();
                     if (0 == k) {
-                        if (pos.begin >= len) return input.val(input.val().substr(0, len)), e.preventDefault(), 
+                        if (pos.begin >= len) return input.val(input.val().substr(0, len)), e.preventDefault(),
                         !1;
-                        pos.begin == pos.end && (k = input.val().charCodeAt(pos.begin - 1), pos.begin--, 
+                        pos.begin == pos.end && (k = input.val().charCodeAt(pos.begin - 1), pos.begin--,
                         pos.end--);
                     }
-                    e.ctrlKey || e.altKey || e.metaKey || 32 > k || k && (0 !== pos.end - pos.begin && (clearBuffer(pos.begin, pos.end), 
-                    shiftL(pos.begin, pos.end - 1)), p = seekNext(pos.begin - 1), len > p && (c = String.fromCharCode(k), 
-                    tests[p].test(c) && (shiftR(p), buffer[p] = c, writeBuffer(), next = seekNext(p), 
-                    android ? setTimeout($.proxy($.fn.caret, input, next), 0) : input.caret(next), settings.completed && next >= len && settings.completed.call(input))), 
+                    e.ctrlKey || e.altKey || e.metaKey || 32 > k || k && (0 !== pos.end - pos.begin && (clearBuffer(pos.begin, pos.end),
+                    shiftL(pos.begin, pos.end - 1)), p = seekNext(pos.begin - 1), len > p && (c = String.fromCharCode(k),
+                    tests[p].test(c) && (shiftR(p), buffer[p] = c, writeBuffer(), next = seekNext(p),
+                    android ? setTimeout($.proxy($.fn.caret, input, next), 0) : input.caret(next), settings.completed && next >= len && settings.completed.call(input))),
                     e.preventDefault());
                 }
                 function clearBuffer(start, end) {
@@ -17243,15 +17243,15 @@ if(jQuery) (function($) {
                 function checkVal(allow) {
                     var i, c, pos, test = input.val(), lastMatch = -1;
                     for (i = 0, pos = 0; len > i; i++) if (tests[i]) {
-                        for (buffer[i] = settings.placeholder; pos++ < test.length; ) if (c = test.charAt(pos - 1), 
+                        for (buffer[i] = settings.placeholder; pos++ < test.length; ) if (c = test.charAt(pos - 1),
                         tests[i].test(c)) {
                             buffer[i] = c, lastMatch = i;
                             break;
                         }
                         if (pos > test.length) break;
                     } else buffer[i] === test.charAt(pos) && i !== partialPosition && (pos++, lastMatch = i);
-                    return allow ? writeBuffer() : partialPosition > lastMatch + 1 ? settings.autoclear || buffer.join("") === defaultBuffer ? (input.val(""), 
-                    clearBuffer(0, len)) : writeBuffer() : (writeBuffer(), input.val(input.val().substring(0, lastMatch + 1))), 
+                    return allow ? writeBuffer() : partialPosition > lastMatch + 1 ? settings.autoclear || buffer.join("") === defaultBuffer ? (input.val(""),
+                    clearBuffer(0, len)) : writeBuffer() : (writeBuffer(), input.val(input.val().substring(0, lastMatch + 1))),
                     partialPosition ? i : firstNonMaskPos;
                 }
                 var input = $(this), buffer = $.map(mask.split(""), function(c) {
@@ -17379,7 +17379,7 @@ if(jQuery) (function($) {
 			function setWidth() {
 				var width;
 				var style = window.getComputedStyle ? window.getComputedStyle(ta, null) : false;
-				
+
 				if (style) {
 
 					width = ta.getBoundingClientRect().width;
@@ -17440,8 +17440,8 @@ if(jQuery) (function($) {
 				}
 
 				if (!ta.value && options.placeholder) {
-					// If the textarea is empty, copy the placeholder text into 
-					// the mirror control and use that for sizing so that we 
+					// If the textarea is empty, copy the placeholder text into
+					// the mirror control and use that for sizing so that we
 					// don't end up with placeholder getting trimmed.
 					mirror.value = ($(ta).attr("placeholder") || '') + options.append;
 				} else {
@@ -21626,7 +21626,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  * easyPieChart
  * Lightweight plugin to render simple, animated and retina optimized pie charts
  *
- * @license 
+ * @license
  * @author Robert Fleischmann <rendro87@gmail.com> (http://robert-fleischmann.de)
  * @version 2.1.5
  **/
@@ -21758,7 +21758,7 @@ var CanvasRenderer = function(el, options) {
   this.getCanvas = function() {
     return canvas;
   };
-  
+
   /**
     * Canvas 2D context 'ctx' accessor
    */
@@ -24878,9 +24878,9 @@ $.fn.easyPieChart = function(options) {
 /* =========================================================
  * bootstrap-datepaginator.js v1.1.0
  * =========================================================
- * Copyright 2013 Jonathan Miles 
+ * Copyright 2013 Jonathan Miles
  * Project URL : http://www.jondmiles.com/bootstrap-datepaginator
- *	
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -24976,7 +24976,7 @@ $.fn.easyPieChart = function(options) {
 				this.options.endDate = moment(this.options.endDate, this.options.endDateFormat).clone().startOf('day');
 			}
 
-			// Parse, set and validate the initially selected date 
+			// Parse, set and validate the initially selected date
 			// 1. overridding the default value of today
 			if (typeof this.options.selectedDate === 'string') {
 				this.options.selectedDate = moment(this.options.selectedDate, this.options.selectedDateFormat).clone().startOf('day');
@@ -25242,7 +25242,7 @@ $.fn.easyPieChart = function(options) {
 
 				var valid = ((m.isSame(this.options.startDate) || m.isAfter(this.options.startDate)) &&
 							(m.isSame(this.options.endDate) || m.isBefore(this.options.endDate))) ? true : false;
-				
+
 				data.items[data.items.length] = {
 					m: m.clone().format(this.options.selectedDateFormat),
 					isValid: valid,
@@ -25308,7 +25308,7 @@ $.fn.easyPieChart = function(options) {
 	};
 
 })(jQuery, window, document);;
-/*! X-editable - v1.5.1 
+/*! X-editable - v1.5.1
 * In-place editing with Twitter Bootstrap, jQuery UI or pure jQuery
 * http://github.com/vitalets/x-editable
 * Copyright (c) 2013 Vitaliy Potapov; Licensed MIT */
@@ -25323,7 +25323,7 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
 **/
 (function ($) {
     "use strict";
-    
+
     var EditableForm = function (div, options) {
         this.options = $.extend({}, $.fn.editableform.defaults, options);
         this.$div = $(div); //div, containing form. Not form tag. Not editable-element.
@@ -25338,16 +25338,16 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
         initInput: function() {  //called once
             //take input from options (as it is created in editable-element)
             this.input = this.options.input;
-            
+
             //set initial value
-            //todo: may be add check: typeof str === 'string' ? 
-            this.value = this.input.str2value(this.options.value); 
-            
+            //todo: may be add check: typeof str === 'string' ?
+            this.value = this.input.str2value(this.options.value);
+
             //prerender: get input.$input
             this.input.prerender();
         },
         initTemplate: function() {
-            this.$form = $($.fn.editableform.template); 
+            this.$form = $($.fn.editableform.template);
         },
         initButtons: function() {
             var $btn = this.$form.find('.editable-buttons');
@@ -25360,12 +25360,12 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
         Renders editableform
 
         @method render
-        **/        
+        **/
         render: function() {
             //init loader
-            this.$loading = $($.fn.editableform.loading);        
+            this.$loading = $($.fn.editableform.loading);
             this.$div.empty().append(this.$loading);
-            
+
             //init form template and buttons
             this.initTemplate();
             if(this.options.showbuttons) {
@@ -25375,39 +25375,39 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
             }
 
             //show loading state
-            this.showLoading();            
-            
-            //flag showing is form now saving value to server. 
+            this.showLoading();
+
+            //flag showing is form now saving value to server.
             //It is needed to wait when closing form.
             this.isSaving = false;
-            
-            /**        
+
+            /**
             Fired when rendering starts
-            @event rendering 
+            @event rendering
             @param {Object} event event object
-            **/            
+            **/
             this.$div.triggerHandler('rendering');
-            
+
             //init input
             this.initInput();
-            
+
             //append input to form
-            this.$form.find('div.editable-input').append(this.input.$tpl);            
-            
+            this.$form.find('div.editable-input').append(this.input.$tpl);
+
             //append form to container
             this.$div.append(this.$form);
-            
+
             //render input
             $.when(this.input.render())
             .then($.proxy(function () {
                 //setup input to submit automatically when no buttons shown
                 if(!this.options.showbuttons) {
-                    this.input.autosubmit(); 
+                    this.input.autosubmit();
                 }
-                 
+
                 //attach 'cancel' handler
                 this.$form.find('.editable-cancel').click($.proxy(this.cancel, this));
-                
+
                 if(this.input.error) {
                     this.error(this.input.error);
                     this.$form.find('.editable-submit').attr('disabled', true);
@@ -25424,27 +25424,27 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
                     this.$form.submit($.proxy(this.submit, this));
                 }
 
-                /**        
+                /**
                 Fired when form is rendered
                 @event rendered
                 @param {Object} event event object
-                **/            
-                this.$div.triggerHandler('rendered');                
+                **/
+                this.$div.triggerHandler('rendered');
 
                 this.showForm();
-                
+
                 //call postrender method to perform actions required visibility of form
                 if(this.input.postrender) {
                     this.input.postrender();
-                }                
+                }
             }, this));
         },
-        cancel: function() {   
-            /**        
+        cancel: function() {
+            /**
             Fired when form was cancelled by user
-            @event cancel 
+            @event cancel
             @param {Object} event event object
-            **/              
+            **/
             this.$div.triggerHandler('cancel');
         },
         showLoading: function() {
@@ -25452,7 +25452,7 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
             if(this.$form) {
                 //set loading size equal to form
                 w = this.$form.outerWidth();
-                h = this.$form.outerHeight(); 
+                h = this.$form.outerHeight();
                 if(w) {
                     this.$loading.width(w);
                 }
@@ -25467,20 +25467,20 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
                     this.$loading.width(w);
                 }
             }
-            this.$loading.show(); 
+            this.$loading.show();
         },
 
         showForm: function(activate) {
             this.$loading.hide();
             this.$form.show();
             if(activate !== false) {
-                this.input.activate(); 
+                this.input.activate();
             }
-            /**        
+            /**
             Fired when form is shown
-            @event show 
+            @event show
             @param {Object} event event object
-            **/                    
+            **/
             this.$div.triggerHandler('show');
         },
 
@@ -25491,7 +25491,7 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
 
             if(msg === false) {
                 $group.removeClass($.fn.editableform.errorGroupClass);
-                $block.removeClass($.fn.editableform.errorBlockClass).empty().hide(); 
+                $block.removeClass($.fn.editableform.errorBlockClass).empty().hide();
             } else {
                 //convert newline to <br> for more pretty error display
                 if(msg) {
@@ -25509,9 +25509,9 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
         submit: function(e) {
             e.stopPropagation();
             e.preventDefault();
-            
+
             //get new value from input
-            var newValue = this.input.input2value(); 
+            var newValue = this.input.input2value();
 
             //validation: if validate returns string or truthy value - means error
             //if returns object like {newValue: '...'} => submitted value is reassigned to it
@@ -25528,26 +25528,26 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
                 this.error(error);
                 this.showForm();
                 return;
-            } 
-            
+            }
+
             //if value not changed --> trigger 'nochange' event and return
             /*jslint eqeq: true*/
             if (!this.options.savenochange && this.input.value2str(newValue) == this.input.value2str(this.value)) {
-            /*jslint eqeq: false*/                
-                /**        
+            /*jslint eqeq: false*/
+                /**
                 Fired when value not changed but form is submitted. Requires savenochange = false.
-                @event nochange 
+                @event nochange
                 @param {Object} event event object
-                **/                    
-                this.$div.triggerHandler('nochange');            
+                **/
+                this.$div.triggerHandler('nochange');
                 return;
-            } 
+            }
 
             //convert value for submitting to server
             var submitValue = this.input.value2submit(newValue);
-            
+
             this.isSaving = true;
-            
+
             //sending data to server
             $.when(this.save(submitValue))
             .done($.proxy(function(response) {
@@ -25563,7 +25563,7 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
                     return;
                 }
 
-                //if success callback returns string -->  keep form open, show error and activate input               
+                //if success callback returns string -->  keep form open, show error and activate input
                 if(typeof res === 'string') {
                     this.error(res);
                     this.showForm();
@@ -25577,11 +25577,11 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
                 }
 
                 //clear error message
-                this.error(false);   
+                this.error(false);
                 this.value = newValue;
-                /**        
+                /**
                 Fired when form is submitted
-                @event save 
+                @event save
                 @param {Object} event event object
                 @param {Object} params additional params
                 @param {mixed} params.newValue raw new value
@@ -25611,14 +25611,14 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
         },
 
         save: function(submitValue) {
-            //try parse composite pk defined as json string in data-pk 
-            this.options.pk = $.fn.editableutils.tryParseJson(this.options.pk, true); 
-            
+            //try parse composite pk defined as json string in data-pk
+            this.options.pk = $.fn.editableutils.tryParseJson(this.options.pk, true);
+
             var pk = (typeof this.options.pk === 'function') ? this.options.pk.call(this.options.scope) : this.options.pk,
             /*
               send on server in following cases:
               1. url is function
-              2. url is string AND (pk defined OR send option = always) 
+              2. url is string AND (pk defined OR send option = always)
             */
             send = !!(typeof this.options.url === 'function' || (this.options.url && ((this.options.send === 'always') || (this.options.send === 'auto' && pk !== null && pk !== undefined)))),
             params;
@@ -25630,21 +25630,21 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
                 params = {
                     name: this.options.name || '',
                     value: submitValue,
-                    pk: pk 
+                    pk: pk
                 };
 
                 //additional params
                 if(typeof this.options.params === 'function') {
-                    params = this.options.params.call(this.options.scope, params);  
+                    params = this.options.params.call(this.options.scope, params);
                 } else {
                     //try parse json in single quotes (from data-params attribute)
-                    this.options.params = $.fn.editableutils.tryParseJson(this.options.params, true);   
+                    this.options.params = $.fn.editableutils.tryParseJson(this.options.params, true);
                     $.extend(params, this.options.params);
                 }
 
                 if(typeof this.options.url === 'function') { //user's function
                     return this.options.url.call(this.options.scope, params);
-                } else {  
+                } else {
                     //send ajax to server and return deferred object
                     return $.ajax($.extend({
                         url     : this.options.url,
@@ -25653,7 +25653,7 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
                     }, this.options.ajaxOptions));
                 }
             }
-        }, 
+        },
 
         validate: function (value) {
             if (value === undefined) {
@@ -25668,11 +25668,11 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
             if(key in this.options) {
                 this.options[key] = value;
             }
-            
+
             if(key === 'value') {
                 this.setValue(value);
             }
-            
+
             //do not pass option to input as it is passed in editable-element
         },
 
@@ -25682,12 +25682,12 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
             } else {
                 this.value = value;
             }
-            
+
             //if form is visible, update input
             if(this.$form && this.$form.is(':visible')) {
                 this.input.value2input(this.value);
-            }            
-        }               
+            }
+        }
     };
 
     /*
@@ -25704,26 +25704,26 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
     });
 
     //to display form you should call 'render' method
-    $form.editableform('render');     
+    $form.editableform('render');
     */
     $.fn.editableform = function (option) {
         var args = arguments;
         return this.each(function () {
-            var $this = $(this), 
-            data = $this.data('editableform'), 
-            options = typeof option === 'object' && option; 
+            var $this = $(this),
+            data = $this.data('editableform'),
+            options = typeof option === 'object' && option;
             if (!data) {
                 $this.data('editableform', (data = new EditableForm(this, options)));
             }
 
-            if (typeof option === 'string') { //call method 
+            if (typeof option === 'string') { //call method
                 data[option].apply(data, Array.prototype.slice.call(args, 1));
-            } 
+            }
         });
     };
 
     //keep link to constructor to allow inheritance
-    $.fn.editableform.Constructor = EditableForm;    
+    $.fn.editableform.Constructor = EditableForm;
 
     //defaults
     $.fn.editableform.defaults = {
@@ -25732,16 +25732,16 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
         /**
         Type of input. Can be <code>text|textarea|select|date|checklist</code>
 
-        @property type 
+        @property type
         @type string
         @default 'text'
         **/
         type: 'text',
         /**
-        Url for submit, e.g. <code>'/post'</code>  
+        Url for submit, e.g. <code>'/post'</code>
         If function - it will be called instead of ajax. Function should return deferred object to run fail/done callbacks.
 
-        @property url 
+        @property url
         @type string|function
         @default null
         @example
@@ -25752,18 +25752,18 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
             } else {
                 //async saving data in js model
                 someModel.asyncSaveMethod({
-                   ..., 
+                   ...,
                    success: function(){
                       d.resolve();
                    }
-                }); 
+                });
                 return d.promise();
             }
-        } 
-        **/        
+        }
+        **/
         url:null,
         /**
-        Additional params for submit. If defined as <code>object</code> - it is **appended** to original ajax data (pk, name and value).  
+        Additional params for submit. If defined as <code>object</code> - it is **appended** to original ajax data (pk, name and value).
         If defined as <code>function</code> - returned object **overwrites** original ajax data.
         @example
         params: function(params) {
@@ -25772,61 +25772,61 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
             return params;
         }
 
-        @property params 
+        @property params
         @type object|function
         @default null
-        **/          
+        **/
         params:null,
         /**
         Name of field. Will be submitted on server. Can be taken from <code>id</code> attribute
 
-        @property name 
+        @property name
         @type string
         @default null
-        **/         
+        **/
         name: null,
         /**
         Primary key of editable object (e.g. record id in database). For composite keys use object, e.g. <code>{id: 1, lang: 'en'}</code>.
         Can be calculated dynamically via function.
 
-        @property pk 
+        @property pk
         @type string|object|function
         @default null
-        **/         
+        **/
         pk: null,
         /**
         Initial value. If not defined - will be taken from element's content.
         For __select__ type should be defined (as it is ID of shown text).
 
-        @property value 
+        @property value
         @type string|object
         @default null
-        **/        
+        **/
         value: null,
         /**
         Value that will be displayed in input if original field value is empty (`null|undefined|''`).
 
-        @property defaultValue 
+        @property defaultValue
         @type string|object
         @default null
         @since 1.4.6
-        **/        
+        **/
         defaultValue: null,
         /**
         Strategy for sending data on server. Can be `auto|always|never`.
         When 'auto' data will be sent on server **only if pk and url defined**, otherwise new value will be stored locally.
 
-        @property send 
+        @property send
         @type string
         @default 'auto'
-        **/          
-        send: 'auto', 
+        **/
+        send: 'auto',
         /**
         Function for client-side validation. If returns string - means validation not passed and string showed as error.
-        Since 1.5.1 you can modify submitted value by returning object from `validate`: 
+        Since 1.5.1 you can modify submitted value by returning object from `validate`:
         `{newValue: '...'}` or `{newValue: '...', msg: '...'}`
 
-        @property validate 
+        @property validate
         @type function
         @default null
         @example
@@ -25835,31 +25835,31 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
                 return 'This field is required';
             }
         }
-        **/         
+        **/
         validate: null,
         /**
-        Success callback. Called when value successfully sent on server and **response status = 200**.  
+        Success callback. Called when value successfully sent on server and **response status = 200**.
         Usefull to work with json response. For example, if your backend response can be <code>{success: true}</code>
-        or <code>{success: false, msg: "server error"}</code> you can check it inside this callback.  
-        If it returns **string** - means error occured and string is shown as error message.  
-        If it returns **object like** <code>{newValue: &lt;something&gt;}</code> - it overwrites value, submitted by user.  
+        or <code>{success: false, msg: "server error"}</code> you can check it inside this callback.
+        If it returns **string** - means error occured and string is shown as error message.
+        If it returns **object like** <code>{newValue: &lt;something&gt;}</code> - it overwrites value, submitted by user.
         Otherwise newValue simply rendered into element.
-        
-        @property success 
+
+        @property success
         @type function
         @default null
         @example
         success: function(response, newValue) {
             if(!response.success) return response.msg;
         }
-        **/          
+        **/
         success: null,
         /**
-        Error callback. Called when request failed (response status != 200).  
+        Error callback. Called when request failed (response status != 200).
         Usefull when you want to parse error response and display a custom message.
         Must return **string** - the message to be displayed in the error block.
-                
-        @property error 
+
+        @property error
         @type function
         @default null
         @since 1.4.4
@@ -25871,64 +25871,64 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
                 return response.responseText;
             }
         }
-        **/          
+        **/
         error: null,
         /**
         Additional options for submit ajax request.
         List of values: http://api.jquery.com/jQuery.ajax
-        
-        @property ajaxOptions 
+
+        @property ajaxOptions
         @type object
         @default null
-        @since 1.1.1        
-        @example 
+        @since 1.1.1
+        @example
         ajaxOptions: {
             type: 'put',
             dataType: 'json'
-        }        
-        **/        
+        }
+        **/
         ajaxOptions: null,
         /**
-        Where to show buttons: left(true)|bottom|false  
+        Where to show buttons: left(true)|bottom|false
         Form without buttons is auto-submitted.
 
-        @property showbuttons 
+        @property showbuttons
         @type boolean|string
         @default true
         @since 1.1.1
-        **/         
+        **/
         showbuttons: true,
         /**
-        Scope for callback methods (success, validate).  
-        If <code>null</code> means editableform instance itself. 
+        Scope for callback methods (success, validate).
+        If <code>null</code> means editableform instance itself.
 
-        @property scope 
+        @property scope
         @type DOMElement|object
         @default null
         @since 1.2.0
         @private
-        **/            
+        **/
         scope: null,
         /**
         Whether to save or cancel value when it was not changed but form was submitted
 
-        @property savenochange 
+        @property savenochange
         @type boolean
         @default false
         @since 1.2.0
         **/
         savenochange: false
-    };   
+    };
 
     /*
     Note: following params could redefined in engine: bootstrap or jqueryui:
     Classes 'control-group' and 'editable-error-block' must always present!
-    */      
+    */
     $.fn.editableform.template = '<form class="form-inline editableform">'+
-    '<div class="control-group">' + 
+    '<div class="control-group">' +
     '<div><div class="editable-input"></div><div class="editable-buttons"></div></div>'+
-    '<div class="editable-error-block"></div>' + 
-    '</div>' + 
+    '<div class="editable-error-block"></div>' +
+    '</div>' +
     '</form>';
 
     //loading div
@@ -25936,14 +25936,14 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
 
     //buttons
     $.fn.editableform.buttons = '<button type="submit" class="editable-submit">ok</button>'+
-    '<button type="button" class="editable-cancel">cancel</button>';      
+    '<button type="button" class="editable-cancel">cancel</button>';
 
     //error class attached to control-group
-    $.fn.editableform.errorGroupClass = null;  
+    $.fn.editableform.errorGroupClass = null;
 
     //error class attached to editable-error-block
     $.fn.editableform.errorBlockClass = 'editable-error';
-    
+
     //engine
     $.fn.editableform.engine = 'jquery';
 }(window.jQuery));
@@ -25953,12 +25953,12 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
 */
 (function ($) {
     "use strict";
-    
+
     //utils
     $.fn.editableutils = {
         /**
         * classic JS inheritance function
-        */  
+        */
         inherit: function (Child, Parent) {
             var F = function() { };
             F.prototype = Parent.prototype;
@@ -25970,7 +25970,7 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
         /**
         * set caret position in input
         * see http://stackoverflow.com/questions/499126/jquery-set-cursor-position-in-text-area
-        */        
+        */
         setCursorPosition: function(elem, pos) {
             if (elem.setSelectionRange) {
                 elem.setSelectionRange(pos, pos);
@@ -26058,7 +26058,7 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
         */
         objectKeys: function(o) {
             if (Object.keys) {
-                return Object.keys(o);  
+                return Object.keys(o);
             } else {
                 if (o !== Object(o)) {
                     throw new TypeError('Object.keys called on a non-object');
@@ -26073,14 +26073,14 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
             }
 
         },
-        
+
        /**
         method to escape html.
        **/
        escape: function(str) {
            return $('<div>').text(str).html();
        },
-       
+
        /*
         returns array items from sourceData having value property equal or inArray of 'value'
        */
@@ -26088,14 +26088,14 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
            if(!sourceData || value === null) {
                return [];
            }
-           
+
            if (typeof(valueProp) !== "function") {
                var idKey = valueProp || 'value';
                valueProp = function (e) { return e[idKey]; };
            }
-                      
+
            var isValArray = $.isArray(value),
-           result = [], 
+           result = [],
            that = this;
 
            $.each(sourceData, function(i, o) {
@@ -26105,23 +26105,23 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
                    /*jslint eqeq: true*/
                    if(isValArray) {
                        if($.grep(value, function(v){  return v == (o && typeof o === 'object' ? valueProp(o) : o); }).length) {
-                           result.push(o); 
+                           result.push(o);
                        }
                    } else {
                        var itemValue = (o && (typeof o === 'object')) ? valueProp(o) : o;
                        if(value == itemValue) {
-                           result.push(o); 
+                           result.push(o);
                        }
                    }
                    /*jslint eqeq: false*/
                }
            });
-           
+
            return result;
        },
-       
+
        /*
-       Returns input by options: type, mode. 
+       Returns input by options: type, mode.
        */
        createInput: function(options) {
            var TypeConstructor, typeOptions, input,
@@ -26145,17 +26145,17 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
                        type = 'dateui';
                    }
                }
-               
+
                //if type still `date` and not exist in types, replace with `combodate` that is base input
                if(type === 'date' && !$.fn.editabletypes.date) {
                    type = 'combodate';
-               } 
+               }
            }
-           
+
            //`datetime` should be datetimefield in 'inline' mode
            if(type === 'datetime' && options.mode === 'inline') {
-             type = 'datetimefield';  
-           }           
+             type = 'datetimefield';
+           }
 
            //change wysihtml5 to textarea for jquery UI and plain versions
            if(type === 'wysihtml5' && !$.fn.editabletypes[type]) {
@@ -26170,32 +26170,32 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
                return input;
            } else {
                $.error('Unknown type: '+ type);
-               return false; 
-           }  
+               return false;
+           }
        },
-       
+
        //see http://stackoverflow.com/questions/7264899/detect-css-transitions-using-javascript-and-without-modernizr
        supportsTransitions: function () {
            var b = document.body || document.documentElement,
                s = b.style,
                p = 'transition',
                v = ['Moz', 'Webkit', 'Khtml', 'O', 'ms'];
-               
+
            if(typeof s[p] === 'string') {
-               return true; 
+               return true;
            }
 
            // Tests for vendor specific prop
            p = p.charAt(0).toUpperCase() + p.substr(1);
            for(var i=0; i<v.length; i++) {
-               if(typeof s[v[i] + p] === 'string') { 
-                   return true; 
+               if(typeof s[v[i] + p] === 'string') {
+                   return true;
                }
            }
            return false;
-       }            
-       
-    };      
+       }
+
+    };
 }(window.jQuery));
 
 /**
@@ -26213,10 +26213,10 @@ Applied as jQuery method.
     var Popup = function (element, options) {
         this.init(element, options);
     };
-    
+
     var Inline = function (element, options) {
         this.init(element, options);
-    };    
+    };
 
     //methods
     Popup.prototype = {
@@ -26225,48 +26225,48 @@ Applied as jQuery method.
         innerCss: null, //tbd in child class
         containerClass: 'editable-container editable-popup', //css class applied to container element
         defaults: {}, //container itself defaults
-        
+
         init: function(element, options) {
             this.$element = $(element);
             //since 1.4.1 container do not use data-* directly as they already merged into options.
-            this.options = $.extend({}, $.fn.editableContainer.defaults, options);         
+            this.options = $.extend({}, $.fn.editableContainer.defaults, options);
             this.splitOptions();
-            
+
             //set scope of form callbacks to element
-            this.formOptions.scope = this.$element[0]; 
-            
+            this.formOptions.scope = this.$element[0];
+
             this.initContainer();
-            
+
             //flag to hide container, when saving value will finish
             this.delayedHide = false;
 
             //bind 'destroyed' listener to destroy container when element is removed from dom
             this.$element.on('destroyed', $.proxy(function(){
                 this.destroy();
-            }, this)); 
-            
+            }, this));
+
             //attach document handler to close containers on click / escape
             if(!$(document).data('editable-handlers-attached')) {
                 //close all on escape
                 $(document).on('keyup.editable', function (e) {
                     if (e.which === 27) {
                         $('.editable-open').editableContainer('hide');
-                        //todo: return focus on element 
+                        //todo: return focus on element
                     }
                 });
 
-                //close containers when click outside 
+                //close containers when click outside
                 //(mousedown could be better than click, it closes everything also on drag drop)
                 $(document).on('click.editable', function(e) {
                     var $target = $(e.target), i,
-                        exclude_classes = ['.editable-container', 
-                                           '.ui-datepicker-header', 
+                        exclude_classes = ['.editable-container',
+                                           '.ui-datepicker-header',
                                            '.datepicker', //in inline mode datepicker is rendered into body
-                                           '.modal-backdrop', 
-                                           '.bootstrap-wysihtml5-insert-image-modal', 
+                                           '.modal-backdrop',
+                                           '.bootstrap-wysihtml5-insert-image-modal',
                                            '.bootstrap-wysihtml5-insert-link-modal'
                                            ];
-                    
+
                     //check if element is detached. It occurs when clicking in bootstrap datepicker
                     if (!$.contains(document.documentElement, e.target)) {
                       return;
@@ -26276,47 +26276,47 @@ Applied as jQuery method.
                     //we need to filter it via construction below. See https://github.com/vitalets/x-editable/issues/199
                     //Possibly related to http://stackoverflow.com/questions/10119793/why-does-firefox-react-differently-from-webkit-and-ie-to-click-event-on-selec
                     if($target.is(document)) {
-                       return; 
+                       return;
                     }
-                    
+
                     //if click inside one of exclude classes --> no nothing
                     for(i=0; i<exclude_classes.length; i++) {
                          if($target.is(exclude_classes[i]) || $target.parents(exclude_classes[i]).length) {
                              return;
                          }
                     }
-                      
+
                     //close all open containers (except one - target)
                     Popup.prototype.closeOthers(e.target);
                 });
-                
+
                 $(document).data('editable-handlers-attached', true);
-            }                        
+            }
         },
 
         //split options on containerOptions and formOptions
         splitOptions: function() {
             this.containerOptions = {};
             this.formOptions = {};
-            
+
             if(!$.fn[this.containerName]) {
-                throw new Error(this.containerName + ' not found. Have you included corresponding js file?');   
+                throw new Error(this.containerName + ' not found. Have you included corresponding js file?');
             }
-            
+
             //keys defined in container defaults go to container, others go to form
             for(var k in this.options) {
               if(k in this.defaults) {
                  this.containerOptions[k] = this.options[k];
               } else {
                  this.formOptions[k] = this.options[k];
-              } 
+              }
             }
         },
-        
+
         /*
         Returns jquery object of container
         @method tip()
-        */         
+        */
         tip: function() {
             return this.container() ? this.container().$tip : null;
         },
@@ -26335,11 +26335,11 @@ Applied as jQuery method.
             return container;
         },
 
-        /* call native method of underlying container, e.g. this.$element.popover('method') */ 
+        /* call native method of underlying container, e.g. this.$element.popover('method') */
         call: function() {
-            this.$element[this.containerName].apply(this.$element, arguments); 
-        },        
-        
+            this.$element[this.containerName].apply(this.$element, arguments);
+        },
+
         initContainer: function(){
             this.call(this.containerOptions);
         },
@@ -26349,7 +26349,7 @@ Applied as jQuery method.
             .editableform(this.formOptions)
             .on({
                 save: $.proxy(this.save, this), //click on submit button (value changed)
-                nochange: $.proxy(function(){ this.hide('nochange'); }, this), //click on submit button (value NOT changed)                
+                nochange: $.proxy(function(){ this.hide('nochange'); }, this), //click on submit button (value NOT changed)
                 cancel: $.proxy(function(){ this.hide('cancel'); }, this), //click on calcel button
                 show: $.proxy(function() {
                     if(this.delayedHide) {
@@ -26360,71 +26360,71 @@ Applied as jQuery method.
                     }
                 }, this), //re-position container every time form is shown (occurs each time after loading state)
                 rendering: $.proxy(this.setPosition, this), //this allows to place container correctly when loading shown
-                resize: $.proxy(this.setPosition, this), //this allows to re-position container when form size is changed 
+                resize: $.proxy(this.setPosition, this), //this allows to re-position container when form size is changed
                 rendered: $.proxy(function(){
-                    /**        
-                    Fired when container is shown and form is rendered (for select will wait for loading dropdown options).  
+                    /**
+                    Fired when container is shown and form is rendered (for select will wait for loading dropdown options).
                     **Note:** Bootstrap popover has own `shown` event that now cannot be separated from x-editable's one.
-                    The workaround is to check `arguments.length` that is always `2` for x-editable.                     
-                    
-                    @event shown 
+                    The workaround is to check `arguments.length` that is always `2` for x-editable.
+
+                    @event shown
                     @param {Object} event event object
                     @example
                     $('#username').on('shown', function(e, editable) {
                         editable.input.$input.val('overwriting value of input..');
-                    });                     
-                    **/                      
+                    });
+                    **/
                     /*
-                     TODO: added second param mainly to distinguish from bootstrap's shown event. It's a hotfix that will be solved in future versions via namespaced events.  
+                     TODO: added second param mainly to distinguish from bootstrap's shown event. It's a hotfix that will be solved in future versions via namespaced events.
                     */
-                    this.$element.triggerHandler('shown', $(this.options.scope).data('editable')); 
-                }, this) 
+                    this.$element.triggerHandler('shown', $(this.options.scope).data('editable'));
+                }, this)
             })
             .editableform('render');
-        },        
+        },
 
         /**
         Shows container with form
         @method show()
         @param {boolean} closeAll Whether to close all other editable containers when showing this one. Default true.
         **/
-        /* Note: poshytip owerwrites this method totally! */          
+        /* Note: poshytip owerwrites this method totally! */
         show: function (closeAll) {
             this.$element.addClass('editable-open');
             if(closeAll !== false) {
                 //close all open containers (except this)
-                this.closeOthers(this.$element[0]);  
+                this.closeOthers(this.$element[0]);
             }
-            
+
             //show container itself
             this.innerShow();
             this.tip().addClass(this.containerClass);
 
             /*
-            Currently, form is re-rendered on every show. 
+            Currently, form is re-rendered on every show.
             The main reason is that we dont know, what will container do with content when closed:
             remove(), detach() or just hide() - it depends on container.
-            
-            Detaching form itself before hide and re-insert before show is good solution, 
-            but visually it looks ugly --> container changes size before hide.  
-            */             
-            
-            //if form already exist - delete previous data 
+
+            Detaching form itself before hide and re-insert before show is good solution,
+            but visually it looks ugly --> container changes size before hide.
+            */
+
+            //if form already exist - delete previous data
             if(this.$form) {
                 //todo: destroy prev data!
                 //this.$form.destroy();
             }
 
             this.$form = $('<div>');
-            
+
             //insert form into container body
             if(this.tip().is(this.innerCss)) {
                 //for inline container
-                this.tip().append(this.$form); 
+                this.tip().append(this.$form);
             } else {
                 this.tip().find(this.innerCss).append(this.$form);
-            } 
-            
+            }
+
             //render form
             this.renderForm();
         },
@@ -26433,29 +26433,29 @@ Applied as jQuery method.
         Hides container with form
         @method hide()
         @param {string} reason Reason caused hiding. Can be <code>save|cancel|onblur|nochange|undefined (=manual)</code>
-        **/         
-        hide: function(reason) {  
+        **/
+        hide: function(reason) {
             if(!this.tip() || !this.tip().is(':visible') || !this.$element.hasClass('editable-open')) {
                 return;
             }
-            
+
             //if form is saving value, schedule hide
             if(this.$form.data('editableform').isSaving) {
                 this.delayedHide = {reason: reason};
-                return;    
+                return;
             } else {
                 this.delayedHide = false;
             }
 
-            this.$element.removeClass('editable-open');   
+            this.$element.removeClass('editable-open');
             this.innerHide();
 
             /**
-            Fired when container was hidden. It occurs on both save or cancel.  
+            Fired when container was hidden. It occurs on both save or cancel.
             **Note:** Bootstrap popover has own `hidden` event that now cannot be separated from x-editable's one.
-            The workaround is to check `arguments.length` that is always `2` for x-editable. 
+            The workaround is to check `arguments.length` that is always `2` for x-editable.
 
-            @event hidden 
+            @event hidden
             @param {object} event event object
             @param {string} reason Reason caused hiding. Can be <code>save|cancel|onblur|nochange|manual</code>
             @example
@@ -26463,48 +26463,48 @@ Applied as jQuery method.
                 if(reason === 'save' || reason === 'cancel') {
                     //auto-open next editable
                     $(this).closest('tr').next().find('.editable').editable('show');
-                } 
+                }
             });
             **/
-            this.$element.triggerHandler('hidden', reason || 'manual');   
+            this.$element.triggerHandler('hidden', reason || 'manual');
         },
 
         /* internal show method. To be overwritten in child classes */
         innerShow: function () {
-             
-        },        
+
+        },
 
         /* internal hide method. To be overwritten in child classes */
         innerHide: function () {
 
         },
-        
+
         /**
         Toggles container visibility (show / hide)
         @method toggle()
         @param {boolean} closeAll Whether to close all other editable containers when showing this one. Default true.
-        **/          
+        **/
         toggle: function(closeAll) {
             if(this.container() && this.tip() && this.tip().is(':visible')) {
                 this.hide();
             } else {
                 this.show(closeAll);
-            } 
+            }
         },
 
         /*
         Updates the position of container when content changed.
         @method setPosition()
-        */       
+        */
         setPosition: function() {
             //tbd in child class
         },
 
         save: function(e, params) {
-            /**        
+            /**
             Fired when new value was submitted. You can use <code>$(this).data('editableContainer')</code> inside handler to access to editableContainer instance
-            
-            @event save 
+
+            @event save
             @param {Object} event event object
             @param {Object} params additional params
             @param {mixed} params.newValue submitted value
@@ -26516,36 +26516,36 @@ Applied as jQuery method.
                 if(params.response && params.response.success) {
                     alert('value: ' + params.newValue + ' with pk: ' + pk + ' saved!');
                 } else {
-                    alert('error!'); 
-                } 
+                    alert('error!');
+                }
             });
-            **/             
+            **/
             this.$element.triggerHandler('save', params);
-            
+
             //hide must be after trigger, as saving value may require methods of plugin, applied to input
             this.hide('save');
         },
 
         /**
         Sets new option
-        
+
         @method option(key, value)
-        @param {string} key 
-        @param {mixed} value 
-        **/         
+        @param {string} key
+        @param {mixed} value
+        **/
         option: function(key, value) {
             this.options[key] = value;
             if(key in this.containerOptions) {
                 this.containerOptions[key] = value;
-                this.setContainerOption(key, value); 
+                this.setContainerOption(key, value);
             } else {
                 this.formOptions[key] = value;
                 if(this.$form) {
-                    this.$form.editableform('option', key, value);  
+                    this.$form.editableform('option', key, value);
                 }
             }
         },
-        
+
         setContainerOption: function(key, value) {
             this.call('option', key, value);
         },
@@ -26553,21 +26553,21 @@ Applied as jQuery method.
         /**
         Destroys the container instance
         @method destroy()
-        **/        
+        **/
         destroy: function() {
             this.hide();
             this.innerDestroy();
             this.$element.off('destroyed');
             this.$element.removeData('editableContainer');
         },
-        
+
         /* to be overwritten in child classes */
         innerDestroy: function() {
-            
-        }, 
-        
+
+        },
+
         /*
-        Closes other containers except one related to passed element. 
+        Closes other containers except one related to passed element.
         Other containers can be cancelled or submitted (depends on onblur option)
         */
         closeOthers: function(element) {
@@ -26577,14 +26577,14 @@ Applied as jQuery method.
                     return;
                 }
 
-                //otherwise cancel or submit all open containers 
+                //otherwise cancel or submit all open containers
                 var $el = $(el),
                 ec = $el.data('editableContainer');
 
                 if(!ec) {
-                    return;  
+                    return;
                 }
-                
+
                 if(ec.options.onblur === 'cancel') {
                     $el.data('editableContainer').hide('onblur');
                 } else if(ec.options.onblur === 'submit') {
@@ -26593,22 +26593,22 @@ Applied as jQuery method.
             });
 
         },
-        
+
         /**
         Activates input of visible container (e.g. set focus)
         @method activate()
-        **/         
+        **/
         activate: function() {
             if(this.tip && this.tip().is(':visible') && this.$form) {
-               this.$form.data('editableform').input.activate(); 
+               this.$form.data('editableform').input.activate();
             }
-        } 
+        }
 
     };
 
     /**
     jQuery method to initialize editableContainer.
-    
+
     @method $().editableContainer(options)
     @params {Object} options
     @example
@@ -26618,25 +26618,25 @@ Applied as jQuery method.
         pk: 1,
         value: 'hello'
     });
-    **/  
+    **/
     $.fn.editableContainer = function (option) {
         var args = arguments;
         return this.each(function () {
             var $this = $(this),
-            dataKey = 'editableContainer', 
+            dataKey = 'editableContainer',
             data = $this.data(dataKey),
             options = typeof option === 'object' && option,
-            Constructor = (options.mode === 'inline') ? Inline : Popup;             
+            Constructor = (options.mode === 'inline') ? Inline : Popup;
 
             if (!data) {
                 $this.data(dataKey, (data = new Constructor(this, options)));
             }
 
-            if (typeof option === 'string') { //call method 
+            if (typeof option === 'string') { //call method
                 data[option].apply(data, Array.prototype.slice.call(args, 1));
-            }            
+            }
         });
-    };     
+    };
 
     //store constructors
     $.fn.editableContainer.Popup = Popup;
@@ -26647,60 +26647,60 @@ Applied as jQuery method.
         /**
         Initial value of form input
 
-        @property value 
+        @property value
         @type mixed
         @default null
         @private
-        **/        
+        **/
         value: null,
         /**
         Placement of container relative to element. Can be <code>top|right|bottom|left</code>. Not used for inline container.
 
-        @property placement 
+        @property placement
         @type string
         @default 'top'
-        **/        
+        **/
         placement: 'top',
         /**
         Whether to hide container on save/cancel.
 
-        @property autohide 
+        @property autohide
         @type boolean
         @default true
-        @private 
-        **/        
+        @private
+        **/
         autohide: true,
         /**
-        Action when user clicks outside the container. Can be <code>cancel|submit|ignore</code>.  
-        Setting <code>ignore</code> allows to have several containers open. 
+        Action when user clicks outside the container. Can be <code>cancel|submit|ignore</code>.
+        Setting <code>ignore</code> allows to have several containers open.
 
-        @property onblur 
+        @property onblur
         @type string
         @default 'cancel'
         @since 1.1.1
-        **/        
+        **/
         onblur: 'cancel',
-        
+
         /**
         Animation speed (inline mode only)
-        @property anim 
+        @property anim
         @type string
         @default false
-        **/        
+        **/
         anim: false,
-        
+
         /**
-        Mode of editable, can be `popup` or `inline` 
-        
-        @property mode 
-        @type string         
+        Mode of editable, can be `popup` or `inline`
+
+        @property mode
+        @type string
         @default 'popup'
-        @since 1.4.0        
-        **/        
-        mode: 'popup'        
+        @since 1.4.0
+        **/
+        mode: 'popup'
     };
 
-    /* 
+    /*
     * workaround to have 'destroyed' event to destroy popover when element is destroyed
     * see http://stackoverflow.com/questions/2200494/jquery-trigger-event-when-an-element-is-removed-from-the-dom
     */
@@ -26710,61 +26710,61 @@ Applied as jQuery method.
                 o.handler();
             }
         }
-    };    
+    };
 
 }(window.jQuery));
 
 /**
-* Editable Inline 
+* Editable Inline
 * ---------------------
 */
 (function ($) {
     "use strict";
-    
+
     //copy prototype from EditableContainer
     //extend methods
     $.extend($.fn.editableContainer.Inline.prototype, $.fn.editableContainer.Popup.prototype, {
         containerName: 'editableform',
         innerCss: '.editable-inline',
         containerClass: 'editable-container editable-inline', //css class applied to container element
-                 
+
         initContainer: function(){
             //container is <span> element
             this.$tip = $('<span></span>');
-            
+
             //convert anim to miliseconds (int)
             if(!this.options.anim) {
                 this.options.anim = 0;
-            }         
+            }
         },
-        
+
         splitOptions: function() {
             //all options are passed to form
             this.containerOptions = {};
             this.formOptions = this.options;
         },
-        
+
         tip: function() {
-           return this.$tip; 
+           return this.$tip;
         },
-        
+
         innerShow: function () {
             this.$element.hide();
             this.tip().insertAfter(this.$element).show();
-        }, 
-        
+        },
+
         innerHide: function () {
             this.$tip.hide(this.options.anim, $.proxy(function() {
                 this.$element.show();
                 this.innerDestroy();
-            }, this)); 
+            }, this));
         },
-        
+
         innerDestroy: function() {
             if(this.tip()) {
                 this.tip().empty().remove();
             }
-        } 
+        }
     });
 
 }(window.jQuery));
@@ -26779,14 +26779,14 @@ Makes editable any HTML element on the page. Applied as jQuery method.
 
     var Editable = function (element, options) {
         this.$element = $(element);
-        //data-* has more priority over js options: because dynamically created elements may change data-* 
-        this.options = $.extend({}, $.fn.editable.defaults, options, $.fn.editableutils.getConfigData(this.$element));  
+        //data-* has more priority over js options: because dynamically created elements may change data-*
+        this.options = $.extend({}, $.fn.editable.defaults, options, $.fn.editableutils.getConfigData(this.$element));
         if(this.options.selector) {
             this.initLive();
         } else {
             this.init();
         }
-        
+
         //check for transition support
         if(this.options.highlight && !$.fn.editableutils.supportsTransitions()) {
             this.options.highlight = false;
@@ -26794,21 +26794,21 @@ Makes editable any HTML element on the page. Applied as jQuery method.
     };
 
     Editable.prototype = {
-        constructor: Editable, 
+        constructor: Editable,
         init: function () {
-            var isValueByText = false, 
+            var isValueByText = false,
                 doAutotext, finalize;
 
             //name
             this.options.name = this.options.name || this.$element.attr('id');
-             
+
             //create input of specified type. Input needed already here to convert value for initial display (e.g. show text by id for select)
             //also we set scope option to have access to element inside input specific callbacks (e. g. source as function)
-            this.options.scope = this.$element[0]; 
+            this.options.scope = this.$element[0];
             this.input = $.fn.editableutils.createInput(this.options);
             if(!this.input) {
-                return; 
-            }            
+                return;
+            }
 
             //set value from settings or by element's text
             if (this.options.value === undefined || this.options.value === null) {
@@ -26817,25 +26817,25 @@ Makes editable any HTML element on the page. Applied as jQuery method.
             } else {
                 /*
                   value can be string when received from 'data-value' attribute
-                  for complext objects value can be set as json string in data-value attribute, 
+                  for complext objects value can be set as json string in data-value attribute,
                   e.g. data-value="{city: 'Moscow', street: 'Lenina'}"
                 */
-                this.options.value = $.fn.editableutils.tryParseJson(this.options.value, true); 
+                this.options.value = $.fn.editableutils.tryParseJson(this.options.value, true);
                 if(typeof this.options.value === 'string') {
                     this.value = this.input.str2value(this.options.value);
                 } else {
                     this.value = this.options.value;
                 }
             }
-            
+
             //add 'editable' class to every editable element
             this.$element.addClass('editable');
-            
+
             //specifically for "textarea" add class .editable-pre-wrapped to keep linebreaks
             if(this.input.type === 'textarea') {
                 this.$element.addClass('editable-pre-wrapped');
             }
-            
+
             //attach handler activating editable. In disabled mode it just prevent default action (useful for links)
             if(this.options.toggle !== 'manual') {
                 this.$element.addClass('editable-click');
@@ -26844,10 +26844,10 @@ Makes editable any HTML element on the page. Applied as jQuery method.
                     if(!this.options.disabled) {
                         e.preventDefault();
                     }
-                    
+
                     //stop propagation not required because in document click handler it checks event target
                     //e.stopPropagation();
-                    
+
                     if(this.options.toggle === 'mouseenter') {
                         //for hover only show container
                         this.show();
@@ -26860,13 +26860,13 @@ Makes editable any HTML element on the page. Applied as jQuery method.
             } else {
                 this.$element.attr('tabindex', -1); //do not stop focus on element when toggled manually
             }
-            
+
             //if display is function it's far more convinient to have autotext = always to render correctly on init
             //see https://github.com/vitalets/x-editable-yii/issues/34
             if(typeof this.options.display === 'function') {
                 this.options.autotext = 'always';
             }
-            
+
             //check conditions for autotext:
             switch(this.options.autotext) {
               case 'always':
@@ -26885,13 +26885,13 @@ Makes editable any HTML element on the page. Applied as jQuery method.
                 if(this.options.disabled) {
                     this.disable();
                 } else {
-                    this.enable(); 
+                    this.enable();
                 }
-               /**        
-               Fired when element was initialized by `$().editable()` method. 
-               Please note that you should setup `init` handler **before** applying `editable`. 
-                              
-               @event init 
+               /**
+               Fired when element was initialized by `$().editable()` method.
+               Please note that you should setup `init` handler **before** applying `editable`.
+
+               @event init
                @param {Object} event event object
                @param {Object} editable editable instance (as here it cannot accessed via data('editable'))
                @since 1.2.0
@@ -26900,142 +26900,142 @@ Makes editable any HTML element on the page. Applied as jQuery method.
                    alert('initialized ' + editable.options.name);
                });
                $('#username').editable();
-               **/                  
+               **/
                 this.$element.triggerHandler('init', this);
             }, this));
         },
 
         /*
-         Initializes parent element for live editables 
+         Initializes parent element for live editables
         */
         initLive: function() {
-           //store selector 
+           //store selector
            var selector = this.options.selector;
            //modify options for child elements
-           this.options.selector = false; 
+           this.options.selector = false;
            this.options.autotext = 'never';
            //listen toggle events
            this.$element.on(this.options.toggle + '.editable', selector, $.proxy(function(e){
                var $target = $(e.target);
                if(!$target.data('editable')) {
                    //if delegated element initially empty, we need to clear it's text (that was manually set to `empty` by user)
-                   //see https://github.com/vitalets/x-editable/issues/137 
+                   //see https://github.com/vitalets/x-editable/issues/137
                    if($target.hasClass(this.options.emptyclass)) {
                       $target.empty();
                    }
                    $target.editable(this.options).trigger(e);
                }
-           }, this)); 
+           }, this));
         },
-        
+
         /*
         Renders value into element's text.
         Can call custom display method from options.
         Can return deferred object.
         @method render()
         @param {mixed} response server response (if exist) to pass into display function
-        */          
+        */
         render: function(response) {
             //do not display anything
             if(this.options.display === false) {
                 return;
             }
-            
+
             //if input has `value2htmlFinal` method, we pass callback in third param to be called when source is loaded
             if(this.input.value2htmlFinal) {
-                return this.input.value2html(this.value, this.$element[0], this.options.display, response); 
-            //if display method defined --> use it    
+                return this.input.value2html(this.value, this.$element[0], this.options.display, response);
+            //if display method defined --> use it
             } else if(typeof this.options.display === 'function') {
                 return this.options.display.call(this.$element[0], this.value, response);
-            //else use input's original value2html() method    
+            //else use input's original value2html() method
             } else {
-                return this.input.value2html(this.value, this.$element[0]); 
+                return this.input.value2html(this.value, this.$element[0]);
             }
         },
-        
+
         /**
         Enables editable
         @method enable()
-        **/          
+        **/
         enable: function() {
             this.options.disabled = false;
             this.$element.removeClass('editable-disabled');
             this.handleEmpty(this.isEmpty);
             if(this.options.toggle !== 'manual') {
-                if(this.$element.attr('tabindex') === '-1') {    
-                    this.$element.removeAttr('tabindex');                                
+                if(this.$element.attr('tabindex') === '-1') {
+                    this.$element.removeAttr('tabindex');
                 }
             }
         },
-        
+
         /**
         Disables editable
         @method disable()
-        **/         
+        **/
         disable: function() {
-            this.options.disabled = true; 
-            this.hide();           
+            this.options.disabled = true;
+            this.hide();
             this.$element.addClass('editable-disabled');
             this.handleEmpty(this.isEmpty);
             //do not stop focus on this element
-            this.$element.attr('tabindex', -1);                
+            this.$element.attr('tabindex', -1);
         },
-        
+
         /**
         Toggles enabled / disabled state of editable element
         @method toggleDisabled()
-        **/         
+        **/
         toggleDisabled: function() {
             if(this.options.disabled) {
                 this.enable();
-            } else { 
-                this.disable(); 
+            } else {
+                this.disable();
             }
-        },  
-        
+        },
+
         /**
         Sets new option
-        
+
         @method option(key, value)
         @param {string|object} key option name or object with several options
         @param {mixed} value option new value
         @example
         $('.editable').editable('option', 'pk', 2);
-        **/          
+        **/
         option: function(key, value) {
             //set option(s) by object
             if(key && typeof key === 'object') {
                $.each(key, $.proxy(function(k, v){
-                  this.option($.trim(k), v); 
-               }, this)); 
+                  this.option($.trim(k), v);
+               }, this));
                return;
             }
 
-            //set option by string             
-            this.options[key] = value;                          
-            
+            //set option by string
+            this.options[key] = value;
+
             //disabled
             if(key === 'disabled') {
                return value ? this.disable() : this.enable();
-            } 
-            
+            }
+
             //value
             if(key === 'value') {
                 this.setValue(value);
             }
-            
-            //transfer new option to container! 
+
+            //transfer new option to container!
             if(this.container) {
-                this.container.option(key, value);  
+                this.container.option(key, value);
             }
-             
+
             //pass option to input directly (as it points to the same in form)
             if(this.input.option) {
                 this.input.option(key, value);
             }
-            
-        },              
-        
+
+        },
+
         /*
         * set emptytext if element is empty
         */
@@ -27045,24 +27045,24 @@ Makes editable any HTML element on the page. Applied as jQuery method.
                 return;
             }
 
-            /* 
+            /*
             isEmpty may be set directly as param of method.
-            It is required when we enable/disable field and can't rely on content 
+            It is required when we enable/disable field and can't rely on content
             as node content is text: "Empty" that is not empty %)
             */
-            if(isEmpty !== undefined) { 
+            if(isEmpty !== undefined) {
                 this.isEmpty = isEmpty;
             } else {
                 //detect empty
                 //for some inputs we need more smart check
                 //e.g. wysihtml5 may have <br>, <p></p>, <img>
                 if(typeof(this.input.isEmpty) === 'function') {
-                    this.isEmpty = this.input.isEmpty(this.$element);                    
+                    this.isEmpty = this.input.isEmpty(this.$element);
                 } else {
                     this.isEmpty = $.trim(this.$element.html()) === '';
                 }
-            }           
-            
+            }
+
             //emptytext shown only for enabled
             if(!this.options.disabled) {
                 if (this.isEmpty) {
@@ -27082,18 +27082,18 @@ Makes editable any HTML element on the page. Applied as jQuery method.
                     }
                 }
             }
-        },        
-        
+        },
+
         /**
         Shows container with form
         @method show()
         @param {boolean} closeAll Whether to close all other editable containers when showing this one. Default true.
-        **/  
+        **/
         show: function (closeAll) {
             if(this.options.disabled) {
                 return;
             }
-            
+
             //init editableContainer: popover, tooltip, inline, etc..
             if(!this.container) {
                 var containerOptions = $.extend({}, this.options, {
@@ -27101,32 +27101,32 @@ Makes editable any HTML element on the page. Applied as jQuery method.
                     input: this.input //pass input to form (as it is already created)
                 });
                 this.$element.editableContainer(containerOptions);
-                //listen `save` event 
+                //listen `save` event
                 this.$element.on("save.internal", $.proxy(this.save, this));
-                this.container = this.$element.data('editableContainer'); 
+                this.container = this.$element.data('editableContainer');
             } else if(this.container.tip().is(':visible')) {
                 return;
-            }      
-            
+            }
+
             //show container
             this.container.show(closeAll);
         },
-        
+
         /**
         Hides container with form
         @method hide()
-        **/       
-        hide: function () {   
-            if(this.container) {  
+        **/
+        hide: function () {
+            if(this.container) {
                 this.container.hide();
             }
         },
-        
+
         /**
         Toggles container visibility (show / hide)
         @method toggle()
         @param {boolean} closeAll Whether to close all other editable containers when showing this one. Default true.
-        **/  
+        **/
         toggle: function(closeAll) {
             if(this.container && this.container.tip().is(':visible')) {
                 this.hide();
@@ -27134,58 +27134,58 @@ Makes editable any HTML element on the page. Applied as jQuery method.
                 this.show(closeAll);
             }
         },
-        
+
         /*
         * called when form was submitted
-        */          
+        */
         save: function(e, params) {
             //mark element with unsaved class if needed
             if(this.options.unsavedclass) {
                 /*
                  Add unsaved css to element if:
-                  - url is not user's function 
+                  - url is not user's function
                   - value was not sent to server
                   - params.response === undefined, that means data was not sent
-                  - value changed 
+                  - value changed
                 */
                 var sent = false;
                 sent = sent || typeof this.options.url === 'function';
-                sent = sent || this.options.display === false; 
-                sent = sent || params.response !== undefined; 
-                sent = sent || (this.options.savenochange && this.input.value2str(this.value) !== this.input.value2str(params.newValue)); 
-                
+                sent = sent || this.options.display === false;
+                sent = sent || params.response !== undefined;
+                sent = sent || (this.options.savenochange && this.input.value2str(this.value) !== this.input.value2str(params.newValue));
+
                 if(sent) {
-                    this.$element.removeClass(this.options.unsavedclass); 
+                    this.$element.removeClass(this.options.unsavedclass);
                 } else {
-                    this.$element.addClass(this.options.unsavedclass);                    
+                    this.$element.addClass(this.options.unsavedclass);
                 }
             }
-            
+
             //highlight when saving
             if(this.options.highlight) {
                 var $e = this.$element,
                     bgColor = $e.css('background-color');
-                    
+
                 $e.css('background-color', this.options.highlight);
                 setTimeout(function(){
                     if(bgColor === 'transparent') {
-                        bgColor = ''; 
+                        bgColor = '';
                     }
                     $e.css('background-color', bgColor);
                     $e.addClass('editable-bg-transition');
                     setTimeout(function(){
-                       $e.removeClass('editable-bg-transition');  
+                       $e.removeClass('editable-bg-transition');
                     }, 1700);
                 }, 10);
             }
-            
+
             //set new value
             this.setValue(params.newValue, false, params.response);
-            
-            /**        
+
+            /**
             Fired when new value was submitted. You can use <code>$(this).data('editable')</code> to access to editable instance
-            
-            @event save 
+
+            @event save
             @param {Object} event event object
             @param {Object} params additional params
             @param {mixed} params.newValue submitted value
@@ -27195,7 +27195,7 @@ Makes editable any HTML element on the page. Applied as jQuery method.
                 alert('Saved value: ' + params.newValue);
             });
             **/
-            //event itself is triggered by editableContainer. Description here is only for documentation              
+            //event itself is triggered by editableContainer. Description here is only for documentation
         },
 
         validate: function () {
@@ -27203,13 +27203,13 @@ Makes editable any HTML element on the page. Applied as jQuery method.
                 return this.options.validate.call(this, this.value);
             }
         },
-        
+
         /**
         Sets new value of editable
         @method setValue(value, convertStr)
-        @param {mixed} value new value 
+        @param {mixed} value new value
         @param {boolean} convertStr whether to convert value from string to internal format
-        **/         
+        **/
         setValue: function(value, convertStr, response) {
             if(convertStr) {
                 this.value = this.input.str2value(value);
@@ -27224,40 +27224,40 @@ Makes editable any HTML element on the page. Applied as jQuery method.
                 this.handleEmpty();
             }, this));
         },
-        
+
         /**
         Activates input of visible container (e.g. set focus)
         @method activate()
-        **/         
+        **/
         activate: function() {
             if(this.container) {
-               this.container.activate(); 
+               this.container.activate();
             }
         },
-        
+
         /**
         Removes editable feature from element
         @method destroy()
-        **/        
+        **/
         destroy: function() {
             this.disable();
-            
+
             if(this.container) {
-               this.container.destroy(); 
+               this.container.destroy();
             }
-            
+
             this.input.destroy();
 
             if(this.options.toggle !== 'manual') {
                 this.$element.removeClass('editable-click');
                 this.$element.off(this.options.toggle + '.editable');
-            } 
-            
+            }
+
             this.$element.off("save.internal");
-            
+
             this.$element.removeClass('editable editable-open editable-disabled');
             this.$element.removeData('editable');
-        }        
+        }
     };
 
     /* EDITABLE PLUGIN DEFINITION
@@ -27265,7 +27265,7 @@ Makes editable any HTML element on the page. Applied as jQuery method.
 
     /**
     jQuery method to initialize editable element.
-    
+
     @method $().editable(options)
     @params {Object} options
     @example
@@ -27281,7 +27281,7 @@ Makes editable any HTML element on the page. Applied as jQuery method.
         switch (option) {
             /**
             Runs client-side validation for all matched editables
-            
+
             @method validate()
             @returns {Object} validation errors map
             @example
@@ -27302,11 +27302,11 @@ Makes editable any HTML element on the page. Applied as jQuery method.
             return result;
 
             /**
-            Returns current values of editable elements.   
-            Note that it returns an **object** with name-value pairs, not a value itself. It allows to get data from several elements.    
+            Returns current values of editable elements.
+            Note that it returns an **object** with name-value pairs, not a value itself. It allows to get data from several elements.
             If value of some editable is `null` or `undefined` it is excluded from result object.
-            When param `isSingle` is set to **true** - it is supposed you have single element and will return value of editable instead of object.   
-             
+            When param `isSingle` is set to **true** - it is supposed you have single element and will return value of editable instead of object.
+
             @method getValue()
             @param {bool} isSingle whether to return just value of single element
             @returns {Object} object of element names and values
@@ -27319,7 +27319,7 @@ Makes editable any HTML element on the page. Applied as jQuery method.
             }
             //isSingle = true
             $('#username').editable('getValue', true);
-            //result "superuser" 
+            //result "superuser"
             **/
             case 'getValue':
                 if(arguments.length === 2 && arguments[1] === true) { //isSingle = true
@@ -27335,18 +27335,18 @@ Makes editable any HTML element on the page. Applied as jQuery method.
             return result;
 
             /**
-            This method collects values from several editable elements and submit them all to server.   
-            Internally it runs client-side validation for all fields and submits only in case of success.  
-            See <a href="#newrecord">creating new records</a> for details.  
+            This method collects values from several editable elements and submit them all to server.
+            Internally it runs client-side validation for all fields and submits only in case of success.
+            See <a href="#newrecord">creating new records</a> for details.
             Since 1.5.1 `submit` can be applied to single element to send data programmatically. In that case
-            `url`, `success` and `error` is taken from initial options and you can just call `$('#username').editable('submit')`. 
-            
+            `url`, `success` and `error` is taken from initial options and you can just call `$('#username').editable('submit')`.
+
             @method submit(options)
-            @param {object} options 
-            @param {object} options.url url to submit data 
+            @param {object} options
+            @param {object} options.url url to submit data
             @param {object} options.data additional data to submit
             @param {object} options.ajaxOptions additional ajax options
-            @param {function} options.error(obj) error handler 
+            @param {function} options.error(obj) error handler
             @param {function} options.success(obj,config) success handler
             @returns {Object} jQuery object
             **/
@@ -27358,7 +27358,7 @@ Makes editable any HTML element on the page. Applied as jQuery method.
                 // validation ok
                 if($.isEmptyObject(errors)) {
                     var ajaxOptions = {};
-                                                      
+
                     // for single element use url, success etc from options
                     if($elems.length === 1) {
                         var editable = $elems.data('editable');
@@ -27366,61 +27366,61 @@ Makes editable any HTML element on the page. Applied as jQuery method.
                         var params = {
                             name: editable.options.name || '',
                             value: editable.input.value2submit(editable.value),
-                            pk: (typeof editable.options.pk === 'function') ? 
-                                editable.options.pk.call(editable.options.scope) : 
-                                editable.options.pk 
+                            pk: (typeof editable.options.pk === 'function') ?
+                                editable.options.pk.call(editable.options.scope) :
+                                editable.options.pk
                         };
 
                         //additional params
                         if(typeof editable.options.params === 'function') {
-                            params = editable.options.params.call(editable.options.scope, params);  
+                            params = editable.options.params.call(editable.options.scope, params);
                         } else {
                             //try parse json in single quotes (from data-params attribute)
-                            editable.options.params = $.fn.editableutils.tryParseJson(editable.options.params, true);   
+                            editable.options.params = $.fn.editableutils.tryParseJson(editable.options.params, true);
                             $.extend(params, editable.options.params);
                         }
 
                         ajaxOptions = {
                             url: editable.options.url,
                             data: params,
-                            type: 'POST'  
+                            type: 'POST'
                         };
-                        
-                        // use success / error from options 
+
+                        // use success / error from options
                         config.success = config.success || editable.options.success;
                         config.error = config.error || editable.options.error;
-                        
+
                     // multiple elements
                     } else {
-                        var values = this.editable('getValue'); 
-                        
+                        var values = this.editable('getValue');
+
                         ajaxOptions = {
                             url: config.url,
-                            data: values, 
+                            data: values,
                             type: 'POST'
-                        };                        
-                    }                    
+                        };
+                    }
 
                     // ajax success callabck (response 200 OK)
                     ajaxOptions.success = typeof config.success === 'function' ? function(response) {
                             config.success.call($elems, response, config);
                         } : $.noop;
-                                  
+
                     // ajax error callabck
                     ajaxOptions.error = typeof config.error === 'function' ? function() {
                              config.error.apply($elems, arguments);
                         } : $.noop;
-                       
-                    // extend ajaxOptions    
-                    if(config.ajaxOptions) { 
+
+                    // extend ajaxOptions
+                    if(config.ajaxOptions) {
                         $.extend(ajaxOptions, config.ajaxOptions);
                     }
-                    
-                    // extra data 
+
+                    // extra data
                     if(config.data) {
                         $.extend(ajaxOptions.data, config.data);
-                    }                     
-                    
+                    }
+
                     // perform ajax request
                     $.ajax(ajaxOptions);
                 } else { //client-side validation error
@@ -27433,85 +27433,85 @@ Makes editable any HTML element on the page. Applied as jQuery method.
 
         //return jquery object
         return this.each(function () {
-            var $this = $(this), 
-                data = $this.data(datakey), 
+            var $this = $(this),
+                data = $this.data(datakey),
                 options = typeof option === 'object' && option;
 
             //for delegated targets do not store `editable` object for element
             //it's allows several different selectors.
-            //see: https://github.com/vitalets/x-editable/issues/312    
+            //see: https://github.com/vitalets/x-editable/issues/312
             if(options && options.selector) {
                 data = new Editable(this, options);
-                return; 
-            }    
-            
+                return;
+            }
+
             if (!data) {
                 $this.data(datakey, (data = new Editable(this, options)));
             }
 
-            if (typeof option === 'string') { //call method 
+            if (typeof option === 'string') { //call method
                 data[option].apply(data, Array.prototype.slice.call(args, 1));
-            } 
+            }
         });
-    };    
-            
+    };
+
 
     $.fn.editable.defaults = {
         /**
         Type of input. Can be <code>text|textarea|select|date|checklist</code> and more
 
-        @property type 
+        @property type
         @type string
         @default 'text'
         **/
-        type: 'text',        
+        type: 'text',
         /**
         Sets disabled state of editable
 
-        @property disabled 
+        @property disabled
         @type boolean
         @default false
-        **/         
+        **/
         disabled: false,
         /**
-        How to toggle editable. Can be <code>click|dblclick|mouseenter|manual</code>.   
-        When set to <code>manual</code> you should manually call <code>show/hide</code> methods of editable.    
-        **Note**: if you call <code>show</code> or <code>toggle</code> inside **click** handler of some DOM element, 
+        How to toggle editable. Can be <code>click|dblclick|mouseenter|manual</code>.
+        When set to <code>manual</code> you should manually call <code>show/hide</code> methods of editable.
+        **Note**: if you call <code>show</code> or <code>toggle</code> inside **click** handler of some DOM element,
         you need to apply <code>e.stopPropagation()</code> because containers are being closed on any click on document.
-        
+
         @example
         $('#edit-button').click(function(e) {
             e.stopPropagation();
             $('#username').editable('toggle');
         });
 
-        @property toggle 
+        @property toggle
         @type string
         @default 'click'
-        **/          
+        **/
         toggle: 'click',
         /**
         Text shown when element is empty.
 
-        @property emptytext 
+        @property emptytext
         @type string
         @default 'Empty'
-        **/         
+        **/
         emptytext: 'Empty',
         /**
         Allows to automatically set element's text based on it's value. Can be <code>auto|always|never</code>. Useful for select and date.
-        For example, if dropdown list is <code>{1: 'a', 2: 'b'}</code> and element's value set to <code>1</code>, it's html will be automatically set to <code>'a'</code>.  
-        <code>auto</code> - text will be automatically set only if element is empty.  
+        For example, if dropdown list is <code>{1: 'a', 2: 'b'}</code> and element's value set to <code>1</code>, it's html will be automatically set to <code>'a'</code>.
+        <code>auto</code> - text will be automatically set only if element is empty.
         <code>always|never</code> - always(never) try to set element's text.
 
-        @property autotext 
+        @property autotext
         @type string
         @default 'auto'
-        **/          
-        autotext: 'auto', 
+        **/
+        autotext: 'auto',
         /**
-        Initial value of input. If not set, taken from element's text.  
-        Note, that if element's text is empty - text is automatically generated from value and can be customized (see `autotext` option).  
+        Initial value of input. If not set, taken from element's text.
+        Note, that if element's text is empty - text is automatically generated from value and can be customized (see `autotext` option).
         For example, to display currency sign:
         @example
         <a id="price" data-type="text" data-value="100"></a>
@@ -27520,34 +27520,34 @@ Makes editable any HTML element on the page. Applied as jQuery method.
             ...
             display: function(value) {
               $(this).text(value + '$');
-            } 
-        }) 
+            }
+        })
         </script>
-                
-        @property value 
+
+        @property value
         @type mixed
         @default element's text
         **/
         value: null,
         /**
-        Callback to perform custom displaying of value in element's text.  
-        If `null`, default input's display used.  
-        If `false`, no displaying methods will be called, element's text will never change.  
-        Runs under element's scope.  
-        _**Parameters:**_  
-        
+        Callback to perform custom displaying of value in element's text.
+        If `null`, default input's display used.
+        If `false`, no displaying methods will be called, element's text will never change.
+        Runs under element's scope.
+        _**Parameters:**_
+
         * `value` current value to be displayed
         * `response` server response (if display called after ajax submit), since 1.4.0
-         
-        For _inputs with source_ (select, checklist) parameters are different:  
-          
+
+        For _inputs with source_ (select, checklist) parameters are different:
+
         * `value` current value to be displayed
-        * `sourceData` array of items for current input (e.g. dropdown items) 
+        * `sourceData` array of items for current input (e.g. dropdown items)
         * `response` server response (if display called after ajax submit), since 1.4.0
-                  
+
         To get currently selected items use `$.fn.editableutils.itemsByValue(value, sourceData)`.
-        
-        @property display 
+
+        @property display
         @type function|boolean
         @default null
         @since 1.2.0
@@ -27556,46 +27556,46 @@ Makes editable any HTML element on the page. Applied as jQuery method.
            //display checklist as comma-separated values
            var html = [],
                checked = $.fn.editableutils.itemsByValue(value, sourceData);
-               
+
            if(checked.length) {
                $.each(checked, function(i, v) { html.push($.fn.editableutils.escape(v.text)); });
                $(this).html(html.join(', '));
            } else {
-               $(this).empty(); 
+               $(this).empty();
            }
         }
-        **/          
+        **/
         display: null,
         /**
         Css class applied when editable text is empty.
 
-        @property emptyclass 
+        @property emptyclass
         @type string
-        @since 1.4.1        
+        @since 1.4.1
         @default editable-empty
-        **/        
+        **/
         emptyclass: 'editable-empty',
         /**
-        Css class applied when value was stored but not sent to server (`pk` is empty or `send = 'never'`).  
-        You may set it to `null` if you work with editables locally and submit them together.  
+        Css class applied when value was stored but not sent to server (`pk` is empty or `send = 'never'`).
+        You may set it to `null` if you work with editables locally and submit them together.
 
-        @property unsavedclass 
+        @property unsavedclass
         @type string
-        @since 1.4.1        
+        @since 1.4.1
         @default editable-unsaved
-        **/        
+        **/
         unsavedclass: 'editable-unsaved',
         /**
-        If selector is provided, editable will be delegated to the specified targets.  
-        Usefull for dynamically generated DOM elements.  
-        **Please note**, that delegated targets can't be initialized with `emptytext` and `autotext` options, 
-        as they actually become editable only after first click.  
-        You should manually set class `editable-click` to these elements.  
+        If selector is provided, editable will be delegated to the specified targets.
+        Usefull for dynamically generated DOM elements.
+        **Please note**, that delegated targets can't be initialized with `emptytext` and `autotext` options,
+        as they actually become editable only after first click.
+        You should manually set class `editable-click` to these elements.
         Also, if element originally empty you should add class `editable-empty`, set `data-value=""` and write emptytext into element:
 
-        @property selector 
+        @property selector
         @type string
-        @since 1.4.1        
+        @since 1.4.1
         @default null
         @example
         <div id="user">
@@ -27603,8 +27603,8 @@ Makes editable any HTML element on the page. Applied as jQuery method.
           <a href="#" data-name="username" data-type="text" class="editable-click editable-empty" data-value="" title="Username">Empty</a>
           <!-- non-empty -->
           <a href="#" data-name="group" data-type="select" data-source="/groups" data-value="1" class="editable-click" title="Group">Operator</a>
-        </div>     
-        
+        </div>
+
         <script>
         $('#user').editable({
             selector: 'a',
@@ -27612,19 +27612,19 @@ Makes editable any HTML element on the page. Applied as jQuery method.
             pk: 1
         });
         </script>
-        **/         
+        **/
         selector: null,
         /**
         Color used to highlight element after update. Implemented via CSS3 transition, works in modern browsers.
-        
-        @property highlight 
+
+        @property highlight
         @type string|boolean
-        @since 1.4.5        
-        @default #FFFF80 
+        @since 1.4.5
+        @default #FFFF80
         **/
         highlight: '#FFFF80'
     };
-    
+
 }(window.jQuery));
 
 /**
@@ -27646,7 +27646,7 @@ To create your own input you can inherit from this class.
        /**
         Initializes input
 
-        @method init() 
+        @method init()
         **/
        init: function(type, options, defaults) {
            this.type = type;
@@ -27657,12 +27657,12 @@ To create your own input you can inherit from this class.
        this method called before render to init $tpl that is inserted in DOM
        */
        prerender: function() {
-           this.$tpl = $(this.options.tpl); //whole tpl as jquery object    
+           this.$tpl = $(this.options.tpl); //whole tpl as jquery object
            this.$input = this.$tpl;         //control itself, can be changed in render method
            this.$clear = null;              //clear button
-           this.error = null;               //error message, if input cannot be rendered           
+           this.error = null;               //error message, if input cannot be rendered
        },
-       
+
        /**
         Renders input from tpl. Can return jQuery deferred object.
         Can be overwritten in child objects
@@ -27671,10 +27671,10 @@ To create your own input you can inherit from this class.
        **/
        render: function() {
 
-       }, 
+       },
 
        /**
-        Sets element's html by value. 
+        Sets element's html by value.
 
         @method value2html(value, element)
         @param {mixed} value
@@ -27698,13 +27698,13 @@ To create your own input you can inherit from this class.
        /**
         Converts value to string (for internal compare). For submitting to server used value2submit().
 
-        @method value2str(value) 
+        @method value2str(value)
         @param {mixed} value
         @returns {string}
        **/
        value2str: function(value) {
            return value;
-       }, 
+       },
 
        /**
         Converts string received from server into value. Usually from `data-value` attribute.
@@ -27715,12 +27715,12 @@ To create your own input you can inherit from this class.
        **/
        str2value: function(str) {
            return str;
-       }, 
-       
+       },
+
        /**
         Converts value for submitting to server. Result can be string or object.
 
-        @method value2submit(value) 
+        @method value2submit(value)
         @param {mixed} value
         @returns {mixed}
        **/
@@ -27731,7 +27731,7 @@ To create your own input you can inherit from this class.
        /**
         Sets value of input.
 
-        @method value2input(value) 
+        @method value2input(value)
         @param {mixed} value
        **/
        value2input: function(value) {
@@ -27741,16 +27741,16 @@ To create your own input you can inherit from this class.
        /**
         Returns value of input. Value can be object (e.g. datepicker)
 
-        @method input2value() 
+        @method input2value()
        **/
-       input2value: function() { 
+       input2value: function() {
            return this.$input.val();
-       }, 
+       },
 
        /**
         Activates input. For text it sets focus.
 
-        @method activate() 
+        @method activate()
        **/
        activate: function() {
            if(this.$input.is(':visible')) {
@@ -27761,8 +27761,8 @@ To create your own input you can inherit from this class.
        /**
         Creates input.
 
-        @method clear() 
-       **/        
+        @method clear()
+       **/
        clear: function() {
            this.$input.val(null);
        },
@@ -27773,79 +27773,79 @@ To create your own input you can inherit from this class.
        escape: function(str) {
            return $('<div>').text(str).html();
        },
-       
+
        /**
         attach handler to automatically submit form when value changed (useful when buttons not shown)
        **/
        autosubmit: function() {
-        
+
        },
-       
+
        /**
-       Additional actions when destroying element 
+       Additional actions when destroying element
        **/
        destroy: function() {
        },
 
        // -------- helper functions --------
-       setClass: function() {          
+       setClass: function() {
            if(this.options.inputclass) {
-               this.$input.addClass(this.options.inputclass); 
-           } 
+               this.$input.addClass(this.options.inputclass);
+           }
        },
 
        setAttr: function(attr) {
            if (this.options[attr] !== undefined && this.options[attr] !== null) {
                this.$input.attr(attr, this.options[attr]);
-           } 
+           }
        },
-       
+
        option: function(key, value) {
             this.options[key] = value;
        }
-       
+
     };
-        
-    AbstractInput.defaults = {  
+
+    AbstractInput.defaults = {
         /**
         HTML template of input. Normally you should not change it.
 
-        @property tpl 
+        @property tpl
         @type string
         @default ''
-        **/   
+        **/
         tpl: '',
         /**
         CSS class automatically applied to input
-        
-        @property inputclass 
+
+        @property inputclass
         @type string
         @default null
-        **/         
+        **/
         inputclass: null,
-        
+
         /**
-        If `true` - html will be escaped in content of element via $.text() method.  
-        If `false` - html will not be escaped, $.html() used.  
+        If `true` - html will be escaped in content of element via $.text() method.
+        If `false` - html will not be escaped, $.html() used.
         When you use own `display` function, this option obviosly has no effect.
-        
-        @property escape 
+
+        @property escape
         @type boolean
         @since 1.5.0
         @default true
-        **/         
+        **/
         escape: true,
-                
+
         //scope for external methods (e.g. source defined as function)
         //for internal use only
         scope: null,
-        
+
         //need to re-declare showbuttons here to get it's value from common config (passed only options existing in defaults)
-        showbuttons: true 
+        showbuttons: true
     };
-    
+
     $.extend($.fn.editabletypes, {abstractinput: AbstractInput});
-        
+
 }(window.jQuery));
 
 /**
@@ -27856,9 +27856,9 @@ List - abstract class for inputs that have source option loaded from js array or
 **/
 (function ($) {
     "use strict";
-    
+
     var List = function (options) {
-       
+
     };
 
     $.fn.editableutils.inherit(List, $.fn.editabletypes.abstractinput);
@@ -27882,28 +27882,28 @@ List - abstract class for inputs that have source option loaded from js array or
         html2value: function (html) {
             return null; //can't set value by text
         },
-        
+
         value2html: function (value, element, display, response) {
             var deferred = $.Deferred(),
                 success = function () {
                     if(typeof display === 'function') {
                         //custom display method
-                        display.call(element, value, this.sourceData, response); 
+                        display.call(element, value, this.sourceData, response);
                     } else {
                         this.value2htmlFinal(value, element);
                     }
                     deferred.resolve();
                };
-            
+
             //for null value just call success without loading source
             if(value === null) {
-               success.call(this);   
+               success.call(this);
             } else {
                this.onSourceReady(success, function () { deferred.resolve(); });
             }
 
             return deferred.promise();
-        },  
+        },
 
         // ------------- additional functions ------------
 
@@ -27916,12 +27916,12 @@ List - abstract class for inputs that have source option loaded from js array or
                 //note: if function returns the same source as URL - sourceData will be taken from cahce and no extra request performed
             } else {
                 source = this.options.source;
-            }            
-            
+            }
+
             //if allready loaded just call success
             if(this.options.sourceCache && $.isArray(this.sourceData)) {
                 success.call(this);
-                return; 
+                return;
             }
 
             //try parse json in single quotes (for double quotes jquery does automatically)
@@ -27966,7 +27966,7 @@ List - abstract class for inputs that have source option loaded from js array or
                         cache.err_callbacks = [];
                     }
                 }
-                
+
                 //ajaxOptions for source. Can be overwritten bt options.sourceOptions
                 var ajaxOptions = $.extend({
                     url: source,
@@ -27983,7 +27983,7 @@ List - abstract class for inputs that have source option loaded from js array or
                                 //store result in cache
                                 cache.sourceData = this.sourceData;
                                 //run success callbacks for other fields waiting for this source
-                                $.each(cache.callbacks, function () { this.call(); }); 
+                                $.each(cache.callbacks, function () { this.call(); });
                             }
                             this.doPrepend();
                             success.call(this);
@@ -27991,7 +27991,7 @@ List - abstract class for inputs that have source option loaded from js array or
                             error.call(this);
                             if(cache) {
                                 //run error callbacks for other fields waiting for this source
-                                $.each(cache.err_callbacks, function () { this.call(); }); 
+                                $.each(cache.err_callbacks, function () { this.call(); });
                             }
                         }
                     }, this),
@@ -28000,20 +28000,20 @@ List - abstract class for inputs that have source option loaded from js array or
                         if(cache) {
                              cache.loading = false;
                              //run error callbacks for other fields
-                             $.each(cache.err_callbacks, function () { this.call(); }); 
+                             $.each(cache.err_callbacks, function () { this.call(); });
                         }
                     }, this)
                 }, this.options.sourceOptions);
-                
+
                 //loading sourceData from server
                 $.ajax(ajaxOptions);
-                
+
             } else { //options as json/array
                 this.sourceData = this.makeArray(source);
-                    
+
                 if($.isArray(this.sourceData)) {
                     this.doPrepend();
-                    success.call(this);   
+                    success.call(this);
                 } else {
                     error.call(this);
                 }
@@ -28022,23 +28022,23 @@ List - abstract class for inputs that have source option loaded from js array or
 
         doPrepend: function () {
             if(this.options.prepend === null || this.options.prepend === undefined) {
-                return;  
+                return;
             }
-            
+
             if(!$.isArray(this.prependData)) {
                 //run prepend if it is function (once)
                 if ($.isFunction(this.options.prepend)) {
                     this.options.prepend = this.options.prepend.call(this.options.scope);
                 }
-              
+
                 //try parse json in single quotes
                 this.options.prepend = $.fn.editableutils.tryParseJson(this.options.prepend, true);
-                
+
                 //convert prepend from string to object
                 if (typeof this.options.prepend === 'string') {
                     this.options.prepend = {'': this.options.prepend};
                 }
-                
+
                 this.prependData = this.makeArray(this.options.prepend);
             }
 
@@ -28053,13 +28053,13 @@ List - abstract class for inputs that have source option loaded from js array or
         renderList: function() {
             // this method should be overwritten in child class
         },
-       
+
          /*
          set element's html by value
         */
         value2htmlFinal: function(value, element) {
             // this method should be overwritten in child class
-        },        
+        },
 
         /**
         * convert data to array suitable for sourceData, e.g. [{value: 1, text: 'abc'}, {...}]
@@ -28067,13 +28067,13 @@ List - abstract class for inputs that have source option loaded from js array or
         makeArray: function(data) {
             var count, obj, result = [], item, iterateItem;
             if(!data || typeof data === 'string') {
-                return null; 
+                return null;
             }
 
             if($.isArray(data)) { //array
-                /* 
+                /*
                    function to iterate inside item of array if item is object.
-                   Caclulates count of keys in item and store in obj. 
+                   Caclulates count of keys in item and store in obj.
                 */
                 iterateItem = function (k, v) {
                     obj = {value: k, text: v};
@@ -28081,36 +28081,36 @@ List - abstract class for inputs that have source option loaded from js array or
                         return false;// exit from `each` if item has more than one key.
                     }
                 };
-            
+
                 for(var i = 0; i < data.length; i++) {
-                    item = data[i]; 
+                    item = data[i];
                     if(typeof item === 'object') {
                         count = 0; //count of keys inside item
                         $.each(item, iterateItem);
                         //case: [{val1: 'text1'}, {val2: 'text2} ...]
-                        if(count === 1) { 
-                            result.push(obj); 
+                        if(count === 1) {
+                            result.push(obj);
                             //case: [{value: 1, text: 'text1'}, {value: 2, text: 'text2'}, ...]
                         } else if(count > 1) {
                             //removed check of existance: item.hasOwnProperty('value') && item.hasOwnProperty('text')
                             if(item.children) {
-                                item.children = this.makeArray(item.children);   
+                                item.children = this.makeArray(item.children);
                             }
                             result.push(item);
                         }
                     } else {
                         //case: ['text1', 'text2' ...]
-                        result.push({value: item, text: item}); 
+                        result.push({value: item, text: item});
                     }
                 }
             } else {  //case: {val1: 'text1', val2: 'text2, ...}
                 $.each(data, function (k, v) {
                     result.push({value: k, text: v});
-                });  
+                });
             }
             return result;
         },
-        
+
         option: function(key, value) {
             this.options[key] = value;
             if(key === 'source') {
@@ -28118,69 +28118,69 @@ List - abstract class for inputs that have source option loaded from js array or
             }
             if(key === 'prepend') {
                 this.prependData = null;
-            }            
-        }        
+            }
+        }
 
-    });      
+    });
 
     List.defaults = $.extend({}, $.fn.editabletypes.abstractinput.defaults, {
         /**
-        Source data for list.  
-        If **array** - it should be in format: `[{value: 1, text: "text1"}, {value: 2, text: "text2"}, ...]`  
+        Source data for list.
+        If **array** - it should be in format: `[{value: 1, text: "text1"}, {value: 2, text: "text2"}, ...]`
         For compability, object format is also supported: `{"1": "text1", "2": "text2" ...}` but it does not guarantee elements order.
-        
-        If **string** - considered ajax url to load items. In that case results will be cached for fields with the same source and name. See also `sourceCache` option.
-          
-        If **function**, it should return data in format above (since 1.4.0).
-        
-        Since 1.4.1 key `children` supported to render OPTGROUP (for **select** input only).  
-        `[{text: "group1", children: [{value: 1, text: "text1"}, {value: 2, text: "text2"}]}, ...]` 
 
-		
-        @property source 
+        If **string** - considered ajax url to load items. In that case results will be cached for fields with the same source and name. See also `sourceCache` option.
+
+        If **function**, it should return data in format above (since 1.4.0).
+
+        Since 1.4.1 key `children` supported to render OPTGROUP (for **select** input only).
+        `[{text: "group1", children: [{value: 1, text: "text1"}, {value: 2, text: "text2"}]}, ...]`
+
+
+        @property source
         @type string | array | object | function
         @default null
-        **/         
-        source: null, 
+        **/
+        source: null,
         /**
         Data automatically prepended to the beginning of dropdown list.
-        
-        @property prepend 
+
+        @property prepend
         @type string | array | object | function
         @default false
-        **/         
+        **/
         prepend: false,
         /**
         Error message when list cannot be loaded (e.g. ajax error)
-        
-        @property sourceError 
+
+        @property sourceError
         @type string
         @default Error when loading list
-        **/          
+        **/
         sourceError: 'Error when loading list',
         /**
-        if <code>true</code> and source is **string url** - results will be cached for fields with the same source.    
+        if <code>true</code> and source is **string url** - results will be cached for fields with the same source.
         Usefull for editable column in grid to prevent extra requests.
-        
-        @property sourceCache 
+
+        @property sourceCache
         @type boolean
         @default true
         @since 1.2.0
-        **/        
+        **/
         sourceCache: true,
         /**
         Additional ajax options to be used in $.ajax() when loading list from server.
         Useful to send extra parameters (`data` key) or change request method (`type` key).
-        
-        @property sourceOptions 
+
+        @property sourceOptions
         @type object|function
         @default null
         @since 1.5.0
-        **/        
+        **/
         sourceOptions: null
     });
 
-    $.fn.editabletypes.list = List;      
+    $.fn.editabletypes.list = List;
 
 }(window.jQuery));
 
@@ -28203,7 +28203,7 @@ $(function(){
 **/
 (function ($) {
     "use strict";
-    
+
     var Text = function (options) {
         this.init('text', options, Text.defaults);
     };
@@ -28216,7 +28216,7 @@ $(function(){
            this.setClass();
            this.setAttr('placeholder');
         },
-        
+
         activate: function() {
             if(this.$input.is(':visible')) {
                 this.$input.focus();
@@ -28226,7 +28226,7 @@ $(function(){
                 }
             }
         },
-        
+
         //render clear button
         renderClear:  function() {
            if (this.options.clear) {
@@ -28237,21 +28237,21 @@ $(function(){
                               //arrows, enter, tab, etc
                               if(~$.inArray(e.keyCode, [40,38,9,13,27])) {
                                 return;
-                              }                            
+                              }
 
                               clearTimeout(this.t);
                               var that = this;
                               this.t = setTimeout(function() {
                                 that.toggleClear(e);
                               }, 100);
-                              
+
                           }, this))
                           .parent().css('position', 'relative');
-                          
-               this.$clear.click($.proxy(this.clear, this));                       
-           }            
+
+               this.$clear.click($.proxy(this.clear, this));
+           }
         },
-        
+
         postrender: function() {
             /*
             //now `clear` is positioned via css
@@ -28260,57 +28260,57 @@ $(function(){
 //                var h = this.$input.outerHeight(true) || 20,
                 var h = this.$clear.parent().height(),
                     delta = (h - this.$clear.height()) / 2;
-                    
+
                 //this.$clear.css({bottom: delta, right: delta});
             }
-            */ 
+            */
         },
-        
+
         //show / hide clear button
         toggleClear: function(e) {
             if(!this.$clear) {
                 return;
             }
-            
+
             var len = this.$input.val().length,
                 visible = this.$clear.is(':visible');
-                 
+
             if(len && !visible) {
                 this.$clear.show();
-            } 
-            
+            }
+
             if(!len && visible) {
                 this.$clear.hide();
-            } 
+            }
         },
-        
+
         clear: function() {
            this.$clear.hide();
            this.$input.val('').focus();
-        }          
+        }
     });
 
     Text.defaults = $.extend({}, $.fn.editabletypes.abstractinput.defaults, {
         /**
-        @property tpl 
+        @property tpl
         @default <input type="text">
-        **/         
+        **/
         tpl: '<input type="text">',
         /**
         Placeholder attribute of input. Shown when input is empty.
 
-        @property placeholder 
+        @property placeholder
         @type string
         @default null
-        **/             
+        **/
         placeholder: null,
-        
+
         /**
-        Whether to show `clear` button 
-        
-        @property clear 
+        Whether to show `clear` button
+
+        @property clear
         @type boolean
-        @default true        
+        @default true
         **/
         clear: true
     });
@@ -28339,7 +28339,7 @@ $(function(){
 **/
 (function ($) {
     "use strict";
-    
+
     var Textarea = function (options) {
         this.init('textarea', options, Textarea.defaults);
     };
@@ -28350,8 +28350,8 @@ $(function(){
         render: function () {
             this.setClass();
             this.setAttr('placeholder');
-            this.setAttr('rows');                        
-            
+            this.setAttr('rows');
+
             //ctrl + enter
             this.$input.keydown(function (e) {
                 if (e.ctrlKey && e.which === 13) {
@@ -28359,9 +28359,9 @@ $(function(){
                 }
             });
         },
-        
+
        //using `white-space: pre-wrap` solves \n  <--> BR conversion very elegant!
-       /* 
+       /*
        value2html: function(value, element) {
             var html = '', lines;
             if(value) {
@@ -28373,7 +28373,7 @@ $(function(){
             }
             $(element).html(html);
         },
-       
+
         html2value: function(html) {
             if(!html) {
                 return '';
@@ -28423,8 +28423,8 @@ $(function(){
         @property rows
         @type integer
         @default 7
-        **/        
-        rows: 7        
+        **/
+        rows: 7
     });
 
     $.fn.editabletypes.textarea = Textarea;
@@ -28442,7 +28442,7 @@ Select (dropdown)
 <script>
 $(function(){
     $('#status').editable({
-        value: 2,    
+        value: 2,
         source: [
               {value: 1, text: 'Active'},
               {value: 2, text: 'Blocked'},
@@ -28454,7 +28454,7 @@ $(function(){
 **/
 (function ($) {
     "use strict";
-    
+
     var Select = function (options) {
         this.init('select', options, Select.defaults);
     };
@@ -28472,64 +28472,64 @@ $(function(){
                         attr = {};
                         if(data[i].children) {
                             attr.label = data[i].text;
-                            $el.append(fillItems($('<optgroup>', attr), data[i].children)); 
+                            $el.append(fillItems($('<optgroup>', attr), data[i].children));
                         } else {
                             attr.value = data[i].value;
                             if(data[i].disabled) {
                                 attr.disabled = true;
                             }
-                            $el.append($('<option>', attr).text(data[i].text)); 
+                            $el.append($('<option>', attr).text(data[i].text));
                         }
                     }
                 }
                 return $el;
-            };        
+            };
 
             fillItems(this.$input, this.sourceData);
-            
+
             this.setClass();
-            
+
             //enter submit
             this.$input.on('keydown.editable', function (e) {
                 if (e.which === 13) {
                     $(this).closest('form').submit();
                 }
-            });            
+            });
         },
-       
+
         value2htmlFinal: function(value, element) {
-            var text = '', 
+            var text = '',
                 items = $.fn.editableutils.itemsByValue(value, this.sourceData);
-                
+
             if(items.length) {
                 text = items[0].text;
             }
-            
+
             //$(element).text(text);
             $.fn.editabletypes.abstractinput.prototype.value2html.call(this, text, element);
         },
-        
+
         autosubmit: function() {
             this.$input.off('keydown.editable').on('change.editable', function(){
                 $(this).closest('form').submit();
             });
         }
-    });      
+    });
 
     Select.defaults = $.extend({}, $.fn.editabletypes.list.defaults, {
         /**
-        @property tpl 
+        @property tpl
         @default <select></select>
-        **/         
+        **/
         tpl:'<select></select>'
     });
 
-    $.fn.editabletypes.select = Select;      
+    $.fn.editabletypes.select = Select;
 
 }(window.jQuery));
 
 /**
-List of checkboxes. 
+List of checkboxes.
 Internally value stored as javascript array of values.
 
 @class checklist
@@ -28540,7 +28540,7 @@ Internally value stored as javascript array of values.
 <script>
 $(function(){
     $('#options').editable({
-        value: [2, 3],    
+        value: [2, 3],
         source: [
               {value: 1, text: 'option1'},
               {value: 2, text: 'option2'},
@@ -28552,7 +28552,7 @@ $(function(){
 **/
 (function ($) {
     "use strict";
-    
+
     var Checklist = function (options) {
         this.init('checklist', options, Checklist.defaults);
     };
@@ -28562,9 +28562,9 @@ $(function(){
     $.extend(Checklist.prototype, {
         renderList: function() {
             var $label, $div;
-            
+
             this.$tpl.empty();
-            
+
             if(!$.isArray(this.sourceData)) {
                 return;
             }
@@ -28572,21 +28572,21 @@ $(function(){
             for(var i=0; i<this.sourceData.length; i++) {
                 $label = $('<label>').append($('<input>', {
                                            type: 'checkbox',
-                                           value: this.sourceData[i].value 
+                                           value: this.sourceData[i].value
                                      }))
                                      .append($('<span>').text(' '+this.sourceData[i].text));
-                
+
                 $('<div>').append($label).appendTo(this.$tpl);
             }
-            
+
             this.$input = this.$tpl.find('input[type="checkbox"]');
             this.setClass();
         },
-       
+
        value2str: function(value) {
            return $.isArray(value) ? value.sort().join($.trim(this.options.separator)) : '';
-       },  
-       
+       },
+
        //parse separated string
         str2value: function(str) {
            var reg, value = null;
@@ -28594,13 +28594,13 @@ $(function(){
                reg = new RegExp('\\s*'+$.trim(this.options.separator)+'\\s*');
                value = str.split(reg);
            } else if($.isArray(str)) {
-               value = str; 
+               value = str;
            } else {
                value = [str];
            }
            return value;
-        },       
-       
+        },
+
        //set checked on required checkboxes
        value2input: function(value) {
             this.$input.prop('checked', false);
@@ -28611,43 +28611,43 @@ $(function(){
                    $.each(value, function(j, val){
                        /*jslint eqeq: true*/
                        if($el.val() == val) {
-                       /*jslint eqeq: false*/                           
+                       /*jslint eqeq: false*/
                            $el.prop('checked', true);
                        }
                    });
-               }); 
-            }  
-        },  
-        
-       input2value: function() { 
+               });
+            }
+        },
+
+       input2value: function() {
            var checked = [];
            this.$input.filter(':checked').each(function(i, el) {
                checked.push($(el).val());
            });
            return checked;
-       },            
-          
+       },
+
        //collect text of checked boxes
         value2htmlFinal: function(value, element) {
            var html = [],
                checked = $.fn.editableutils.itemsByValue(value, this.sourceData),
                escape = this.options.escape;
-               
+
            if(checked.length) {
                $.each(checked, function(i, v) {
-                   var text = escape ? $.fn.editableutils.escape(v.text) : v.text; 
-                   html.push(text); 
+                   var text = escape ? $.fn.editableutils.escape(v.text) : v.text;
+                   html.push(text);
                });
                $(element).html(html.join('<br>'));
            } else {
-               $(element).empty(); 
+               $(element).empty();
            }
         },
-        
+
        activate: function() {
            this.$input.first().focus();
        },
-       
+
        autosubmit: function() {
            this.$input.on('keydown', function(e){
                if (e.which === 13) {
@@ -28655,33 +28655,33 @@ $(function(){
                }
            });
        }
-    });      
+    });
 
     Checklist.defaults = $.extend({}, $.fn.editabletypes.list.defaults, {
         /**
-        @property tpl 
+        @property tpl
         @default <div></div>
-        **/         
+        **/
         tpl:'<div class="editable-checklist"></div>',
-        
+
         /**
-        @property inputclass 
+        @property inputclass
         @type string
         @default null
-        **/         
-        inputclass: null,        
-        
+        **/
+        inputclass: null,
+
         /**
         Separator of values when reading from `data-value` attribute
 
-        @property separator 
+        @property separator
         @type string
         @default ','
-        **/         
+        **/
         separator: ','
     });
 
-    $.fn.editabletypes.checklist = Checklist;      
+    $.fn.editabletypes.checklist = Checklist;
 
 }(window.jQuery));
 
@@ -28697,12 +28697,12 @@ Following types are supported:
 * range
 * time
 
-Learn more about html5 inputs:  
-http://www.w3.org/wiki/HTML5_form_additions  
-To check browser compatibility please see:  
+Learn more about html5 inputs:
+http://www.w3.org/wiki/HTML5_form_additions
+To check browser compatibility please see:
 https://developer.mozilla.org/en-US/docs/HTML/Element/Input
-            
-@class html5types 
+
+@class html5types
 @extends text
 @final
 @since 1.3.0
@@ -28719,16 +28719,16 @@ $(function(){
 **/
 
 /**
-@property tpl 
+@property tpl
 @default depends on type
-**/ 
+**/
 
 /*
 Password
 */
 (function ($) {
     "use strict";
-    
+
     var Password = function (options) {
         this.init('password', options, Password.defaults);
     };
@@ -28739,14 +28739,14 @@ Password
            if(value) {
                $(element).text('[hidden]');
            } else {
-               $(element).empty(); 
+               $(element).empty();
            }
        },
        //as password not displayed, should not set value by html
        html2value: function(html) {
            return null;
-       }       
-    });    
+       }
+    });
     Password.defaults = $.extend({}, $.fn.editabletypes.text.defaults, {
         tpl: '<input type="password">'
     });
@@ -28759,7 +28759,7 @@ Email
 */
 (function ($) {
     "use strict";
-    
+
     var Email = function (options) {
         this.init('email', options, Email.defaults);
     };
@@ -28776,7 +28776,7 @@ Url
 */
 (function ($) {
     "use strict";
-    
+
     var Url = function (options) {
         this.init('url', options, Url.defaults);
     };
@@ -28793,7 +28793,7 @@ Tel
 */
 (function ($) {
     "use strict";
-    
+
     var Tel = function (options) {
         this.init('tel', options, Tel.defaults);
     };
@@ -28810,7 +28810,7 @@ Number
 */
 (function ($) {
     "use strict";
-    
+
     var NumberInput = function (options) {
         this.init('number', options, NumberInput.defaults);
     };
@@ -28830,13 +28830,13 @@ Number
                 //can position clear button only here, when form is shown and height can be calculated
                 var h = this.$input.outerHeight(true) || 20,
                     delta = (h - this.$clear.height()) / 2;
-                
-                //add 12px to offset right for up/down arrows    
+
+                //add 12px to offset right for up/down arrows
                 this.$clear.css({top: delta, right: delta + 16});
                 */
-            } 
-        }        
-    });     
+            }
+        }
+    });
     NumberInput.defaults = $.extend({}, $.fn.editabletypes.text.defaults, {
         tpl: '<input type="number">',
         inputclass: 'input-mini',
@@ -28853,7 +28853,7 @@ Range (inherit from number)
 */
 (function ($) {
     "use strict";
-    
+
     var Range = function (options) {
         this.init('range', options, Range.defaults);
     };
@@ -28861,19 +28861,19 @@ Range (inherit from number)
     $.extend(Range.prototype, {
         render: function () {
             this.$input = this.$tpl.filter('input');
-            
+
             this.setClass();
             this.setAttr('min');
             this.setAttr('max');
-            this.setAttr('step');           
-            
+            this.setAttr('step');
+
             this.$input.on('input', function(){
-                $(this).siblings('output').text($(this).val()); 
-            });  
+                $(this).siblings('output').text($(this).val());
+            });
         },
         activate: function() {
             this.$input.focus();
-        }         
+        }
     });
     Range.defaults = $.extend({}, $.fn.editabletypes.number.defaults, {
         tpl: '<input type="range"><output style="width: 30px; display: inline-block"></output>',
@@ -28896,7 +28896,7 @@ Time
     $.extend(Time.prototype, {
         render: function() {
            this.setClass();
-        }        
+        }
     });
     Time.defaults = $.extend({}, $.fn.editabletypes.abstractinput.defaults, {
         tpl: '<input type="time">'
@@ -28905,24 +28905,24 @@ Time
 }(window.jQuery));
 
 /**
-Select2 input. Based on amazing work of Igor Vaynberg https://github.com/ivaynberg/select2.  
-Please see [original select2 docs](http://ivaynberg.github.com/select2) for detailed description and options.  
- 
-You should manually download and include select2 distributive:  
+Select2 input. Based on amazing work of Igor Vaynberg https://github.com/ivaynberg/select2.
+Please see [original select2 docs](http://ivaynberg.github.com/select2) for detailed description and options.
 
-    <link href="select2/select2.css" rel="stylesheet" type="text/css"></link>  
-    <script src="select2/select2.js"></script>  
-    
-To make it **bootstrap-styled** you can use css from [here](https://github.com/t0m/select2-bootstrap-css): 
+You should manually download and include select2 distributive:
 
-    <link href="select2-bootstrap.css" rel="stylesheet" type="text/css"></link>    
-    
-**Note:** currently `autotext` feature does not work for select2 with `ajax` remote source.    
-You need initially put both `data-value` and element's text youself:    
+    <link href="select2/select2.css" rel="stylesheet" type="text/css"></link>
+    <script src="select2/select2.js"></script>
+
+To make it **bootstrap-styled** you can use css from [here](https://github.com/t0m/select2-bootstrap-css):
+
+    <link href="select2-bootstrap.css" rel="stylesheet" type="text/css"></link>
+
+**Note:** currently `autotext` feature does not work for select2 with `ajax` remote source.
+You need initially put both `data-value` and element's text youself:
 
     <a href="#" data-type="select2" data-value="1">Text1</a>
-    
-    
+
+
 @class select2
 @extends abstractinput
 @since 1.4.1
@@ -28979,34 +28979,34 @@ $(function(){
                 return $.get('/getCountryById', { query: element.val() }, function (data) {
                     callback(data);
                 });
-            } 
-        }  
+            }
+        }
     });
 });
 </script>
 **/
 (function ($) {
     "use strict";
-    
+
     var Constructor = function (options) {
         this.init('select2', options, Constructor.defaults);
 
         options.select2 = options.select2 || {};
 
         this.sourceData = null;
-        
+
         //placeholder
         if(options.placeholder) {
             options.select2.placeholder = options.placeholder;
         }
-       
+
         //if not `tags` mode, use source
         if(!options.select2.tags && options.source) {
             var source = options.source;
             //if source is function, call it (once!)
             if ($.isFunction(options.source)) {
                 source = options.source.call(options.scope);
-            }               
+            }
 
             if (typeof source === 'string') {
                 options.select2.ajax = options.select2.ajax || {};
@@ -29023,7 +29023,7 @@ $(function(){
                 this.sourceData = this.convertSource(source);
                 options.select2.data = this.sourceData;
             }
-        } 
+        }
 
         //overriding objects in config (as by default jQuery extend() is not recursive)
         this.options.select2 = $.extend({}, Constructor.defaults.select2, options.select2);
@@ -29053,7 +29053,7 @@ $(function(){
         render: function() {
             this.setClass();
 
-            //can not apply select2 here as it calls initSelection 
+            //can not apply select2 here as it calls initSelection
             //over input that does not have correct value yet.
             //apply select2 only in value2input
             //this.$input.select2(this.options.select2);
@@ -29079,12 +29079,12 @@ $(function(){
                that = this;
 
            if(this.options.select2.tags) { //in tags mode just assign value
-              data = value; 
+              data = value;
               //data = $.fn.editableutils.itemsByValue(value, this.options.select2.tags, this.idFunc);
            } else if(this.sourceData) {
-              data = $.fn.editableutils.itemsByValue(value, this.sourceData, this.idFunc); 
+              data = $.fn.editableutils.itemsByValue(value, this.sourceData, this.idFunc);
            } else {
-              //can not get list of possible values 
+              //can not get list of possible values
               //(e.g. autotext for select2 with ajax source)
            }
 
@@ -29102,7 +29102,7 @@ $(function(){
            text = $.isArray(text) ? text.join(this.options.viewseparator) : text;
 
            //$(element).text(text);
-           Constructor.superclass.value2html.call(this, text, element); 
+           Constructor.superclass.value2html.call(this, text, element);
        },
 
        html2value: function(html) {
@@ -29120,14 +29120,14 @@ $(function(){
                this.$input.val(value);
                this.$input.select2(this.options.select2);
            } else {
-               //second argument needed to separate initial change from user's click (for autosubmit)   
-               this.$input.val(value).trigger('change', true); 
+               //second argument needed to separate initial change from user's click (for autosubmit)
+               this.$input.val(value).trigger('change', true);
 
                //Uncaught Error: cannot call val() if initSelection() is not defined
                //this.$input.select2('val', value);
            }
 
-           // if defined remote source AND no multiple mode AND no user's initSelection provided --> 
+           // if defined remote source AND no multiple mode AND no user's initSelection provided -->
            // we should somehow get text for provided id.
            // The solution is to use element's text as text for that id (exclude empty)
            if(this.isRemote && !this.isMultiple && !this.options.select2.initSelection) {
@@ -29141,13 +29141,13 @@ $(function(){
                    var $el = $(this.options.scope);
                    if (!$el.data('editable').isEmpty) {
                        var data = {id: value, text: $el.text()};
-                       this.$input.select2('data', data); 
+                       this.$input.select2('data', data);
                    }
                }
            }
        },
-       
-       input2value: function() { 
+
+       input2value: function() {
            return this.$input.select2('val');
        },
 
@@ -29198,25 +29198,25 @@ $(function(){
             }
             return source;
         },
-        
+
         destroy: function() {
             if(this.$input.data('select2')) {
                 this.$input.select2('destroy');
             }
         }
-        
+
     });
 
     Constructor.defaults = $.extend({}, $.fn.editabletypes.abstractinput.defaults, {
         /**
-        @property tpl 
+        @property tpl
         @default <input type="hidden">
         **/
         tpl:'<input type="hidden">',
         /**
         Configuration of select2. [Full list of options](http://ivaynberg.github.com/select2).
 
-        @property select2 
+        @property select2
         @type object
         @default null
         **/
@@ -29224,7 +29224,7 @@ $(function(){
         /**
         Placeholder attribute of select
 
-        @property placeholder 
+        @property placeholder
         @type string
         @default null
         **/
@@ -29234,17 +29234,17 @@ $(function(){
         Please note, that format is different from simple `select` input: use 'id' instead of 'value'.
         E.g. `[{id: 1, text: "text1"}, {id: 2, text: "text2"}, ...]`.
 
-        @property source 
+        @property source
         @type array|string|function
-        @default null        
+        @default null
         **/
         source: null,
         /**
         Separator used to display tags.
 
-        @property viewseparator 
+        @property viewseparator
         @type string
-        @default ', '        
+        @default ', '
         **/
         viewseparator: ', '
     });
@@ -29258,18 +29258,18 @@ $(function(){
 * Dropdown date and time picker.
 * Converts text input into dropdowns to pick day, month, year, hour, minute and second.
 * Uses momentjs as datetime library http://momentjs.com.
-* For i18n include corresponding file from https://github.com/timrwood/moment/tree/master/lang 
+* For i18n include corresponding file from https://github.com/timrwood/moment/tree/master/lang
 *
 * Confusion at noon and midnight - see http://en.wikipedia.org/wiki/12-hour_clock#Confusion_at_noon_and_midnight
-* In combodate: 
+* In combodate:
 * 12:00 pm --> 12:00 (24-h format, midday)
 * 12:00 am --> 00:00 (24-h format, midnight, start of day)
-* 
+*
 * Differs from momentjs parse rules:
 * 00:00 pm, 12:00 pm --> 12:00 (24-h format, day not change)
 * 00:00 am, 12:00 am --> 00:00 (24-h format, day not change)
-* 
-* 
+*
+*
 * Author: Vitaliy Potapov
 * Project page: http://github.com/vitalets/combodate
 * Copyright (c) 2012 Vitaliy Potapov. Released under MIT License.
@@ -29283,28 +29283,28 @@ $(function(){
             return;
         }
         this.options = $.extend({}, $.fn.combodate.defaults, options, this.$element.data());
-        this.init();  
+        this.init();
      };
 
     Combodate.prototype = {
-        constructor: Combodate, 
+        constructor: Combodate,
         init: function () {
             this.map = {
                 //key   regexp    moment.method
-                day:    ['D',    'date'], 
-                month:  ['M',    'month'], 
-                year:   ['Y',    'year'], 
+                day:    ['D',    'date'],
+                month:  ['M',    'month'],
+                year:   ['Y',    'year'],
                 hour:   ['[Hh]', 'hours'],
-                minute: ['m',    'minutes'], 
+                minute: ['m',    'minutes'],
                 second: ['s',    'seconds'],
-                ampm:   ['[Aa]', ''] 
+                ampm:   ['[Aa]', '']
             };
-            
+
             this.$widget = $('<span class="combodate"></span>').html(this.getTemplate());
-                      
+
             this.initCombos();
-            
-            //update original input on change 
+
+            //update original input on change
             this.$widget.on('change', 'select', $.proxy(function(e) {
                 this.$element.val(this.getValue()).change();
                 // update days count if month or year changes
@@ -29314,28 +29314,28 @@ $(function(){
                     }
                 }
             }, this));
-            
+
             this.$widget.find('select').css('width', 'auto');
-                                       
-            // hide original input and insert widget                                       
+
+            // hide original input and insert widget
             this.$element.hide().after(this.$widget);
-            
+
             // set initial value
             this.setValue(this.$element.val() || this.options.value);
         },
-        
+
         /*
-         Replace tokens in template with <select> elements 
-        */         
+         Replace tokens in template with <select> elements
+        */
         getTemplate: function() {
             var tpl = this.options.template;
 
             //first pass
             $.each(this.map, function(k, v) {
-                v = v[0]; 
+                v = v[0];
                 var r = new RegExp(v+'+'),
                     token = v.length > 1 ? v.substring(1, 2) : v;
-                    
+
                 tpl = tpl.replace(r, '{'+token+'}');
             });
 
@@ -29346,16 +29346,16 @@ $(function(){
             $.each(this.map, function(k, v) {
                 v = v[0];
                 var token = v.length > 1 ? v.substring(1, 2) : v;
-                    
+
                 tpl = tpl.replace('{'+token+'}', '<select class="'+k+'"></select>');
-            });   
+            });
 
             return tpl;
         },
-        
+
         /*
-         Initialize combos that presents in template 
-        */        
+         Initialize combos that presents in template
+        */
         initCombos: function() {
             for (var k in this.map) {
                 var $c = this.$widget.find('.'+k);
@@ -29367,8 +29367,8 @@ $(function(){
         },
 
         /*
-         Fill combo with items 
-        */        
+         Fill combo with items
+        */
         fillCombo: function(k) {
             var $combo = this['$'+k];
             if (!$combo) {
@@ -29376,7 +29376,7 @@ $(function(){
             }
 
             // define method name to fill items, e.g `fillDays`
-            var f = 'fill' + k.charAt(0).toUpperCase() + k.slice(1); 
+            var f = 'fill' + k.charAt(0).toUpperCase() + k.slice(1);
             var items = this[f]();
             var value = $combo.val();
 
@@ -29389,24 +29389,24 @@ $(function(){
         },
 
         /*
-         Initialize items of combos. Handles `firstItem` option 
+         Initialize items of combos. Handles `firstItem` option
         */
         fillCommon: function(key) {
             var values = [],
                 relTime;
-                
+
             if(this.options.firstItem === 'name') {
                 //need both to support moment ver < 2 and  >= 2
-                relTime = moment.relativeTime || moment.langData()._relativeTime; 
+                relTime = moment.relativeTime || moment.langData()._relativeTime;
                 var header = typeof relTime[key] === 'function' ? relTime[key](1, true, key, false) : relTime[key];
-                //take last entry (see momentjs lang files structure) 
-                header = header.split(' ').reverse()[0];                
+                //take last entry (see momentjs lang files structure)
+                header = header.split(' ').reverse()[0];
                 values.push(['', header]);
             } else if(this.options.firstItem === 'empty') {
                 values.push(['', '']);
             }
             return values;
-        },  
+        },
 
 
         /*
@@ -29432,18 +29432,18 @@ $(function(){
                 name = twoDigit ? this.leadZero(i) : i;
                 items.push([i, name]);
             }
-            return items;        
+            return items;
         },
-        
+
         /*
         fill month
         */
         fillMonth: function() {
-            var items = this.fillCommon('M'), name, i, 
+            var items = this.fillCommon('M'), name, i,
                 longNames = this.options.template.indexOf('MMMM') !== -1,
                 shortNames = this.options.template.indexOf('MMM') !== -1,
                 twoDigit = this.options.template.indexOf('MM') !== -1;
-                
+
             for(i=0; i<=11; i++) {
                 if(longNames) {
                     //see https://github.com/timrwood/momentjs.com/pull/36
@@ -29456,27 +29456,27 @@ $(function(){
                     name = i+1;
                 }
                 items.push([i, name]);
-            } 
+            }
             return items;
-        },  
-        
+        },
+
         /*
         fill year
         */
         fillYear: function() {
-            var items = [], name, i, 
+            var items = [], name, i,
                 longNames = this.options.template.indexOf('YYYY') !== -1;
-           
+
             for(i=this.options.maxYear; i>=this.options.minYear; i--) {
                 name = longNames ? i : (i+'').substring(2);
                 items[this.options.yearDescending ? 'push' : 'unshift']([i, name]);
             }
-            
+
             items = this.fillCommon('y').concat(items);
-            
-            return items;              
-        },    
-        
+
+            return items;
+        },
+
         /*
         fill hour
         */
@@ -29485,16 +29485,16 @@ $(function(){
                 h12 = this.options.template.indexOf('h') !== -1,
                 h24 = this.options.template.indexOf('H') !== -1,
                 twoDigit = this.options.template.toLowerCase().indexOf('hh') !== -1,
-                min = h12 ? 1 : 0, 
+                min = h12 ? 1 : 0,
                 max = h12 ? 12 : 23;
-                
+
             for(i=min; i<=max; i++) {
                 name = twoDigit ? this.leadZero(i) : i;
                 items.push([i, name]);
-            } 
-            return items;                 
-        },    
-        
+            }
+            return items;
+        },
+
         /*
         fill minute
         */
@@ -29505,10 +29505,10 @@ $(function(){
             for(i=0; i<=59; i+= this.options.minuteStep) {
                 name = twoDigit ? this.leadZero(i) : i;
                 items.push([i, name]);
-            }    
-            return items;              
-        },  
-        
+            }
+            return items;
+        },
+
         /*
         fill second
         */
@@ -29519,85 +29519,85 @@ $(function(){
             for(i=0; i<=59; i+= this.options.secondStep) {
                 name = twoDigit ? this.leadZero(i) : i;
                 items.push([i, name]);
-            }    
-            return items;              
-        },  
-        
+            }
+            return items;
+        },
+
         /*
         fill ampm
         */
         fillAmpm: function() {
             var ampmL = this.options.template.indexOf('a') !== -1,
-                ampmU = this.options.template.indexOf('A') !== -1,            
+                ampmU = this.options.template.indexOf('A') !== -1,
                 items = [
                     ['am', ampmL ? 'am' : 'AM'],
                     ['pm', ampmL ? 'pm' : 'PM']
                 ];
-            return items;                              
-        },                                       
+            return items;
+        },
 
         /*
-         Returns current date value from combos. 
+         Returns current date value from combos.
          If format not specified - `options.format` used.
          If format = `null` - Moment object returned.
         */
         getValue: function(format) {
-            var dt, values = {}, 
+            var dt, values = {},
                 that = this,
                 notSelected = false;
-                
-            //getting selected values    
+
+            //getting selected values
             $.each(this.map, function(k, v) {
                 if(k === 'ampm') {
                     return;
                 }
                 var def = k === 'day' ? 1 : 0;
-                  
-                values[k] = that['$'+k] ? parseInt(that['$'+k].val(), 10) : def; 
-                
+
+                values[k] = that['$'+k] ? parseInt(that['$'+k].val(), 10) : def;
+
                 if(isNaN(values[k])) {
                    notSelected = true;
-                   return false; 
+                   return false;
                 }
             });
-            
+
             //if at least one visible combo not selected - return empty string
             if(notSelected) {
                return '';
             }
-            
-            //convert hours 12h --> 24h 
+
+            //convert hours 12h --> 24h
             if(this.$ampm) {
                 //12:00 pm --> 12:00 (24-h format, midday), 12:00 am --> 00:00 (24-h format, midnight, start of day)
                 if(values.hour === 12) {
-                    values.hour = this.$ampm.val() === 'am' ? 0 : 12;                    
+                    values.hour = this.$ampm.val() === 'am' ? 0 : 12;
                 } else {
                     values.hour = this.$ampm.val() === 'am' ? values.hour : values.hour+12;
                 }
-            }    
-            
+            }
+
             dt = moment([values.year, values.month, values.day, values.hour, values.minute, values.second]);
-            
+
             //highlight invalid date
             this.highlight(dt);
-                              
+
             format = format === undefined ? this.options.format : format;
             if(format === null) {
-               return dt.isValid() ? dt : null; 
+               return dt.isValid() ? dt : null;
             } else {
-               return dt.isValid() ? dt.format(format) : ''; 
-            }           
+               return dt.isValid() ? dt.format(format) : '';
+            }
         },
-        
+
         setValue: function(value) {
             if(!value) {
                 return;
             }
-            
+
             var dt = typeof value === 'string' ? moment(value, this.options.format) : moment(value),
                 that = this,
                 values = {};
-            
+
             //function to find nearest value in select options
             function getNearest($select, value) {
                 var delta = {};
@@ -29606,23 +29606,23 @@ $(function(){
                     distance;
 
                     if(optValue === '') return;
-                    distance = Math.abs(optValue - value); 
+                    distance = Math.abs(optValue - value);
                     if(typeof delta.distance === 'undefined' || distance < delta.distance) {
                         delta = {value: optValue, distance: distance};
-                    } 
-                }); 
+                    }
+                });
                 return delta.value;
-            }             
-            
+            }
+
             if(dt.isValid()) {
                 //read values from date object
                 $.each(this.map, function(k, v) {
                     if(k === 'ampm') {
-                       return; 
+                       return;
                     }
                     values[k] = dt[v[1]]();
                 });
-               
+
                 if(this.$ampm) {
                     //12:00 pm --> 12:00 (24-h format, midday), 12:00 am --> 00:00 (24-h format, midnight, start of day)
                     if(values.hour >= 12) {
@@ -29635,21 +29635,21 @@ $(function(){
                         if(values.hour === 0) {
                             values.hour = 12;
                         }
-                    } 
+                    }
                 }
-               
+
                 $.each(values, function(k, v) {
                     //call val() for each existing combo, e.g. this.$hour.val()
                     if(that['$'+k]) {
-                       
+
                         if(k === 'minute' && that.options.minuteStep > 1 && that.options.roundTime) {
                            v = getNearest(that['$'+k], v);
                         }
-                       
+
                         if(k === 'second' && that.options.secondStep > 1 && that.options.roundTime) {
                            v = getNearest(that['$'+k], v);
-                        }                       
-                       
+                        }
+
                         that['$'+k].val(v);
                     }
                 });
@@ -29658,11 +29658,11 @@ $(function(){
                 if (this.options.smartDays) {
                     this.fillCombo('day');
                 }
-               
+
                this.$element.val(dt.format(this.options.format)).change();
             }
         },
-        
+
         /*
          highlight combos if date is invalid
         */
@@ -29673,29 +29673,29 @@ $(function(){
                 } else {
                     //store original border color
                     if(!this.borderColor) {
-                        this.borderColor = this.$widget.find('select').css('border-color'); 
+                        this.borderColor = this.$widget.find('select').css('border-color');
                     }
                     this.$widget.find('select').css('border-color', 'red');
-                } 
+                }
             } else {
                 if(this.options.errorClass) {
                     this.$widget.removeClass(this.options.errorClass);
                 } else {
                     this.$widget.find('select').css('border-color', this.borderColor);
-                }  
+                }
             }
         },
-        
+
         leadZero: function(v) {
-            return v <= 9 ? '0' + v : v; 
+            return v <= 9 ? '0' + v : v;
         },
-        
+
         destroy: function() {
             this.$widget.remove();
             this.$element.removeData('combodate').show();
         }
-        
-        //todo: clear method        
+
+        //todo: clear method
     };
 
     $.fn.combodate = function ( option ) {
@@ -29705,8 +29705,8 @@ $(function(){
         //getValue returns date as string / object (not jQuery object)
         if(option === 'getValue' && this.length && (d = this.eq(0).data('combodate'))) {
           return d.getValue.apply(d, args);
-        }        
-        
+        }
+
         return this.each(function () {
             var $this = $(this),
             data = $this.data('combodate'),
@@ -29718,15 +29718,15 @@ $(function(){
                 data[option].apply(data, args);
             }
         });
-    };  
-    
+    };
+
     $.fn.combodate.defaults = {
          //in this format value stored in original input
-        format: 'DD-MM-YYYY HH:mm',      
+        format: 'DD-MM-YYYY HH:mm',
         //in this format items in dropdowns are displayed
         template: 'D / MMM / YYYY   H : mm',
-        //initial value, can be `new Date()`    
-        value: null,                       
+        //initial value, can be `new Date()`
+        value: null,
         minYear: 1970,
         maxYear: 2015,
         yearDescending: true,
@@ -29740,19 +29740,19 @@ $(function(){
 
 }(window.jQuery));
 /**
-Combodate input - dropdown date and time picker.    
+Combodate input - dropdown date and time picker.
 Based on [combodate](http://vitalets.github.com/combodate) plugin (included). To use it you should manually include [momentjs](http://momentjs.com).
 
     <script src="js/moment.min.js"></script>
-   
+
 Allows to input:
 
 * only date
-* only time 
-* both date and time  
+* only time
+* both date and time
 
-Please note, that format is taken from momentjs and **not compatible** with bootstrap-datepicker / jquery UI datepicker.  
-Internally value stored as `momentjs` object. 
+Please note, that format is taken from momentjs and **not compatible** with bootstrap-datepicker / jquery UI datepicker.
+Internally value stored as `momentjs` object.
 
 @class combodate
 @extends abstractinput
@@ -29763,9 +29763,9 @@ Internally value stored as `momentjs` object.
 <script>
 $(function(){
     $('#dob').editable({
-        format: 'YYYY-MM-DD',    
-        viewformat: 'DD.MM.YYYY',    
-        template: 'D / MMMM / YYYY',    
+        format: 'YYYY-MM-DD',
+        viewformat: 'DD.MM.YYYY',
+        template: 'D / MMMM / YYYY',
         combodate: {
                 minYear: 2000,
                 maxYear: 2015,
@@ -29781,15 +29781,15 @@ $(function(){
 
 (function ($) {
     "use strict";
-    
+
     var Constructor = function (options) {
         this.init('combodate', options, Constructor.defaults);
-        
+
         //by default viewformat equals to format
         if(!this.options.viewformat) {
             this.options.viewformat = this.options.format;
-        }        
-        
+        }
+
         //try parse combodate config defined as json string in data-combodate
         options.combodate = $.fn.editableutils.tryParseJson(options.combodate, true);
 
@@ -29800,19 +29800,19 @@ $(function(){
         });
     };
 
-    $.fn.editableutils.inherit(Constructor, $.fn.editabletypes.abstractinput);    
-    
+    $.fn.editableutils.inherit(Constructor, $.fn.editabletypes.abstractinput);
+
     $.extend(Constructor.prototype, {
         render: function () {
             this.$input.combodate(this.options.combodate);
-                    
+
             if($.fn.editableform.engine === 'bs3') {
                 this.$input.siblings().find('select').addClass('form-control');
             }
-            
+
             if(this.options.inputclass) {
                 this.$input.siblings().find('select').addClass(this.options.inputclass);
-            }            
+            }
             //"clear" link
             /*
             if(this.options.clear) {
@@ -29821,117 +29821,117 @@ $(function(){
                     e.stopPropagation();
                     this.clear();
                 }, this));
-                
-                this.$tpl.parent().append($('<div class="editable-clear">').append(this.$clear));  
-            } 
-            */               
+
+                this.$tpl.parent().append($('<div class="editable-clear">').append(this.$clear));
+            }
+            */
         },
-        
+
         value2html: function(value, element) {
             var text = value ? value.format(this.options.viewformat) : '';
             //$(element).text(text);
-            Constructor.superclass.value2html.call(this, text, element);  
+            Constructor.superclass.value2html.call(this, text, element);
         },
 
         html2value: function(html) {
             return html ? moment(html, this.options.viewformat) : null;
-        },   
-        
+        },
+
         value2str: function(value) {
             return value ? value.format(this.options.format) : '';
-       }, 
-       
+       },
+
        str2value: function(str) {
            return str ? moment(str, this.options.format) : null;
-       }, 
-       
+       },
+
        value2submit: function(value) {
            return this.value2str(value);
-       },                    
+       },
 
        value2input: function(value) {
            this.$input.combodate('setValue', value);
        },
-        
-       input2value: function() { 
+
+       input2value: function() {
            return this.$input.combodate('getValue', null);
-       },       
-       
+       },
+
        activate: function() {
            this.$input.siblings('.combodate').find('select').eq(0).focus();
        },
-       
+
        /*
        clear:  function() {
           this.$input.data('datepicker').date = null;
           this.$input.find('.active').removeClass('active');
        },
        */
-       
+
        autosubmit: function() {
-           
+
        }
 
     });
-    
+
     Constructor.defaults = $.extend({}, $.fn.editabletypes.abstractinput.defaults, {
         /**
-        @property tpl 
+        @property tpl
         @default <input type="text">
-        **/         
+        **/
         tpl:'<input type="text">',
         /**
-        @property inputclass 
+        @property inputclass
         @default null
-        **/         
+        **/
         inputclass: null,
         /**
         Format used for sending value to server. Also applied when converting date from <code>data-value</code> attribute.<br>
-        See list of tokens in [momentjs docs](http://momentjs.com/docs/#/parsing/string-format)  
-        
-        @property format 
+        See list of tokens in [momentjs docs](http://momentjs.com/docs/#/parsing/string-format)
+
+        @property format
         @type string
         @default YYYY-MM-DD
-        **/         
+        **/
         format:'YYYY-MM-DD',
         /**
-        Format used for displaying date. Also applied when converting date from element's text on init.   
+        Format used for displaying date. Also applied when converting date from element's text on init.
         If not specified equals to `format`.
-        
-        @property viewformat 
+
+        @property viewformat
         @type string
         @default null
-        **/          
-        viewformat: null,        
+        **/
+        viewformat: null,
         /**
         Template used for displaying dropdowns.
-        
-        @property template 
+
+        @property template
         @type string
         @default D / MMM / YYYY
-        **/          
-        template: 'D / MMM / YYYY',  
+        **/
+        template: 'D / MMM / YYYY',
         /**
         Configuration of combodate.
         Full list of options: http://vitalets.github.com/combodate/#docs
-        
-        @property combodate 
+
+        @property combodate
         @type object
         @default null
         **/
         combodate: null
-        
+
         /*
         (not implemented yet)
-        Text shown as clear date button. 
+        Text shown as clear date button.
         If <code>false</code> clear button will not be rendered.
-        
-        @property clear 
+
+        @property clear
         @type boolean|string
-        @default 'x clear'         
+        @default 'x clear'
         */
         //clear: '&times; clear'
-    });   
+    });
 
     $.fn.editabletypes.combodate = Constructor;
 
@@ -29942,67 +29942,67 @@ Editableform based on Twitter Bootstrap 3
 */
 (function ($) {
     "use strict";
-    
+
     //store parent methods
     var pInitInput = $.fn.editableform.Constructor.prototype.initInput;
-    
+
     $.extend($.fn.editableform.Constructor.prototype, {
         initTemplate: function() {
-            this.$form = $($.fn.editableform.template); 
+            this.$form = $($.fn.editableform.template);
             this.$form.find('.control-group').addClass('form-group');
             this.$form.find('.editable-error-block').addClass('help-block');
         },
-        initInput: function() {  
+        initInput: function() {
             pInitInput.apply(this);
 
             //for bs3 set default class `input-sm` to standard inputs
             var emptyInputClass = this.input.options.inputclass === null || this.input.options.inputclass === false;
             var defaultClass = 'input-sm';
-            
+
             //bs3 add `form-control` class to standard inputs
-            var stdtypes = 'text,select,textarea,password,email,url,tel,number,range,time,typeaheadjs'.split(','); 
+            var stdtypes = 'text,select,textarea,password,email,url,tel,number,range,time,typeaheadjs'.split(',');
             if(~$.inArray(this.input.type, stdtypes)) {
                 this.input.$input.addClass('form-control');
                 if(emptyInputClass) {
                     this.input.options.inputclass = defaultClass;
                     this.input.$input.addClass(defaultClass);
                 }
-            }             
-        
+            }
+
             //apply bs3 size class also to buttons (to fit size of control)
             var $btn = this.$form.find('.editable-buttons');
             var classes = emptyInputClass ? [defaultClass] : this.input.options.inputclass.split(' ');
             for(var i=0; i<classes.length; i++) {
                 // `btn-sm` is default now
                 /*
-                if(classes[i].toLowerCase() === 'input-sm') { 
-                    $btn.find('button').addClass('btn-sm');  
+                if(classes[i].toLowerCase() === 'input-sm') {
+                    $btn.find('button').addClass('btn-sm');
                 }
                 */
                 if(classes[i].toLowerCase() === 'input-lg') {
-                    $btn.find('button').removeClass('btn-sm').addClass('btn-lg'); 
+                    $btn.find('button').removeClass('btn-sm').addClass('btn-lg');
                 }
             }
         }
-    });    
-    
+    });
+
     //buttons
-    $.fn.editableform.buttons = 
+    $.fn.editableform.buttons =
       '<button type="submit" class="btn btn-primary btn-sm editable-submit">'+
         '<i class="glyphicon glyphicon-ok"></i>'+
       '</button>'+
       '<button type="button" class="btn btn-default btn-sm editable-cancel">'+
         '<i class="glyphicon glyphicon-remove"></i>'+
-      '</button>';         
-    
+      '</button>';
+
     //error classes
     $.fn.editableform.errorGroupClass = 'has-error';
-    $.fn.editableform.errorBlockClass = null;  
+    $.fn.editableform.errorBlockClass = null;
     //engine
-    $.fn.editableform.engine = 'bs3';  
+    $.fn.editableform.engine = 'bs3';
 }(window.jQuery));
 /**
-* Editable Popover3 (for Bootstrap 3) 
+* Editable Popover3 (for Bootstrap 3)
 * ---------------------
 * requires bootstrap-popover.js
 */
@@ -30023,49 +30023,49 @@ Editableform based on Twitter Bootstrap 3
                 content: ' ',
                 template: this.defaults.template
             });
-            
+
             //as template property is used in inputs, hide it from popover
             var t;
             if(this.$element.data('template')) {
                t = this.$element.data('template');
-               this.$element.removeData('template');  
-            } 
-            
+               this.$element.removeData('template');
+            }
+
             this.call(this.containerOptions);
-            
+
             if(t) {
                //restore data('template')
-               this.$element.data('template', t); 
+               this.$element.data('template', t);
             }
-        }, 
-        
+        },
+
         /* show */
         innerShow: function () {
-            this.call('show');                
-        },  
-        
+            this.call('show');
+        },
+
         /* hide */
         innerHide: function () {
-            this.call('hide');       
-        }, 
-        
+            this.call('hide');
+        },
+
         /* destroy */
         innerDestroy: function() {
             this.call('destroy');
-        },                               
-        
+        },
+
         setContainerOption: function(key, value) {
-            this.container().options[key] = value; 
-        },               
+            this.container().options[key] = value;
+        },
 
         /**
         * move popover to new position. This function mainly copied from bootstrap-popover.
         */
         /*jshint laxcomma: true, eqeqeq: false*/
-        setPosition: function () { 
+        setPosition: function () {
 
             (function() {
-            /*    
+            /*
                 var $tip = this.tip()
                 , inside
                 , pos
@@ -30083,14 +30083,14 @@ Editableform based on Twitter Bootstrap 3
                 this.options.placement;
 
                 inside = /in/.test(placement);
-               
+
                 $tip
               //  .detach()
               //vitalets: remove any placement class because otherwise they dont influence on re-positioning of visible popover
                 .removeClass('top right bottom left')
                 .css({ top: 0, left: 0, display: 'block' });
               //  .insertAfter(this.$element);
-               
+
                 pos = this.getPosition(inside);
 
                 actualWidth = $tip[0].offsetWidth;
@@ -30176,21 +30176,21 @@ Editableform based on Twitter Bootstrap 3
                 .addClass(placement)
                 .addClass('in');
            */
-                     
-           
+
+
             var $tip = this.tip();
-            
+
             var placement = typeof this.options.placement == 'function' ?
                 this.options.placement.call(this, $tip[0], this.$element[0]) :
-                this.options.placement;            
+                this.options.placement;
 
             var autoToken = /\s?auto?\s?/i;
             var autoPlace = autoToken.test(placement);
             if (autoPlace) {
                 placement = placement.replace(autoToken, '') || 'top';
             }
-            
-            
+
+
             var pos = this.getPosition();
             var actualWidth = $tip[0].offsetWidth;
             var actualHeight = $tip[0].offsetHeight;
@@ -30218,12 +30218,12 @@ Editableform based on Twitter Bootstrap 3
 
             var calculatedOffset = this.getCalculatedOffset(placement, pos, actualWidth, actualHeight);
 
-            this.applyPlacement(calculatedOffset, placement);            
-                     
-                
+            this.applyPlacement(calculatedOffset, placement);
+
+
             }).call(this.container());
-          /*jshint laxcomma: false, eqeqeq: true*/  
-        }            
+          /*jshint laxcomma: false, eqeqeq: true*/
+        }
     });
 
 }(window.jQuery));
@@ -31484,11 +31484,11 @@ Editableform based on Twitter Bootstrap 3
 }( window.jQuery ));
 
 /**
-Bootstrap-datepicker.  
-Description and examples: https://github.com/eternicode/bootstrap-datepicker.  
+Bootstrap-datepicker.
+Description and examples: https://github.com/eternicode/bootstrap-datepicker.
 For **i18n** you should include js file from here: https://github.com/eternicode/bootstrap-datepicker/tree/master/js/locales
-and set `language` option.  
-Since 1.4.0 date has different appearance in **popup** and **inline** modes. 
+and set `language` option.
+Since 1.4.0 date has different appearance in **popup** and **inline** modes.
 
 @class date
 @extends abstractinput
@@ -31498,8 +31498,8 @@ Since 1.4.0 date has different appearance in **popup** and **inline** modes.
 <script>
 $(function(){
     $('#dob').editable({
-        format: 'yyyy-mm-dd',    
-        viewformat: 'dd/mm/yyyy',    
+        format: 'yyyy-mm-dd',
+        viewformat: 'dd/mm/yyyy',
         datepicker: {
                 weekStart: 1
            }
@@ -31510,20 +31510,20 @@ $(function(){
 **/
 (function ($) {
     "use strict";
-    
+
     //store bootstrap-datepicker as bdateicker to exclude conflict with jQuery UI one
     $.fn.bdatepicker = $.fn.datepicker.noConflict();
     if(!$.fn.datepicker) { //if there were no other datepickers, keep also original name
-        $.fn.datepicker = $.fn.bdatepicker;    
-    }    
-    
+        $.fn.datepicker = $.fn.bdatepicker;
+    }
+
     var Date = function (options) {
         this.init('date', options, Date.defaults);
         this.initPicker(options, Date.defaults);
     };
 
-    $.fn.editableutils.inherit(Date, $.fn.editabletypes.abstractinput);    
-    
+    $.fn.editableutils.inherit(Date, $.fn.editabletypes.abstractinput);
+
     $.extend(Date.prototype, {
         initPicker: function(options, defaults) {
             //'format' is set directly from settings or data-* attributes
@@ -31532,30 +31532,30 @@ $(function(){
             if(!this.options.viewformat) {
                 this.options.viewformat = this.options.format;
             }
-            
+
             //try parse datepicker config defined as json string in data-datepicker
             options.datepicker = $.fn.editableutils.tryParseJson(options.datepicker, true);
-            
+
             //overriding datepicker config (as by default jQuery extend() is not recursive)
             //since 1.4 datepicker internally uses viewformat instead of format. Format is for submit only
             this.options.datepicker = $.extend({}, defaults.datepicker, options.datepicker, {
                 format: this.options.viewformat
             });
-            
+
             //language
-            this.options.datepicker.language = this.options.datepicker.language || 'en'; 
+            this.options.datepicker.language = this.options.datepicker.language || 'en';
 
             //store DPglobal
-            this.dpg = $.fn.bdatepicker.DPGlobal; 
+            this.dpg = $.fn.bdatepicker.DPGlobal;
 
             //store parsed formats
             this.parsedFormat = this.dpg.parseFormat(this.options.format);
-            this.parsedViewFormat = this.dpg.parseFormat(this.options.viewformat);            
+            this.parsedViewFormat = this.dpg.parseFormat(this.options.viewformat);
         },
-        
+
         render: function () {
             this.$input.bdatepicker(this.options.datepicker);
-            
+
             //"clear" link
             if(this.options.clear) {
                 this.$clear = $('<a href="#"></a>').html(this.options.clear).click($.proxy(function(e){
@@ -31563,39 +31563,39 @@ $(function(){
                     e.stopPropagation();
                     this.clear();
                 }, this));
-                
-                this.$tpl.parent().append($('<div class="editable-clear">').append(this.$clear));  
-            }                
+
+                this.$tpl.parent().append($('<div class="editable-clear">').append(this.$clear));
+            }
         },
-        
+
         value2html: function(value, element) {
            var text = value ? this.dpg.formatDate(value, this.parsedViewFormat, this.options.datepicker.language) : '';
-           Date.superclass.value2html.call(this, text, element); 
+           Date.superclass.value2html.call(this, text, element);
         },
 
         html2value: function(html) {
             return this.parseDate(html, this.parsedViewFormat);
-        },   
+        },
 
         value2str: function(value) {
             return value ? this.dpg.formatDate(value, this.parsedFormat, this.options.datepicker.language) : '';
-        }, 
+        },
 
         str2value: function(str) {
             return this.parseDate(str, this.parsedFormat);
-        }, 
+        },
 
         value2submit: function(value) {
             return this.value2str(value);
-        },                    
+        },
 
         value2input: function(value) {
             this.$input.bdatepicker('update', value);
         },
 
-        input2value: function() { 
+        input2value: function() {
             return this.$input.data('datepicker').date;
-        },       
+        },
 
         activate: function() {
         },
@@ -31604,7 +31604,7 @@ $(function(){
             this.$input.data('datepicker').date = null;
             this.$input.find('.active').removeClass('active');
             if(!this.options.showbuttons) {
-                this.$input.closest('form').submit(); 
+                this.$input.closest('form').submit();
             }
         },
 
@@ -31628,11 +31628,11 @@ $(function(){
            });
            */
        },
-       
+
        /*
         For incorrect date bootstrap-datepicker returns current date that is not suitable
         for datefield.
-        This function returns null for incorrect date.  
+        This function returns null for incorrect date.
        */
        parseDate: function(str, format) {
            var date = null, formattedBack;
@@ -31652,29 +31652,29 @@ $(function(){
 
     Date.defaults = $.extend({}, $.fn.editabletypes.abstractinput.defaults, {
         /**
-        @property tpl 
+        @property tpl
         @default <div></div>
-        **/         
+        **/
         tpl:'<div class="editable-date well"></div>',
         /**
-        @property inputclass 
+        @property inputclass
         @default null
         **/
         inputclass: null,
         /**
         Format used for sending value to server. Also applied when converting date from <code>data-value</code> attribute.<br>
-        Possible tokens are: <code>d, dd, m, mm, yy, yyyy</code>  
+        Possible tokens are: <code>d, dd, m, mm, yy, yyyy</code>
 
-        @property format 
+        @property format
         @type string
         @default yyyy-mm-dd
         **/
         format:'yyyy-mm-dd',
         /**
-        Format used for displaying date. Also applied when converting date from element's text on init.   
+        Format used for displaying date. Also applied when converting date from element's text on init.
         If not specified equals to <code>format</code>
 
-        @property viewformat 
+        @property viewformat
         @type string
         @default null
         **/
@@ -31683,7 +31683,7 @@ $(function(){
         Configuration of datepicker.
         Full list of options: http://bootstrap-datepicker.readthedocs.org/en/latest/options.html
 
-        @property datepicker 
+        @property datepicker
         @type object
         @default {
             weekStart: 0,
@@ -31699,10 +31699,10 @@ $(function(){
             autoclose: false
         },
         /**
-        Text shown as clear date button. 
+        Text shown as clear date button.
         If <code>false</code> clear button will not be rendered.
 
-        @property clear 
+        @property clear
         @type boolean|string
         @default 'x clear'
         **/
@@ -31715,7 +31715,7 @@ $(function(){
 
 /**
 Bootstrap datefield input - modification for inline mode.
-Shows normal <input type="text"> and binds popup datepicker.  
+Shows normal <input type="text"> and binds popup datepicker.
 Automatically shown in inline mode.
 
 @class datefield
@@ -31725,63 +31725,63 @@ Automatically shown in inline mode.
 **/
 (function ($) {
     "use strict";
-    
+
     var DateField = function (options) {
         this.init('datefield', options, DateField.defaults);
         this.initPicker(options, DateField.defaults);
     };
 
-    $.fn.editableutils.inherit(DateField, $.fn.editabletypes.date);    
-    
+    $.fn.editableutils.inherit(DateField, $.fn.editabletypes.date);
+
     $.extend(DateField.prototype, {
         render: function () {
             this.$input = this.$tpl.find('input');
             this.setClass();
             this.setAttr('placeholder');
-    
-            //bootstrap-datepicker is set `bdateicker` to exclude conflict with jQuery UI one. (in date.js)        
+
+            //bootstrap-datepicker is set `bdateicker` to exclude conflict with jQuery UI one. (in date.js)
             this.$tpl.bdatepicker(this.options.datepicker);
-            
+
             //need to disable original event handlers
             this.$input.off('focus keydown');
-            
+
             //update value of datepicker
             this.$input.keyup($.proxy(function(){
                this.$tpl.removeData('date');
                this.$tpl.bdatepicker('update');
             }, this));
-            
-        },   
-        
+
+        },
+
        value2input: function(value) {
            this.$input.val(value ? this.dpg.formatDate(value, this.parsedViewFormat, this.options.datepicker.language) : '');
            this.$tpl.bdatepicker('update');
        },
-        
-       input2value: function() { 
+
+       input2value: function() {
            return this.html2value(this.$input.val());
-       },              
-        
+       },
+
        activate: function() {
            $.fn.editabletypes.text.prototype.activate.call(this);
        },
-       
+
        autosubmit: function() {
-         //reset autosubmit to empty  
+         //reset autosubmit to empty
        }
     });
-    
+
     DateField.defaults = $.extend({}, $.fn.editabletypes.date.defaults, {
         /**
-        @property tpl 
-        **/         
+        @property tpl
+        **/
         tpl:'<div class="input-append date"><input type="text"/><span class="add-on"><i class="icon-th"></i></span></div>',
         /**
-        @property inputclass 
+        @property inputclass
         @default 'input-small'
-        **/         
+        **/
         inputclass: 'input-small',
-        
+
         /* datepicker config */
         datepicker: {
             weekStart: 0,
@@ -31790,20 +31790,20 @@ Automatically shown in inline mode.
             autoclose: true
         }
     });
-    
+
     $.fn.editabletypes.datefield = DateField;
 
 }(window.jQuery));
 /**
-Bootstrap-datetimepicker.  
-Based on [smalot bootstrap-datetimepicker plugin](https://github.com/smalot/bootstrap-datetimepicker). 
+Bootstrap-datetimepicker.
+Based on [smalot bootstrap-datetimepicker plugin](https://github.com/smalot/bootstrap-datetimepicker).
 Before usage you should manually include dependent js and css:
 
-    <link href="css/datetimepicker.css" rel="stylesheet" type="text/css"></link> 
+    <link href="css/datetimepicker.css" rel="stylesheet" type="text/css"></link>
     <script src="js/bootstrap-datetimepicker.js"></script>
 
 For **i18n** you should include js file from here: https://github.com/smalot/bootstrap-datetimepicker/tree/master/js/locales
-and set `language` option.  
+and set `language` option.
 
 @class datetime
 @extends abstractinput
@@ -31814,8 +31814,8 @@ and set `language` option.
 <script>
 $(function(){
     $('#last_seen').editable({
-        format: 'yyyy-mm-dd hh:ii',    
-        viewformat: 'dd/mm/yyyy hh:ii',    
+        format: 'yyyy-mm-dd hh:ii',
+        viewformat: 'dd/mm/yyyy hh:ii',
         datetimepicker: {
                 weekStart: 1
            }
@@ -31842,7 +31842,7 @@ $(function(){
             if(!this.options.viewformat) {
                 this.options.viewformat = this.options.format;
             }
-            
+
             //try parse datetimepicker config defined as json string in data-datetimepicker
             options.datetimepicker = $.fn.editableutils.tryParseJson(options.datetimepicker, true);
 
@@ -31853,10 +31853,10 @@ $(function(){
             });
 
             //language
-            this.options.datetimepicker.language = this.options.datetimepicker.language || 'en'; 
+            this.options.datetimepicker.language = this.options.datetimepicker.language || 'en';
 
             //store DPglobal
-            this.dpg = $.fn.datetimepicker.DPGlobal; 
+            this.dpg = $.fn.datetimepicker.DPGlobal;
 
             //store parsed formats
             this.parsedFormat = this.dpg.parseFormat(this.options.format, this.options.formatType);
@@ -31884,7 +31884,7 @@ $(function(){
                     this.clear();
                 }, this));
 
-                this.$tpl.parent().append($('<div class="editable-clear">').append(this.$clear));  
+                this.$tpl.parent().append($('<div class="editable-clear">').append(this.$clear));
             }
         },
 
@@ -31900,7 +31900,7 @@ $(function(){
 
         html2value: function(html) {
             //parseDate return utc date!
-            var value = this.parseDate(html, this.parsedViewFormat); 
+            var value = this.parseDate(html, this.parsedViewFormat);
             return value ? this.fromUTC(value) : null;
         },
 
@@ -31925,7 +31925,7 @@ $(function(){
            }
        },
 
-       input2value: function() { 
+       input2value: function() {
            //date may be cleared, in that case getDate() triggers error
            var dt = this.$input.data('datetimepicker');
            return dt.date ? dt.getDate() : null;
@@ -31938,8 +31938,8 @@ $(function(){
           this.$input.data('datetimepicker').date = null;
           this.$input.find('.active').removeClass('active');
           if(!this.options.showbuttons) {
-             this.$input.closest('form').submit(); 
-          }          
+             this.$input.closest('form').submit();
+          }
        },
 
        autosubmit: function() {
@@ -31953,18 +31953,18 @@ $(function(){
 
        //convert date from local to utc
        toUTC: function(value) {
-         return value ? new Date(value.valueOf() - value.getTimezoneOffset() * 60000) : value;  
+         return value ? new Date(value.valueOf() - value.getTimezoneOffset() * 60000) : value;
        },
 
        //convert date from utc to local
        fromUTC: function(value) {
-         return value ? new Date(value.valueOf() + value.getTimezoneOffset() * 60000) : value;  
+         return value ? new Date(value.valueOf() + value.getTimezoneOffset() * 60000) : value;
        },
 
        /*
         For incorrect date bootstrap-datetimepicker returns current date that is not suitable
         for datetimefield.
-        This function returns null for incorrect date.  
+        This function returns null for incorrect date.
        */
        parseDate: function(str, format) {
            var date = null, formattedBack;
@@ -31974,7 +31974,7 @@ $(function(){
                    formattedBack = this.dpg.formatDate(date, format, this.options.datetimepicker.language, this.options.formatType);
                    if(str !== formattedBack) {
                        date = null;
-                   } 
+                   }
                }
            }
            return date;
@@ -31984,30 +31984,30 @@ $(function(){
 
     DateTime.defaults = $.extend({}, $.fn.editabletypes.abstractinput.defaults, {
         /**
-        @property tpl 
+        @property tpl
         @default <div></div>
-        **/         
+        **/
         tpl:'<div class="editable-date well"></div>',
         /**
-        @property inputclass 
+        @property inputclass
         @default null
         **/
         inputclass: null,
         /**
         Format used for sending value to server. Also applied when converting date from <code>data-value</code> attribute.<br>
-        Possible tokens are: <code>d, dd, m, mm, yy, yyyy, h, i</code>  
-        
-        @property format 
+        Possible tokens are: <code>d, dd, m, mm, yy, yyyy, h, i</code>
+
+        @property format
         @type string
         @default yyyy-mm-dd hh:ii
-        **/         
+        **/
         format:'yyyy-mm-dd hh:ii',
         formatType:'standard',
         /**
-        Format used for displaying date. Also applied when converting date from element's text on init.   
+        Format used for displaying date. Also applied when converting date from element's text on init.
         If not specified equals to <code>format</code>
-        
-        @property viewformat 
+
+        @property viewformat
         @type string
         @default null
         **/
@@ -32016,7 +32016,7 @@ $(function(){
         Configuration of datetimepicker.
         Full list of options: https://github.com/smalot/bootstrap-datetimepicker
 
-        @property datetimepicker 
+        @property datetimepicker
         @type object
         @default { }
         **/
@@ -32025,10 +32025,10 @@ $(function(){
             autoclose: false
         },
         /**
-        Text shown as clear date button. 
+        Text shown as clear date button.
         If <code>false</code> clear button will not be rendered.
 
-        @property clear 
+        @property clear
         @type boolean|string
         @default 'x clear'
         **/
@@ -32040,7 +32040,7 @@ $(function(){
 }(window.jQuery));
 /**
 Bootstrap datetimefield input - datetime input for inline mode.
-Shows normal <input type="text"> and binds popup datetimepicker.  
+Shows normal <input type="text"> and binds popup datetimepicker.
 Automatically shown in inline mode.
 
 @class datetimefield
@@ -32049,69 +32049,69 @@ Automatically shown in inline mode.
 **/
 (function ($) {
     "use strict";
-    
+
     var DateTimeField = function (options) {
         this.init('datetimefield', options, DateTimeField.defaults);
         this.initPicker(options, DateTimeField.defaults);
     };
 
     $.fn.editableutils.inherit(DateTimeField, $.fn.editabletypes.datetime);
-    
+
     $.extend(DateTimeField.prototype, {
         render: function () {
             this.$input = this.$tpl.find('input');
             this.setClass();
             this.setAttr('placeholder');
-            
+
             this.$tpl.datetimepicker(this.options.datetimepicker);
-            
+
             //need to disable original event handlers
             this.$input.off('focus keydown');
-            
+
             //update value of datepicker
             this.$input.keyup($.proxy(function(){
                this.$tpl.removeData('date');
                this.$tpl.datetimepicker('update');
             }, this));
-            
-        },   
-      
+
+        },
+
        value2input: function(value) {
            this.$input.val(this.value2html(value));
            this.$tpl.datetimepicker('update');
        },
-        
-       input2value: function() { 
+
+       input2value: function() {
            return this.html2value(this.$input.val());
-       },              
-        
+       },
+
        activate: function() {
            $.fn.editabletypes.text.prototype.activate.call(this);
        },
-       
+
        autosubmit: function() {
-         //reset autosubmit to empty  
+         //reset autosubmit to empty
        }
     });
-    
+
     DateTimeField.defaults = $.extend({}, $.fn.editabletypes.datetime.defaults, {
         /**
-        @property tpl 
-        **/         
+        @property tpl
+        **/
         tpl:'<div class="input-append date"><input type="text"/><span class="add-on"><i class="icon-th"></i></span></div>',
         /**
-        @property inputclass 
+        @property inputclass
         @default 'input-medium'
-        **/         
+        **/
         inputclass: 'input-medium',
-        
+
         /* datetimepicker config */
         datetimepicker:{
             todayHighlight: false,
             autoclose: true
         }
     });
-    
+
     $.fn.editabletypes.datetimefield = DateTimeField;
 
 }(window.jQuery));;
@@ -32130,8 +32130,8 @@ $(function(){
         url: '/post',
         title: 'Enter city, street and building #',
         value: {
-            city: "Moscow", 
-            street: "Lenina", 
+            city: "Moscow",
+            street: "Lenina",
             building: "15"
         }
     });
@@ -32140,7 +32140,7 @@ $(function(){
 **/
 (function ($) {
     "use strict";
-    
+
     var Address = function (options) {
         this.init('address', options, Address.defaults);
     };
@@ -32152,83 +32152,83 @@ $(function(){
         /**
         Renders input from tpl
 
-        @method render() 
-        **/        
+        @method render()
+        **/
         render: function() {
            this.$input = this.$tpl.find('input');
         },
-        
+
         /**
         Default method to show value in element. Can be overwritten by display option.
-        
-        @method value2html(value, element) 
+
+        @method value2html(value, element)
         **/
         value2html: function(value, element) {
             if(!value) {
                 $(element).empty();
-                return; 
+                return;
             }
             var html = $('<div>').text(value.city).html() + ', ' + $('<div>').text(value.street).html() + ' st., bld. ' + $('<div>').text(value.building).html();
-            $(element).html(html); 
+            $(element).html(html);
         },
-        
+
         /**
         Gets value from element's html
-        
-        @method html2value(html) 
-        **/        
-        html2value: function(html) {        
+
+        @method html2value(html)
+        **/
+        html2value: function(html) {
           /*
             you may write parsing method to get value by element's html
             e.g. "Moscow, st. Lenina, bld. 15" => {city: "Moscow", street: "Lenina", building: "15"}
             but for complex structures it's not recommended.
-            Better set value directly via javascript, e.g. 
+            Better set value directly via javascript, e.g.
             editable({
                 value: {
-                    city: "Moscow", 
-                    street: "Lenina", 
+                    city: "Moscow",
+                    street: "Lenina",
                     building: "15"
                 }
             });
-          */ 
-          return null;  
+          */
+          return null;
         },
-      
+
        /**
-        Converts value to string. 
+        Converts value to string.
         It is used in internal comparing (not for sending to server).
-        
-        @method value2str(value)  
+
+        @method value2str(value)
        **/
        value2str: function(value) {
            var str = '';
            if(value) {
                for(var k in value) {
-                   str = str + k + ':' + value[k] + ';';  
+                   str = str + k + ':' + value[k] + ';';
                }
            }
            return str;
-       }, 
-       
+       },
+
        /*
         Converts string to value. Used for reading value from 'data-value' attribute.
-        
-        @method str2value(str)  
+
+        @method str2value(str)
        */
        str2value: function(str) {
            /*
-           this is mainly for parsing value defined in data-value attribute. 
+           this is mainly for parsing value defined in data-value attribute.
            If you will always set value by javascript, no need to overwrite it
            */
            return str;
-       },                
-       
+       },
+
        /**
         Sets value of input.
-        
-        @method value2input(value) 
+
+        @method value2input(value)
         @param {mixed} value
-       **/         
+       **/
        value2input: function(value) {
            if(!value) {
              return;
@@ -32236,49 +32236,49 @@ $(function(){
            this.$input.filter('[name="city"]').val(value.city);
            this.$input.filter('[name="street"]').val(value.street);
            this.$input.filter('[name="building"]').val(value.building);
-       },       
-       
+       },
+
        /**
         Returns value of input.
-        
-        @method input2value() 
-       **/          
-       input2value: function() { 
+
+        @method input2value()
+       **/
+       input2value: function() {
            return {
-              city: this.$input.filter('[name="city"]').val(), 
-              street: this.$input.filter('[name="street"]').val(), 
+              city: this.$input.filter('[name="city"]').val(),
+              street: this.$input.filter('[name="street"]').val(),
               building: this.$input.filter('[name="building"]').val()
            };
-       },        
-       
+       },
+
         /**
         Activates input: sets focus on the first field.
-        
-        @method activate() 
-       **/        
+
+        @method activate()
+       **/
        activate: function() {
             this.$input.filter('[name="city"]').focus();
-       },  
-       
+       },
+
        /**
         Attaches handler to submit form in case of 'showbuttons=false' mode
-        
-        @method autosubmit() 
-       **/       
+
+        @method autosubmit()
+       **/
        autosubmit: function() {
            this.$input.keydown(function (e) {
                 if (e.which === 13) {
                     $(this).closest('form').submit();
                 }
            });
-       }       
+       }
     });
 
     Address.defaults = $.extend({}, $.fn.editabletypes.abstractinput.defaults, {
         tpl: '<div class="editable-address"><label><span>City: </span><input type="text" name="city" class="input-small form-control"></label></div>'+
              '<div class="editable-address"><label><span>Street: </span><input type="text" name="street" class="input-small form-control"></label></div>'+
              '<div class="editable-address"><label><span>Building: </span><input type="text" name="building" class="input-mini form-control"></label></div>',
-             
+
         inputclass: ''
     });
 
@@ -33425,7 +33425,7 @@ $(function(){
     })();
 })(window.jQuery);;
 /**
-Typeahead.js input, based on [Twitter Typeahead](http://twitter.github.io/typeahead.js).   
+Typeahead.js input, based on [Twitter Typeahead](http://twitter.github.io/typeahead.js).
 It is mainly replacement of typeahead in Bootstrap 3.
 
 
@@ -33442,13 +33442,13 @@ $(function(){
         typeahead: {
             name: 'country',
             local: [
-                {value: 'ru', tokens: ['Russia']}, 
-                {value: 'gb', tokens: ['Great Britain']}, 
+                {value: 'ru', tokens: ['Russia']},
+                {value: 'gb', tokens: ['Great Britain']},
                 {value: 'us', tokens: ['United States']}
             ],
             template: function(item) {
-                return item.tokens[0] + ' (' + item.value + ')'; 
-            } 
+                return item.tokens[0] + ' (' + item.value + ')';
+            }
         }
     });
 });
@@ -33456,7 +33456,7 @@ $(function(){
 **/
 (function ($) {
     "use strict";
-    
+
     var Constructor = function (options) {
         this.init('typeaheadjs', options, Constructor.defaults);
     };
@@ -33469,7 +33469,7 @@ $(function(){
             this.setClass();
             this.setAttr('placeholder');
             this.$input.typeahead(this.options.typeahead);
-            
+
             // copy `input-sm | input-lg` classes to placeholder input
             if($.fn.editableform.engine === 'bs3') {
                 if(this.$input.hasClass('input-sm')) {
@@ -33480,35 +33480,35 @@ $(function(){
                 }
             }
         }
-    });      
+    });
 
     Constructor.defaults = $.extend({}, $.fn.editabletypes.list.defaults, {
         /**
-        @property tpl 
+        @property tpl
         @default <input type="text">
-        **/         
+        **/
         tpl:'<input type="text">',
         /**
-        Configuration of typeahead itself. 
+        Configuration of typeahead itself.
         [Full list of options](https://github.com/twitter/typeahead.js#dataset).
-        
-        @property typeahead 
+
+        @property typeahead
         @type object
         @default null
         **/
         typeahead: null,
         /**
-        Whether to show `clear` button 
-        
-        @property clear 
+        Whether to show `clear` button
+
+        @property clear
         @type boolean
-        @default true        
+        @default true
         **/
         clear: true
     });
 
-    $.fn.editabletypes.typeaheadjs = Constructor;      
-    
+    $.fn.editabletypes.typeaheadjs = Constructor;
+
 }(window.jQuery));;
 /*!
  * jQuery Validation Plugin 1.11.1
@@ -35442,7 +35442,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	 */
 	var DataTable;
 
-	
+
 	/*
 	 * It is useful to have variables which are scoped locally so only the
 	 * DataTables functions can access them and they don't leak into global space.
@@ -35451,42 +35451,42 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	 * by DataTables as private variables here. This also ensures that there is no
 	 * clashing of variable names and that they can easily referenced for reuse.
 	 */
-	
-	
+
+
 	// Defined else where
 	//  _selector_run
 	//  _selector_opts
 	//  _selector_first
 	//  _selector_row_indexes
-	
+
 	var _ext; // DataTable.ext
 	var _Api; // DataTable.Api
 	var _api_register; // DataTable.Api.register
 	var _api_registerPlural; // DataTable.Api.registerPlural
-	
+
 	var _re_dic = {};
 	var _re_new_lines = /[\r\n]/g;
 	var _re_html = /<.*?>/g;
 	var _re_date_start = /^[\d\+\-a-zA-Z]/;
-	
+
 	// Escape regular expression special characters
 	var _re_escape_regex = new RegExp( '(\\' + [ '/', '.', '*', '+', '?', '|', '(', ')', '[', ']', '{', '}', '\\', '$', '^', '-' ].join('|\\') + ')', 'g' );
-	
+
 	// U+2009 is thin space and U+202F is narrow no-break space, both used in many
 	// standards as thousands separators
 	var _re_formatted_numeric = /[',$£€¥%\u2009\u202F]/g;
-	
-	
+
+
 	var _empty = function ( d ) {
 		return !d || d === '-' ? true : false;
 	};
-	
-	
+
+
 	var _intVal = function ( s ) {
 		var integer = parseInt( s, 10 );
 		return !isNaN(integer) && isFinite(s) ? integer : null;
 	};
-	
+
 	var _numToDecimal = function ( num, decimalPoint ) {
 		// Cache created regular expressions for speed as this function is called often
 		if ( ! _re_dic[ decimalPoint ] ) {
@@ -35494,34 +35494,34 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		}
 		return num.replace( /\./g, '' ).replace( _re_dic[ decimalPoint ], '.' );
 	};
-	
-	
+
+
 	var _isNumber = function ( d, decimalPoint, formatted ) {
 		var strType = typeof d === 'string';
-	
+
 		if ( decimalPoint && strType ) {
 			d = _numToDecimal( d, decimalPoint );
 		}
-	
+
 		if ( formatted && strType ) {
 			d = d.replace( _re_formatted_numeric, '' );
 		}
-	
+
 		return !d || d==='-' || (!isNaN( parseFloat(d) ) && isFinite( d ));
 	};
-	
-	
+
+
 	// A string without HTML in it can be considered to be HTML still
 	var _isHtml = function ( d ) {
 		return !d || typeof d === 'string';
 	};
-	
-	
+
+
 	var _htmlNumeric = function ( d, decimalPoint, formatted ) {
 		if ( _empty( d ) ) {
 			return true;
 		}
-	
+
 		var html = _isHtml( d );
 		return ! html ?
 			null :
@@ -35529,12 +35529,12 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				true :
 				null;
 	};
-	
-	
+
+
 	var _pluck = function ( a, prop, prop2 ) {
 		var out = [];
 		var i=0, ien=a.length;
-	
+
 		// Could have the test in the loop for slightly smaller code, but speed
 		// is essential here
 		if ( prop2 !== undefined ) {
@@ -35551,18 +35551,18 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				}
 			}
 		}
-	
+
 		return out;
 	};
-	
-	
+
+
 	// Basically the same as _pluck, but rather than looping over `a` we use `order`
 	// as the indexes to pick from `a`
 	var _pluck_order = function ( a, order, prop, prop2 )
 	{
 		var out = [];
 		var i=0, ien=order.length;
-	
+
 		// Could have the test in the loop for slightly smaller code, but speed
 		// is essential here
 		if ( prop2 !== undefined ) {
@@ -35575,16 +35575,16 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				out.push( a[ order[i] ][ prop ] );
 			}
 		}
-	
+
 		return out;
 	};
-	
-	
+
+
 	var _range = function ( len, start )
 	{
 		var out = [];
 		var end;
-	
+
 		if ( start === undefined ) {
 			start = 0;
 			end = len;
@@ -35593,20 +35593,20 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			end = start;
 			start = len;
 		}
-	
+
 		for ( var i=start ; i<end ; i++ ) {
 			out.push( i );
 		}
-	
+
 		return out;
 	};
-	
-	
+
+
 	var _stripHtml = function ( d ) {
 		return d.replace( _re_html, '' );
 	};
-	
-	
+
+
 	/**
 	 * Find the unique elements in a source array.
 	 *
@@ -35625,25 +35625,25 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			val,
 			i, ien=src.length,
 			j, k=0;
-	
+
 		again: for ( i=0 ; i<ien ; i++ ) {
 			val = src[i];
-	
+
 			for ( j=0 ; j<k ; j++ ) {
 				if ( out[j] === val ) {
 					continue again;
 				}
 			}
-	
+
 			out.push( val );
 			k++;
 		}
-	
+
 		return out;
 	};
-	
-	
-	
+
+
+
 	/**
 	 * Create a mapping object that allows camel case parameters to be looked up
 	 * for their Hungarian counterparts. The mapping is stored in a private
@@ -35658,26 +35658,26 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			match,
 			newKey,
 			map = {};
-	
+
 		$.each( o, function (key, val) {
 			match = key.match(/^([^A-Z]+?)([A-Z])/);
-	
+
 			if ( match && hungarian.indexOf(match[1]+' ') !== -1 )
 			{
 				newKey = key.replace( match[0], match[2].toLowerCase() );
 				map[ newKey ] = key;
-	
+
 				if ( match[1] === 'o' )
 				{
 					_fnHungarianMap( o[key] );
 				}
 			}
 		} );
-	
+
 		o._hungarianMap = map;
 	}
-	
-	
+
+
 	/**
 	 * Convert from camel case parameters to Hungarian, based on a Hungarian map
 	 * created by _fnHungarianMap.
@@ -35695,16 +35695,16 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		{
 			_fnHungarianMap( src );
 		}
-	
+
 		var hungarianKey;
-	
+
 		$.each( user, function (key, val) {
 			hungarianKey = src._hungarianMap[ key ];
-	
+
 			if ( hungarianKey !== undefined && (force || user[hungarianKey] === undefined) )
 			{
 				user[hungarianKey] = user[ key ];
-	
+
 				if ( hungarianKey.charAt(0) === 'o' )
 				{
 					_fnCamelToHungarian( src[hungarianKey], user[key] );
@@ -35712,8 +35712,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			}
 		} );
 	}
-	
-	
+
+
 	/**
 	 * Language compatibility - when certain options are given, and others aren't, we
 	 * need to duplicate the values over, in order to provide backwards compatibility
@@ -35725,7 +35725,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	{
 		var defaults = DataTable.defaults.oLanguage;
 		var zeroRecords = lang.sZeroRecords;
-	
+
 		/* Backwards compatibility - if there is no sEmptyTable given, then use the same as
 		 * sZeroRecords - assuming that is given.
 		 */
@@ -35734,26 +35734,26 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		{
 			_fnMap( lang, lang, 'sZeroRecords', 'sEmptyTable' );
 		}
-	
+
 		/* Likewise with loading records */
 		if ( ! lang.sLoadingRecords && zeroRecords &&
 			defaults.sLoadingRecords === "Loading..." )
 		{
 			_fnMap( lang, lang, 'sZeroRecords', 'sLoadingRecords' );
 		}
-	
+
 		// Old parameter name of the thousands separator mapped onto the new
 		if ( lang.sInfoThousands ) {
 			lang.sThousands = lang.sInfoThousands;
 		}
-	
+
 		var decimal = lang.sDecimal;
 		if ( decimal ) {
 			_addNumericSort( decimal );
 		}
 	}
-	
-	
+
+
 	/**
 	 * Map one parameter onto another
 	 *  @param {object} o Object to map
@@ -35765,8 +35765,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			o[ old ] = o[ knew ];
 		}
 	};
-	
-	
+
+
 	/**
 	 * Provide backwards compatibility for the main DT options. Note that the new
 	 * options are mapped onto the old parameters, so this is an external interface
@@ -35786,8 +35786,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		_fnCompatMap( init, 'pageLength',    'iDisplayLength' );
 		_fnCompatMap( init, 'searching',     'bFilter' );
 	}
-	
-	
+
+
 	/**
 	 * Provide backwards compatibility for column options. Note that the new options
 	 * are mapped onto the old parameters, so this is an external interface change
@@ -35801,8 +35801,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		_fnCompatMap( init, 'orderSequence', 'asSorting' );
 		_fnCompatMap( init, 'orderDataType', 'sortDataType' );
 	}
-	
-	
+
+
 	/**
 	 * Browser feature detection for capabilities, quirks
 	 *  @param {object} settings dataTables settings object
@@ -35811,7 +35811,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	function _fnBrowserDetect( settings )
 	{
 		var browser = settings.oBrowser;
-	
+
 		// Scrolling feature / quirks detection
 		var n = $('<div/>')
 			.css( {
@@ -35840,21 +35840,21 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 					)
 			)
 			.appendTo( 'body' );
-	
+
 		var test = n.find('.test');
-	
+
 		// IE6/7 will oversize a width 100% element inside a scrolling element, to
 		// include the width of the scrollbar, while other browsers ensure the inner
 		// element is contained without forcing scrolling
 		browser.bScrollOversize = test[0].offsetWidth === 100;
-	
+
 		// In rtl text layout, some browsers (most, but not all) will place the
 		// scrollbar on the left, rather than the right.
 		browser.bScrollbarLeft = test.offset().left !== 1;
-	
+
 		n.remove();
 	}
-	
+
 	/**
 	 * Add a column to the list used for the table with default values
 	 *  @param {object} oSettings dataTables settings object
@@ -35875,7 +35875,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			idx: iCol
 		} );
 		oSettings.aoColumns.push( oCol );
-	
+
 		/* Add a column specific filter */
 		if ( oSettings.aoPreSearchCols[ iCol ] === undefined || oSettings.aoPreSearchCols[ iCol ] === null )
 		{
@@ -35884,29 +35884,29 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		else
 		{
 			var oPre = oSettings.aoPreSearchCols[ iCol ];
-	
+
 			/* Don't require that the user must specify bRegex, bSmart or bCaseInsensitive */
 			if ( oPre.bRegex === undefined )
 			{
 				oPre.bRegex = true;
 			}
-	
+
 			if ( oPre.bSmart === undefined )
 			{
 				oPre.bSmart = true;
 			}
-	
+
 			if ( oPre.bCaseInsensitive === undefined )
 			{
 				oPre.bCaseInsensitive = true;
 			}
 		}
-	
+
 		/* Use the column options function to initialise classes etc */
 		_fnColumnOptions( oSettings, iCol, null );
 	}
-	
-	
+
+
 	/**
 	 * Apply options for a column
 	 *  @param {object} oSettings dataTables settings object
@@ -35918,49 +35918,49 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	{
 		var oCol = oSettings.aoColumns[ iCol ];
 		var oClasses = oSettings.oClasses;
-	
+
 		// Try to get width information from the DOM. We can't get it from CSS
 		// as we'd need to parse the CSS stylesheet. `width` option can override
 		if ( ! oCol.sWidthOrig ) {
 			var th = $(oCol.nTh);
-	
+
 			// Width attribute
 			oCol.sWidthOrig = th.attr('width') || null;
-	
+
 			// Style attribute
 			var t = (th.attr('style') || '').match(/width:\s*(\d+[pxem%])/);
 			if ( t ) {
 				oCol.sWidthOrig = t[1];
 			}
 		}
-	
+
 		/* User specified column options */
 		if ( oOptions !== undefined && oOptions !== null )
 		{
 			// Backwards compatibility
 			_fnCompatCols( oOptions );
-	
+
 			// Map camel case parameters to their Hungarian counterparts
 			_fnCamelToHungarian( DataTable.defaults.column, oOptions );
-	
+
 			/* Backwards compatibility for mDataProp */
 			if ( oOptions.mDataProp !== undefined && !oOptions.mData )
 			{
 				oOptions.mData = oOptions.mDataProp;
 			}
-	
+
 			oCol._sManualType = oOptions.sType;
-	
+
 			// `class` is a reserved word in Javascript, so we need to provide
 			// the ability to use a valid name for the camel case input
 			if ( oOptions.className && ! oOptions.sClass )
 			{
 				oOptions.sClass = oOptions.className;
 			}
-	
+
 			$.extend( oCol, oOptions );
 			_fnMap( oCol, oOptions, "sWidth", "sWidthOrig" );
-	
+
 			/* iDataSort to be applied (backwards compatibility), but aDataSort will take
 			 * priority if defined
 			 */
@@ -35970,22 +35970,22 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			}
 			_fnMap( oCol, oOptions, "aDataSort" );
 		}
-	
+
 		/* Cache the data get and set functions for speed */
 		var mDataSrc = oCol.mData;
 		var mData = _fnGetObjectDataFn( mDataSrc );
 		var mRender = oCol.mRender ? _fnGetObjectDataFn( oCol.mRender ) : null;
-	
+
 		var attrTest = function( src ) {
 			return typeof src === 'string' && src.indexOf('@') !== -1;
 		};
 		oCol._bAttrSrc = $.isPlainObject( mDataSrc ) && (
 			attrTest(mDataSrc.sort) || attrTest(mDataSrc.type) || attrTest(mDataSrc.filter)
 		);
-	
+
 		oCol.fnGetData = function (oData, sSpecific) {
 			var innerData = mData( oData, sSpecific );
-	
+
 			if ( oCol.mRender && (sSpecific && sSpecific !== '') )
 			{
 				return mRender( innerData, sSpecific, oData );
@@ -35993,13 +35993,13 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			return innerData;
 		};
 		oCol.fnSetData = _fnSetObjectDataFn( mDataSrc );
-	
+
 		/* Feature sorting overrides column specific when off */
 		if ( !oSettings.oFeatures.bSort )
 		{
 			oCol.bSortable = false;
 		}
-	
+
 		/* Check that the class assignment is correct for sorting */
 		var bAsc = $.inArray('asc', oCol.asSorting) !== -1;
 		var bDesc = $.inArray('desc', oCol.asSorting) !== -1;
@@ -36019,8 +36019,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			oCol.sSortingClassJUI = oClasses.sSortJUIDescAllowed;
 		}
 	}
-	
-	
+
+
 	/**
 	 * Adjust the table column widths for new data. Note: you would probably want to
 	 * do a redraw after calling this function!
@@ -36033,24 +36033,24 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		if ( settings.oFeatures.bAutoWidth !== false )
 		{
 			var columns = settings.aoColumns;
-	
+
 			_fnCalculateColumnWidths( settings );
 			for ( var i=0 , iLen=columns.length ; i<iLen ; i++ )
 			{
 				columns[i].nTh.style.width = columns[i].sWidth;
 			}
 		}
-	
+
 		var scroll = settings.oScroll;
 		if ( scroll.sY !== '' || scroll.sX !== '')
 		{
 			_fnScrollDraw( settings );
 		}
-	
+
 		_fnCallbackFire( settings, null, 'column-sizing', [settings] );
 	}
-	
-	
+
+
 	/**
 	 * Covert the index of a visible column to the index in the data array (take account
 	 * of hidden columns)
@@ -36062,13 +36062,13 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	function _fnVisibleToColumnIndex( oSettings, iMatch )
 	{
 		var aiVis = _fnGetColumns( oSettings, 'bVisible' );
-	
+
 		return typeof aiVis[iMatch] === 'number' ?
 			aiVis[iMatch] :
 			null;
 	}
-	
-	
+
+
 	/**
 	 * Covert the index of an index in the data array and convert it to the visible
 	 *   column index (take account of hidden columns)
@@ -36081,11 +36081,11 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	{
 		var aiVis = _fnGetColumns( oSettings, 'bVisible' );
 		var iPos = $.inArray( iMatch, aiVis );
-	
+
 		return iPos !== -1 ? iPos : null;
 	}
-	
-	
+
+
 	/**
 	 * Get the number of visible columns
 	 *  @param {object} oSettings dataTables settings object
@@ -36096,8 +36096,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	{
 		return _fnGetColumns( oSettings, 'bVisible' ).length;
 	}
-	
-	
+
+
 	/**
 	 * Get an array of column indexes that match a given property
 	 *  @param {object} oSettings dataTables settings object
@@ -36109,17 +36109,17 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	function _fnGetColumns( oSettings, sParam )
 	{
 		var a = [];
-	
+
 		$.map( oSettings.aoColumns, function(val, i) {
 			if ( val[sParam] ) {
 				a.push( i );
 			}
 		} );
-	
+
 		return a;
 	}
-	
-	
+
+
 	function _fnColumnTypes ( settings )
 	{
 		var columns = settings.aoColumns;
@@ -36127,12 +36127,12 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		var types = DataTable.ext.type.detect;
 		var i, ien, j, jen, k, ken;
 		var col, cell, detectedType, cache;
-	
-		// For each column, spin over the 
+
+		// For each column, spin over the
 		for ( i=0, ien=columns.length ; i<ien ; i++ ) {
 			col = columns[i];
 			cache = [];
-	
+
 			if ( ! col.sType && col._sManualType ) {
 				col.sType = col._sManualType;
 			}
@@ -36144,9 +36144,9 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 						if ( cache[k] === undefined ) {
 							cache[k] = _fnGetCellData( settings, k, i, 'type' );
 						}
-	
+
 						detectedType = types[j]( cache[k], settings );
-	
+
 						// Doesn't match, so break early, since this type can't
 						// apply to this column. Also, HTML is a special case since
 						// it is so similar to `string`. Just a single match is
@@ -36155,7 +36155,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 							break;
 						}
 					}
-	
+
 					// Type is valid for all data points in the column - use this
 					// type
 					if ( detectedType ) {
@@ -36163,7 +36163,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 						break;
 					}
 				}
-	
+
 				// Fall back - if no type was detected, always use string
 				if ( ! col.sType ) {
 					col.sType = 'string';
@@ -36171,8 +36171,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			}
 		}
 	}
-	
-	
+
+
 	/**
 	 * Take the column definitions and static columns arrays and calculate how
 	 * they relate to column indexes. The callback function will then apply the
@@ -36187,7 +36187,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	function _fnApplyColumnDefs( oSettings, aoColDefs, aoCols, fn )
 	{
 		var i, iLen, j, jLen, k, kLen, def;
-	
+
 		// Column definitions with aTargets
 		if ( aoColDefs )
 		{
@@ -36195,17 +36195,17 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			for ( i=aoColDefs.length-1 ; i>=0 ; i-- )
 			{
 				def = aoColDefs[i];
-	
+
 				/* Each definition can target multiple columns, as it is an array */
 				var aTargets = def.targets !== undefined ?
 					def.targets :
 					def.aTargets;
-	
+
 				if ( ! $.isArray( aTargets ) )
 				{
 					aTargets = [ aTargets ];
 				}
-	
+
 				for ( j=0, jLen=aTargets.length ; j<jLen ; j++ )
 				{
 					if ( typeof aTargets[j] === 'number' && aTargets[j] >= 0 )
@@ -36215,7 +36215,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 						{
 							_fnAddColumn( oSettings );
 						}
-	
+
 						/* Integer, basic index */
 						fn( aTargets[j], def );
 					}
@@ -36239,7 +36239,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				}
 			}
 		}
-	
+
 		// Statically defined columns array
 		if ( aoCols )
 		{
@@ -36249,7 +36249,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			}
 		}
 	}
-	
+
 	/**
 	 * Add a data array to the table, creating DOM node etc. This is the parallel to
 	 * _fnGatherData, but for adding rows from a Javascript source, rather than a
@@ -36270,10 +36270,10 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		var oData = $.extend( true, {}, DataTable.models.oRow, {
 			src: nTr ? 'dom' : 'data'
 		} );
-	
+
 		oData._aData = aDataIn;
 		oSettings.aoData.push( oData );
-	
+
 		/* Create the cells */
 		var nTd, sThisType;
 		var columns = oSettings.aoColumns;
@@ -36287,20 +36287,20 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			}
 			columns[i].sType = null;
 		}
-	
+
 		/* Add to the display array */
 		oSettings.aiDisplayMaster.push( iRow );
-	
+
 		/* Create the DOM information */
 		if ( !oSettings.oFeatures.bDeferRender )
 		{
 			_fnCreateTr( oSettings, iRow, nTr, anTds );
 		}
-	
+
 		return iRow;
 	}
-	
-	
+
+
 	/**
 	 * Add one or more TR elements to the table. Generally we'd expect to
 	 * use this for reading data from a DOM sourced table, but it could be
@@ -36314,19 +36314,19 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	function _fnAddTr( settings, trs )
 	{
 		var row;
-	
+
 		// Allow an individual node to be passed in
 		if ( ! (trs instanceof $) ) {
 			trs = $(trs);
 		}
-	
+
 		return trs.map( function (i, el) {
 			row = _fnGetRowElements( settings, el );
 			return _fnAddData( settings, row.data, el, row.cells );
 		} );
 	}
-	
-	
+
+
 	/**
 	 * Take a TR element and convert it to an index in aoData
 	 *  @param {object} oSettings dataTables settings object
@@ -36338,8 +36338,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	{
 		return (n._DT_RowIndex!==undefined) ? n._DT_RowIndex : null;
 	}
-	
-	
+
+
 	/**
 	 * Take a TD element and convert it into a column data index (not the visible index)
 	 *  @param {object} oSettings dataTables settings object
@@ -36352,8 +36352,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	{
 		return $.inArray( n, oSettings.aoData[ iRow ].anCells );
 	}
-	
-	
+
+
 	/**
 	 * Get an array of data for a given row from the internal data cache
 	 *  @param {object} oSettings dataTables settings object
@@ -36372,8 +36372,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		}
 		return out;
 	}
-	
-	
+
+
 	/**
 	 * Get the data for a given cell from the internal cache, taking into account data mapping
 	 *  @param {object} oSettings dataTables settings object
@@ -36388,7 +36388,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		var oCol = oSettings.aoColumns[iCol];
 		var oData = oSettings.aoData[iRow]._aData;
 		var sData = oCol.fnGetData( oData, sSpecific );
-	
+
 		if ( sData === undefined )
 		{
 			if ( oSettings.iDrawError != oSettings.iDraw && oCol.sDefaultContent === null )
@@ -36400,7 +36400,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			}
 			return oCol.sDefaultContent;
 		}
-	
+
 		/* When the data source is null, we can use default column data */
 		if ( (sData === oData || sData === null) && oCol.sDefaultContent !== null )
 		{
@@ -36411,15 +36411,15 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			// If the data source is a function, then we run it and use the return
 			return sData();
 		}
-	
+
 		if ( sData === null && sSpecific == 'display' )
 		{
 			return '';
 		}
 		return sData;
 	}
-	
-	
+
+
 	/**
 	 * Set the value for a specific cell, into the internal data cache
 	 *  @param {object} oSettings dataTables settings object
@@ -36432,15 +36432,15 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	{
 		var oCol = oSettings.aoColumns[iCol];
 		var oData = oSettings.aoData[iRow]._aData;
-	
+
 		oCol.fnSetData( oData, val );
 	}
-	
-	
+
+
 	// Private variable that is used to match action syntax in the data property object
 	var __reArray = /\[.*?\]$/;
 	var __reFn = /\(\)$/;
-	
+
 	/**
 	 * Split string on periods, taking into account escaped periods
 	 * @param  {string} str String to split
@@ -36452,8 +36452,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			return s.replace('\\.', '.');
 		} );
 	}
-	
-	
+
+
 	/**
 	 * Return a function that can be used to get data from a source object, taking
 	 * into account the ability to use nested objects as a source
@@ -36472,7 +36472,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 					o[key] = _fnGetObjectDataFn( val );
 				}
 			} );
-	
+
 			return function (data, type, extra) {
 				return o[ o[type] !== undefined ? type : '_' ](data, type, extra);
 			};
@@ -36501,42 +36501,42 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 */
 			var fetchData = function (data, type, src) {
 				var arrayNotation, funcNotation, out, innerSrc;
-	
+
 				if ( src !== "" )
 				{
 					var a = _fnSplitObjNotation( src );
-	
+
 					for ( var i=0, iLen=a.length ; i<iLen ; i++ )
 					{
 						// Check if we are dealing with special notation
 						arrayNotation = a[i].match(__reArray);
 						funcNotation = a[i].match(__reFn);
-	
+
 						if ( arrayNotation )
 						{
 							// Array notation
 							a[i] = a[i].replace(__reArray, '');
-	
+
 							// Condition allows simply [] to be passed in
 							if ( a[i] !== "" ) {
 								data = data[ a[i] ];
 							}
 							out = [];
-	
+
 							// Get the remainder of the nested object to get
 							a.splice( 0, i+1 );
 							innerSrc = a.join('.');
-	
+
 							// Traverse each entry in the array getting the properties requested
 							for ( var j=0, jLen=data.length ; j<jLen ; j++ ) {
 								out.push( fetchData( data[j], type, innerSrc ) );
 							}
-	
+
 							// If a string is given in between the array notation indicators, that
 							// is used to join the strings together, otherwise an array is returned
 							var join = arrayNotation[0].substring(1, arrayNotation[0].length-1);
 							data = (join==="") ? out : out.join(join);
-	
+
 							// The inner call to fetchData has already traversed through the remainder
 							// of the source requested, so we exit from the loop
 							break;
@@ -36548,7 +36548,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 							data = data[ a[i] ]();
 							continue;
 						}
-	
+
 						if ( data === null || data[ a[i] ] === undefined )
 						{
 							return undefined;
@@ -36556,10 +36556,10 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 						data = data[ a[i] ];
 					}
 				}
-	
+
 				return data;
 			};
-	
+
 			return function (data, type) {
 				return fetchData( data, type, mSource );
 			};
@@ -36572,8 +36572,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			};
 		}
 	}
-	
-	
+
+
 	/**
 	 * Return a function that can be used to set data from a source object, taking
 	 * into account the ability to use nested objects as a source
@@ -36611,23 +36611,23 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				var a = _fnSplitObjNotation( src ), b;
 				var aLast = a[a.length-1];
 				var arrayNotation, funcNotation, o, innerSrc;
-	
+
 				for ( var i=0, iLen=a.length-1 ; i<iLen ; i++ )
 				{
 					// Check if we are dealing with an array notation request
 					arrayNotation = a[i].match(__reArray);
 					funcNotation = a[i].match(__reFn);
-	
+
 					if ( arrayNotation )
 					{
 						a[i] = a[i].replace(__reArray, '');
 						data[ a[i] ] = [];
-	
+
 						// Get the remainder of the nested object to set so we can recurse
 						b = a.slice();
 						b.splice( 0, i+1 );
 						innerSrc = b.join('.');
-	
+
 						// Traverse each entry in the array setting the properties requested
 						for ( var j=0, jLen=val.length ; j<jLen ; j++ )
 						{
@@ -36635,7 +36635,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 							setData( o, val[j], innerSrc );
 							data[ a[i] ].push( o );
 						}
-	
+
 						// The inner call to setData has already traversed through the remainder
 						// of the source and has set the data, thus we can exit here
 						return;
@@ -36646,7 +36646,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 						a[i] = a[i].replace(__reFn, '');
 						data = data[ a[i] ]( val );
 					}
-	
+
 					// If the nested object doesn't currently exist - since we are
 					// trying to set the value - create it
 					if ( data[ a[i] ] === null || data[ a[i] ] === undefined )
@@ -36655,7 +36655,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 					}
 					data = data[ a[i] ];
 				}
-	
+
 				// Last item in the input - i.e, the actual set
 				if ( aLast.match(__reFn ) )
 				{
@@ -36669,7 +36669,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 					data[ aLast.replace(__reArray, '') ] = val;
 				}
 			};
-	
+
 			return function (data, val) {
 				return setData( data, val, mSource );
 			};
@@ -36682,8 +36682,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			};
 		}
 	}
-	
-	
+
+
 	/**
 	 * Return an array with the full table data
 	 *  @param {object} oSettings dataTables settings object
@@ -36694,8 +36694,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	{
 		return _pluck( settings.aoData, '_aData' );
 	}
-	
-	
+
+
 	/**
 	 * Nuke the table
 	 *  @param {object} oSettings dataTables settings object
@@ -36707,8 +36707,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		settings.aiDisplayMaster.length = 0;
 		settings.aiDisplay.length = 0;
 	}
-	
-	
+
+
 	 /**
 	 * Take an array of integers (index array) and remove a target integer (value - not
 	 * the key!)
@@ -36719,7 +36719,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	function _fnDeleteIndex( a, iTarget, splice )
 	{
 		var iTargetIndex = -1;
-	
+
 		for ( var i=0, iLen=a.length ; i<iLen ; i++ )
 		{
 			if ( a[i] == iTarget )
@@ -36731,14 +36731,14 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				a[i]--;
 			}
 		}
-	
+
 		if ( iTargetIndex != -1 && splice === undefined )
 		{
 			a.splice( iTargetIndex, 1 );
 		}
 	}
-	
-	
+
+
 	/**
 	 * Mark cached data as invalid such that a re-read of the data will occur when
 	 * the cached data is next requested. Also update from the data source object.
@@ -36755,7 +36755,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	{
 		var row = settings.aoData[ rowIdx ];
 		var i, ien;
-	
+
 		// Are we reading last data from DOM or the data object?
 		if ( src === 'dom' || ((! src || src === 'auto') && row.src === 'dom') ) {
 			// Read the data from the DOM
@@ -36764,15 +36764,15 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		else {
 			// Reading from data object, update the DOM
 			var cells = row.anCells;
-	
+
 			for ( i=0, ien=cells.length ; i<ien ; i++ ) {
 				cells[i].innerHTML = _fnGetCellData( settings, rowIdx, i, 'display' );
 			}
 		}
-	
+
 		row._aSortData = null;
 		row._aFilterData = null;
-	
+
 		// Invalidate the type for a specific column (if given) or all columns since
 		// the data might have changed
 		var cols = settings.aoColumns;
@@ -36784,12 +36784,12 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				cols[i].sType = null;
 			}
 		}
-	
+
 		// Update DataTables special `DT_*` attributes for the row
 		_fnRowAttributes( row );
 	}
-	
-	
+
+
 	/**
 	 * Build a data source object from an HTML row, reading the contents of the
 	 * cells that are in the row.
@@ -36810,47 +36810,47 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			td = row.firstChild,
 			name, col, o, i=0, contents,
 			columns = settings.aoColumns;
-	
+
 		var attr = function ( str, data, td  ) {
 			if ( typeof str === 'string' ) {
 				var idx = str.indexOf('@');
-	
+
 				if ( idx !== -1 ) {
 					var src = str.substring( idx+1 );
 					o[ '@'+src ] = td.getAttribute( src );
 				}
 			}
 		};
-	
+
 		while ( td ) {
 			name = td.nodeName.toUpperCase();
-	
+
 			if ( name == "TD" || name == "TH" ) {
 				col = columns[i];
 				contents = $.trim(td.innerHTML);
-	
+
 				if ( col && col._bAttrSrc ) {
 					o = {
 						display: contents
 					};
-	
+
 					attr( col.mData.sort, o, td );
 					attr( col.mData.type, o, td );
 					attr( col.mData.filter, o, td );
-	
+
 					d.push( o );
 				}
 				else {
 					d.push( contents );
 				}
-	
+
 				tds.push( td );
 				i++;
 			}
-	
+
 			td = td.nextSibling;
 		}
-	
+
 		return {
 			data: d,
 			cells: tds
@@ -36874,42 +36874,42 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			cells = [],
 			nTr, nTd, oCol,
 			i, iLen;
-	
+
 		if ( row.nTr === null )
 		{
 			nTr = nTrIn || document.createElement('tr');
-	
+
 			row.nTr = nTr;
 			row.anCells = cells;
-	
+
 			/* Use a private property on the node to allow reserve mapping from the node
 			 * to the aoData array for fast look up
 			 */
 			nTr._DT_RowIndex = iRow;
-	
+
 			/* Special parameters can be given by the data source to be used on the row */
 			_fnRowAttributes( row );
-	
+
 			/* Process each column */
 			for ( i=0, iLen=oSettings.aoColumns.length ; i<iLen ; i++ )
 			{
 				oCol = oSettings.aoColumns[i];
-	
+
 				nTd = nTrIn ? anTds[i] : document.createElement( oCol.sCellType );
 				cells.push( nTd );
-	
+
 				// Need to create the HTML if new, or if a rendering function is defined
 				if ( !nTrIn || oCol.mRender || oCol.mData !== i )
 				{
 					nTd.innerHTML = _fnGetCellData( oSettings, iRow, i, 'display' );
 				}
-	
+
 				/* Add user defined class */
 				if ( oCol.sClass )
 				{
 					nTd.className += ' '+oCol.sClass;
 				}
-	
+
 				// Visibility - add or remove as required
 				if ( oCol.bVisible && ! nTrIn )
 				{
@@ -36919,7 +36919,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				{
 					nTd.parentNode.removeChild( nTd );
 				}
-	
+
 				if ( oCol.fnCreatedCell )
 				{
 					oCol.fnCreatedCell.call( oSettings.oInstance,
@@ -36927,12 +36927,12 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 					);
 				}
 			}
-	
+
 			_fnCallbackFire( oSettings, 'aoRowCreatedCallback', null, [nTr, rowData, iRow] );
 		}
 	}
-	
-	
+
+
 	/**
 	 * Add attributes to a row based on the special `DT_*` parameters in a data
 	 * source object.
@@ -36943,31 +36943,31 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	{
 		var tr = row.nTr;
 		var data = row._aData;
-	
+
 		if ( tr ) {
 			if ( data.DT_RowId ) {
 				tr.id = data.DT_RowId;
 			}
-	
+
 			if ( data.DT_RowClass ) {
 				// Remove any classes added by DT_RowClass before
 				var a = data.DT_RowClass.split(' ');
 				row.__rowc = row.__rowc ?
 					_unique( row.__rowc.concat( a ) ) :
 					a;
-	
+
 				$(tr)
 					.removeClass( row.__rowc.join(' ') )
 					.addClass( data.DT_RowClass );
 			}
-	
+
 			if ( data.DT_RowData ) {
 				$(tr).data( data.DT_RowData );
 			}
 		}
 	}
-	
-	
+
+
 	/**
 	 * Create the HTML header for the table
 	 *  @param {object} oSettings dataTables settings object
@@ -36981,71 +36981,71 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		var createHeader = $('th, td', thead).length === 0;
 		var classes = oSettings.oClasses;
 		var columns = oSettings.aoColumns;
-	
+
 		if ( createHeader ) {
 			row = $('<tr/>').appendTo( thead );
 		}
-	
+
 		for ( i=0, ien=columns.length ; i<ien ; i++ ) {
 			column = columns[i];
 			cell = $( column.nTh ).addClass( column.sClass );
-	
+
 			if ( createHeader ) {
 				cell.appendTo( row );
 			}
-	
+
 			// 1.11 move into sorting
 			if ( oSettings.oFeatures.bSort ) {
 				cell.addClass( column.sSortingClass );
-	
+
 				if ( column.bSortable !== false ) {
 					cell
 						.attr( 'tabindex', oSettings.iTabIndex )
 						.attr( 'aria-controls', oSettings.sTableId );
-	
+
 					_fnSortAttachListener( oSettings, column.nTh, i );
 				}
 			}
-	
+
 			if ( column.sTitle != cell.html() ) {
 				cell.html( column.sTitle );
 			}
-	
+
 			_fnRenderer( oSettings, 'header' )(
 				oSettings, cell, column, classes
 			);
 		}
-	
+
 		if ( createHeader ) {
 			_fnDetectHeader( oSettings.aoHeader, thead );
 		}
-	
+
 		/* ARIA role for the rows */
 		$(thead).find('>tr').attr('role', 'row');
-	
+
 		/* Deal with the footer - add classes if required */
 		$(thead).find('>tr>th, >tr>td').addClass( classes.sHeaderTH );
 		$(tfoot).find('>tr>th, >tr>td').addClass( classes.sFooterTH );
-	
+
 		// Cache the footer cells. Note that we only take the cells from the first
 		// row in the footer. If there is more than one row the user wants to
 		// interact with, they need to use the table().foot() method. Note also this
 		// allows cells to be used for multiple columns using colspan
 		if ( tfoot !== null ) {
 			var cells = oSettings.aoFooter[0];
-	
+
 			for ( i=0, ien=cells.length ; i<ien ; i++ ) {
 				column = columns[i];
 				column.nTf = cells[i].cell;
-	
+
 				if ( column.sClass ) {
 					$(column.nTf).addClass( column.sClass );
 				}
 			}
 		}
 	}
-	
-	
+
+
 	/**
 	 * Draw the header (or footer) element based on the column visibility states. The
 	 * methodology here is to use the layout array from _fnDetectHeader, modified for
@@ -37066,23 +37066,23 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		var aApplied = [];
 		var iColumns = oSettings.aoColumns.length;
 		var iRowspan, iColspan;
-	
+
 		if ( ! aoSource )
 		{
 			return;
 		}
-	
+
 		if (  bIncludeHidden === undefined )
 		{
 			bIncludeHidden = false;
 		}
-	
+
 		/* Make a copy of the master layout array, but without the visible columns in it */
 		for ( i=0, iLen=aoSource.length ; i<iLen ; i++ )
 		{
 			aoLocal[i] = aoSource[i].slice();
 			aoLocal[i].nTr = aoSource[i].nTr;
-	
+
 			/* Remove any columns which are currently hidden */
 			for ( j=iColumns-1 ; j>=0 ; j-- )
 			{
@@ -37091,15 +37091,15 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 					aoLocal[i].splice( j, 1 );
 				}
 			}
-	
+
 			/* Prep the applied array - it needs an element for each row */
 			aApplied.push( [] );
 		}
-	
+
 		for ( i=0, iLen=aoLocal.length ; i<iLen ; i++ )
 		{
 			nLocalTr = aoLocal[i].nTr;
-	
+
 			/* All cells are going to be replaced, so empty out the row */
 			if ( nLocalTr )
 			{
@@ -37108,12 +37108,12 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 					nLocalTr.removeChild( n );
 				}
 			}
-	
+
 			for ( j=0, jLen=aoLocal[i].length ; j<jLen ; j++ )
 			{
 				iRowspan = 1;
 				iColspan = 1;
-	
+
 				/* Check to see if there is already a cell (row/colspan) covering our target
 				 * insert point. If there is, then there is nothing to do.
 				 */
@@ -37121,7 +37121,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				{
 					nLocalTr.appendChild( aoLocal[i][j].cell );
 					aApplied[i][j] = 1;
-	
+
 					/* Expand the cell to cover as many rows as needed */
 					while ( aoLocal[i+iRowspan] !== undefined &&
 					        aoLocal[i][j].cell == aoLocal[i+iRowspan][j].cell )
@@ -37129,7 +37129,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 						aApplied[i+iRowspan][j] = 1;
 						iRowspan++;
 					}
-	
+
 					/* Expand the cell to cover as many columns as needed */
 					while ( aoLocal[i][j+iColspan] !== undefined &&
 					        aoLocal[i][j].cell == aoLocal[i][j+iColspan].cell )
@@ -37141,7 +37141,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 						}
 						iColspan++;
 					}
-	
+
 					/* Do the actual expansion in the DOM */
 					$(aoLocal[i][j].cell)
 						.attr('rowspan', iRowspan)
@@ -37150,8 +37150,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			}
 		}
 	}
-	
-	
+
+
 	/**
 	 * Insert the required TR nodes into the table for display
 	 *  @param {object} oSettings dataTables settings object
@@ -37166,7 +37166,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			_fnProcessingDisplay( oSettings, false );
 			return;
 		}
-	
+
 		var i, iLen, n;
 		var anRows = [];
 		var iRowCount = 0;
@@ -37177,9 +37177,9 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		var iInitDisplayStart = oSettings.iInitDisplayStart;
 		var bServerSide = _fnDataSource( oSettings ) == 'ssp';
 		var aiDisplay = oSettings.aiDisplay;
-	
+
 		oSettings.bDrawing = true;
-	
+
 		/* Check and see if we have an initial draw position from state saving */
 		if ( iInitDisplayStart !== undefined && iInitDisplayStart !== -1 )
 		{
@@ -37188,13 +37188,13 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				iInitDisplayStart >= oSettings.fnRecordsDisplay() ?
 					0 :
 					iInitDisplayStart;
-	
+
 			oSettings.iInitDisplayStart = -1;
 		}
-	
+
 		var iDisplayStart = oSettings._iDisplayStart;
 		var iDisplayEnd = oSettings.fnDisplayEnd();
-	
+
 		/* Server-side processing draw intercept */
 		if ( oSettings.bDeferLoading )
 		{
@@ -37210,12 +37210,12 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		{
 			return;
 		}
-	
+
 		if ( aiDisplay.length !== 0 )
 		{
 			var iStart = bServerSide ? 0 : iDisplayStart;
 			var iEnd = bServerSide ? oSettings.aoData.length : iDisplayEnd;
-	
+
 			for ( var j=iStart ; j<iEnd ; j++ )
 			{
 				var iDataIndex = aiDisplay[j];
@@ -37224,9 +37224,9 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				{
 					_fnCreateTr( oSettings, iDataIndex );
 				}
-	
+
 				var nRow = aoData.nTr;
-	
+
 				/* Remove the old striping classes and then add the new one */
 				if ( iStripes !== 0 )
 				{
@@ -37237,11 +37237,11 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 						aoData._sRowStripe = sStripe;
 					}
 				}
-	
+
 				/* Row callback functions - might want to manipulate the row */
 				_fnCallbackFire( oSettings, 'aoRowCallback', null,
 					[nRow, aoData._aData, iRowCount, j] );
-	
+
 				anRows.push( nRow );
 				iRowCount++;
 			}
@@ -37258,7 +37258,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			{
 				sZero = oLang.sEmptyTable;
 			}
-	
+
 			anRows[ 0 ] = $( '<tr/>', { 'class': iStripes ? asStripeClasses[0] : '' } )
 				.append( $('<td />', {
 					'valign':  'top',
@@ -37266,29 +37266,29 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 					'class':   oSettings.oClasses.sRowEmpty
 				} ).html( sZero ) )[0];
 		}
-	
+
 		/* Header and footer callbacks */
 		_fnCallbackFire( oSettings, 'aoHeaderCallback', 'header', [ $(oSettings.nTHead).children('tr')[0],
 			_fnGetDataMaster( oSettings ), iDisplayStart, iDisplayEnd, aiDisplay ] );
-	
+
 		_fnCallbackFire( oSettings, 'aoFooterCallback', 'footer', [ $(oSettings.nTFoot).children('tr')[0],
 			_fnGetDataMaster( oSettings ), iDisplayStart, iDisplayEnd, aiDisplay ] );
-	
+
 		var body = $(oSettings.nTBody);
-	
+
 		body.children().detach();
 		body.append( $(anRows) );
-	
+
 		/* Call all required callback functions for the end of a draw */
 		_fnCallbackFire( oSettings, 'aoDrawCallback', 'draw', [oSettings] );
-	
+
 		/* Draw is complete, sorting and filtering must be as well */
 		oSettings.bSorted = false;
 		oSettings.bFiltered = false;
 		oSettings.bDrawing = false;
 	}
-	
-	
+
+
 	/**
 	 * Redraw the table - taking account of the various features which are enabled
 	 *  @param {object} oSettings dataTables settings object
@@ -37302,11 +37302,11 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			features = settings.oFeatures,
 			sort     = features.bSort,
 			filter   = features.bFilter;
-	
+
 		if ( sort ) {
 			_fnSort( settings );
 		}
-	
+
 		if ( filter ) {
 			_fnFilterComplete( settings, settings.oPreviousSearch );
 		}
@@ -37314,15 +37314,15 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			// No filtering, so we want to just use the display master
 			settings.aiDisplay = settings.aiDisplayMaster.slice();
 		}
-	
+
 		if ( holdPosition !== true ) {
 			settings._iDisplayStart = 0;
 		}
-	
+
 		_fnDraw( settings );
 	}
-	
-	
+
+
 	/**
 	 * Add the options to the page HTML for the table
 	 *  @param {object} oSettings dataTables settings object
@@ -37334,17 +37334,17 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		var table = $(oSettings.nTable);
 		var holding = $('<div/>').insertBefore( table ); // Holding element for speed
 		var features = oSettings.oFeatures;
-	
+
 		// All DataTables are wrapped in a div
 		var insert = $('<div/>', {
 			role:    'grid',
 			id:      oSettings.sTableId+'_wrapper',
 			'class': classes.sWrapper + (oSettings.nTFoot ? '' : ' '+classes.sNoFooter)
 		} );
-	
+
 		oSettings.nTableWrapper = insert[0];
 		oSettings.nTableReinsertBefore = oSettings.nTable.nextSibling;
-	
+
 		/* Loop over the user set positioning and place the elements as needed */
 		var aDom = oSettings.sDom.split('');
 		var featureNode, cOption, nNewNode, cNext, sAttr, j;
@@ -37352,12 +37352,12 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		{
 			featureNode = null;
 			cOption = aDom[i];
-	
+
 			if ( cOption == '<' )
 			{
 				/* New container div */
 				nNewNode = $('<div/>')[0];
-	
+
 				/* Check to see if we should append an id and/or a class name to the container */
 				cNext = aDom[i+1];
 				if ( cNext == "'" || cNext == '"' )
@@ -37369,7 +37369,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 						sAttr += aDom[i+j];
 						j++;
 					}
-	
+
 					/* Replace jQuery UI constants @todo depreciated */
 					if ( sAttr == "H" )
 					{
@@ -37379,7 +37379,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 					{
 						sAttr = classes.sJUIFooter;
 					}
-	
+
 					/* The attribute can be in the format of "#id.class", "#id" or "class" This logic
 					 * breaks the string into parts and applies them as needed
 					 */
@@ -37397,10 +37397,10 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 					{
 						nNewNode.className = sAttr;
 					}
-	
+
 					i += j; /* Move along the position array */
 				}
-	
+
 				insert.append( nNewNode );
 				insert = $(nNewNode);
 			}
@@ -37453,27 +37453,27 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 					}
 				}
 			}
-	
+
 			/* Add to the 2D features array */
 			if ( featureNode )
 			{
 				var aanFeatures = oSettings.aanFeatures;
-	
+
 				if ( ! aanFeatures[cOption] )
 				{
 					aanFeatures[cOption] = [];
 				}
-	
+
 				aanFeatures[cOption].push( featureNode );
 				insert.append( featureNode );
 			}
 		}
-	
+
 		/* Built our DOM structure - replace the holding div with what we want */
 		holding.replaceWith( insert );
 	}
-	
-	
+
+
 	/**
 	 * Use the DOM source to create up an array of header cells. The idea here is to
 	 * create a layout grid (array) of rows x columns, which contains a reference
@@ -37496,21 +37496,21 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			}
 			return j;
 		};
-	
+
 		aLayout.splice( 0, aLayout.length );
-	
+
 		/* We know how many rows there are in the layout - so prep it */
 		for ( i=0, iLen=nTrs.length ; i<iLen ; i++ )
 		{
 			aLayout.push( [] );
 		}
-	
+
 		/* Calculate a layout array */
 		for ( i=0, iLen=nTrs.length ; i<iLen ; i++ )
 		{
 			nTr = nTrs[i];
 			iColumn = 0;
-	
+
 			/* For every cell in the row... */
 			nCell = nTr.firstChild;
 			while ( nCell ) {
@@ -37522,15 +37522,15 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 					iRowspan = nCell.getAttribute('rowspan') * 1;
 					iColspan = (!iColspan || iColspan===0 || iColspan===1) ? 1 : iColspan;
 					iRowspan = (!iRowspan || iRowspan===0 || iRowspan===1) ? 1 : iRowspan;
-	
+
 					/* There might be colspan cells already in this row, so shift our target
 					 * accordingly
 					 */
 					iColShifted = fnShiftCol( aLayout, i, iColumn );
-	
+
 					/* Cache calculation for unique columns */
 					bUnique = iColspan === 1 ? true : false;
-	
+
 					/* If there is col / rowspan, copy the information into the layout grid */
 					for ( l=0 ; l<iColspan ; l++ )
 					{
@@ -37548,8 +37548,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			}
 		}
 	}
-	
-	
+
+
 	/**
 	 * Get an array of unique th elements, one for each column
 	 *  @param {object} oSettings dataTables settings object
@@ -37570,7 +37570,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				_fnDetectHeader( aLayout, nHeader );
 			}
 		}
-	
+
 		for ( var i=0, iLen=aLayout.length ; i<iLen ; i++ )
 		{
 			for ( var j=0, jLen=aLayout[i].length ; j<jLen ; j++ )
@@ -37582,12 +37582,12 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				}
 			}
 		}
-	
+
 		return aReturn;
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Create an Ajax call based on the table's settings, taking into account that
 	 * parameters can have multiple forms, and backwards compatibility.
@@ -37601,19 +37601,19 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	{
 		// Compatibility with 1.9-, allow fnServerData and event to manipulate
 		_fnCallbackFire( oSettings, 'aoServerParams', 'serverParams', [data] );
-	
+
 		// Convert to object based for 1.10+ if using the old scheme
 		if ( data && data.__legacy ) {
 			var tmp = {};
 			var rbracket = /(.*?)\[\]$/;
-	
+
 			$.each( data, function (key, val) {
 				var match = val.name.match(rbracket);
-	
+
 				if ( match ) {
 					// Support for arrays
 					var name = match[0];
-	
+
 					if ( ! tmp[ name ] ) {
 						tmp[ name ] = [];
 					}
@@ -37625,29 +37625,29 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			} );
 			data = tmp;
 		}
-	
+
 		var ajaxData;
 		var ajax = oSettings.ajax;
 		var instance = oSettings.oInstance;
-	
+
 		if ( $.isPlainObject( ajax ) && ajax.data )
 		{
 			ajaxData = ajax.data;
-	
+
 			var newData = $.isFunction( ajaxData ) ?
 				ajaxData( data ) :  // fn can manipulate data or return an object
 				ajaxData;           // object or array to merge
-	
+
 			// If the function returned an object, use that alone
 			data = $.isFunction( ajaxData ) && newData ?
 				newData :
 				$.extend( true, data, newData );
-	
+
 			// Remove the data property as we've resolved it already and don't want
 			// jQuery to do it again (it is restored at the end of the function)
 			delete ajax.data;
 		}
-	
+
 		var baseAjax = {
 			"data": data,
 			"success": function (json) {
@@ -37655,7 +37655,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				if ( error ) {
 					oSettings.oApi._fnLog( oSettings, 0, error );
 				}
-	
+
 				oSettings.json = json;
 				_fnCallbackFire( oSettings, null, 'xhr', [oSettings, json] );
 				fn( json );
@@ -37665,7 +37665,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			"type": oSettings.sServerMethod,
 			"error": function (xhr, error, thrown) {
 				var log = oSettings.oApi._fnLog;
-	
+
 				if ( error == "parsererror" ) {
 					log( oSettings, 0, 'Invalid JSON response', 1 );
 				}
@@ -37674,7 +37674,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				}
 			}
 		};
-	
+
 		if ( oSettings.fnServerData )
 		{
 			// DataTables 1.9- compatibility
@@ -37698,13 +37698,13 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		{
 			// Object to extend the base settings
 			oSettings.jqXHR = $.ajax( $.extend( baseAjax, ajax ) );
-	
+
 			// Restore for next time around
 			ajax.data = ajaxData;
 		}
 	}
-	
-	
+
+
 	/**
 	 * Update the table using an Ajax call
 	 *  @param {object} oSettings dataTables settings object
@@ -37719,17 +37719,17 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			_fnProcessingDisplay( oSettings, true );
 			var iColumns = oSettings.aoColumns.length;
 			var aoData = _fnAjaxParameters( oSettings );
-	
+
 			_fnBuildAjax( oSettings, aoData, function(json) {
 				_fnAjaxUpdateDraw( oSettings, json );
 			}, oSettings );
-	
+
 			return false;
 		}
 		return true;
 	}
-	
-	
+
+
 	/**
 	 * Build up the parameters in an object needed for a server-side processing
 	 * request. Note that this is basically done twice, is different ways - a modern
@@ -37755,18 +37755,18 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			displayLength = features.bPaginate !== false ?
 				settings._iDisplayLength :
 				-1;
-	
+
 		var param = function ( name, value ) {
 			data.push( { 'name': name, 'value': value } );
 		};
-	
+
 		// DataTables 1.9- compatible method
 		param( 'sEcho',          settings.iDraw );
 		param( 'iColumns',       columnCount );
 		param( 'sColumns',       _pluck( columns, 'sName' ).join(',') );
 		param( 'iDisplayStart',  displayStart );
 		param( 'iDisplayLength', displayLength );
-	
+
 		// DataTables 1.10+ method
 		var d = {
 			draw:    settings.iDraw,
@@ -37779,12 +37779,12 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				regex: preSearch.bRegex
 			}
 		};
-	
+
 		for ( i=0 ; i<columnCount ; i++ ) {
 			column = columns[i];
 			columnSearch = preColSearch[i];
 			dataProp = typeof column.mData=="function" ? 'function' : column.mData ;
-	
+
 			d.columns.push( {
 				data:       dataProp,
 				name:       column.sName,
@@ -37795,51 +37795,51 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 					regex: columnSearch.bRegex
 				}
 			} );
-	
+
 			param( "mDataProp_"+i, dataProp );
-	
+
 			if ( features.bFilter ) {
 				param( 'sSearch_'+i,     columnSearch.sSearch );
 				param( 'bRegex_'+i,      columnSearch.bRegex );
 				param( 'bSearchable_'+i, column.bSearchable );
 			}
-	
+
 			if ( features.bSort ) {
 				param( 'bSortable_'+i, column.bSortable );
 			}
 		}
-	
+
 		$.each( sort, function ( i, val ) {
 			d.order.push( { column: val.col, dir: val.dir } );
-	
+
 			param( 'iSortCol_'+i, val.col );
 			param( 'sSortDir_'+i, val.dir );
 		} );
-	
+
 		if ( features.bFilter ) {
 			param( 'sSearch', preSearch.sSearch );
 			param( 'bRegex', preSearch.bRegex );
 		}
-	
+
 		if ( features.bSort ) {
 			param( 'iSortingCols', sort.length );
 		}
-	
+
 		data.__legacy = true;
-	
+
 		// If the legacy.ajax parameter is null, then we automatically decide which
 		// form to use, based on sAjaxSource
 		var legacy = DataTable.ext.legacy.ajax;
 		if ( legacy === null ) {
 			return settings.sAjaxSource ? data : d;
 		}
-	
+
 		// Otherwise, if legacy has been specified then we use that to decide on the
 		// form
 		return legacy ? data : d;
 	}
-	
-	
+
+
 	/**
 	 * Data the data from the server (nuking the old) and redraw the table
 	 *  @param {object} oSettings dataTables settings object
@@ -37858,11 +37858,11 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		var compat = function ( old, modern ) {
 			return json[old] !== undefined ? json[old] : json[modern];
 		};
-	
+
 		var draw            = compat( 'sEcho',                'draw' );
 		var recordsTotal    = compat( 'iTotalRecords',        'recordsTotal' );
 		var rocordsFiltered = compat( 'iTotalDisplayRecords', 'recordsFiltered' );
-	
+
 		if ( draw ) {
 			// Protect against out of sequence returns
 			if ( draw*1 < settings.iDraw ) {
@@ -37870,29 +37870,29 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			}
 			settings.iDraw = draw * 1;
 		}
-	
+
 		_fnClearTable( settings );
 		settings._iRecordsTotal   = parseInt(recordsTotal, 10);
 		settings._iRecordsDisplay = parseInt(rocordsFiltered, 10);
-	
+
 		var data = _fnAjaxDataSrc( settings, json );
 		for ( var i=0, ien=data.length ; i<ien ; i++ ) {
 			_fnAddData( settings, data[i] );
 		}
 		settings.aiDisplay = settings.aiDisplayMaster.slice();
-	
+
 		settings.bAjaxDataGet = false;
 		_fnDraw( settings );
-	
+
 		if ( ! settings._bInitComplete ) {
 			_fnInitComplete( settings, json );
 		}
-	
+
 		settings.bAjaxDataGet = true;
 		_fnProcessingDisplay( settings, false );
 	}
-	
-	
+
+
 	/**
 	 * Get the data from the JSON data source to use for drawing a table. Using
 	 * `_fnGetObjectDataFn` allows the data to be sourced from a property of the
@@ -37906,19 +37906,19 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		var dataSrc = $.isPlainObject( oSettings.ajax ) && oSettings.ajax.dataSrc !== undefined ?
 			oSettings.ajax.dataSrc :
 			oSettings.sAjaxDataProp; // Compatibility with 1.9-.
-	
+
 		// Compatibility with 1.9-. In order to read from aaData, check if the
 		// default has been changed, if not, check for aaData
 		if ( dataSrc === 'data' ) {
 			return json.aaData || json[dataSrc];
 		}
-	
+
 		return dataSrc !== "" ?
 			_fnGetObjectDataFn( dataSrc )( json ) :
 			json;
 	}
-	
-	
+
+
 	/**
 	 * Generate the node required for filtering text
 	 *  @returns {node} Filter control element
@@ -37932,23 +37932,23 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		var previousSearch = settings.oPreviousSearch;
 		var features = settings.aanFeatures;
 		var input = '<input type="search" class="'+classes.sFilterInput+'"/>';
-	
+
 		var str = settings.oLanguage.sSearch;
 		str = str.match(/_INPUT_/) ?
 			str.replace('_INPUT_', input) :
 			str+input;
-	
+
 		var filter = $('<div/>', {
 				'id': ! features.f ? tableId+'_filter' : null,
 				'class': classes.sFilter
 			} )
 			.append( $('<label/>' ).append( str ) );
-	
+
 		var searchFn = function() {
 			/* Update all other filter input elements for the new display */
 			var n = features.f;
 			var val = !this.value ? "" : this.value; // mental IE8 fix :-(
-	
+
 			/* Now do the filter */
 			if ( val != previousSearch.sSearch ) {
 				_fnFilterComplete( settings, {
@@ -37957,7 +37957,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 					"bSmart": previousSearch.bSmart ,
 					"bCaseInsensitive": previousSearch.bCaseInsensitive
 				} );
-	
+
 				// Need to redraw, without resorting
 				settings._iDisplayStart = 0;
 				_fnDraw( settings );
@@ -37978,7 +37978,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				}
 			} )
 			.attr('aria-controls', tableId);
-	
+
 		// Update the input elements whenever the table is filtered
 		$(settings.nTable).on( 'filter.DT', function () {
 			// IE9 throws an 'unknown error' if document.activeElement is used
@@ -37990,11 +37990,11 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			}
 			catch ( e ) {}
 		} );
-	
+
 		return filter[0];
 	}
-	
-	
+
+
 	/**
 	 * Filter the table using both the global filter and column based filtering
 	 *  @param {object} oSettings dataTables settings object
@@ -38013,25 +38013,25 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			oPrevSearch.bSmart = oFilter.bSmart;
 			oPrevSearch.bCaseInsensitive = oFilter.bCaseInsensitive;
 		};
-	
+
 		// Resolve any column types that are unknown due to addition or invalidation
 		// @todo As per sort - can this be moved into an event handler?
 		_fnColumnTypes( oSettings );
-	
+
 		/* In server-side processing all filtering is done by the server, so no point hanging around here */
 		if ( _fnDataSource( oSettings ) != 'ssp' )
 		{
 			/* Global filter */
 			_fnFilter( oSettings, oInput.sSearch, iForce, oInput.bRegex, oInput.bSmart, oInput.bCaseInsensitive );
 			fnSaveFilter( oInput );
-	
+
 			/* Now do the individual column filter */
 			for ( var i=0 ; i<aoPrevSearch.length ; i++ )
 			{
 				_fnFilterColumn( oSettings, aoPrevSearch[i].sSearch, i, aoPrevSearch[i].bRegex,
 					aoPrevSearch[i].bSmart, aoPrevSearch[i].bCaseInsensitive );
 			}
-	
+
 			/* Custom filtering */
 			_fnFilterCustom( oSettings );
 		}
@@ -38039,13 +38039,13 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		{
 			fnSaveFilter( oInput );
 		}
-	
+
 		/* Tell the draw function we have been filtering */
 		oSettings.bFiltered = true;
 		_fnCallbackFire( oSettings, null, 'search', [oSettings] );
 	}
-	
-	
+
+
 	/**
 	 * Apply custom filtering functions
 	 *  @param {object} oSettings dataTables settings object
@@ -38055,7 +38055,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	{
 		var afnFilters = DataTable.ext.search;
 		var aiFilterColumns = _fnGetColumns( oSettings, 'bSearchable' );
-	
+
 		for ( var i=0, iLen=afnFilters.length ; i<iLen ; i++ )
 		{
 			var iCorrector = 0;
@@ -38067,7 +38067,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 					_fnGetRowData( oSettings, iDisIndex, 'filter', aiFilterColumns ),
 					iDisIndex
 				);
-	
+
 				/* Check if we should use this row based on the filtering function */
 				if ( !bTest )
 				{
@@ -38077,8 +38077,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			}
 		}
 	}
-	
-	
+
+
 	/**
 	 * Filter the table on a per-column basis
 	 *  @param {object} oSettings dataTables settings object
@@ -38094,21 +38094,21 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		if ( searchStr === '' ) {
 			return;
 		}
-	
+
 		var data;
 		var display = settings.aiDisplay;
 		var rpSearch = _fnFilterCreateSearch( searchStr, regex, smart, caseInsensitive );
-	
+
 		for ( var i=display.length-1 ; i>=0 ; i-- ) {
 			data = settings.aoData[ display[i] ]._aFilterData[ colIdx ];
-	
+
 			if ( ! rpSearch.test( data ) ) {
 				display.splice( i, 1 );
 			}
 		}
 	}
-	
-	
+
+
 	/**
 	 * Filter the data table based on user input and draw the table
 	 *  @param {object} settings dataTables settings object
@@ -38125,15 +38125,15 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		var prevSearch = settings.oPreviousSearch.sSearch;
 		var displayMaster = settings.aiDisplayMaster;
 		var display, invalidated, i;
-	
+
 		// Need to take account of custom filtering functions - always filter
 		if ( DataTable.ext.search.length !== 0 ) {
 			force = true;
 		}
-	
+
 		// Check if any of the rows were invalidated
 		invalidated = _fnFilterData( settings );
-	
+
 		// If the input is blank - we just want the full data set
 		if ( input.length <= 0 ) {
 			settings.aiDisplay = displayMaster.slice();
@@ -38149,10 +38149,10 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			) {
 				settings.aiDisplay = displayMaster.slice();
 			}
-	
+
 			// Search the display array
 			display = settings.aiDisplay;
-	
+
 			for ( i=display.length-1 ; i>=0 ; i-- ) {
 				if ( ! rpSearch.test( settings.aoData[ display[i] ]._sFilterRow ) ) {
 					display.splice( i, 1 );
@@ -38160,8 +38160,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			}
 		}
 	}
-	
-	
+
+
 	/**
 	 * Build a regular expression object suitable for searching a table
 	 *  @param {string} sSearch string to search for
@@ -38175,7 +38175,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	{
 		var asSearch,
 			sRegExpString = bRegex ? sSearch : _fnEscapeRegex( sSearch );
-	
+
 		if ( bSmart )
 		{
 			/* Generate the regular expression to use. Something along the lines of:
@@ -38184,11 +38184,11 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			asSearch = sRegExpString.split( ' ' );
 			sRegExpString = '^(?=.*?'+asSearch.join( ')(?=.*?' )+').*$';
 		}
-	
+
 		return new RegExp( sRegExpString, bCaseInsensitive ? "i" : "" );
 	}
-	
-	
+
+
 	/**
 	 * scape a string such that it can be used in a regular expression
 	 *  @param {string} sVal string to escape
@@ -38199,12 +38199,12 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	{
 		return sVal.replace( _re_escape_regex, '\\$1' );
 	}
-	
-	
-	
+
+
+
 	var __filter_div = $('<div>')[0];
 	var __filter_div_textContent = __filter_div.textContent !== undefined;
-	
+
 	// Update the filtering data for each row if needed (by invalidation or first run)
 	function _fnFilterData ( settings )
 	{
@@ -38213,19 +38213,19 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		var i, j, ien, jen, filterData, cellData, row;
 		var fomatters = DataTable.ext.type.search;
 		var wasInvalidated = false;
-	
+
 		for ( i=0, ien=settings.aoData.length ; i<ien ; i++ ) {
 			row = settings.aoData[i];
-	
+
 			if ( ! row._aFilterData ) {
 				filterData = [];
-	
+
 				for ( j=0, jen=columns.length ; j<jen ; j++ ) {
 					column = columns[j];
-	
+
 					if ( column.bSearchable ) {
 						cellData = _fnGetCellData( settings, i, j, 'filter' );
-	
+
 						cellData = fomatters[ column.sType ] ?
 							fomatters[ column.sType ]( cellData ) :
 							cellData !== null ?
@@ -38235,7 +38235,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 					else {
 						cellData = '';
 					}
-	
+
 					// If it looks like there is an HTML entity in the string,
 					// attempt to decode it so sorting works as expected. Note that
 					// we could use a single line of jQuery to do this, but the DOM
@@ -38247,19 +38247,19 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 							__filter_div.innerText;
 						cellData = cellData.replace(/[\r\n]/g, '');
 					}
-	
+
 					filterData.push( cellData );
 				}
-	
+
 				row._aFilterData = filterData;
 				row._sFilterRow = filterData.join('  ');
 				wasInvalidated = true;
 			}
 		}
-	
+
 		return wasInvalidated;
 	}
-	
+
 	/**
 	 * Generate the node required for the info display
 	 *  @param {object} oSettings dataTables settings object
@@ -38275,27 +38275,27 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				'class': settings.oClasses.sInfo,
 				'id': ! nodes ? tid+'_info' : null
 			} );
-	
+
 		if ( ! nodes ) {
 			// Update display on each draw
 			settings.aoDrawCallback.push( {
 				"fn": _fnUpdateInfo,
 				"sName": "information"
 			} );
-	
+
 			n
 				.attr( 'role', 'alert' )
 				.attr( 'aria-live', 'polite' )
 				.attr( 'aria-relevant', 'all' );
-	
+
 			// Table is described by our info div
 			$(settings.nTable).attr( 'aria-describedby', tid+'_info' );
 		}
-	
+
 		return n[0];
 	}
-	
-	
+
+
 	/**
 	 * Update the information elements in the display
 	 *  @param {object} settings dataTables settings object
@@ -38308,7 +38308,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		if ( nodes.length === 0 ) {
 			return;
 		}
-	
+
 		var
 			lang  = settings.oLanguage,
 			start = settings._iDisplayStart+1,
@@ -38318,27 +38318,27 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			out   = total ?
 				lang.sInfo :
 				lang.sInfoEmpty;
-	
+
 		if ( total !== max ) {
 			/* Record set after filtering */
 			out += ' ' + lang.sInfoFiltered;
 		}
-	
+
 		// Convert the macros
 		out += lang.sInfoPostFix;
 		out = _fnInfoMacros( settings, out );
-	
+
 		var callback = lang.fnInfoCallback;
 		if ( callback !== null ) {
 			out = callback.call( settings.oInstance,
 				settings, start, end, max, total, out
 			);
 		}
-	
+
 		$(nodes).html( out );
 	}
-	
-	
+
+
 	function _fnInfoMacros ( settings, str )
 	{
 		// When infinite scrolling, we are always starting at 1. _iDisplayStart is used only
@@ -38349,7 +38349,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			len        = settings._iDisplayLength,
 			vis        = settings.fnRecordsDisplay(),
 			all        = len === -1;
-	
+
 		return str.
 			replace(/_START_/g, formatter.call( settings, start ) ).
 			replace(/_END_/g,   formatter.call( settings, settings.fnDisplayEnd() ) ).
@@ -38358,9 +38358,9 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			replace(/_PAGE_/g,  formatter.call( settings, all ? 1 : Math.ceil( start / len ) ) ).
 			replace(/_PAGES_/g, formatter.call( settings, all ? 1 : Math.ceil( vis / len ) ) );
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Draw the table for the first time, adding all required features
 	 *  @param {object} settings dataTables settings object
@@ -38371,43 +38371,43 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		var i, iLen, iAjaxStart=settings.iInitDisplayStart;
 		var columns = settings.aoColumns, column;
 		var features = settings.oFeatures;
-	
+
 		/* Ensure that the table data is fully initialised */
 		if ( ! settings.bInitialised ) {
 			setTimeout( function(){ _fnInitialise( settings ); }, 200 );
 			return;
 		}
-	
+
 		/* Show the display HTML options */
 		_fnAddOptionsHtml( settings );
-	
+
 		/* Build and draw the header / footer for the table */
 		_fnBuildHead( settings );
 		_fnDrawHead( settings, settings.aoHeader );
 		_fnDrawHead( settings, settings.aoFooter );
-	
+
 		/* Okay to show that something is going on now */
 		_fnProcessingDisplay( settings, true );
-	
+
 		/* Calculate sizes for columns */
 		if ( features.bAutoWidth ) {
 			_fnCalculateColumnWidths( settings );
 		}
-	
+
 		for ( i=0, iLen=columns.length ; i<iLen ; i++ ) {
 			column = columns[i];
-	
+
 			if ( column.sWidth ) {
 				column.nTh.style.width = _fnStringToCss( column.sWidth );
 			}
 		}
-	
+
 		// If there is default sorting required - let's do it. The sort function
 		// will do the drawing for us. Otherwise we draw the table regardless of the
 		// Ajax source - this allows the table to look initialised for Ajax sourcing
 		// data (show 'loading' message possibly)
 		_fnReDraw( settings );
-	
+
 		// Server-side processing init complete is done by _fnAjaxUpdateDraw
 		var dataSrc = _fnDataSource( settings );
 		if ( dataSrc != 'ssp' ) {
@@ -38415,19 +38415,19 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			if ( dataSrc == 'ajax' ) {
 				_fnBuildAjax( settings, [], function(json) {
 					var aData = _fnAjaxDataSrc( settings, json );
-	
+
 					// Got the data - add it to the table
 					for ( i=0 ; i<aData.length ; i++ ) {
 						_fnAddData( settings, aData[i] );
 					}
-	
+
 					// Reset the init display for cookie saving. We've already done
 					// a filter, and therefore cleared it before. So we need to make
 					// it appear 'fresh'
 					settings.iInitDisplayStart = iAjaxStart;
-	
+
 					_fnReDraw( settings );
-	
+
 					_fnProcessingDisplay( settings, false );
 					_fnInitComplete( settings, json );
 				}, settings );
@@ -38438,8 +38438,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			}
 		}
 	}
-	
-	
+
+
 	/**
 	 * Draw the table for the first time, adding all required features
 	 *  @param {object} oSettings dataTables settings object
@@ -38450,29 +38450,29 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	function _fnInitComplete ( settings, json )
 	{
 		settings._bInitComplete = true;
-	
+
 		// On an Ajax load we now have data and therefore want to apply the column
 		// sizing
 		if ( json ) {
 			_fnAdjustColumnSizing( settings );
 		}
-	
+
 		_fnCallbackFire( settings, 'aoInitComplete', 'init', [settings, json] );
 	}
-	
-	
+
+
 	function _fnLengthChange ( settings, val )
 	{
 		var len = parseInt( val, 10 );
 		settings._iDisplayLength = len;
-	
+
 		_fnLengthOverflow( settings );
-	
+
 		// Fire length change event
 		_fnCallbackFire( settings, null, 'length', [settings, len] );
 	}
-	
-	
+
+
 	/**
 	 * Generate the node required for user display length changing
 	 *  @param {object} settings dataTables settings object
@@ -38488,51 +38488,51 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			d2       = $.isArray( menu[0] ),
 			lengths  = d2 ? menu[0] : menu,
 			language = d2 ? menu[1] : menu;
-	
+
 		var select = $('<select/>', {
 			'name':          tableId+'_length',
 			'aria-controls': tableId,
 			'class':         classes.sLengthSelect
 		} );
-	
+
 		for ( var i=0, ien=lengths.length ; i<ien ; i++ ) {
 			select[0][ i ] = new Option( language[i], lengths[i] );
 		}
-	
+
 		var div = $('<div><label/></div>').addClass( classes.sLength );
 		if ( ! settings.aanFeatures.l ) {
 			div[0].id = tableId+'_length';
 		}
-	
+
 		// This split doesn't matter where _MENU_ is, we get three items back from it
 		var a = settings.oLanguage.sLengthMenu.split(/(_MENU_)/);
 		div.children()
 			.append( a[0] )
 			.append( select )
 			.append( a[2] );
-	
+
 		select
 			.val( settings._iDisplayLength )
 			.bind( 'change.DT', function(e) {
 				_fnLengthChange( settings, $(this).val() );
 				_fnDraw( settings );
 			} );
-	
+
 		// Update node value whenever anything changes the table's length
 		$(settings.nTable).bind( 'length', function (e, s, len) {
 			select.val( len );
 		} );
-	
+
 		return div[0];
 	}
-	
-	
-	
+
+
+
 	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 	 * Note that most of the paging logic is done in
 	 * DataTable.ext.pager
 	 */
-	
+
 	/**
 	 * Generate the node required for default pagination
 	 *  @param {object} oSettings dataTables settings object
@@ -38550,16 +38550,16 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			},
 			node = $('<div/>').addClass( settings.oClasses.sPaging + type )[0],
 			features = settings.aanFeatures;
-	
+
 		if ( ! modern ) {
 			plugin.fnInit( settings, node, redraw );
 		}
-	
+
 		/* Add a draw callback for the pagination on first instance, to update the paging display */
 		if ( ! features.p )
 		{
 			node.id = settings.sTableId+'_paginate';
-	
+
 			settings.aoDrawCallback.push( {
 				"fn": function( settings ) {
 					if ( modern ) {
@@ -38572,7 +38572,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 							pages = all ? 1 : Math.ceil( visRecords / len ),
 							buttons = plugin(page, pages),
 							i, ien;
-	
+
 						for ( i=0, ien=features.p.length ; i<ien ; i++ ) {
 							_fnRenderer( settings, 'pageButton' )(
 								settings, features.p[i], i, buttons, page, pages
@@ -38586,11 +38586,11 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				"sName": "pagination"
 			} );
 		}
-	
+
 		return node;
 	}
-	
-	
+
+
 	/**
 	 * Alter the display settings to change the page
 	 *  @param {object} settings DataTables settings object
@@ -38606,7 +38606,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			start     = settings._iDisplayStart,
 			len       = settings._iDisplayLength,
 			records   = settings.fnRecordsDisplay();
-	
+
 		if ( records === 0 || len === -1 )
 		{
 			start = 0;
@@ -38614,7 +38614,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		else if ( typeof action === "number" )
 		{
 			start = action * len;
-	
+
 			if ( start > records )
 			{
 				start = 0;
@@ -38629,7 +38629,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			start = len >= 0 ?
 				start - len :
 				0;
-	
+
 			if ( start < 0 )
 			{
 			  start = 0;
@@ -38650,21 +38650,21 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		{
 			_fnLog( settings, 0, "Unknown paging action: "+action, 5 );
 		}
-	
+
 		var changed = settings._iDisplayStart !== start;
 		settings._iDisplayStart = start;
-	
+
 		_fnCallbackFire( settings, null, 'page', [settings] );
-	
+
 		if ( redraw ) {
 			_fnDraw( settings );
 		}
-	
+
 		return changed;
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Generate the node required for the processing node
 	 *  @param {object} settings dataTables settings object
@@ -38680,8 +38680,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			.html( settings.oLanguage.sProcessing )
 			.insertBefore( settings.nTable )[0];
 	}
-	
-	
+
+
 	/**
 	 * Display or hide the processing indicator
 	 *  @param {object} settings dataTables settings object
@@ -38693,10 +38693,10 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		if ( settings.oFeatures.bProcessing ) {
 			$(settings.aanFeatures.r).css( 'visibility', show ? 'visible' : 'hidden' );
 		}
-	
+
 		_fnCallbackFire( settings, null, 'processing', [settings, show] );
 	}
-	
+
 	/**
 	 * Add any control elements for the table - specifically scrolling
 	 *  @param {object} settings dataTables settings object
@@ -38706,11 +38706,11 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	function _fnFeatureHtmlTable ( settings )
 	{
 		var scroll = settings.oScroll;
-	
+
 		if ( scroll.sX === '' && scroll.sY === '' ) {
 			return settings.nTable;
 		}
-	
+
 		var scrollX = scroll.sX;
 		var scrollY = scroll.sY;
 		var classes = settings.oClasses;
@@ -38724,7 +38724,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		var size = function ( s ) {
 			return !s ? null : _fnStringToCss( s );
 		};
-	
+
 		// This is fairly messy, but with x scrolling enabled, if the table has a
 		// width attribute, regardless of any width applied using the column width
 		// options, the browser will shrink or grow the table as needed to fit into
@@ -38735,11 +38735,11 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		if ( scroll.sX && table.attr('width') === '100%' ) {
 			table.removeAttr('width');
 		}
-	
+
 		if ( ! footer.length ) {
 			footer = null;
 		}
-	
+
 		/*
 		 * The HTML structure that we want to generate in this function is:
 		 *  div - scroller
@@ -38791,7 +38791,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 					} )
 					.append( table )
 			);
-	
+
 		if ( footer ) {
 			scroller.append(
 				$(_div, { 'class': classes.sScrollFoot } )
@@ -38814,40 +38814,40 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 					.append( captionSide === 'bottom' ? caption : null )
 			);
 		}
-	
+
 		var children = scroller.children();
 		var scrollHead = children[0];
 		var scrollBody = children[1];
 		var scrollFoot = footer ? children[2] : null;
-	
+
 		// When the body is scrolled, then we also want to scroll the headers
 		if ( scrollX ) {
 			$(scrollBody).scroll( function (e) {
 				var scrollLeft = this.scrollLeft;
-	
+
 				scrollHead.scrollLeft = scrollLeft;
-	
+
 				if ( footer ) {
 					scrollFoot.scrollLeft = scrollLeft;
 				}
 			} );
 		}
-	
+
 		settings.nScrollHead = scrollHead;
 		settings.nScrollBody = scrollBody;
 		settings.nScrollFoot = scrollFoot;
-	
+
 		// On redraw - align columns
 		settings.aoDrawCallback.push( {
 			"fn": _fnScrollDraw,
 			"sName": "scrolling"
 		} );
-	
+
 		return scroller[0];
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Update the header, footer and body tables for resizing - i.e. column
 	 * alignment.
@@ -38904,31 +38904,31 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				style.borderBottomWidth = "0";
 				style.height = 0;
 			};
-	
+
 		/*
 		 * 1. Re-create the table inside the scrolling div
 		 */
-	
+
 		// Remove the old minimised thead and tfoot elements in the inner table
 		table.children('thead, tfoot').remove();
-	
+
 		// Clone the current header and footer elements and then place it into the inner table
 		headerCopy = header.clone().prependTo( table );
 		headerTrgEls = header.find('tr'); // original header is in its own table
 		headerSrcEls = headerCopy.find('tr');
 		headerCopy.find('th, td').removeAttr('tabindex');
-	
+
 		if ( footer ) {
 			footerCopy = footer.clone().prependTo( table );
 			footerTrgEls = footer.find('tr'); // the original tfoot is in its own table and must be sized
 			footerSrcEls = footerCopy.find('tr');
 		}
-	
-	
+
+
 		/*
 		 * 2. Take live measurements from the DOM - do not alter the DOM itself!
 		 */
-	
+
 		// Remove old sizing and apply the calculated column widths
 		// Get the unique column headers in the newly created (cloned) header. We want to apply the
 		// calculated sizes to this header
@@ -38937,31 +38937,31 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			divBodyStyle.width = '100%';
 			divHeader[0].style.width = '100%';
 		}
-	
+
 		$.each( _fnGetUniqueThs( settings, headerCopy ), function ( i, el ) {
 			idx = _fnVisibleToColumnIndex( settings, i );
 			el.style.width = settings.aoColumns[idx].sWidth;
 		} );
-	
+
 		if ( footer ) {
 			_fnApplyToChildren( function(n) {
 				n.style.width = "";
 			}, footerSrcEls );
 		}
-	
+
 		// If scroll collapse is enabled, when we put the headers back into the body for sizing, we
 		// will end up forcing the scrollbar to appear, making our measurements wrong for when we
 		// then hide it (end of this function), so add the header height to the body scroller.
 		if ( scroll.bCollapse && scrollY !== "" ) {
 			divBodyStyle.height = (divBody.offsetHeight + header[0].offsetHeight)+"px";
 		}
-	
+
 		// Size the table as a whole
 		sanityWidth = table.outerWidth();
 		if ( scrollX === "" ) {
 			// No x scrolling
 			tableStyle.width = "100%";
-	
+
 			// IE7 will make the width of the table when 100% include the scrollbar
 			// - which is shouldn't. When there is a scrollbar we need to take this
 			// into account.
@@ -38991,52 +38991,52 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				tableStyle.width = _fnStringToCss( sanityWidth );
 			}
 		}
-	
+
 		// Recalculate the sanity width - now that we've applied the required width,
 		// before it was a temporary variable. This is required because the column
 		// width calculation is done before this table DOM is created.
 		sanityWidth = table.outerWidth();
-	
+
 		// Hidden header should have zero height, so remove padding and borders. Then
 		// set the width based on the real headers
-	
+
 		// Apply all styles in one pass
 		_fnApplyToChildren( zeroOut, headerSrcEls );
-	
+
 		// Read all widths in next pass
 		_fnApplyToChildren( function(nSizer) {
 			headerContent.push( nSizer.innerHTML );
 			headerWidths.push( _fnStringToCss( $(nSizer).css('width') ) );
 		}, headerSrcEls );
-	
+
 		// Apply all widths in final pass
 		_fnApplyToChildren( function(nToSize, i) {
 			nToSize.style.width = headerWidths[i];
 		}, headerTrgEls );
-	
+
 		$(headerSrcEls).height(0);
-	
+
 		/* Same again with the footer if we have one */
 		if ( footer )
 		{
 			_fnApplyToChildren( zeroOut, footerSrcEls );
-	
+
 			_fnApplyToChildren( function(nSizer) {
 				footerWidths.push( _fnStringToCss( $(nSizer).css('width') ) );
 			}, footerSrcEls );
-	
+
 			_fnApplyToChildren( function(nToSize, i) {
 				nToSize.style.width = footerWidths[i];
 			}, footerTrgEls );
-	
+
 			$(footerSrcEls).height(0);
 		}
-	
-	
+
+
 		/*
 		 * 3. Apply the measurements
 		 */
-	
+
 		// "Hide" the header and footer that we used for the sizing. We need to keep
 		// the content of the cell so that the width applied to the header and body
 		// both match, but we want to hide it completely. We want to also fix their
@@ -39045,7 +39045,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			nSizer.innerHTML = '<div class="dataTables_sizing" style="height:0;overflow:hidden;">'+headerContent[i]+'</div>';
 			nSizer.style.width = headerWidths[i];
 		}, headerSrcEls );
-	
+
 		if ( footer )
 		{
 			_fnApplyToChildren( function(nSizer, i) {
@@ -39053,7 +39053,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				nSizer.style.width = footerWidths[i];
 			}, footerSrcEls );
 		}
-	
+
 		// Sanity check that the table is of a sensible width. If not then we are going to get
 		// misalignment - try to prevent this by not allowing the table to shrink below its min width
 		if ( table.outerWidth() < sanityWidth )
@@ -39063,14 +39063,14 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				divBody.css('overflow-y') == "scroll")) ?
 					sanityWidth+barWidth :
 					sanityWidth;
-	
+
 			// IE6/7 are a law unto themselves...
 			if ( ie67 && (divBodyEl.scrollHeight >
 				divBodyEl.offsetHeight || divBody.css('overflow-y') == "scroll")
 			) {
 				tableStyle.width = _fnStringToCss( correction-barWidth );
 			}
-	
+
 			// And give the user a warning that we've stopped the table getting too small
 			if ( scrollX === "" || scrollXInner !== "" ) {
 				_fnLog( settings, 1, 'Possible column misalignment', 6 );
@@ -39080,16 +39080,16 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		{
 			correction = '100%';
 		}
-	
+
 		// Apply to the container elements
 		divBodyStyle.width = _fnStringToCss( correction );
 		divHeaderStyle.width = _fnStringToCss( correction );
-	
+
 		if ( footer ) {
 			settings.nScrollFoot.style.width = _fnStringToCss( correction );
 		}
-	
-	
+
+
 		/*
 		 * 4. Clean up
 		 */
@@ -39102,47 +39102,47 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				divBodyStyle.height = _fnStringToCss( tableEl.offsetHeight+barWidth );
 			}
 		}
-	
+
 		if ( scrollY && scroll.bCollapse ) {
 			divBodyStyle.height = _fnStringToCss( scrollY );
-	
+
 			var iExtra = (scrollX && tableEl.offsetWidth > divBodyEl.offsetWidth) ?
 				barWidth :
 				0;
-	
+
 			if ( tableEl.offsetHeight < divBodyEl.offsetHeight ) {
 				divBodyStyle.height = _fnStringToCss( tableEl.offsetHeight+iExtra );
 			}
 		}
-	
+
 		/* Finally set the width's of the header and footer tables */
 		var iOuterWidth = table.outerWidth();
 		divHeaderTable[0].style.width = _fnStringToCss( iOuterWidth );
 		divHeaderInnerStyle.width = _fnStringToCss( iOuterWidth );
-	
+
 		// Figure out if there are scrollbar present - if so then we need a the header and footer to
 		// provide a bit more space to allow "overflow" scrolling (i.e. past the scrollbar)
 		var bScrolling = table.height() > divBodyEl.clientHeight || divBody.css('overflow-y') == "scroll";
 		var padding = 'padding' + (browser.bScrollbarLeft ? 'Left' : 'Right' );
 		divHeaderInnerStyle[ padding ] = bScrolling ? barWidth+"px" : "0px";
-	
+
 		if ( footer ) {
 			divFooterTable[0].style.width = _fnStringToCss( iOuterWidth );
 			divFooterInner[0].style.width = _fnStringToCss( iOuterWidth );
 			divFooterInner[0].style[padding] = bScrolling ? barWidth+"px" : "0px";
 		}
-	
+
 		/* Adjust the position of the header in case we loose the y-scrollbar */
 		divBody.scroll();
-	
+
 		/* If sorting or filtering has occurred, jump the scrolling back to the top */
 		if ( settings.bSorted || settings.bFiltered ) {
 			divBodyEl.scrollTop = 0;
 		}
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Apply a given function to the display child nodes of an element array (typically
 	 * TD children of TR rows
@@ -39155,11 +39155,11 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	{
 		var index=0, i=0, iLen=an1.length;
 		var nNode1, nNode2;
-	
+
 		while ( i < iLen ) {
 			nNode1 = an1[i].firstChild;
 			nNode2 = an2 ? an2[i].firstChild : null;
-	
+
 			while ( nNode1 ) {
 				if ( nNode1.nodeType === 1 ) {
 					if ( an2 ) {
@@ -39168,23 +39168,23 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 					else {
 						fn( nNode1, index );
 					}
-	
+
 					index++;
 				}
-	
+
 				nNode1 = nNode1.nextSibling;
 				nNode2 = an2 ? nNode2.nextSibling : null;
 			}
-	
+
 			i++;
 		}
 	}
-	
-	
-	
+
+
+
 	var __re_html_remove = /<.*?>/g;
-	
-	
+
+
 	/**
 	 * Calculate the width of columns for the table
 	 *  @param {object} oSettings dataTables settings object
@@ -39206,18 +39206,18 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			tableContainer = table.parentNode,
 			userInputs = false,
 			i, column, columnIdx, width, outerWidth;
-	
+
 		/* Convert any user input sizes into pixel sizes */
 		for ( i=0 ; i<visibleColumns.length ; i++ ) {
 			column = columns[ visibleColumns[i] ];
-	
+
 			if ( column.sWidth !== null ) {
 				column.sWidth = _fnConvertToWidth( column.sWidthOrig, tableContainer );
-	
+
 				userInputs = true;
 			}
 		}
-	
+
 		/* If the number of columns in the DOM equals the number that we have to
 		 * process in DataTables, then we can use the offsets that are created by
 		 * the web- browser. No custom sizes can be set in order for this to happen,
@@ -39242,40 +39242,40 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				.append( $(oSettings.nTHead).clone( false ) )
 				.append( $(oSettings.nTFoot).clone( false ) )
 				.append( $('<tbody><tr/></tbody>') );
-	
+
 			// Remove any assigned widths from the footer (from scrolling)
 			tmpTable.find('tfoot th, tfoot td').css('width', '');
-	
+
 			var tr = tmpTable.find( 'tbody tr' );
-	
+
 			// Apply custom sizing to the cloned header
 			headerCells = _fnGetUniqueThs( oSettings, tmpTable.find('thead')[0] );
-	
+
 			for ( i=0 ; i<visibleColumns.length ; i++ ) {
 				column = columns[ visibleColumns[i] ];
-	
+
 				headerCells[i].style.width = column.sWidthOrig !== null && column.sWidthOrig !== '' ?
 					_fnStringToCss( column.sWidthOrig ) :
 					'';
 			}
-	
+
 			// Find the widest cell for each column and put it into the table
 			if ( oSettings.aoData.length ) {
 				for ( i=0 ; i<visibleColumns.length ; i++ ) {
 					columnIdx = visibleColumns[i];
 					column = columns[ columnIdx ];
-	
+
 					$( _fnGetWidestNode( oSettings, columnIdx ) )
 						.clone( false )
 						.append( column.sContentPadding )
 						.appendTo( tr );
 				}
 			}
-	
+
 			// Table has been built, attach to the document so we can work with it
 			tmpTable.appendTo( tableContainer );
-	
-			// When scrolling (X or Y) we want to set the width of the table as 
+
+			// When scrolling (X or Y) we want to set the width of the table as
 			// appropriate. However, when not scrolling leave the table width as it
 			// is. This results in slightly different, but I think correct behaviour
 			if ( scrollX && scrollXInner ) {
@@ -39283,7 +39283,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			}
 			else if ( scrollX ) {
 				tmpTable.css( 'width', 'auto' );
-	
+
 				if ( tmpTable.width() < tableContainer.offsetWidth ) {
 					tmpTable.width( tableContainer.offsetWidth );
 				}
@@ -39294,10 +39294,10 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			else if ( tableWidthAttr ) {
 				tmpTable.width( tableWidthAttr );
 			}
-	
+
 			// Take into account the y scrollbar
 			_fnScrollingWidthAdjust( oSettings, tmpTable[0] );
-	
+
 			// Browsers need a bit of a hand when a width is assigned to any columns
 			// when x-scrolling as they tend to collapse the table to the min-width,
 			// even if we sent the column widths. So we need to keep track of what
@@ -39306,36 +39306,36 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			if ( scrollX )
 			{
 				var total = 0;
-	
+
 				for ( i=0 ; i<visibleColumns.length ; i++ ) {
 					column = columns[ visibleColumns[i] ];
 					outerWidth = $(headerCells[i]).outerWidth();
-	
+
 					total += column.sWidthOrig === null ?
 						outerWidth :
 						parseInt( column.sWidth, 10 ) + outerWidth - $(headerCells[i]).width();
 				}
-	
+
 				tmpTable.width( _fnStringToCss( total ) );
 				table.style.width = _fnStringToCss( total );
 			}
-	
+
 			// Get the width of each column in the constructed table
 			for ( i=0 ; i<visibleColumns.length ; i++ ) {
 				column = columns[ visibleColumns[i] ];
 				width = $(headerCells[i]).width();
-	
+
 				if ( width ) {
 					column.sWidth = _fnStringToCss( width );
 				}
 			}
-	
+
 			table.style.width = _fnStringToCss( tmpTable.css('width') );
-	
+
 			// Finished with the table - ditch it
 			tmpTable.remove();
 		}
-	
+
 		// If there is a width attr, we want to attach an event listener which
 		// allows the table sizing to automatically adjust when the window is
 		// resized. Use the width attr rather than CSS, since we can't know if the
@@ -39343,17 +39343,17 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		if ( tableWidthAttr ) {
 			table.style.width = _fnStringToCss( tableWidthAttr );
 		}
-	
+
 		if ( (tableWidthAttr || scrollX) && ! oSettings._reszEvt ) {
 			$(window).bind('resize.DT-'+oSettings.sInstance, _fnThrottle( function () {
 				_fnAdjustColumnSizing( oSettings );
 			} ) );
-	
+
 			oSettings._reszEvt = true;
 		}
 	}
-	
-	
+
+
 	/**
 	 * Throttle the calls to a function. Arguments and context are maintained for
 	 * the throttled function
@@ -39367,16 +39367,16 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			frequency = freq || 200,
 			last,
 			timer;
-	
+
 		return function () {
 			var
 				that = this,
 				now  = +new Date(),
 				args = arguments;
-	
+
 			if ( last && now < last + frequency ) {
 				clearTimeout( timer );
-	
+
 				timer = setTimeout( function () {
 					last = undefined;
 					fn.apply( that, args );
@@ -39391,8 +39391,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			}
 		};
 	}
-	
-	
+
+
 	/**
 	 * Convert a CSS unit width to pixels (e.g. 2em)
 	 *  @param {string} width width to be converted
@@ -39405,29 +39405,29 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		if ( ! width ) {
 			return 0;
 		}
-	
+
 		var n = $('<div/>')
 			.css( 'width', _fnStringToCss( width ) )
 			.appendTo( parent || document.body );
-	
+
 		var val = n[0].offsetWidth;
 		n.remove();
-	
+
 		return val;
 	}
-	
-	
+
+
 	/**
 	 * Adjust a table's width to take account of vertical scroll bar
 	 *  @param {object} oSettings dataTables settings object
 	 *  @param {node} n table node
 	 *  @memberof DataTable#oApi
 	 */
-	
+
 	function _fnScrollingWidthAdjust ( settings, n )
 	{
 		var scroll = settings.oScroll;
-	
+
 		if ( scroll.sX || scroll.sY ) {
 			// When y-scrolling only, we want to remove the width of the scroll bar
 			// so the table + scroll bar will fit into the area available, otherwise
@@ -39436,8 +39436,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			n.style.width = _fnStringToCss( $(n).outerWidth() - correction );
 		}
 	}
-	
-	
+
+
 	/**
 	 * Get the widest node
 	 *  @param {object} settings dataTables settings object
@@ -39451,14 +39451,14 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		if ( idx < 0 ) {
 			return null;
 		}
-	
+
 		var data = settings.aoData[ idx ];
 		return ! data.nTr ? // Might not have been created when deferred rendering
 			$('<td/>').html( _fnGetCellData( settings, idx, colIdx, 'display' ) )[0] :
 			data.anCells[ colIdx ];
 	}
-	
-	
+
+
 	/**
 	 * Get the maximum strlen for each data column
 	 *  @param {object} settings dataTables settings object
@@ -39469,21 +39469,21 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	function _fnGetMaxLenString( settings, colIdx )
 	{
 		var s, max=-1, maxIdx = -1;
-	
+
 		for ( var i=0, ien=settings.aoData.length ; i<ien ; i++ ) {
 			s = _fnGetCellData( settings, i, colIdx, 'display' )+'';
 			s = s.replace( __re_html_remove, '' );
-	
+
 			if ( s.length > max ) {
 				max = s.length;
 				maxIdx = i;
 			}
 		}
-	
+
 		return maxIdx;
 	}
-	
-	
+
+
 	/**
 	 * Append a CSS unit (only if required) to a string
 	 *  @param {string} value to css-ify
@@ -39495,20 +39495,20 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		if ( s === null ) {
 			return '0px';
 		}
-	
+
 		if ( typeof s == 'number' ) {
 			return s < 0 ?
 				'0px' :
 				s+'px';
 		}
-	
+
 		// Check it has a unit character already
 		return s.match(/\d$/) ?
 			s+'px' :
 			s;
 	}
-	
-	
+
+
 	/**
 	 * Get the width of a scroll bar in this browser being used
 	 *  @returns {int} width in pixels
@@ -39524,7 +39524,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				height: 200,
 				padding: 0
 			} )[0];
-	
+
 			var outer = $('<div/>')
 				.css( {
 					position: 'absolute',
@@ -39538,25 +39538,25 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				} )
 				.append( inner )
 				.appendTo( 'body' );
-	
+
 			var w1 = inner.offsetWidth;
 			outer.css( 'overflow', 'scroll' );
 			var w2 = inner.offsetWidth;
-	
+
 			if ( w1 === w2 ) {
 				w2 = outer[0].clientWidth;
 			}
-	
+
 			outer.remove();
-	
+
 			DataTable.__scrollbarWidth = w1 - w2;
 		}
-	
+
 		return DataTable.__scrollbarWidth;
 	}
-	
-	
-	
+
+
+
 	function _fnSortFlatten ( settings )
 	{
 		var
@@ -39578,33 +39578,33 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 					nestedSort.push.apply( nestedSort, a );
 				}
 			};
-	
+
 		// Build the sort array, with pre-fix and post-fix options if they have been
 		// specified
 		if ( $.isArray( fixed ) ) {
 			add( fixed );
 		}
-	
+
 		if ( fixedObj && fixed.pre ) {
 			add( fixed.pre );
 		}
-	
+
 		add( settings.aaSorting );
-	
+
 		if (fixedObj && fixed.post ) {
 			add( fixed.post );
 		}
-	
+
 		for ( i=0 ; i<nestedSort.length ; i++ )
 		{
 			srcCol = nestedSort[i][0];
 			aDataSort = aoColumns[ srcCol ].aDataSort;
-	
+
 			for ( k=0, kLen=aDataSort.length ; k<kLen ; k++ )
 			{
 				iCol = aDataSort[k];
 				sType = aoColumns[ iCol ].sType || 'string';
-	
+
 				aSort.push( {
 					src:       srcCol,
 					col:       iCol,
@@ -39615,10 +39615,10 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				} );
 			}
 		}
-	
+
 		return aSort;
 	}
-	
+
 	/**
 	 * Change the order of the table
 	 *  @param {object} oSettings dataTables settings object
@@ -39639,24 +39639,24 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			sortCol,
 			displayMaster = oSettings.aiDisplayMaster,
 			aSort = _fnSortFlatten( oSettings );
-	
+
 		// Resolve any column types that are unknown due to addition or invalidation
 		// @todo Can this be moved into a 'data-ready' handler which is called when
 		//   data is going to be used in the table?
 		_fnColumnTypes( oSettings );
-	
+
 		for ( i=0, ien=aSort.length ; i<ien ; i++ ) {
 			sortCol = aSort[i];
-	
+
 			// Track if we can use the fast sort algorithm
 			if ( sortCol.formatter ) {
 				formatters++;
 			}
-	
+
 			// Load the data needed for the sort, for each cell
 			_fnSortData( oSettings, sortCol.col );
 		}
-	
+
 		/* No sorting required if server-side or no sorting array */
 		if ( _fnDataSource( oSettings ) != 'ssp' && aSort.length !== 0 )
 		{
@@ -39665,7 +39665,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			for ( i=0, iLen=displayMaster.length ; i<iLen ; i++ ) {
 				aiOrig[ displayMaster[i] ] = i;
 			}
-	
+
 			/* Do the sort - here we want multi-column sorting based on a given data source (column)
 			 * and sorting function (from oSort) in a certain direction. It's reasonably complex to
 			 * follow on it's own, but this is what we want (example two column sorting):
@@ -39695,19 +39695,19 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 						len=aSort.length,
 						dataA = aoData[a]._aSortData,
 						dataB = aoData[b]._aSortData;
-	
+
 					for ( k=0 ; k<len ; k++ ) {
 						sort = aSort[k];
-	
+
 						x = dataA[ sort.col ];
 						y = dataB[ sort.col ];
-	
+
 						test = x<y ? -1 : x>y ? 1 : 0;
 						if ( test !== 0 ) {
 							return sort.dir === 'asc' ? test : -test;
 						}
 					}
-	
+
 					x = aiOrig[a];
 					y = aiOrig[b];
 					return x<y ? -1 : x>y ? 1 : 0;
@@ -39723,32 +39723,32 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 						len=aSort.length,
 						dataA = aoData[a]._aSortData,
 						dataB = aoData[b]._aSortData;
-	
+
 					for ( k=0 ; k<len ; k++ ) {
 						sort = aSort[k];
-	
+
 						x = dataA[ sort.col ];
 						y = dataB[ sort.col ];
-	
+
 						fn = oExtSort[ sort.type+"-"+sort.dir ] || oExtSort[ "string-"+sort.dir ];
 						test = fn( x, y );
 						if ( test !== 0 ) {
 							return test;
 						}
 					}
-	
+
 					x = aiOrig[a];
 					y = aiOrig[b];
 					return x<y ? -1 : x>y ? 1 : 0;
 				} );
 			}
 		}
-	
+
 		/* Tell the draw function that we have sorted the data */
 		oSettings.bSorted = true;
 	}
-	
-	
+
+
 	function _fnSortAria ( settings )
 	{
 		var label;
@@ -39756,7 +39756,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		var columns = settings.aoColumns;
 		var aSort = _fnSortFlatten( settings );
 		var oAria = settings.oLanguage.oAria;
-	
+
 		// ARIA attributes - need to loop all columns, to update all (removing old
 		// attributes as needed)
 		for ( var i=0, iLen=columns.length ; i<iLen ; i++ )
@@ -39765,11 +39765,11 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			var asSorting = col.asSorting;
 			var sTitle = col.sTitle.replace( /<.*?>/g, "" );
 			var th = col.nTh;
-	
+
 			// IE7 is throwing an error when setting these properties with jQuery's
 			// attr() and removeAttr() methods...
 			th.removeAttribute('aria-sort');
-	
+
 			/* In ARIA only the first sorting column can be marked as sorting - no multi-sort option */
 			if ( col.bSortable ) {
 				if ( aSort.length > 0 && aSort[0].col == i ) {
@@ -39779,7 +39779,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				else {
 					nextSort = asSorting[0];
 				}
-	
+
 				label = sTitle + ( nextSort === "asc" ?
 					oAria.sSortAscending :
 					oAria.sSortDescending
@@ -39788,12 +39788,12 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			else {
 				label = sTitle;
 			}
-	
+
 			th.setAttribute('aria-label', label);
 		}
 	}
-	
-	
+
+
 	/**
 	 * Function to run on user sort request
 	 *  @param {object} settings dataTables settings object
@@ -39815,19 +39815,19 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			if ( idx === undefined ) {
 				idx = $.inArray( a[1], asSorting );
 			}
-	
+
 			return idx+1 >= asSorting.length ? 0 : idx+1;
 		};
-	
+
 		// If appending the sort then we are multi-column sorting
 		if ( append && settings.oFeatures.bSortMulti ) {
 			// Are we already doing some kind of sort on this column?
 			var sortIdx = $.inArray( colIdx, _pluck(sorting, '0') );
-	
+
 			if ( sortIdx !== -1 ) {
 				// Yes, modify the sort
 				nextSortIdx = next( sorting[sortIdx] );
-	
+
 				sorting[sortIdx][1] = asSorting[ nextSortIdx ];
 				sorting[sortIdx]._idx = nextSortIdx;
 			}
@@ -39840,7 +39840,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		else if ( sorting.length && sorting[0][0] == colIdx ) {
 			// Single column - already sorting on this column, modify the sort
 			nextSortIdx = next( sorting[0] );
-	
+
 			sorting.length = 1;
 			sorting[0][1] = asSorting[ nextSortIdx ];
 			sorting[0]._idx = nextSortIdx;
@@ -39851,17 +39851,17 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			sorting.push( [ colIdx, asSorting[0] ] );
 			sorting[0]._idx = 0;
 		}
-	
+
 		// Run the sort by calling a full redraw
 		_fnReDraw( settings );
-	
+
 		// callback used for async user interaction
 		if ( typeof callback == 'function' ) {
 			callback( settings );
 		}
 	}
-	
-	
+
+
 	/**
 	 * Attach a sort handler (click) to a node
 	 *  @param {object} settings dataTables settings object
@@ -39873,19 +39873,19 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	function _fnSortAttachListener ( settings, attachTo, colIdx, callback )
 	{
 		var col = settings.aoColumns[ colIdx ];
-	
+
 		_fnBindAction( attachTo, {}, function (e) {
 			/* If the column is not sortable - don't to anything */
 			if ( col.bSortable === false ) {
 				return;
 			}
-	
+
 			_fnProcessingDisplay( settings, true );
-	
+
 			// Use a timeout to allow the processing display to be shown.
 			setTimeout( function() {
 				_fnSortListener( settings, colIdx, e.shiftKey, callback );
-	
+
 				// In server-side processing, the draw callback will remove the
 				// processing display
 				if ( _fnDataSource( settings ) !== 'ssp' ) {
@@ -39894,8 +39894,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			}, 0 );
 		} );
 	}
-	
-	
+
+
 	/**
 	 * Set the sorting classes on table's body, Note: it is safe to call this function
 	 * when bSort and bSortClasses are false
@@ -39909,30 +39909,30 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		var sort = _fnSortFlatten( settings );
 		var features = settings.oFeatures;
 		var i, ien, colIdx;
-	
+
 		if ( features.bSort && features.bSortClasses ) {
 			// Remove old sorting classes
 			for ( i=0, ien=oldSort.length ; i<ien ; i++ ) {
 				colIdx = oldSort[i].src;
-	
+
 				// Remove column sorting
 				$( _pluck( settings.aoData, 'anCells', colIdx ) )
 					.removeClass( sortClass + (i<2 ? i+1 : 3) );
 			}
-	
+
 			// Add new column sorting
 			for ( i=0, ien=sort.length ; i<ien ; i++ ) {
 				colIdx = sort[i].src;
-	
+
 				$( _pluck( settings.aoData, 'anCells', colIdx ) )
 					.addClass( sortClass + (i<2 ? i+1 : 3) );
 			}
 		}
-	
+
 		settings.aLastSort = sort;
 	}
-	
-	
+
+
 	// Get the data to sort a column, be it from cache, fresh (populating the
 	// cache), or from a sort formatter
 	function _fnSortData( settings, idx )
@@ -39941,38 +39941,38 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		var column = settings.aoColumns[ idx ];
 		var customSort = DataTable.ext.order[ column.sSortDataType ];
 		var customData;
-	
+
 		if ( customSort ) {
 			customData = customSort.call( settings.oInstance, settings, idx,
 				_fnColumnIndexToVisible( settings, idx )
 			);
 		}
-	
+
 		// Use / populate cache
 		var row, cellData;
 		var formatter = DataTable.ext.type.order[ column.sType+"-pre" ];
-	
+
 		for ( var i=0, ien=settings.aoData.length ; i<ien ; i++ ) {
 			row = settings.aoData[i];
-	
+
 			if ( ! row._aSortData ) {
 				row._aSortData = [];
 			}
-	
+
 			if ( ! row._aSortData[idx] || customSort ) {
 				cellData = customSort ?
 					customData[i] : // If there was a custom sort function, use data from there
 					_fnGetCellData( settings, i, idx, 'sort' );
-	
+
 				row._aSortData[ idx ] = formatter ?
 					formatter( cellData ) :
 					cellData;
 			}
 		}
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Save the state of a table
 	 *  @param {object} oSettings dataTables settings object
@@ -39984,7 +39984,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		{
 			return;
 		}
-	
+
 		/* Store the interesting variables */
 		var i, iLen;
 		var oState = {
@@ -39996,18 +39996,18 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			"aoSearchCols": $.extend( true, [], oSettings.aoPreSearchCols ),
 			"abVisCols":    []
 		};
-	
+
 		for ( i=0, iLen=oSettings.aoColumns.length ; i<iLen ; i++ )
 		{
 			oState.abVisCols.push( oSettings.aoColumns[i].bVisible );
 		}
-	
+
 		_fnCallbackFire( oSettings, "aoStateSaveParams", 'stateSaveParams', [oSettings, oState] );
-	
+
 		oSettings.fnStateSaveCallback.call( oSettings.oInstance, oSettings, oState );
 	}
-	
-	
+
+
 	/**
 	 * Attempt to load a saved table state
 	 *  @param {object} oSettings dataTables settings object
@@ -40018,18 +40018,18 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	{
 		var i, ien;
 		var columns = oSettings.aoColumns;
-	
+
 		if ( !oSettings.oFeatures.bStateSave )
 		{
 			return;
 		}
-	
+
 		var oData = oSettings.fnStateLoadCallback.call( oSettings.oInstance, oSettings );
 		if ( !oData )
 		{
 			return;
 		}
-	
+
 		/* Allow custom and plug-in manipulation functions to alter the saved data set and
 		 * cancelling of loading by returning false
 		 */
@@ -40038,26 +40038,26 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		{
 			return;
 		}
-	
+
 		/* Reject old data */
 		if ( oData.iCreate < new Date().getTime() - (oSettings.iStateDuration*1000) ) {
 			return;
 		}
-	
+
 		// Number of columns have changed - all bets are off, no restore of settings
 		if ( columns.length !== oData.aoSearchCols.length ) {
 			return;
 		}
-	
+
 		/* Store the saved state so it might be accessed at any time */
 		oSettings.oLoadedState = $.extend( true, {}, oData );
-	
+
 		/* Restore key features */
 		oSettings._iDisplayStart    = oData.iStart;
 		oSettings.iInitDisplayStart = oData.iStart;
 		oSettings._iDisplayLength   = oData.iLength;
 		oSettings.aaSorting         = [];
-	
+
 		var savedSort = oData.aaSorting;
 		for ( i=0, ien=savedSort.length ; i<ien ; i++ ) {
 			oSettings.aaSorting.push( savedSort[i][0] >= columns.length ?
@@ -40065,21 +40065,21 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				savedSort[i]
 			);
 		}
-	
+
 		/* Search filtering  */
 		$.extend( oSettings.oPreviousSearch, oData.oSearch );
 		$.extend( true, oSettings.aoPreSearchCols, oData.aoSearchCols );
-	
+
 		/* Column visibility state */
 		for ( i=0, ien=oData.abVisCols.length ; i<ien ; i++ ) {
 			columns[i].bVisible = oData.abVisCols[i];
 		}
-	
+
 		_fnCallbackFire( oSettings, 'aoStateLoaded', 'stateLoaded', [oSettings, oData] );
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Return the settings object for a particular table
 	 *  @param {node} table table we are using as a dataTable
@@ -40090,13 +40090,13 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	{
 		var settings = DataTable.settings;
 		var idx = $.inArray( table, _pluck( settings, 'nTable' ) );
-	
+
 		return idx !== -1 ?
 			settings[ idx ] :
 			null;
 	}
-	
-	
+
+
 	/**
 	 * Log an error message
 	 *  @param {object} settings dataTables settings object
@@ -40109,17 +40109,17 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	{
 		msg = 'DataTables warning: '+
 			(settings!==null ? 'table id='+settings.sTableId+' - ' : '')+msg;
-	
+
 		if ( tn ) {
 			msg += '. For more information about this error, please see '+
 			'http://datatables.net/tn/'+tn;
 		}
-	
+
 		if ( ! level  ) {
 			// Backwards compatibility pre 1.10
 			var ext = DataTable.ext;
 			var type = ext.sErrMode || ext.errMode;
-	
+
 			if ( type == 'alert' ) {
 				alert( msg );
 			}
@@ -40131,8 +40131,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			console.log( msg );
 		}
 	}
-	
-	
+
+
 	/**
 	 * See if a property is defined on one object, if so assign it to the other object
 	 *  @param {object} ret target object
@@ -40152,20 +40152,20 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 					_fnMap( ret, src, val );
 				}
 			} );
-	
+
 			return;
 		}
-	
+
 		if ( mappedName === undefined ) {
 			mappedName = name;
 		}
-	
+
 		if ( src[name] !== undefined ) {
 			ret[mappedName] = src[name];
 		}
 	}
-	
-	
+
+
 	/**
 	 * Extend objects - very similar to jQuery.extend, but deep copy objects, and
 	 * shallow copy arrays. The reason we need to do this, is that we don't want to
@@ -40186,11 +40186,11 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	function _fnExtend( out, extender, breakRefs )
 	{
 		var val;
-	
+
 		for ( var prop in extender ) {
 			if ( extender.hasOwnProperty(prop) ) {
 				val = extender[prop];
-	
+
 				if ( $.isPlainObject( val ) ) {
 					if ( ! $.isPlainObject( out[prop] ) ) {
 						out[prop] = {};
@@ -40205,11 +40205,11 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				}
 			}
 		}
-	
+
 		return out;
 	}
-	
-	
+
+
 	/**
 	 * Bind an event handers to allow a click or return key to activate the callback.
 	 * This is good for accessibility since a return on the keyboard will have the
@@ -40235,8 +40235,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				return false;
 				} );
 	}
-	
-	
+
+
 	/**
 	 * Register a callback function. Easily allows a callback function to be added to
 	 * an array store of callback functions that can then all be called together.
@@ -40256,8 +40256,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			} );
 		}
 	}
-	
-	
+
+
 	/**
 	 * Fire callback functions and trigger events. Note that the loop over the
 	 * callback array store is done backwards! Further note that you do not want to
@@ -40275,48 +40275,48 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	function _fnCallbackFire( settings, callbackArr, event, args )
 	{
 		var ret = [];
-	
+
 		if ( callbackArr ) {
 			ret = $.map( settings[callbackArr].slice().reverse(), function (val, i) {
 				return val.fn.apply( settings.oInstance, args );
 			} );
 		}
-	
+
 		if ( event !== null ) {
 			$(settings.nTable).trigger( event+'.dt', args );
 		}
-	
+
 		return ret;
 	}
-	
-	
+
+
 	function _fnLengthOverflow ( settings )
 	{
 		var
 			start = settings._iDisplayStart,
 			end = settings.fnDisplayEnd(),
 			len = settings._iDisplayLength;
-	
+
 		/* If we have space to show extra rows (backing up from the end point - then do so */
 		if ( end === settings.fnRecordsDisplay() )
 		{
 			start = end - len;
 		}
-	
+
 		if ( len === -1 || start < 0 )
 		{
 			start = 0;
 		}
-	
+
 		settings._iDisplayStart = start;
 	}
-	
-	
+
+
 	function _fnRenderer( settings, type )
 	{
 		var renderer = settings.renderer;
 		var host = DataTable.ext.renderer[type];
-	
+
 		if ( $.isPlainObject( renderer ) && renderer[type] ) {
 			// Specific renderer for this type. If available use it, otherwise use
 			// the default.
@@ -40327,12 +40327,12 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			// otherwise use the default
 			return host[renderer] || host._;
 		}
-	
+
 		// Use the default
 		return host._;
 	}
-	
-	
+
+
 	/**
 	 * Detect the data source being used for the table. Used to simplify the code
 	 * a little (ajax) and to make it compress a little smaller.
@@ -40351,7 +40351,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		}
 		return 'dom';
 	}
-	
+
 
 	DataTable = function( options )
 	{
@@ -40395,8 +40395,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		{
 			return this.api(true).$( sSelector, oOpts );
 		};
-		
-		
+
+
 		/**
 		 * Almost identical to $ in operation, but in this case returns the data for the matched
 		 * rows - as such, the jQuery selector used should match TR row nodes or TD/TH cell nodes
@@ -40449,8 +40449,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		{
 			return this.api(true).rows( sSelector, oOpts ).data();
 		};
-		
-		
+
+
 		/**
 		 * Create a DataTables Api instance, with the currently selected tables for
 		 * the Api's context.
@@ -40468,8 +40468,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				) :
 				new _Api( this );
 		};
-		
-		
+
+
 		/**
 		 * Add a single new row or multiple rows of data to the table. Please note
 		 * that this is suitable for client-side processing only - if you are using
@@ -40511,20 +40511,20 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		this.fnAddData = function( data, redraw )
 		{
 			var api = this.api( true );
-		
+
 			/* Check if we want to add multiple rows or not */
 			var rows = $.isArray(data) && ( $.isArray(data[0]) || $.isPlainObject(data[0]) ) ?
 				api.rows.add( data ) :
 				api.row.add( data );
-		
+
 			if ( redraw === undefined || redraw ) {
 				api.draw();
 			}
-		
+
 			return rows.flatten().toArray();
 		};
-		
-		
+
+
 		/**
 		 * This function will make DataTables recalculate the column sizes, based on the data
 		 * contained in the table and the sizes applied to the columns (in the DOM, CSS or
@@ -40551,7 +40551,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			var api = this.api( true ).columns.adjust();
 			var settings = api.settings()[0];
 			var scroll = settings.oScroll;
-		
+
 			if ( bRedraw === undefined || bRedraw ) {
 				api.draw( false );
 			}
@@ -40560,8 +40560,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				_fnScrollDraw( settings );
 			}
 		};
-		
-		
+
+
 		/**
 		 * Quickly and simply clear a table
 		 *  @param {bool} [bRedraw=true] redraw the table or not
@@ -40579,13 +40579,13 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		this.fnClearTable = function( bRedraw )
 		{
 			var api = this.api( true ).clear();
-		
+
 			if ( bRedraw === undefined || bRedraw ) {
 				api.draw();
 			}
 		};
-		
-		
+
+
 		/**
 		 * The exact opposite of 'opening' a row, this function will close any rows which
 		 * are currently 'open'.
@@ -40614,8 +40614,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		{
 			this.api( true ).row( nTr ).child.hide();
 		};
-		
-		
+
+
 		/**
 		 * Remove a row for the table
 		 *  @param {mixed} target The index of the row from aoData to be deleted, or
@@ -40640,21 +40640,21 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			var rows = api.rows( target );
 			var settings = rows.settings()[0];
 			var data = settings.aoData[ rows[0][0] ];
-		
+
 			rows.remove();
-		
+
 			if ( callback ) {
 				callback.call( this, settings, data );
 			}
-		
+
 			if ( redraw === undefined || redraw ) {
 				api.draw();
 			}
-		
+
 			return data;
 		};
-		
-		
+
+
 		/**
 		 * Restore the table to it's original state in the DOM by removing all of DataTables
 		 * enhancements, alterations to the DOM structure of the table and event listeners.
@@ -40673,8 +40673,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		{
 			this.api( true ).destroy( remove );
 		};
-		
-		
+
+
 		/**
 		 * Redraw the table
 		 *  @param {bool} [complete=true] Re-filter and resort (if enabled) the table before the draw.
@@ -40695,8 +40695,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			// into account the new data, but can old position.
 			this.api( true ).draw( ! complete );
 		};
-		
-		
+
+
 		/**
 		 * Filter the input based on data
 		 *  @param {string} sInput String to filter the table on
@@ -40719,18 +40719,18 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		this.fnFilter = function( sInput, iColumn, bRegex, bSmart, bShowGlobal, bCaseInsensitive )
 		{
 			var api = this.api( true );
-		
+
 			if ( iColumn === null || iColumn === undefined ) {
 				api.search( sInput, bRegex, bSmart, bCaseInsensitive );
 			}
 			else {
 				api.column( iColumn ).search( sInput, bRegex, bSmart, bCaseInsensitive );
 			}
-		
+
 			api.draw();
 		};
-		
-		
+
+
 		/**
 		 * Get the data for the whole table, an individual row or an individual cell based on the
 		 * provided parameters.
@@ -40771,19 +40771,19 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		this.fnGetData = function( src, col )
 		{
 			var api = this.api( true );
-		
+
 			if ( src !== undefined ) {
 				var type = src.nodeName ? src.nodeName.toLowerCase() : '';
-		
+
 				return col !== undefined || type == 'td' || type == 'th' ?
 					api.cell( src, col ).data() :
 					api.row( src ).data();
 			}
-		
+
 			return api.data().toArray();
 		};
-		
-		
+
+
 		/**
 		 * Get an array of the TR nodes that are used in the table's body. Note that you will
 		 * typically want to use the '$' API method in preference to this as it is more
@@ -40805,13 +40805,13 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		this.fnGetNodes = function( iRow )
 		{
 			var api = this.api( true );
-		
+
 			return iRow !== undefined ?
 				api.row( iRow ).node() :
 				api.rows().nodes().toArray();
 		};
-		
-		
+
+
 		/**
 		 * Get the array indexes of a particular cell from it's DOM element
 		 * and column index including hidden columns
@@ -40844,13 +40844,13 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		{
 			var api = this.api( true );
 			var nodeName = node.nodeName.toUpperCase();
-		
+
 			if ( nodeName == 'TR' ) {
 				return api.row( node ).index();
 			}
 			else if ( nodeName == 'TD' || nodeName == 'TH' ) {
 				var cell = api.cell( node ).index();
-		
+
 				return [
 					cell.row,
 					cell.columnVisible,
@@ -40859,8 +40859,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			}
 			return null;
 		};
-		
-		
+
+
 		/**
 		 * Check to see if a row is 'open' or not.
 		 *  @param {node} nTr the table row to check
@@ -40888,8 +40888,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		{
 			return this.api( true ).row( nTr ).child.isShown();
 		};
-		
-		
+
+
 		/**
 		 * This function will place a new row directly after a row which is currently
 		 * on display on the page, with the HTML contents that is passed into the
@@ -40924,8 +40924,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		{
 			return this.api( true ).row( nTr ).child( mHtml, sClass ).show();
 		};
-		
-		
+
+
 		/**
 		 * Change the pagination - provides the internal logic for pagination in a simple API
 		 * function. With this function you can have a DataTables table go to the next,
@@ -40945,13 +40945,13 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		this.fnPageChange = function ( mAction, bRedraw )
 		{
 			var api = this.api( true ).page( mAction );
-		
+
 			if ( bRedraw === undefined || bRedraw ) {
 				api.draw(false);
 			}
 		};
-		
-		
+
+
 		/**
 		 * Show a particular column
 		 *  @param {int} iCol The column whose display should be changed
@@ -40971,13 +40971,13 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		this.fnSetColumnVis = function ( iCol, bShow, bRedraw )
 		{
 			var api = this.api( true ).column( iCol ).visible( bShow );
-		
+
 			if ( bRedraw === undefined || bRedraw ) {
 				api.columns.adjust().draw();
 			}
 		};
-		
-		
+
+
 		/**
 		 * Get the settings for a particular table for external manipulation
 		 *  @returns {object} DataTables settings object. See
@@ -40998,8 +40998,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		{
 			return _fnSettingsFromNode( this[_ext.iApiIndex] );
 		};
-		
-		
+
+
 		/**
 		 * Sort the table by a particular column
 		 *  @param {int} iCol the data index to sort on. Note that this will not match the
@@ -41019,8 +41019,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		{
 			this.api( true ).order( aaSort ).draw();
 		};
-		
-		
+
+
 		/**
 		 * Attach a sort listener to an element for a given column
 		 *  @param {node} nNode the element to attach the sort listener to
@@ -41041,8 +41041,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		{
 			this.api( true ).order.listener( nNode, iColumn, fnCallback );
 		};
-		
-		
+
+
 		/**
 		 * Update a table cell or row - this method will accept either a single value to
 		 * update the cell with, an array of values with one element for each column or
@@ -41068,25 +41068,25 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		this.fnUpdate = function( mData, mRow, iColumn, bRedraw, bAction )
 		{
 			var api = this.api( true );
-		
+
 			if ( iColumn === undefined || iColumn === null ) {
 				api.row( mRow ).data( mData );
 			}
 			else {
 				api.cell( mRow, iColumn ).data( mData );
 			}
-		
+
 			if ( bAction === undefined || bAction ) {
 				api.columns.adjust();
 			}
-		
+
 			if ( bRedraw === undefined || bRedraw ) {
 				api.draw();
 			}
 			return 0;
 		};
-		
-		
+
+
 		/**
 		 * Provide a common method for plug-ins to check the version of DataTables being used, in order
 		 * to ensure compatibility.
@@ -41105,7 +41105,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		this.fnVersionCheck = _ext.fnVersionCheck;
-		
+
 
 		var _that = this;
 		var emptyInit = options === undefined;
@@ -41137,26 +41137,26 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			var sId = this.getAttribute( 'id' );
 			var bInitHandedOff = false;
 			var defaults = DataTable.defaults;
-			
-			
+
+
 			/* Sanity check */
 			if ( this.nodeName.toLowerCase() != 'table' )
 			{
 				_fnLog( null, 0, 'Non-table node initialisation ('+this.nodeName+')', 2 );
 				return;
 			}
-			
+
 			/* Backwards compatibility for the defaults */
 			_fnCompatOpts( defaults );
 			_fnCompatCols( defaults.column );
-			
+
 			/* Convert the camel-case defaults to Hungarian */
 			_fnCamelToHungarian( defaults, defaults, true );
 			_fnCamelToHungarian( defaults.column, defaults.column, true );
-			
+
 			/* Setting up the initialisation object */
 			_fnCamelToHungarian( defaults, oInit );
-			
+
 			/* Check to see if we are re-initialising a table */
 			var allSettings = DataTable.settings;
 			for ( i=0, iLen=allSettings.length ; i<iLen ; i++ )
@@ -41166,7 +41166,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				{
 					var bRetrieve = oInit.bRetrieve !== undefined ? oInit.bRetrieve : defaults.bRetrieve;
 					var bDestroy = oInit.bDestroy !== undefined ? oInit.bDestroy : defaults.bDestroy;
-			
+
 					if ( emptyInit || bRetrieve )
 					{
 						return allSettings[i].oInstance;
@@ -41182,7 +41182,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 						return;
 					}
 				}
-			
+
 				/* If the element we are initialising has the same ID as a table which was previously
 				 * initialised, but the table nodes don't match (from before) then we destroy the old
 				 * instance by simply deleting it. This is under the assumption that the table has been
@@ -41194,14 +41194,14 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 					break;
 				}
 			}
-			
+
 			/* Ensure the table has an ID - required for accessibility */
 			if ( sId === null || sId === "" )
 			{
 				sId = "DataTables_Table_"+(DataTable.ext._unique++);
 				this.id = sId;
 			}
-			
+
 			/* Create the settings object for this table and set some of the default parameters */
 			var oSettings = $.extend( true, {}, DataTable.models.oSettings, {
 				"nTable":        this,
@@ -41212,31 +41212,31 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				"sTableId":      sId
 			} );
 			allSettings.push( oSettings );
-			
+
 			// Need to add the instance after the instance after the settings object has been added
 			// to the settings array, so we can self reference the table instance if more than one
 			oSettings.oInstance = (_that.length===1) ? _that : $(this).dataTable();
-			
+
 			// Backwards compatibility, before we apply all the defaults
 			_fnCompatOpts( oInit );
-			
+
 			if ( oInit.oLanguage )
 			{
 				_fnLanguageCompat( oInit.oLanguage );
 			}
-			
+
 			// If the length menu is given, but the init display length is not, use the length menu
 			if ( oInit.aLengthMenu && ! oInit.iDisplayLength )
 			{
 				oInit.iDisplayLength = $.isArray( oInit.aLengthMenu[0] ) ?
 					oInit.aLengthMenu[0][0] : oInit.aLengthMenu[0];
 			}
-			
+
 			// Apply the defaults and init options to make a single init object will all
 			// options defined from defaults and instance options.
 			oInit = _fnExtend( $.extend( true, {}, defaults ), oInit );
-			
-			
+
+
 			// Map the initialisation options onto the settings object
 			_fnMap( oSettings.oFeatures, oInit, [
 				"bPaginate",
@@ -41283,7 +41283,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				[ "bScrollCollapse", "bCollapse" ]
 			] );
 			_fnMap( oSettings.oLanguage, oInit, "fnInfoCallback" );
-			
+
 			/* Callback functions which are array driven */
 			_fnCallbackReg( oSettings, 'aoDrawCallback',       oInit.fnDrawCallback,      'user' );
 			_fnCallbackReg( oSettings, 'aoServerParams',       oInit.fnServerParams,      'user' );
@@ -41296,7 +41296,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			_fnCallbackReg( oSettings, 'aoFooterCallback',     oInit.fnFooterCallback,    'user' );
 			_fnCallbackReg( oSettings, 'aoInitComplete',       oInit.fnInitComplete,      'user' );
 			_fnCallbackReg( oSettings, 'aoPreDrawCallback',    oInit.fnPreDrawCallback,   'user' );
-			
+
 			// @todo Remove in 1.11
 			if ( oInit.bJQueryUI )
 			{
@@ -41304,13 +41304,13 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				 * you want to have multiple tables with multiple independent classes
 				 */
 				$.extend( oSettings.oClasses, DataTable.ext.oJUIClasses, oInit.oClasses );
-			
+
 				if ( oInit.sDom === defaults.sDom && defaults.sDom === "lfrtip" )
 				{
 					/* Set the DOM to use a layout suitable for jQuery UI's theming */
 					oSettings.sDom = '<"H"lfr>t<"F"ip>';
 				}
-			
+
 				if ( ! oSettings.renderer ) {
 					oSettings.renderer = 'jqueryui';
 				}
@@ -41323,7 +41323,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				$.extend( oSettings.oClasses, DataTable.ext.classes, oInit.oClasses );
 			}
 			$(this).addClass( oSettings.oClasses.sTable );
-			
+
 			/* Calculate the scroll bar width and cache it for use later on */
 			if ( oSettings.oScroll.sX !== "" || oSettings.oScroll.sY !== "" )
 			{
@@ -41332,14 +41332,14 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			if ( oSettings.oScroll.sX === true ) { // Easy initialisation of x-scrolling
 				oSettings.oScroll.sX = '100%';
 			}
-			
+
 			if ( oSettings.iInitDisplayStart === undefined )
 			{
 				/* Display start point, taking into account the save saving */
 				oSettings.iInitDisplayStart = oInit.iDisplayStart;
 				oSettings._iDisplayStart = oInit.iDisplayStart;
 			}
-			
+
 			if ( oInit.iDeferLoading !== null )
 			{
 				oSettings.bDeferLoading = true;
@@ -41347,7 +41347,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				oSettings._iRecordsDisplay = tmp ? oInit.iDeferLoading[0] : oInit.iDeferLoading;
 				oSettings._iRecordsTotal = tmp ? oInit.iDeferLoading[1] : oInit.iDeferLoading;
 			}
-			
+
 			/* Language definitions */
 			if ( oInit.oLanguage.sUrl !== "" )
 			{
@@ -41368,8 +41368,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			{
 				$.extend( true, oSettings.oLanguage, oInit.oLanguage );
 			}
-			
-			
+
+
 			/*
 			 * Stripes
 			 */
@@ -41380,7 +41380,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 					oSettings.oClasses.sStripeEven
 				];
 			}
-			
+
 			/* Remove row stripe classes if they are already on the table row */
 			var stripeClasses = oSettings.asStripeClasses;
 			var rowOne = $('tbody tr:eq(0)', this);
@@ -41390,7 +41390,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				$('tbody tr', this).removeClass( stripeClasses.join(' ') );
 				oSettings.asDestroyStripes = stripeClasses.slice();
 			}
-			
+
 			/*
 			 * Columns
 			 * See if we should load columns automatically or use defined ones
@@ -41403,7 +41403,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				_fnDetectHeader( oSettings.aoHeader, nThead[0] );
 				anThs = _fnGetUniqueThs( oSettings );
 			}
-			
+
 			/* If not given a column array, generate one with nulls */
 			if ( oInit.aoColumns === null )
 			{
@@ -41417,18 +41417,18 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			{
 				aoColumnsInit = oInit.aoColumns;
 			}
-			
+
 			/* Add the columns */
 			for ( i=0, iLen=aoColumnsInit.length ; i<iLen ; i++ )
 			{
 				_fnAddColumn( oSettings, anThs ? anThs[i] : null );
 			}
-			
+
 			/* Apply the column definitions */
 			_fnApplyColumnDefs( oSettings, oInit.aoColumnDefs, aoColumnsInit, function (iCol, oDef) {
 				_fnColumnOptions( oSettings, iCol, oDef );
 			} );
-			
+
 			/* HTML5 attribute detection - build an mData object automatically if the
 			 * attributes are found
 			 */
@@ -41436,14 +41436,14 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				var a = function ( cell, name ) {
 					return cell.getAttribute( 'data-'+name ) ? name : null;
 				};
-			
+
 				$.each( _fnGetRowElements( oSettings, rowOne[0] ).cells, function (i, cell) {
 					var col = oSettings.aoColumns[i];
-			
+
 					if ( col.mData === i ) {
 						var sort = a( cell, 'sort' ) || a( cell, 'order' );
 						var filter = a( cell, 'filter' ) || a( cell, 'search' );
-			
+
 						if ( sort !== null || filter !== null ) {
 							col.mData = {
 								_:      i+'.display',
@@ -41451,14 +41451,14 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 								type:   sort !== null   ? i+'.@data-'+sort   : undefined,
 								filter: filter !== null ? i+'.@data-'+filter : undefined
 							};
-			
+
 							_fnColumnOptions( oSettings, i );
 						}
 					}
 				} );
 			}
-			
-			
+
+
 			/* Must be done after everything which can be overridden by the state saving! */
 			if ( oInit.bStateSave )
 			{
@@ -41466,13 +41466,13 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				_fnLoadState( oSettings, oInit );
 				_fnCallbackReg( oSettings, 'aoDrawCallback', _fnSaveState, 'state_save' );
 			}
-			
-			
+
+
 			/*
 			 * Sorting
 			 * @todo For modularisation (1.11) this needs to do into a sort start up handler
 			 */
-			
+
 			// If aaSorting is not defined, then we use the first indicator in asSorting
 			// in case that has been altered, so the default sort reflects that option
 			if ( oInit.aaSorting === undefined )
@@ -41482,59 +41482,59 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 					oSettings.aaSorting[i][1] = oSettings.aoColumns[ i ].asSorting[0];
 				}
 			}
-			
+
 			/* Do a first pass on the sorting classes (allows any size changes to be taken into
 			 * account, and also will apply sorting disabled classes if disabled
 			 */
 			_fnSortingClasses( oSettings );
-			
+
 			if ( oSettings.oFeatures.bSort )
 			{
 				_fnCallbackReg( oSettings, 'aoDrawCallback', function () {
 					if ( oSettings.bSorted ) {
 						var aSort = _fnSortFlatten( oSettings );
 						var sortedColumns = {};
-			
+
 						$.each( aSort, function (i, val) {
 							sortedColumns[ val.src ] = val.dir;
 						} );
-			
+
 						_fnCallbackFire( oSettings, null, 'order', [oSettings, aSort, sortedColumns] );
 						_fnSortingClasses( oSettings );
 						_fnSortAria( oSettings );
 					}
 				} );
 			}
-			
-			
-			
+
+
+
 			/*
 			 * Final init
 			 * Cache the header, body and footer as required, creating them if needed
 			 */
-			
+
 			/* Browser support detection */
 			_fnBrowserDetect( oSettings );
-			
+
 			// Work around for Webkit bug 83867 - store the caption-side before removing from doc
 			var captions = $(this).children('caption').each( function () {
 				this._captionSide = $(this).css('caption-side');
 			} );
-			
+
 			var thead = $(this).children('thead');
 			if ( thead.length === 0 )
 			{
 				thead = $('<thead/>').appendTo(this);
 			}
 			oSettings.nTHead = thead[0];
-			
+
 			var tbody = $(this).children('tbody');
 			if ( tbody.length === 0 )
 			{
 				tbody = $('<tbody/>').appendTo(this);
 			}
 			oSettings.nTBody = tbody[0];
-			
+
 			var tfoot = $(this).children('tfoot');
 			if ( tfoot.length === 0 && captions.length > 0 && (oSettings.oScroll.sX !== "" || oSettings.oScroll.sY !== "") )
 			{
@@ -41542,7 +41542,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				// a tfoot element for the caption element to be appended to
 				tfoot = $('<tfoot/>').appendTo(this);
 			}
-			
+
 			if ( tfoot.length === 0 || tfoot.children().length === 0 ) {
 				$(this).addClass( oSettings.oClasses.sNoFooter );
 			}
@@ -41550,7 +41550,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				oSettings.nTFoot = tfoot[0];
 				_fnDetectHeader( oSettings.aoFooter, oSettings.nTFoot );
 			}
-			
+
 			/* Check if there is data passing into the constructor */
 			if ( oInit.aaData )
 			{
@@ -41567,13 +41567,13 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				 */
 				_fnAddTr( oSettings, $(oSettings.nTBody).children('tr') );
 			}
-			
+
 			/* Copy the data index array */
 			oSettings.aiDisplay = oSettings.aiDisplayMaster.slice();
-			
+
 			/* Initialisation complete - table can be drawn */
 			oSettings.bInitialised = true;
-			
+
 			/* Check if we need to initialise the table (it might not have been handed off to the
 			 * language processor)
 			 */
@@ -41586,8 +41586,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		return this;
 	};
 
-	
-	
+
+
 	/**
 	 * Computed structure of the DataTables API, defined by the options passed to
 	 * `DataTable.Api.register()` when building the API.
@@ -41625,8 +41625,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	 * @ignore
 	 */
 	var __apiStruct = [];
-	
-	
+
+
 	/**
 	 * `Array.prototype` reference.
 	 *
@@ -41634,8 +41634,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	 * @ignore
 	 */
 	var __arrayProto = Array.prototype;
-	
-	
+
+
 	/**
 	 * Abstraction for `context` parameter of the `Api` constructor to allow it to
 	 * take several different forms for ease of use.
@@ -41663,7 +41663,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		var tables = $.map( settings, function (el, i) {
 			return el.nTable;
 		} );
-	
+
 		if ( ! mixed ) {
 			return [];
 		}
@@ -41687,7 +41687,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			// jQuery object (also DataTables instance)
 			jq = mixed;
 		}
-	
+
 		if ( jq ) {
 			return jq.map( function(i) {
 				idx = $.inArray( this, tables );
@@ -41695,8 +41695,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			} ).toArray();
 		}
 	};
-	
-	
+
+
 	/**
 	 * DataTables API class - used to control and interface with  one or more
 	 * DataTables enhanced tables.
@@ -41753,12 +41753,12 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	 */
 	DataTable.Api = _Api = function ( context, data )
 	{
-		if ( ! this instanceof _Api ) {
+		if ( !(this instanceof _Api) ) {
 			throw 'DT API must be constructed as a new object';
 			// or should it do the 'new' for the caller?
 			// return new _Api.apply( this, arguments );
 		}
-	
+
 		var settings = [];
 		var ctxSettings = function ( o ) {
 			var a = _toSettings( o );
@@ -41766,7 +41766,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				settings.push.apply( settings, a );
 			}
 		};
-	
+
 		if ( $.isArray( context ) ) {
 			for ( var i=0, ien=context.length ; i<ien ; i++ ) {
 				ctxSettings( context[i] );
@@ -41775,26 +41775,26 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		else {
 			ctxSettings( context );
 		}
-	
+
 		// Remove duplicates
 		this.context = _unique( settings );
-	
+
 		// Initial data
 		if ( data ) {
 			this.push.apply( this, data.toArray ? data.toArray() : data );
 		}
-	
+
 		// selector
 		this.selector = {
 			rows: null,
 			cols: null,
 			opts: null
 		};
-	
+
 		_Api.extend( this, this, __apiStruct );
 	};
-	
-	
+
+
 	_Api.prototype = /** @lends DataTables.Api */{
 		/**
 		 * Return a new Api instance, comprised of the data held in the current
@@ -41809,11 +41809,11 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *   array.
 		 */
 		concat:  __arrayProto.concat,
-	
-	
+
+
 		context: [], // array of table settings objects
-	
-	
+
+
 		each: function ( fn )
 		{
 			if ( __arrayProto.forEach ) {
@@ -41827,25 +41827,25 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 					fn.call( this, this[i], i, this );
 				}
 			}
-	
+
 			return this;
 		},
-	
-	
+
+
 		eq: function ( idx )
 		{
 			var ctx = this.context;
-	
+
 			return ctx.length > idx ?
 				new _Api( ctx[idx], this[idx] ) :
 				null;
 		},
-	
-	
+
+
 		filter: function ( fn )
 		{
 			var a = [];
-	
+
 			if ( __arrayProto.filter ) {
 				a = __arrayProto.filter.call( this, fn, this );
 			}
@@ -41857,21 +41857,21 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 					}
 				}
 			}
-	
+
 			return new _Api( this.context, a );
 		},
-	
-	
+
+
 		flatten: function ()
 		{
 			var a = [];
 			return new _Api( this.context, a.concat.apply( a, this.toArray() ) );
 		},
-	
-	
+
+
 		join:    __arrayProto.join,
-	
-	
+
+
 		indexOf: __arrayProto.indexOf || function (obj, start)
 		{
 			for ( var i=(start || 0), ien=this.length ; i<ien ; i++ ) {
@@ -41881,7 +41881,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			}
 			return -1;
 		},
-	
+
 		// Internal only at the moment - relax?
 		iterator: function ( flatten, type, fn ) {
 			var
@@ -41890,18 +41890,18 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				context = this.context,
 				rows, items, item,
 				selector = this.selector;
-	
+
 			// Argument shifting
 			if ( typeof flatten === 'string' ) {
 				fn = type;
 				type = flatten;
 				flatten = false;
 			}
-	
+
 			for ( i=0, ien=context.length ; i<ien ; i++ ) {
 				if ( type === 'table' ) {
 					ret = fn( context[i], i );
-	
+
 					if ( ret !== undefined ) {
 						a.push( ret );
 					}
@@ -41909,7 +41909,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				else if ( type === 'columns' || type === 'rows' ) {
 					// this has same length as context - one entry for each table
 					ret = fn( context[i], this[i], i );
-	
+
 					if ( ret !== undefined ) {
 						a.push( ret );
 					}
@@ -41918,28 +41918,28 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 					// columns and rows share the same structure.
 					// 'this' is an array of column indexes for each context
 					items = this[i];
-	
+
 					if ( type === 'column-rows' ) {
 						rows = _selector_row_indexes( context[i], selector.opts );
 					}
-	
+
 					for ( j=0, jen=items.length ; j<jen ; j++ ) {
 						item = items[j];
-	
+
 						if ( type === 'cell' ) {
 							ret = fn( context[i], item.row, item.column, i, j );
 						}
 						else {
 							ret = fn( context[i], item, i, j, rows );
 						}
-	
+
 						if ( ret !== undefined ) {
 							a.push( ret );
 						}
 					}
 				}
 			}
-	
+
 			if ( a.length ) {
 				var api = new _Api( context, flatten ? a.concat.apply( [], a ) : a );
 				var apiSelector = api.selector;
@@ -41950,22 +41950,22 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			}
 			return this;
 		},
-	
-	
+
+
 		lastIndexOf: __arrayProto.lastIndexOf || function (obj, start)
 		{
 			// Bit cheeky...
 			return this.indexOf.apply( this.toArray.reverse(), arguments );
 		},
-	
-	
+
+
 		length:  0,
-	
-	
+
+
 		map: function ( fn )
 		{
 			var a = [];
-	
+
 			if ( __arrayProto.map ) {
 				a = __arrayProto.map.call( this, fn, this );
 			}
@@ -41975,129 +41975,129 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 					a.push( fn.call( this, this[i], i ) );
 				}
 			}
-	
+
 			return new _Api( this.context, a );
 		},
-	
-	
+
+
 		pluck: function ( prop )
 		{
 			return this.map( function ( el ) {
 				return el[ prop ];
 			} );
 		},
-	
+
 		pop:     __arrayProto.pop,
-	
-	
+
+
 		push:    __arrayProto.push,
-	
-	
+
+
 		// Does not return an API instance
 		reduce: __arrayProto.reduce || function ( fn, init )
 		{
 			var
 				value,
 				isSet = false;
-	
+
 			if ( arguments.length > 1 ) {
 				value = init;
 				isSet = true;
 			}
-	
+
 			for ( var i=0, ien=this.length ; i<ien ; i++ ) {
 				if ( ! this.hasOwnProperty(i) ) {
 					continue;
 				}
-	
+
 				value = isSet ?
 					fn( value, this[i], i, this ) :
 					this[i];
-	
+
 				isSet = true;
 			}
-	
+
 			return value;
 		},
-	
-	
+
+
 		reduceRight: __arrayProto.reduceRight || function ( fn, init )
 		{
 			var
 				value,
 				isSet = false;
-	
+
 			if ( arguments.length > 1 ) {
 				value = init;
 				isSet = true;
 			}
-	
+
 			for ( var i=this.length-1 ; i>=0 ; i-- ) {
 				if ( ! this.hasOwnProperty(i) ) {
 					continue;
 				}
-	
+
 				value = isSet ?
 					fn( value, this[i], i, this ) :
 					this[i];
-	
+
 				isSet = true;
 			}
-	
+
 			return value;
 		},
-	
+
 		reverse: __arrayProto.reverse,
-	
-	
+
+
 		// Object with rows, columns and opts
 		selector: null,
-	
-	
+
+
 		shift:   __arrayProto.shift,
-	
-	
+
+
 		sort:    __arrayProto.sort, // ? name - order?
-	
-	
+
+
 		splice:  __arrayProto.splice,
-	
-	
+
+
 		toArray: function ()
 		{
 			return __arrayProto.slice.call( this );
 		},
-	
-	
+
+
 		to$: function ()
 		{
 			return $( this );
 		},
-	
-	
+
+
 		toJQuery: function ()
 		{
 			return $( this );
 		},
-	
-	
+
+
 		unique: function ()
 		{
 			return new _Api( this.context, _unique(this) );
 		},
-	
-	
+
+
 		unshift: __arrayProto.unshift
 	};
-	
-	
+
+
 	_Api.extend = function ( scope, obj, ext )
 	{
 		// Only extend API instances and static properties of the API
 		if ( ! obj || ( ! (obj instanceof _Api) && ! obj.__dt_wrapper ) ) {
 			return;
 		}
-	
+
 		var
 			i, ien,
 			j, jen,
@@ -42105,39 +42105,39 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			methodScoping = function ( fn, struc ) {
 				return function () {
 					var ret = fn.apply( scope, arguments );
-	
+
 					// Method extension
 					_Api.extend( ret, ret, struc.methodExt );
 					return ret;
 				};
 			};
-	
+
 		for ( i=0, ien=ext.length ; i<ien ; i++ ) {
 			struct = ext[i];
-	
+
 			// Value
 			obj[ struct.name ] = typeof struct.val === 'function' ?
 				methodScoping( struct.val, struct ) :
 				struct.val;
-	
+
 			obj[ struct.name ].__dt_wrapper = true;
-	
+
 			// Property extension
 			_Api.extend( scope, obj[ struct.name ], struct.propExt );
 		}
 	};
-	
-	
+
+
 	// @todo - Is there need for an augment function?
 	// _Api.augment = function ( inst, name )
 	// {
 	// 	// Find src object in the structure from the name
 	// 	var parts = name.split('.');
-	
+
 	// 	_Api.extend( inst, obj );
 	// };
-	
-	
+
+
 	//     [
 	//       {
 	//         name:      'data'                -- string   - Property name
@@ -42160,7 +42160,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	//         ]
 	//       }
 	//     ]
-	
+
 	_Api.register = _api_register = function ( name, val )
 	{
 		if ( $.isArray( name ) ) {
@@ -42169,13 +42169,13 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			}
 			return;
 		}
-	
+
 		var
 			i, ien,
 			heir = name.split('.'),
 			struct = __apiStruct,
 			key, method;
-	
+
 		var find = function ( src, name ) {
 			for ( var i=0, ien=src.length ; i<ien ; i++ ) {
 				if ( src[i].name === name ) {
@@ -42184,13 +42184,13 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			}
 			return null;
 		};
-	
+
 		for ( i=0, ien=heir.length ; i<ien ; i++ ) {
 			method = heir[i].indexOf('()') !== -1;
 			key = method ?
 				heir[i].replace('()', '') :
 				heir[i];
-	
+
 			var src = find( struct, key );
 			if ( ! src ) {
 				src = {
@@ -42201,7 +42201,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				};
 				struct.push( src );
 			}
-	
+
 			if ( i === ien-1 ) {
 				src.val = val;
 			}
@@ -42211,20 +42211,20 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 					src.propExt;
 			}
 		}
-	
+
 		// Rebuild the API with the new construct
 		if ( _Api.ready ) {
 			DataTable.api.build();
 		}
 	};
-	
-	
+
+
 	_Api.registerPlural = _api_registerPlural = function ( pluralName, singularName, val ) {
 		_Api.register( pluralName, val );
-	
+
 		_Api.register( singularName, function () {
 			var ret = val.apply( this, arguments );
-	
+
 			if ( ret === this ) {
 				// Returned item is the API instance that was passed in, return it
 				return this;
@@ -42238,13 +42238,13 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 						ret[0] :
 					undefined;
 			}
-	
+
 			// Non-API return - just fire it back
 			return ret;
 		} );
 	};
-	
-	
+
+
 	/**
 	 * Selector for HTML tables. Apply the given selector to the give array of
 	 * DataTables settings objects.
@@ -42260,12 +42260,12 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		if ( typeof selector === 'number' ) {
 			return [ a[ selector ] ];
 		}
-	
+
 		// Perform a jQuery selector on the table nodes
 		var nodes = $.map( a, function (el, i) {
 			return el.nTable;
 		} );
-	
+
 		return $(nodes)
 			.filter( selector )
 			.map( function (i) {
@@ -42275,9 +42275,9 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			} )
 			.toArray();
 	};
-	
-	
-	
+
+
+
 	/**
 	 * Context selector for the API's context (i.e. the tables the API instance
 	 * refers to.
@@ -42295,48 +42295,48 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			new _Api( __table_selector( selector, this.context ) ) :
 			this;
 	} );
-	
-	
+
+
 	_api_register( 'table()', function ( selector ) {
 		var tables = this.tables( selector );
 		var ctx = tables.context;
-	
+
 		// Truncate to the first matched table
 		return ctx.length ?
 			new _Api( ctx[0] ) :
 			tables;
 	} );
-	
-	
+
+
 	_api_registerPlural( 'tables().nodes()', 'table().node()' , function () {
 		return this.iterator( 'table', function ( ctx ) {
 			return ctx.nTable;
 		} );
 	} );
-	
-	
+
+
 	_api_registerPlural( 'tables().body()', 'table().body()' , function () {
 		return this.iterator( 'table', function ( ctx ) {
 			return ctx.nTBody;
 		} );
 	} );
-	
-	
+
+
 	_api_registerPlural( 'tables().header()', 'table().header()' , function () {
 		return this.iterator( 'table', function ( ctx ) {
 			return ctx.nTHead;
 		} );
 	} );
-	
-	
+
+
 	_api_registerPlural( 'tables().footer()', 'table().footer()' , function () {
 		return this.iterator( 'table', function ( ctx ) {
 			return ctx.nTFoot;
 		} );
 	} );
-	
-	
-	
+
+
+
 	/**
 	 * Redraw the tables in the current context.
 	 *
@@ -42350,9 +42350,9 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			_fnReDraw( settings, resetPaging===false );
 		} );
 	} );
-	
-	
-	
+
+
+
 	/**
 	 * Get the current page index.
 	 *
@@ -42376,14 +42376,14 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		if ( action === undefined ) {
 			return this.page.info().page; // not an expensive call
 		}
-	
+
 		// else, have an action to take on all tables
 		return this.iterator( 'table', function ( settings ) {
 			_fnPageChange( settings, action );
 		} );
 	} );
-	
-	
+
+
 	/**
 	 * Paging information for the first table in the current context.
 	 *
@@ -42406,14 +42406,14 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		if ( this.context.length === 0 ) {
 			return undefined;
 		}
-	
+
 		var
 			settings   = this.context[0],
 			start      = settings._iDisplayStart,
 			len        = settings._iDisplayLength,
 			visRecords = settings.fnRecordsDisplay(),
 			all        = len === -1;
-	
+
 		return {
 			"page":           all ? 0 : Math.floor( start / len ),
 			"pages":          all ? 1 : Math.ceil( visRecords / len ),
@@ -42424,8 +42424,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			"recordsDisplay": visRecords
 		};
 	} );
-	
-	
+
+
 	/**
 	 * Get the current page length.
 	 *
@@ -42446,15 +42446,15 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				this.context[0]._iDisplayLength :
 				undefined;
 		}
-	
+
 		// else, set the page length
 		return this.iterator( 'table', function ( settings ) {
 			_fnLengthChange( settings, len );
 		} );
 	} );
-	
-	
-	
+
+
+
 	var __reload = function ( settings, holdPosition, callback ) {
 		if ( _fnDataSource( settings ) == 'ssp' ) {
 			_fnReDraw( settings, holdPosition );
@@ -42464,29 +42464,29 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			_fnBuildAjax( settings, [], function( json ) {
 				// xxx can this be reduced?
 				_fnClearTable( settings );
-	
+
 				var data = _fnAjaxDataSrc( settings, json );
 				for ( var i=0, ien=data.length ; i<ien ; i++ ) {
 					_fnAddData( settings, data[i] );
 				}
-	
+
 				_fnReDraw( settings, holdPosition );
 			} );
 		}
-	
+
 		// Use the draw event to trigger a callback, regardless of if it is an async
 		// or sync draw
 		if ( callback ) {
 			var api = new _Api( settings );
-	
+
 			api.one( 'draw', function () {
 				console.log( api.ajax.json() );
 				callback( api.ajax.json() );
 			} );
 		}
 	};
-	
-	
+
+
 	/**
 	 * Get the JSON response from the last Ajax request that DataTables made to the
 	 * server. Note that this returns the JSON from the first table in the current
@@ -42496,15 +42496,15 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	 */
 	_api_register( 'ajax.json()', function () {
 		var ctx = this.context;
-	
+
 		if ( ctx.length > 0 ) {
 			return ctx[0].json;
 		}
-	
+
 		// else return undefined;
 	} );
-	
-	
+
+
 	/**
 	 * Reload tables from the Ajax data source. Note that this function will
 	 * automatically re-draw the table when the remote data has been loaded.
@@ -42519,8 +42519,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			__reload( settings, resetPaging===false, callback );
 		} );
 	} );
-	
-	
+
+
 	/**
 	 * Get the current Ajax URL. Note that this returns the URL from the first
 	 * table in the current context.
@@ -42535,21 +42535,21 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	 */
 	_api_register( 'ajax.url()', function ( url ) {
 		var ctx = this.context;
-	
+
 		if ( url === undefined ) {
 			// get
 			if ( ctx.length === 0 ) {
 				return undefined;
 			}
 			ctx = ctx[0];
-	
+
 			return ctx.ajax ?
 				$.isPlainObject( ctx.ajax ) ?
 					ctx.ajax.url :
 					ctx.ajax :
 				ctx.sAjaxSource;
 		}
-	
+
 		// set
 		return this.iterator( 'table', function ( settings ) {
 			if ( $.isPlainObject( settings.ajax ) ) {
@@ -42563,8 +42563,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			// value of `sAjaxSource` redundant.
 		} );
 	} );
-	
-	
+
+
 	/**
 	 * Load data from the newly set Ajax URL. Note that this method is only
 	 * available when `ajax.url()` is used to set a URL. Additionally, this method
@@ -42581,58 +42581,58 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			__reload( ctx, resetPaging===false, callback );
 		} );
 	} );
-	
-	
-	
-	
+
+
+
+
 	var _selector_run = function ( selector, select )
 	{
 		var
 			out = [], res,
 			a, i, ien, j, jen;
-	
+
 		if ( ! $.isArray( selector ) ) {
 			selector = [ selector ];
 		}
-	
+
 		for ( i=0, ien=selector.length ; i<ien ; i++ ) {
 			a = selector[i] && selector[i].split ?
 				selector[i].split(',') :
 				[ selector[i] ];
-	
+
 			for ( j=0, jen=a.length ; j<jen ; j++ ) {
 				res = select( typeof a[j] === 'string' ? $.trim(a[j]) : a[j] );
-	
+
 				if ( res && res.length ) {
 					out.push.apply( out, res );
 				}
 			}
 		}
-	
+
 		return out;
 	};
-	
-	
+
+
 	var _selector_opts = function ( opts )
 	{
 		if ( ! opts ) {
 			opts = {};
 		}
-	
+
 		// Backwards compatibility for 1.9- which used the terminology filter rather
 		// than search
 		if ( opts.filter && ! opts.search ) {
 			opts.search = opts.filter;
 		}
-	
+
 		return {
 			search: opts.search || 'none',
 			order:  opts.order  || 'current',
 			page:   opts.page   || 'all'
 		};
 	};
-	
-	
+
+
 	var _selector_first = function ( inst )
 	{
 		// Reduce the API instance to the first item found
@@ -42643,29 +42643,29 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				inst[0] = inst[i];
 				inst.length = 1;
 				inst.context = [ inst.context[i] ];
-	
+
 				return inst;
 			}
 		}
-	
+
 		// Not found - return an empty instance
 		inst.length = 0;
 		return inst;
 	};
-	
-	
+
+
 	var _selector_row_indexes = function ( settings, opts )
 	{
 		var
 			i, ien, tmp, a=[],
 			displayFiltered = settings.aiDisplay,
 			displayMaster = settings.aiDisplayMaster;
-	
+
 		var
 			search = opts.search,  // none, applied, removed
 			order  = opts.order,   // applied, current, index (original - compatibility with 1.9)
 			page   = opts.page;    // all, current
-	
+
 		if ( _fnDataSource( settings ) == 'ssp' ) {
 			// In server-side processing mode, most options are irrelevant since
 			// rows not shown don't exist and the index order is the applied order
@@ -42699,7 +42699,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				}
 				else { // applied | removed
 					tmp = $.inArray( i, displayFiltered );
-	
+
 					if ((tmp === -1 && search == 'removed') ||
 						(tmp === 1  && search == 'applied') )
 					{
@@ -42708,11 +42708,11 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				}
 			}
 		}
-	
+
 		return a;
 	};
-	
-	
+
+
 	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 	 * Rows
 	 *
@@ -42723,22 +42723,22 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	 * {array}     - jQuery array of nodes, or simply an array of TR nodes
 	 *
 	 */
-	
-	
+
+
 	var __row_selector = function ( settings, selector, opts )
 	{
 		return _selector_run( selector, function ( sel ) {
 			var selInt = _intVal( sel );
-	
+
 			// Short cut - selector is a number and no options provided (default is
 			// all records, so no need to check if the index is in there, since it
 			// must be - dev error if the index doesn't exist).
 			if ( selInt !== null && ! opts ) {
 				return [ selInt ];
 			}
-	
+
 			var rows = _selector_row_indexes( settings, opts );
-	
+
 			if ( selInt !== null && $.inArray( selInt, rows ) !== -1 ) {
 				// Selector - integer
 				return [ selInt ];
@@ -42747,13 +42747,13 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				// Selector - none
 				return rows;
 			}
-	
+
 			// Get nodes in the order from the `rows` array (can't use `pluck`) @todo - use pluck_order
 			var nodes = [];
 			for ( var i=0, ien=rows.length ; i<ien ; i++ ) {
 				nodes.push( settings.aoData[ rows[i] ].nTr );
 			}
-	
+
 			if ( sel.nodeName ) {
 				// Selector - node
 				if ( $.inArray( sel, nodes ) !== -1 ) {
@@ -42761,7 +42761,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 											// and DataTables adds a prop for fast lookup
 				}
 			}
-	
+
 			// Selector - jQuery selector string, array of nodes or jQuery object/
 			// As jQuery's .filter() allows jQuery objects to be passed in filter,
 			// it also allows arrays, so this will cope with all three options
@@ -42773,8 +42773,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				.toArray();
 		} );
 	};
-	
-	
+
+
 	/**
 	 *
 	 */
@@ -42787,89 +42787,89 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			opts = selector;
 			selector = '';
 		}
-	
+
 		opts = _selector_opts( opts );
-	
+
 		var inst = this.iterator( 'table', function ( settings ) {
 			return __row_selector( settings, selector, opts );
 		} );
-	
+
 		// Want argument shifting here and in __row_selector?
 		inst.selector.rows = selector;
 		inst.selector.opts = opts;
-	
+
 		return inst;
 	} );
-	
-	
+
+
 	_api_register( 'rows().nodes()', function () {
 		return this.iterator( 'row', function ( settings, row ) {
 			return settings.aoData[ row ].nTr || undefined;
 		} );
 	} );
-	
+
 	_api_register( 'rows().data()', function () {
 		return this.iterator( true, 'rows', function ( settings, rows ) {
 			return _pluck_order( settings.aoData, rows, '_aData' );
 		} );
 	} );
-	
+
 	_api_registerPlural( 'rows().cache()', 'row().cache()', function ( type ) {
 		return this.iterator( 'row', function ( settings, row ) {
 			var r = settings.aoData[ row ];
 			return type === 'search' ? r._aFilterData : r._aSortData;
 		} );
 	} );
-	
+
 	_api_registerPlural( 'rows().invalidate()', 'row().invalidate()', function ( src ) {
 		return this.iterator( 'row', function ( settings, row ) {
 			_fnInvalidateRow( settings, row, src );
 		} );
 	} );
-	
+
 	_api_registerPlural( 'rows().indexes()', 'row().index()', function () {
 		return this.iterator( 'row', function ( settings, row ) {
 			return row;
 		} );
 	} );
-	
+
 	_api_registerPlural( 'rows().remove()', 'row().remove()', function () {
 		var that = this;
-	
+
 		return this.iterator( 'row', function ( settings, row, thatIdx ) {
 			var data = settings.aoData;
-	
+
 			data.splice( row, 1 );
-	
+
 			// Update the _DT_RowIndex parameter on all rows in the table
 			for ( var i=0, ien=data.length ; i<ien ; i++ ) {
 				if ( data[i].nTr !== null ) {
 					data[i].nTr._DT_RowIndex = i;
 				}
 			}
-	
+
 			// Remove the target row from the search array
 			var displayIndex = $.inArray( row, settings.aiDisplay );
-	
+
 			// Delete from the display arrays
 			_fnDeleteIndex( settings.aiDisplayMaster, row );
 			_fnDeleteIndex( settings.aiDisplay, row );
 			_fnDeleteIndex( that[ thatIdx ], row, false ); // maintain local indexes
-	
+
 			// Check for an 'overflow' they case for displaying the table
 			_fnLengthOverflow( settings );
 		} );
 	} );
-	
-	
+
+
 	_api_register( 'rows.add()', function ( rows ) {
 		var newRows = this.iterator( 'table', function ( settings ) {
 				var row, i, ien;
 				var out = [];
-	
+
 				for ( i=0, ien=rows.length ; i<ien ; i++ ) {
 					row = rows[i];
-	
+
 					if ( row.nodeName && row.nodeName.toUpperCase() === 'TR' ) {
 						out.push( _fnAddTr( settings, row )[0] );
 					}
@@ -42877,79 +42877,79 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 						out.push( _fnAddData( settings, row ) );
 					}
 				}
-	
+
 				return out;
 			} );
-	
+
 		// Return an Api.rows() extended instance, so rows().nodes() etc can be used
 		var modRows = this.rows( -1 );
 		modRows.pop();
 		modRows.push.apply( modRows, newRows.toArray() );
-	
+
 		return modRows;
 	} );
-	
-	
-	
-	
-	
+
+
+
+
+
 	/**
 	 *
 	 */
 	_api_register( 'row()', function ( selector, opts ) {
 		return _selector_first( this.rows( selector, opts ) );
 	} );
-	
-	
+
+
 	_api_register( 'row().data()', function ( data ) {
 		var ctx = this.context;
-	
+
 		if ( data === undefined ) {
 			// Get
 			return ctx.length && this.length ?
 				ctx[0].aoData[ this[0] ]._aData :
 				undefined;
 		}
-	
+
 		// Set
 		ctx[0].aoData[ this[0] ]._aData = data;
-	
+
 		// Automatically invalidate
 		_fnInvalidateRow( ctx[0], this[0], 'data' );
-	
+
 		return this;
 	} );
-	
-	
+
+
 	_api_register( 'row().node()', function () {
 		var ctx = this.context;
-	
+
 		return ctx.length && this.length ?
 			ctx[0].aoData[ this[0] ].nTr || null :
 			null;
 	} );
-	
-	
+
+
 	_api_register( 'row.add()', function ( row ) {
 		// Allow a jQuery object to be passed in - only a single row is added from
 		// it though - the first element in the set
 		if ( row instanceof $ && row.length ) {
 			row = row[0];
 		}
-	
+
 		var rows = this.iterator( 'table', function ( settings ) {
 			if ( row.nodeName && row.nodeName.toUpperCase() === 'TR' ) {
 				return _fnAddTr( settings, row )[0];
 			}
 			return _fnAddData( settings, row );
 		} );
-	
+
 		// Return an Api.rows() extended instance, with the newly added row selected
 		return this.row( rows[0] );
 	} );
-	
-	
-	
+
+
+
 	var __details_add = function ( ctx, row, data, klass )
 	{
 		// Convert to array of TR elements
@@ -42958,11 +42958,11 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			if ( ! r.nodeName || r.nodeName.toUpperCase() !== 'tr' ) {
 				r = $('<tr><td></td></tr>').find('td').html( r ).parent();
 			}
-	
+
 			$('td', r).addClass( k )[0].colSpan = _fnVisbleColumns( ctx );
 			rows.push( r[0] );
 		};
-	
+
 		if ( $.isArray( data ) || data instanceof $ ) {
 			for ( var i=0, ien=data.length ; i<ien ; i++ ) {
 				addRow( data[i], klass );
@@ -42971,26 +42971,26 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		else {
 			addRow( data, klass );
 		}
-	
+
 		if ( row._details ) {
 			row._details.remove();
 		}
-	
+
 		row._details = $(rows);
-	
+
 		// If the children were already shown, that state should be retained
 		if ( row._detailsShow ) {
 			row._details.insertAfter( row.nTr );
 		}
 	};
-	
-	
+
+
 	var __details_display = function ( show ) {
 		var ctx = this.context;
-	
+
 		if ( ctx.length && this.length ) {
 			var row = ctx[0].aoData[ this[0] ];
-	
+
 			if ( row._details ) {
 				row._detailsShow = show;
 				if ( show ) {
@@ -42999,46 +42999,46 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				else {
 					row._details.remove();
 				}
-	
+
 				__details_events( ctx[0] );
 			}
 		}
-	
+
 		return this;
 	};
-	
-	
+
+
 	var __details_events = function ( settings )
 	{
 		var api = new _Api( settings );
 		var namespace = '.dt.DT_details';
 		var drawEvent = 'draw'+namespace;
 		var colvisEvent = 'column-visibility'+namespace;
-	
+
 		api.off( drawEvent +' '+ colvisEvent );
-	
+
 		if ( _pluck( settings.aoData, '_details' ).length > 0 ) {
 			// On each draw, insert the required elements into the document
 			api.on( drawEvent, function () {
 				api.rows( {page:'current'} ).eq(0).each( function (idx) {
 					// Internal data grab
 					var row = settings.aoData[ idx ];
-	
+
 					if ( row._detailsShow ) {
 						row._details.insertAfter( row.nTr );
 					}
 				} );
 			} );
-	
+
 			// Column visibility change - update the colspan
 			api.on( colvisEvent, function ( e, settings, idx, vis ) {
 				// Update the colspan for the details rows (note, only if it already has
 				// a colspan)
 				var row, visible = _fnVisbleColumns( settings );
-	
+
 				for ( var i=0, ien=settings.aoData.length ; i<ien ; i++ ) {
 					row = settings.aoData[i];
-	
+
 					if ( row._details ) {
 						row._details.children('td[colspan]').attr('colspan', visible );
 					}
@@ -43046,14 +43046,14 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			} );
 		}
 	};
-	
+
 	// data can be:
 	//  tr
 	//  string
 	//  jQuery or array of any of the above
 	_api_register( 'row().child()', function ( data, klass ) {
 		var ctx = this.context;
-	
+
 		if ( data === undefined ) {
 			// get
 			return ctx.length && this.length ?
@@ -43064,36 +43064,36 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			// set
 			__details_add( ctx[0], ctx[0].aoData[ this[0] ], data, klass );
 		}
-	
+
 		return this;
 	} );
-	
+
 	_api_register( [
 		'row().child.show()',
 		'row().child().show()'
 	], function () {
 		__details_display.call( this, true );
 	} );
-	
+
 	_api_register( [
 		'row().child.hide()',
 		'row().child().hide()'
 	], function () {
 		__details_display.call( this, false );
 	} );
-	
+
 	_api_register( 'row().child.isShown()', function () {
 		var ctx = this.context;
-	
+
 		if ( ctx.length && this.length ) {
 			// _detailsShown as false or undefined will fall through to return false
 			return ctx[0].aoData[ this[0] ]._detailsShow || false;
 		}
 		return false;
 	} );
-	
-	
-	
+
+
+
 	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 	 * Columns
 	 *
@@ -43104,22 +43104,22 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	 * "{string}"          - jQuery selector on column header nodes
 	 *
 	 */
-	
+
 	// can be an array of these items, comma separated list, or an array of comma
 	// separated lists
-	
+
 	var __re_column_selector = /^(.*):(name|visIdx|visible)$/;
-	
+
 	var __column_selector = function ( settings, selector, opts )
 	{
 		var
 			columns = settings.aoColumns,
 			names = _pluck( columns, 'sName' ),
 			nodes = _pluck( columns, 'nTh' );
-	
+
 		return _selector_run( selector, function ( s ) {
 			var selInt = _intVal( s );
-	
+
 			if ( s === '' ) {
 				// All columns
 				return _range( columns.length );
@@ -43133,7 +43133,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			}
 			else {
 				var match = s.match( __re_column_selector );
-	
+
 				if ( match ) {
 					switch( match[2] ) {
 						case 'visIdx':
@@ -43149,7 +43149,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 							}
 							// Counting from the left
 							return [ _fnVisibleToColumnIndex( settings, idx ) ];
-	
+
 						case 'name':
 							// match by name. `names` is column index complete and in order
 							return $.map( names, function (name, i) {
@@ -43169,38 +43169,38 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			}
 		} );
 	};
-	
-	
-	
-	
-	
+
+
+
+
+
 	var __setColumnVis = function ( settings, column, vis ) {
 		var
 			cols = settings.aoColumns,
 			col  = cols[ column ],
 			data = settings.aoData,
 			row, cells, i, ien, tr;
-	
+
 		// Get
 		if ( vis === undefined ) {
 			return col.bVisible;
 		}
-	
+
 		// Set
 		// No change
 		if ( col.bVisible === vis ) {
 			return;
 		}
-	
+
 		if ( vis ) {
 			// Insert column
 			// Need to decide if we should use appendChild or insertBefore
 			var insertBefore = $.inArray( true, _pluck(cols, 'bVisible'), column+1 );
-	
+
 			for ( i=0, ien=data.length ; i<ien ; i++ ) {
 				tr = data[i].nTr;
 				cells = data[i].anCells;
-	
+
 				if ( tr ) {
 					// insertBefore can act like appendChild if 2nd arg is null
 					tr.insertBefore( cells[ column ], cells[ insertBefore ] || null );
@@ -43210,33 +43210,33 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		else {
 			// Remove column
 			$( _pluck( settings.aoData, 'anCells', column ) ).detach();
-	
+
 			col.bVisible = false;
 			_fnDrawHead( settings, settings.aoHeader );
 			_fnDrawHead( settings, settings.aoFooter );
-	
+
 			_fnSaveState( settings );
 		}
-	
+
 		// Common actions
 		col.bVisible = vis;
 		_fnDrawHead( settings, settings.aoHeader );
 		_fnDrawHead( settings, settings.aoFooter );
-	
+
 		// Automatically adjust column sizing
 		_fnAdjustColumnSizing( settings );
-	
+
 		// Realign columns for scrolling
 		if ( settings.oScroll.sX || settings.oScroll.sY ) {
 			_fnScrollDraw( settings );
 		}
-	
+
 		_fnCallbackFire( settings, null, 'column-visibility', [settings, column, vis] );
-	
+
 		_fnSaveState( settings );
 	};
-	
-	
+
+
 	/**
 	 *
 	 */
@@ -43249,21 +43249,21 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			opts = selector;
 			selector = '';
 		}
-	
+
 		opts = _selector_opts( opts );
-	
+
 		var inst = this.iterator( 'table', function ( settings ) {
 			return __column_selector( settings, selector, opts );
 		} );
-	
+
 		// Want argument shifting here and in _row_selector?
 		inst.selector.cols = selector;
 		inst.selector.opts = opts;
-	
+
 		return inst;
 	} );
-	
-	
+
+
 	/**
 	 *
 	 */
@@ -43272,8 +43272,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			return settings.aoColumns[column].nTh;
 		} );
 	} );
-	
-	
+
+
 	/**
 	 *
 	 */
@@ -43282,8 +43282,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			return settings.aoColumns[column].nTf;
 		} );
 	} );
-	
-	
+
+
 	/**
 	 *
 	 */
@@ -43296,8 +43296,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			return a;
 		} );
 	} );
-	
-	
+
+
 	_api_registerPlural( 'columns().cache()', 'column().cache()', function ( type ) {
 		return this.iterator( 'column-rows', function ( settings, column, i, j, rows ) {
 			return _pluck_order( settings.aoData, rows,
@@ -43305,24 +43305,24 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			);
 		} );
 	} );
-	
-	
+
+
 	_api_registerPlural( 'columns().nodes()', 'column().nodes()', function () {
 		return this.iterator( 'column-rows', function ( settings, column, i, j, rows ) {
 			return _pluck_order( settings.aoData, rows, 'anCells', column ) ;
 		} );
 	} );
-	
-	
-	
+
+
+
 	_api_registerPlural( 'columns().visible()', 'column().visible()', function ( vis ) {
 		return this.iterator( 'column', function ( settings, column ) {
 			return __setColumnVis( settings, column, vis );
 		} );
 	} );
-	
-	
-	
+
+
+
 	_api_registerPlural( 'columns().indexes()', 'column().index()', function ( type ) {
 		return this.iterator( 'column', function ( settings, column ) {
 			return type === 'visible' ?
@@ -43330,33 +43330,33 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				column;
 		} );
 	} );
-	
-	
+
+
 	// _api_register( 'columns().show()', function () {
 	// 	var selector = this.selector;
 	// 	return this.columns( selector.cols, selector.opts ).visible( true );
 	// } );
-	
-	
+
+
 	// _api_register( 'columns().hide()', function () {
 	// 	var selector = this.selector;
 	// 	return this.columns( selector.cols, selector.opts ).visible( false );
 	// } );
-	
-	
-	
+
+
+
 	_api_register( 'columns.adjust()', function () {
 		return this.iterator( 'table', function ( settings ) {
 			_fnAdjustColumnSizing( settings );
 		} );
 	} );
-	
-	
+
+
 	// Convert from one column index type, to another type
 	_api_register( 'column.index()', function ( type, idx ) {
 		if ( this.context.length !== 0 ) {
 			var ctx = this.context[0];
-	
+
 			if ( type === 'fromVisible' || type === 'toData' ) {
 				return _fnColumnIndexToVisible( ctx, idx );
 			}
@@ -43365,15 +43365,15 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			}
 		}
 	} );
-	
-	
+
+
 	_api_register( 'column()', function ( selector, opts ) {
 		return _selector_first( this.columns( selector, opts ) );
 	} );
-	
-	
-	
-	
+
+
+
+
 	var __cell_selector = function ( settings, selector, opts )
 	{
 		var data = settings.aoData;
@@ -43383,15 +43383,15 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		var row;
 		var columns = settings.aoColumns.length;
 		var a, i, ien, j;
-	
+
 		return _selector_run( selector, function ( s ) {
 			if ( ! s ) {
 				// All cells
 				a = [];
-	
+
 				for ( i=0, ien=rows.length ; i<ien ; i++ ) {
 					row = rows[i];
-	
+
 					for ( j=0 ; j<columns ; j++ ) {
 						a.push( {
 							row: row,
@@ -43399,14 +43399,14 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 						} );
 					}
 				}
-	
+
 				return a;
 			}
-	
+
 			// jQuery filtered cells
 			return allCells.filter( s ).map( function (i, el) {
 				row = el.parentNode._DT_RowIndex;
-	
+
 				return {
 					row: row,
 					column: $.inArray( el, data[ row ].anCells )
@@ -43414,10 +43414,10 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			} );
 		} );
 	};
-	
-	
-	
-	
+
+
+
+
 	_api_register( 'cells()', function ( rowSelector, columnSelector, opts ) {
 		// Argument shifting
 		if ( $.isPlainObject( rowSelector ) ) {
@@ -43428,22 +43428,22 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			opts = columnSelector;
 			columnSelector = null;
 		}
-	
+
 		// Cell selector
 		if ( columnSelector === null || columnSelector === undefined ) {
 			return this.iterator( 'table', function ( settings ) {
 				return __cell_selector( settings, rowSelector, _selector_opts( opts ) );
 			} );
 		}
-	
+
 		// Row + column selector
 		var columns = this.columns( columnSelector, opts );
 		var rows = this.rows( rowSelector, opts );
 		var a, i, ien, j, jen;
-	
+
 		var cells = this.iterator( 'table', function ( settings, idx ) {
 			a = [];
-	
+
 			for ( i=0, ien=rows[idx].length ; i<ien ; i++ ) {
 				for ( j=0, jen=columns[idx].length ; j<jen ; j++ ) {
 					a.push( {
@@ -43452,43 +43452,43 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 					} );
 				}
 			}
-	
+
 			return a;
 		} );
-	
+
 		$.extend( cells.selector, {
 			cols: columnSelector,
 			rows: rowSelector,
 			opts: opts
 		} );
-	
+
 		return cells;
 	} );
-	
-	
+
+
 	_api_registerPlural( 'cells().nodes()', 'cell().node()', function () {
 		return this.iterator( 'cell', function ( settings, row, column ) {
 			return settings.aoData[ row ].anCells[ column ];
 		} );
 	} );
-	
-	
+
+
 	_api_register( 'cells().data()', function () {
 		return this.iterator( 'cell', function ( settings, row, column ) {
 			return _fnGetCellData( settings, row, column );
 		} );
 	} );
-	
-	
+
+
 	_api_registerPlural( 'cells().cache()', 'cell().cache()', function ( type ) {
 		type = type === 'search' ? '_aFilterData' : '_aSortData';
-	
+
 		return this.iterator( 'cell', function ( settings, row, column ) {
 			return settings.aoData[ row ][ type ][ column ];
 		} );
 	} );
-	
-	
+
+
 	_api_registerPlural( 'cells().indexes()', 'cell().index()', function () {
 		return this.iterator( 'cell', function ( settings, row, column ) {
 			return {
@@ -43498,51 +43498,51 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			};
 		} );
 	} );
-	
-	
+
+
 	_api_register( [
 		'cells().invalidate()',
 		'cell().invalidate()'
 	], function ( src ) {
 		var selector = this.selector;
-	
+
 		// Use the rows method of the instance to perform the invalidation, rather
 		// than doing it here. This avoids needing to handle duplicate rows from
 		// the cells.
 		this.rows( selector.rows, selector.opts ).invalidate( src );
-	
+
 		return this;
 	} );
-	
-	
-	
-	
+
+
+
+
 	_api_register( 'cell()', function ( rowSelector, columnSelector, opts ) {
 		return _selector_first( this.cells( rowSelector, columnSelector, opts ) );
 	} );
-	
-	
-	
+
+
+
 	_api_register( 'cell().data()', function ( data ) {
 		var ctx = this.context;
 		var cell = this[0];
-	
+
 		if ( data === undefined ) {
 			// Get
 			return ctx.length && cell.length ?
 				_fnGetCellData( ctx[0], cell[0].row, cell[0].column ) :
 				undefined;
 		}
-	
+
 		// Set
 		_fnSetCellData( ctx[0], cell[0].row, cell[0].column, data );
 		_fnInvalidateRow( ctx[0], cell[0].row, 'data', cell[0].column );
-	
+
 		return this;
 	} );
-	
-	
-	
+
+
+
 	/**
 	 * Get current ordering (sorting) that has been applied to the table.
 	 *
@@ -43573,14 +43573,14 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	 */
 	_api_register( 'order()', function ( order, dir ) {
 		var ctx = this.context;
-	
+
 		if ( order === undefined ) {
 			// get
 			return ctx.length !== 0 ?
 				ctx[0].aaSorting :
 				undefined;
 		}
-	
+
 		// set
 		if ( typeof order === 'number' ) {
 			// Simple column / direction passed in
@@ -43591,13 +43591,13 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			order = Array.prototype.slice.call( arguments );
 		}
 		// otherwise a 2D array was passed in
-	
+
 		return this.iterator( 'table', function ( settings ) {
 			settings.aaSorting = order.slice();
 		} );
 	} );
-	
-	
+
+
 	/**
 	 * Attach a sort listener to an element for a given column
 	 *
@@ -43613,44 +43613,44 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			_fnSortAttachListener( settings, node, column, callback );
 		} );
 	} );
-	
-	
+
+
 	// Order by the selected column(s)
 	_api_register( [
 		'columns().order()',
 		'column().order()'
 	], function ( dir ) {
 		var that = this;
-	
+
 		return this.iterator( 'table', function ( settings, i ) {
 			var sort = [];
-	
+
 			$.each( that[i], function (j, col) {
 				sort.push( [ col, dir ] );
 			} );
-	
+
 			settings.aaSorting = sort;
 		} );
 	} );
-	
-	
-	
+
+
+
 	_api_register( 'search()', function ( input, regex, smart, caseInsen ) {
 		var ctx = this.context;
-	
+
 		if ( input === undefined ) {
 			// get
 			return ctx.length !== 0 ?
 				ctx[0].oPreviousSearch.sSearch :
 				undefined;
 		}
-	
+
 		// set
 		return this.iterator( 'table', function ( settings ) {
 			if ( ! settings.oFeatures.bFilter ) {
 				return;
 			}
-	
+
 			_fnFilterComplete( settings, $.extend( {}, settings.oPreviousSearch, {
 				"sSearch": input+"",
 				"bRegex":  regex === null ? false : regex,
@@ -43659,38 +43659,38 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			} ), 1 );
 		} );
 	} );
-	
-	
+
+
 	_api_register( [
 		'columns().search()',
 		'column().search()'
 	], function ( input, regex, smart, caseInsen ) {
 		return this.iterator( 'column', function ( settings, column ) {
 			var preSearch = settings.aoPreSearchCols;
-	
+
 			if ( input === undefined ) {
 				// get
 				return preSearch[ column ].sSearch;
 			}
-	
+
 			// set
 			if ( ! settings.oFeatures.bFilter ) {
 				return;
 			}
-	
+
 			$.extend( preSearch[ column ], {
 				"sSearch": input+"",
 				"bRegex":  regex === null ? false : regex,
 				"bSmart":  smart === null ? true  : smart,
 				"bCaseInsensitive": caseInsen === null ? true : caseInsen
 			} );
-	
+
 			_fnFilterComplete( settings, settings.oPreviousSearch, 1 );
 		} );
 	} );
-	
-	
-	
+
+
+
 	/**
 	 * Provide a common method for plug-ins to check the version of DataTables being
 	 * used, in order to ensure compatibility.
@@ -43711,24 +43711,24 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		var aThis = DataTable.version.split('.');
 		var aThat = version.split('.');
 		var iThis, iThat;
-	
+
 		for ( var i=0, iLen=aThat.length ; i<iLen ; i++ ) {
 			iThis = parseInt( aThis[i], 10 ) || 0;
 			iThat = parseInt( aThat[i], 10 ) || 0;
-	
+
 			// Parts are the same, keep comparing
 			if (iThis === iThat) {
 				continue;
 			}
-	
+
 			// Parts are different, return immediately
 			return iThis > iThat;
 		}
-	
+
 		return true;
 	};
-	
-	
+
+
 	/**
 	 * Check if a `<table>` node is a DataTable table already or not.
 	 *
@@ -43748,17 +43748,17 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	{
 		var t = $(table).get(0);
 		var is = false;
-	
+
 		$.each( DataTable.settings, function (i, o) {
 			if ( o.nTable === t || o.nScrollHead === t || o.nScrollFoot === t ) {
 				is = true;
 			}
 		} );
-	
+
 		return is;
 	};
-	
-	
+
+
 	/**
 	 * Get all DataTable tables that have been initialised - optionally you can
 	 * select to get only currently visible tables.
@@ -43783,8 +43783,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			}
 		} );
 	};
-	
-	
+
+
 	/**
 	 * Convert from camel case parameters to Hungarian notation. This is made public
 	 * for the extensions to provide the same ability as DataTables core to accept
@@ -43799,9 +43799,9 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	 *    won't be.
 	 */
 	DataTable.camelToHungarian = _fnCamelToHungarian;
-	
-	
-	
+
+
+
 	/**
 	 *
 	 */
@@ -43809,53 +43809,53 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		var
 			rows   = this.rows( opts ).nodes(), // Get all rows
 			jqRows = $(rows);
-	
+
 		return $( [].concat(
 			jqRows.filter( selector ).toArray(),
 			jqRows.find( selector ).toArray()
 		) );
 	} );
-	
-	
+
+
 	// jQuery functions to operate on the tables
 	$.each( [ 'on', 'one', 'off' ], function (i, key) {
 		_api_register( key+'()', function ( /* event, handler */ ) {
 			var args = Array.prototype.slice.call(arguments);
-	
+
 			// Add the `dt` namespace automatically if it isn't already present
 			if ( args[0].indexOf( '.dt' ) === -1 ) {
 				args[0] += '.dt';
 			}
-	
+
 			var inst = $( this.tables().nodes() );
 			inst[key].apply( inst, args );
 			return this;
 		} );
 	} );
-	
-	
+
+
 	_api_register( 'clear()', function () {
 		return this.iterator( 'table', function ( settings ) {
 			_fnClearTable( settings );
 		} );
 	} );
-	
-	
+
+
 	_api_register( 'settings()', function () {
 		return new _Api( this.context, this.context );
 	} );
-	
-	
+
+
 	_api_register( 'data()', function () {
 		return this.iterator( 'table', function ( settings ) {
 			return _pluck( settings.aoData, '_aData' );
 		} ).flatten();
 	} );
-	
-	
+
+
 	_api_register( 'destroy()', function ( remove ) {
 		remove = remove || false;
-	
+
 		return this.iterator( 'table', function ( settings ) {
 			var orig      = settings.nTableWrapper.parentNode;
 			var classes   = settings.oClasses;
@@ -43868,48 +43868,48 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			var jqWrapper = $(settings.nTableWrapper);
 			var rows      = $.map( settings.aoData, function (r) { return r.nTr; } );
 			var i, ien;
-	
+
 			// Flag to note that the table is currently being destroyed - no action
 			// should be taken
 			settings.bDestroying = true;
-	
+
 			// Fire off the destroy callbacks for plug-ins etc
 			_fnCallbackFire( settings, "aoDestroyCallback", "destroy", [settings] );
-	
+
 			// If not being removed from the document, make all columns visible
 			if ( ! remove ) {
 				new _Api( settings ).columns().visible( true );
 			}
-	
+
 			// Blitz all DT events
 			jqWrapper.unbind('.DT').find(':not(tbody *)').unbind('.DT');
 			$(window).unbind('.DT-'+settings.sInstance);
-	
+
 			// When scrolling we had to break the table up - restore it
 			if ( table != thead.parentNode ) {
 				jqTable.children('thead').remove();
 				jqTable.append( thead );
 			}
-	
+
 			if ( tfoot && table != tfoot.parentNode ) {
 				jqTable.children('tfoot').remove();
 				jqTable.append( tfoot );
 			}
-	
+
 			// Remove the DataTables generated nodes, events and classes
 			jqTable.remove();
 			jqWrapper.remove();
-	
+
 			settings.aaSorting = [];
 			settings.aaSortingFixed = [];
 			_fnSortingClasses( settings );
-	
+
 			$( rows ).removeClass( settings.asStripeClasses.join(' ') );
-	
+
 			$('th, td', thead).removeClass( classes.sSortable+' '+
 				classes.sSortableAsc+' '+classes.sSortableDesc+' '+classes.sSortableNone
 			);
-	
+
 			if ( settings.bJUI ) {
 				$('th span.'+classes.sSortIcon+ ', td span.'+classes.sSortIcon, thead).remove();
 				$('th, td', thead).each( function () {
@@ -43918,33 +43918,33 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 					wrapper.remove();
 				} );
 			}
-	
+
 			if ( ! remove ) {
 				// insertBefore acts like appendChild if !arg[1]
 				orig.insertBefore( table, settings.nTableReinsertBefore );
 			}
-	
+
 			// Add the TR elements back into the table in their original order
 			jqTbody.children().detach();
 			jqTbody.append( rows );
-	
+
 			// Restore the width of the original table - was read from the style property,
 			// so we can restore directly to that
 			jqTable
 				.css( 'width', settings.sDestroyWidth )
 				.removeClass( classes.sTable );
-	
+
 			// If the were originally stripe classes - then we add them back here.
 			// Note this is not fool proof (for example if not all rows had stripe
 			// classes - but it's a good effort without getting carried away
 			ien = settings.asDestroyStripes.length;
-	
+
 			if ( ien ) {
 				jqTbody.children().each( function (i) {
 					$(this).addClass( settings.asDestroyStripes[i % ien] );
 				} );
 			}
-	
+
 			/* Remove the settings object from the settings array */
 			var idx = $.inArray( settings, DataTable.settings );
 			if ( idx !== -1 ) {
@@ -43952,7 +43952,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			}
 		} );
 	} );
-	
+
 
 	/**
 	 * Version string for plug-ins to check compatibility. Allowed format is
@@ -43985,9 +43985,9 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	 *  @namespace
 	 */
 	DataTable.models = {};
-	
-	
-	
+
+
+
 	/**
 	 * Template object for the way in which DataTables holds information about
 	 * search information for the global filter and individual column filters.
@@ -44000,14 +44000,14 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default true
 		 */
 		"bCaseInsensitive": true,
-	
+
 		/**
 		 * Applied search term
 		 *  @type string
 		 *  @default <i>Empty string</i>
 		 */
 		"sSearch": "",
-	
+
 		/**
 		 * Flag to indicate if the search term should be interpreted as a
 		 * regular expression (true) or not (false) and therefore and special
@@ -44016,7 +44016,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default false
 		 */
 		"bRegex": false,
-	
+
 		/**
 		 * Flag to indicate if DataTables is to use its smart filtering or not.
 		 *  @type boolean
@@ -44024,10 +44024,10 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 */
 		"bSmart": true
 	};
-	
-	
-	
-	
+
+
+
+
 	/**
 	 * Template object for the way in which DataTables holds information about
 	 * each individual row. This is the object format used for the settings
@@ -44041,7 +44041,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default null
 		 */
 		"nTr": null,
-	
+
 		/**
 		 * Array of TD elements for each row. This is null until the row has been
 		 * created.
@@ -44049,7 +44049,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default []
 		 */
 		"anCells": null,
-	
+
 		/**
 		 * Data object from the original data source for the row. This is either
 		 * an array if using the traditional form of DataTables, or an object if
@@ -44060,7 +44060,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default []
 		 */
 		"_aData": [],
-	
+
 		/**
 		 * Sorting data cache - this array is ostensibly the same length as the
 		 * number of columns (although each index is generated only as it is
@@ -44074,7 +44074,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @private
 		 */
 		"_aSortData": null,
-	
+
 		/**
 		 * Per cell filtering data cache. As per the sort data cache, used to
 		 * increase the performance of the filtering in DataTables
@@ -44083,7 +44083,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @private
 		 */
 		"_aFilterData": null,
-	
+
 		/**
 		 * Filtering data cache. This is the same as the cell filtering cache, but
 		 * in this case a string rather than an array. This is easily computed with
@@ -44094,7 +44094,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @private
 		 */
 		"_sFilterRow": null,
-	
+
 		/**
 		 * Cache of the class name that DataTables has applied to the row, so we
 		 * can quickly look at this variable rather than needing to do a DOM check
@@ -44104,7 +44104,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @private
 		 */
 		"_sRowStripe": "",
-	
+
 		/**
 		 * Denote if the original data source was from the DOM, or the data source
 		 * object. This is used for invalidating data, so DataTables can
@@ -44116,8 +44116,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 */
 		"src": null
 	};
-	
-	
+
+
 	/**
 	 * Template object for the column information object in DataTables. This object
 	 * is held in the settings aoColumns array and contains all the information that
@@ -44137,7 +44137,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default null
 		 */
 		"idx": null,
-	
+
 		/**
 		 * A list of the columns that sorting should occur on when this column
 		 * is sorted. That this property is an array allows multi-column sorting
@@ -44148,7 +44148,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @type array
 		 */
 		"aDataSort": null,
-	
+
 		/**
 		 * Define the sorting directions that are applied to the column, in sequence
 		 * as the column is repeatedly sorted upon - i.e. the first value is used
@@ -44158,26 +44158,26 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @type array
 		 */
 		"asSorting": null,
-	
+
 		/**
 		 * Flag to indicate if the column is searchable, and thus should be included
 		 * in the filtering or not.
 		 *  @type boolean
 		 */
 		"bSearchable": null,
-	
+
 		/**
 		 * Flag to indicate if the column is sortable or not.
 		 *  @type boolean
 		 */
 		"bSortable": null,
-	
+
 		/**
 		 * Flag to indicate if the column is currently visible in the table or not
 		 *  @type boolean
 		 */
 		"bVisible": null,
-	
+
 		/**
 		 * Store for manual type assignment using the `column.type` option. This
 		 * is held in store so we can manipulate the column's `sType` property.
@@ -44186,7 +44186,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @private
 		 */
 		"_sManualType": null,
-	
+
 		/**
 		 * Flag to indicate if HTML5 data attributes should be used as the data
 		 * source for filtering or sorting. True is either are.
@@ -44195,7 +44195,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @private
 		 */
 		"_bAttrSrc": false,
-	
+
 		/**
 		 * Developer definable function that is called whenever a cell is created (Ajax source,
 		 * etc) or processed for input (DOM source). This can be used as a compliment to mRender
@@ -44209,7 +44209,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default null
 		 */
 		"fnCreatedCell": null,
-	
+
 		/**
 		 * Function to get data from a cell in a column. You should <b>never</b>
 		 * access data directly through _aData internally in DataTables - always use
@@ -44225,7 +44225,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default null
 		 */
 		"fnGetData": null,
-	
+
 		/**
 		 * Function to set data for a cell in the column. You should <b>never</b>
 		 * set the data directly to _aData internally in DataTables - always use
@@ -44238,7 +44238,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default null
 		 */
 		"fnSetData": null,
-	
+
 		/**
 		 * Property to read the value for the cells in the column from the data
 		 * source array / object. If null, then the default content is used, if a
@@ -44247,7 +44247,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default null
 		 */
 		"mData": null,
-	
+
 		/**
 		 * Partner property to mData which is used (only when defined) to get
 		 * the data - i.e. it is basically the same as mData, but without the
@@ -44257,7 +44257,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default null
 		 */
 		"mRender": null,
-	
+
 		/**
 		 * Unique header TH/TD element for this column - this is what the sorting
 		 * listener is attached to (if sorting is enabled.)
@@ -44265,7 +44265,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default null
 		 */
 		"nTh": null,
-	
+
 		/**
 		 * Unique footer TH/TD element for this column (if there is one). Not used
 		 * in DataTables as such, but can be used for plug-ins to reference the
@@ -44274,14 +44274,14 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default null
 		 */
 		"nTf": null,
-	
+
 		/**
 		 * The class to apply to all TD elements in the table's TBODY for the column
 		 *  @type string
 		 *  @default null
 		 */
 		"sClass": null,
-	
+
 		/**
 		 * When DataTables calculates the column widths to assign to each column,
 		 * it finds the longest string in each column and then constructs a
@@ -44294,7 +44294,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @type string
 		 */
 		"sContentPadding": null,
-	
+
 		/**
 		 * Allows a default value to be given for a column's data, and will be used
 		 * whenever a null data source is encountered (this can be because mData
@@ -44303,14 +44303,14 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default null
 		 */
 		"sDefaultContent": null,
-	
+
 		/**
 		 * Name for the column, allowing reference to the column by name as well as
 		 * by index (needs a lookup to work by name).
 		 *  @type string
 		 */
 		"sName": null,
-	
+
 		/**
 		 * Custom sorting data type - defines which of the available plug-ins in
 		 * afnSortData the custom sorting will use - if any is defined.
@@ -44318,14 +44318,14 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default std
 		 */
 		"sSortDataType": 'std',
-	
+
 		/**
 		 * Class to be applied to the header element when sorting on this column
 		 *  @type string
 		 *  @default null
 		 */
 		"sSortingClass": null,
-	
+
 		/**
 		 * Class to be applied to the header element when sorting on this column -
 		 * when jQuery UI theming is used.
@@ -44333,27 +44333,27 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default null
 		 */
 		"sSortingClassJUI": null,
-	
+
 		/**
 		 * Title of the column - what is seen in the TH element (nTh).
 		 *  @type string
 		 */
 		"sTitle": null,
-	
+
 		/**
 		 * Column sorting and filtering type
 		 *  @type string
 		 *  @default null
 		 */
 		"sType": null,
-	
+
 		/**
 		 * Width of the column
 		 *  @type string
 		 *  @default null
 		 */
 		"sWidth": null,
-	
+
 		/**
 		 * Width of the column when it was first "encountered"
 		 *  @type string
@@ -44361,8 +44361,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 */
 		"sWidthOrig": null
 	};
-	
-	
+
+
 	/*
 	 * Developer note: The properties of the object below are given in Hungarian
 	 * notation, that was used as the interface for DataTables prior to v1.10, however
@@ -44378,7 +44378,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	 * completely, but that is a massive amount of work and will break current
 	 * installs (therefore is on-hold until v2).
 	 */
-	
+
 	/**
 	 * Initialisation options that can be given to DataTables at initialisation
 	 * time.
@@ -44445,8 +44445,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"aaData": null,
-	
-	
+
+
 		/**
 		 * If ordering is enabled, then DataTables will perform a first pass sort on
 		 * initialisation. You can define which column(s) the sort is performed
@@ -44475,8 +44475,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"aaSorting": [[0,'asc']],
-	
-	
+
+
 		/**
 		 * This parameter is basically identical to the `sorting` parameter, but
 		 * cannot be overridden by user interaction with the table. What this means
@@ -44498,8 +44498,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } )
 		 */
 		"aaSortingFixed": [],
-	
-	
+
+
 		/**
 		 * DataTables can be instructed to load data to display in the table from a
 		 * Ajax source. This option defines how that Ajax call is made and where to.
@@ -44655,8 +44655,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *   } );
 		 */
 		"ajax": null,
-	
-	
+
+
 		/**
 		 * This parameter allows you to readily specify the entries in the length drop
 		 * down menu that DataTables shows when pagination is enabled. It can be
@@ -44681,8 +44681,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"aLengthMenu": [ 10, 25, 50, 100 ],
-	
-	
+
+
 		/**
 		 * The `columns` option in the initialisation parameter allows you to define
 		 * details about the way individual columns behave. For a full list of
@@ -44696,7 +44696,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @name DataTable.defaults.column
 		 */
 		"aoColumns": null,
-	
+
 		/**
 		 * Very similar to `columns`, `columnDefs` allows you to target a specific
 		 * column, multiple columns, or all columns, using the `targets` property of
@@ -44717,8 +44717,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @name DataTable.defaults.columnDefs
 		 */
 		"aoColumnDefs": null,
-	
-	
+
+
 		/**
 		 * Basically the same as `search`, this parameter defines the individual column
 		 * filtering state at initialisation time. The array must be of the same size
@@ -44744,8 +44744,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } )
 		 */
 		"aoSearchCols": [],
-	
-	
+
+
 		/**
 		 * An array of CSS classes that should be applied to displayed rows. This
 		 * array may be of any length, and DataTables will apply each class
@@ -44765,8 +44765,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } )
 		 */
 		"asStripeClasses": null,
-	
-	
+
+
 		/**
 		 * Enable or disable automatic column width calculation. This can be disabled
 		 * as an optimisation (it takes some time to calculate the widths) if the
@@ -44785,8 +44785,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"bAutoWidth": true,
-	
-	
+
+
 		/**
 		 * Deferred rendering can provide DataTables with a huge speed boost when you
 		 * are using an Ajax or JS data source for the table. This option, when set to
@@ -44808,8 +44808,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"bDeferRender": false,
-	
-	
+
+
 		/**
 		 * Replace a DataTable which matches the given selector and replace it with
 		 * one which has the properties of the new initialisation object passed. If no
@@ -44836,8 +44836,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"bDestroy": false,
-	
-	
+
+
 		/**
 		 * Enable or disable filtering of data. Filtering in DataTables is "smart" in
 		 * that it allows the end user to input multiple words (space separated) and
@@ -44860,8 +44860,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"bFilter": true,
-	
-	
+
+
 		/**
 		 * Enable or disable the table information display. This shows information
 		 * about the data that is currently visible on the page, including information
@@ -44880,8 +44880,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"bInfo": true,
-	
-	
+
+
 		/**
 		 * Enable jQuery UI ThemeRoller support (required as ThemeRoller requires some
 		 * slightly different and additional mark-up from what DataTables has
@@ -44900,8 +44900,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"bJQueryUI": false,
-	
-	
+
+
 		/**
 		 * Allows the end user to select the size of a formatted page from a select
 		 * menu (sizes are 10, 25, 50 and 100). Requires pagination (`paginate`).
@@ -44919,8 +44919,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"bLengthChange": true,
-	
-	
+
+
 		/**
 		 * Enable or disable pagination.
 		 *  @type boolean
@@ -44937,8 +44937,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"bPaginate": true,
-	
-	
+
+
 		/**
 		 * Enable or disable the display of a 'processing' indicator when the table is
 		 * being processed (e.g. a sort). This is particularly useful for tables with
@@ -44958,8 +44958,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"bProcessing": false,
-	
-	
+
+
 		/**
 		 * Retrieve the DataTables object for the given selector. Note that if the
 		 * table has already been initialised, this parameter will cause DataTables
@@ -44996,8 +44996,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    }
 		 */
 		"bRetrieve": false,
-	
-	
+
+
 		/**
 		 * When vertical (y) scrolling is enabled, DataTables will force the height of
 		 * the table's viewport to the given height at all times (useful for layout).
@@ -45020,8 +45020,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"bScrollCollapse": false,
-	
-	
+
+
 		/**
 		 * Configure DataTables to use server-side processing. Note that the
 		 * `ajax` parameter must also be given in order to give DataTables a
@@ -45042,8 +45042,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"bServerSide": false,
-	
-	
+
+
 		/**
 		 * Enable or disable sorting of columns. Sorting of individual columns can be
 		 * disabled by the `sortable` option for each column.
@@ -45061,8 +45061,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"bSort": true,
-	
-	
+
+
 		/**
 		 * Enable or display DataTables' ability to sort multiple columns at the
 		 * same time (activated by shift-click by the user).
@@ -45081,8 +45081,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"bSortMulti": true,
-	
-	
+
+
 		/**
 		 * Allows control over whether DataTables should use the top (true) unique
 		 * cell that is found for a single column, or the bottom (false - default).
@@ -45101,8 +45101,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"bSortCellsTop": false,
-	
-	
+
+
 		/**
 		 * Enable or disable the addition of the classes `sorting\_1`, `sorting\_2` and
 		 * `sorting\_3` to the columns which are currently being sorted on. This is
@@ -45123,8 +45123,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"bSortClasses": true,
-	
-	
+
+
 		/**
 		 * Enable or disable state saving. When enabled HTML5 `localStorage` will be
 		 * used to save table display information such as pagination information,
@@ -45148,8 +45148,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"bStateSave": false,
-	
-	
+
+
 		/**
 		 * This function is called when a TR element is created (and all TD child
 		 * elements have been inserted), or registered if using a DOM source, allowing
@@ -45176,8 +45176,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"fnCreatedRow": null,
-	
-	
+
+
 		/**
 		 * This function is called on every 'draw' event, and allows you to
 		 * dynamically modify any aspect you want about the created DOM.
@@ -45197,8 +45197,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"fnDrawCallback": null,
-	
-	
+
+
 		/**
 		 * Identical to fnHeaderCallback() but for the table footer this function
 		 * allows you to modify the table footer on every 'draw' event.
@@ -45225,8 +45225,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } )
 		 */
 		"fnFooterCallback": null,
-	
-	
+
+
 		/**
 		 * When rendering large numbers in the information element for the table
 		 * (i.e. "Showing 1 to 10 of 57 entries") DataTables will render large numbers
@@ -45260,8 +45260,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				this.oLanguage.sThousands
 			);
 		},
-	
-	
+
+
 		/**
 		 * This function is called on every 'draw' event, and allows you to
 		 * dynamically modify the header row. This can be used to calculate and
@@ -45289,8 +45289,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } )
 		 */
 		"fnHeaderCallback": null,
-	
-	
+
+
 		/**
 		 * The information element can be used to convey information about the current
 		 * state of the table. Although the internationalisation options presented by
@@ -45319,8 +45319,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"fnInfoCallback": null,
-	
-	
+
+
 		/**
 		 * Called when the table has been initialised. Normally DataTables will
 		 * initialise sequentially and there will be no need for this function,
@@ -45344,8 +45344,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } )
 		 */
 		"fnInitComplete": null,
-	
-	
+
+
 		/**
 		 * Called at the very start of each table draw and can be used to cancel the
 		 * draw by returning false, any other return (including undefined) results in
@@ -45370,8 +45370,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"fnPreDrawCallback": null,
-	
-	
+
+
 		/**
 		 * This function allows you to 'post process' each row after it have been
 		 * generated for each table draw, but before it is rendered on screen. This
@@ -45399,8 +45399,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"fnRowCallback": null,
-	
-	
+
+
 		/**
 		 * __Deprecated__ The functionality provided by this parameter has now been
 		 * superseded by that provided through `ajax`, which should be used instead.
@@ -45425,8 +45425,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @deprecated 1.10. Please use `ajax` for this functionality now.
 		 */
 		"fnServerData": null,
-	
-	
+
+
 		/**
 		 * __Deprecated__ The functionality provided by this parameter has now been
 		 * superseded by that provided through `ajax`, which should be used instead.
@@ -45452,8 +45452,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @deprecated 1.10. Please use `ajax` for this functionality now.
 		 */
 		"fnServerParams": null,
-	
-	
+
+
 		/**
 		 * Load the table state. With this function you can define from where, and how, the
 		 * state of a table is loaded. By default DataTables will load from `localStorage`
@@ -45496,8 +45496,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				);
 			} catch (e) {}
 		},
-	
-	
+
+
 		/**
 		 * Callback which allows modification of the saved state prior to loading that state.
 		 * This callback is called when the table is loading state from the stored data, but
@@ -45534,8 +45534,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"fnStateLoadParams": null,
-	
-	
+
+
 		/**
 		 * Callback that is called when the state has been loaded from the state saving method
 		 * and the DataTables settings object has been modified as a result of the loaded state.
@@ -45558,8 +45558,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"fnStateLoaded": null,
-	
-	
+
+
 		/**
 		 * Save the table state. This function allows you to define where and how the state
 		 * information for the table is stored By default DataTables will use `localStorage`
@@ -45597,8 +45597,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				);
 			} catch (e) {}
 		},
-	
-	
+
+
 		/**
 		 * Callback which allows modification of the state to be saved. Called when the table
 		 * has changed state a new state save is required. This method allows modification of
@@ -45624,8 +45624,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"fnStateSaveParams": null,
-	
-	
+
+
 		/**
 		 * Duration for which the saved state information is considered valid. After this period
 		 * has elapsed the state will be returned to the default.
@@ -45644,8 +45644,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } )
 		 */
 		"iStateDuration": 7200,
-	
-	
+
+
 		/**
 		 * When enabled DataTables will not make a request to the server for the first
 		 * page draw - rather it will use the data already on the page (no sorting etc
@@ -45688,8 +45688,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"iDeferLoading": null,
-	
-	
+
+
 		/**
 		 * Number of rows to display on a single page when using pagination. If
 		 * feature enabled (`lengthChange`) then the end user will be able to override
@@ -45708,8 +45708,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } )
 		 */
 		"iDisplayLength": 10,
-	
-	
+
+
 		/**
 		 * Define the starting point for data display when using DataTables with
 		 * pagination. Note that this parameter is the number of records, rather than
@@ -45729,8 +45729,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } )
 		 */
 		"iDisplayStart": 0,
-	
-	
+
+
 		/**
 		 * By default DataTables allows keyboard navigation of the table (sorting, paging,
 		 * and filtering) by adding a `tabindex` attribute to the required elements. This
@@ -45752,8 +45752,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"iTabIndex": 0,
-	
-	
+
+
 		/**
 		 * Classes that DataTables assigns to the various components and features
 		 * that it adds to the HTML table. This allows classes to be configured
@@ -45763,8 +45763,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @name DataTable.defaults.classes
 		 */
 		"oClasses": {},
-	
-	
+
+
 		/**
 		 * All strings that DataTables uses in the user interface that it creates
 		 * are defined in this object, allowing you to modified them individually or
@@ -45803,7 +45803,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				 *    } );
 				 */
 				"sSortAscending": ": activate to sort column ascending",
-	
+
 				/**
 				 * ARIA label that is added to the table headers when the column may be
 				 * sorted descending by activing the column (click or return when focused).
@@ -45827,7 +45827,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				 */
 				"sSortDescending": ": activate to sort column descending"
 			},
-	
+
 			/**
 			 * Pagination string used by DataTables for the built-in pagination
 			 * control types.
@@ -45856,8 +45856,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				 *    } );
 				 */
 				"sFirst": "First",
-	
-	
+
+
 				/**
 				 * Text to use when using the 'full_numbers' type of pagination for the
 				 * button to take the user to the last page.
@@ -45879,8 +45879,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				 *    } );
 				 */
 				"sLast": "Last",
-	
-	
+
+
 				/**
 				 * Text to use for the 'next' pagination button (to take the user to the
 				 * next page).
@@ -45902,8 +45902,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				 *    } );
 				 */
 				"sNext": "Next",
-	
-	
+
+
 				/**
 				 * Text to use for the 'previous' pagination button (to take the user to
 				 * the previous page).
@@ -45926,7 +45926,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				 */
 				"sPrevious": "Previous"
 			},
-	
+
 			/**
 			 * This string is shown in preference to `zeroRecords` when the table is
 			 * empty of data (regardless of filtering). Note that this is an optional
@@ -45948,8 +45948,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 *    } );
 			 */
 			"sEmptyTable": "No data available in table",
-	
-	
+
+
 			/**
 			 * This string gives information to the end user about the information
 			 * that is current on display on the page. The following tokens can be
@@ -45980,8 +45980,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 *    } );
 			 */
 			"sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
-	
-	
+
+
 			/**
 			 * Display information string for when the table is empty. Typically the
 			 * format of this string should match `info`.
@@ -46001,8 +46001,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 *    } );
 			 */
 			"sInfoEmpty": "Showing 0 to 0 of 0 entries",
-	
-	
+
+
 			/**
 			 * When a user filters the information in a table, this string is appended
 			 * to the information (`info`) to give an idea of how strong the filtering
@@ -46023,8 +46023,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 *    } );
 			 */
 			"sInfoFiltered": "(filtered from _MAX_ total entries)",
-	
-	
+
+
 			/**
 			 * If can be useful to append extra information to the info string at times,
 			 * and this variable does exactly that. This information will be appended to
@@ -46046,8 +46046,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 *    } );
 			 */
 			"sInfoPostFix": "",
-	
-	
+
+
 			/**
 			 * This decimal place operator is a little different from the other
 			 * language options since DataTables doesn't output floating point
@@ -46061,7 +46061,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 * However, multiple different tables on the page can use different
 			 * decimal place characters.
 			 *  @type string
-			 *  @default 
+			 *  @default
 			 *
 			 *  @dtopt Language
 			 *  @name DataTable.defaults.language.decimal
@@ -46077,8 +46077,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 *    } );
 			 */
 			"sDecimal": "",
-	
-	
+
+
 			/**
 			 * DataTables has a build in number formatter (`formatNumber`) which is
 			 * used to format large numbers that are used in the table information.
@@ -46100,8 +46100,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 *    } );
 			 */
 			"sThousands": ",",
-	
-	
+
+
 			/**
 			 * Detail the action that will be taken when the drop down menu for the
 			 * pagination length option is changed. The '_MENU_' variable is replaced
@@ -46141,8 +46141,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 *    } );
 			 */
 			"sLengthMenu": "Show _MENU_ entries",
-	
-	
+
+
 			/**
 			 * When using Ajax sourced data and during the first draw when DataTables is
 			 * gathering the data, this message is shown in an empty row in the table to
@@ -46165,8 +46165,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 *    } );
 			 */
 			"sLoadingRecords": "Loading...",
-	
-	
+
+
 			/**
 			 * Text which is displayed when the table is processing a user action
 			 * (usually a sort command or similar).
@@ -46186,8 +46186,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 *    } );
 			 */
 			"sProcessing": "Processing...",
-	
-	
+
+
 			/**
 			 * Details the actions that will be taken when the user types into the
 			 * filtering input text box. The variable "_INPUT_", if used in the string,
@@ -46221,8 +46221,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 *    } );
 			 */
 			"sSearch": "Search:",
-	
-	
+
+
 			/**
 			 * All of the language information can be stored in a file on the
 			 * server-side, which DataTables will look up if this parameter is passed.
@@ -46246,8 +46246,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 *    } );
 			 */
 			"sUrl": "",
-	
-	
+
+
 			/**
 			 * Text shown inside the table records when the is no information to be
 			 * displayed after filtering. `emptyTable` is shown when there is simply no
@@ -46269,8 +46269,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 */
 			"sZeroRecords": "No matching records found"
 		},
-	
-	
+
+
 		/**
 		 * This parameter allows you to have define the global filtering state at
 		 * initialisation time. As an object the `search` parameter must be
@@ -46293,8 +46293,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } )
 		 */
 		"oSearch": $.extend( {}, DataTable.models.oSearch ),
-	
-	
+
+
 		/**
 		 * __Deprecated__ The functionality provided by this parameter has now been
 		 * superseded by that provided through `ajax`, which should be used instead.
@@ -46314,8 +46314,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @deprecated 1.10. Please use `ajax` for this functionality now.
 		 */
 		"sAjaxDataProp": "data",
-	
-	
+
+
 		/**
 		 * __Deprecated__ The functionality provided by this parameter has now been
 		 * superseded by that provided through `ajax`, which should be used instead.
@@ -46333,8 +46333,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @deprecated 1.10. Please use `ajax` for this functionality now.
 		 */
 		"sAjaxSource": null,
-	
-	
+
+
 		/**
 		 * This initialisation variable allows you to specify exactly where in the
 		 * DOM you want DataTables to inject the various controls it adds to the page
@@ -46387,8 +46387,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"sDom": "lfrtip",
-	
-	
+
+
 		/**
 		 * DataTables features four different built-in options for the buttons to
 		 * display for pagination control:
@@ -46398,7 +46398,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 * * `full` - 'First', 'Previous', 'Next' and 'Last' buttons
 		 * * `full_numbers` - 'First', 'Previous', 'Next' and 'Last' buttons, plus
 		 *   page numbers
-		 *  
+		 *
 		 * Further methods can be added using {@link DataTable.ext.oPagination}.
 		 *  @type string
 		 *  @default simple_numbers
@@ -46414,8 +46414,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } )
 		 */
 		"sPaginationType": "simple_numbers",
-	
-	
+
+
 		/**
 		 * Enable horizontal scrolling. When a table is too wide to fit into a
 		 * certain layout, or you have a large number of columns in the table, you
@@ -46439,8 +46439,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"sScrollX": "",
-	
-	
+
+
 		/**
 		 * This property can be used to force a DataTable to use more width than it
 		 * might otherwise do when x-scrolling is enabled. For example if you have a
@@ -46463,8 +46463,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"sScrollXInner": "",
-	
-	
+
+
 		/**
 		 * Enable vertical scrolling. Vertical scrolling will constrain the DataTable
 		 * to the given height, and enable scrolling for any data which overflows the
@@ -46487,8 +46487,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"sScrollY": "",
-	
-	
+
+
 		/**
 		 * __Deprecated__ The functionality provided by this parameter has now been
 		 * superseded by that provided through `ajax`, which should be used instead.
@@ -46505,8 +46505,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @deprecated 1.10. Please use `ajax` for this functionality now.
 		 */
 		"sServerMethod": "GET",
-	
-	
+
+
 		/**
 		 * DataTables makes use of renderers when displaying HTML elements for
 		 * a table. These renderers can be added or modified by plug-ins to
@@ -46524,16 +46524,16 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 */
 		"renderer": null
 	};
-	
+
 	_fnHungarianMap( DataTable.defaults );
-	
-	
-	
+
+
+
 	/*
 	 * Developer note - See note in model.defaults.js about the use of Hungarian
 	 * notation and camel case.
 	 */
-	
+
 	/**
 	 * Column options that can be given to DataTables at initialisation time.
 	 *  @namespace
@@ -46579,8 +46579,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 */
 		"aDataSort": null,
 		"iDataSort": -1,
-	
-	
+
+
 		/**
 		 * You can control the default ordering direction, and even alter the
 		 * behaviour of the sort handler (i.e. only allow ascending ordering etc)
@@ -46618,8 +46618,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"asSorting": [ 'asc', 'desc' ],
-	
-	
+
+
 		/**
 		 * Enable or disable filtering on the data in this column.
 		 *  @type boolean
@@ -46651,8 +46651,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"bSearchable": true,
-	
-	
+
+
 		/**
 		 * Enable or disable ordering on this column.
 		 *  @type boolean
@@ -46684,8 +46684,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"bSortable": true,
-	
-	
+
+
 		/**
 		 * Enable or disable the display of this column.
 		 *  @type boolean
@@ -46717,8 +46717,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"bVisible": true,
-	
-	
+
+
 		/**
 		 * Developer definable function that is called whenever a cell is created (Ajax source,
 		 * etc) or processed for input (DOM source). This can be used as a compliment to mRender
@@ -46749,8 +46749,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"fnCreatedCell": null,
-	
-	
+
+
 		/**
 		 * This parameter has been replaced by `data` in DataTables to ensure naming
 		 * consistency. `dataProp` can still be used, as there is backwards
@@ -46758,8 +46758,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 * recommended that you use `data` in preference to `dataProp`.
 		 *  @name DataTable.defaults.column.dataProp
 		 */
-	
-	
+
+
 		/**
 		 * This property can be used to read data from any data source property,
 		 * including deeply nested objects / properties. `data` can be given in a
@@ -46930,8 +46930,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *
 		 */
 		"mData": null,
-	
-	
+
+
 		/**
 		 * This property is the rendering partner to `data` and it is suggested that
 		 * when you want to manipulate data for display (including filtering,
@@ -47052,8 +47052,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"mRender": null,
-	
-	
+
+
 		/**
 		 * Change the cell type created for the column - either TD cells or TH cells. This
 		 * can be useful as TH cells have semantic meaning in the table body, allowing them
@@ -47076,8 +47076,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"sCellType": "td",
-	
-	
+
+
 		/**
 		 * Class to give to each cell in this column.
 		 *  @type string
@@ -47111,7 +47111,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"sClass": "",
-	
+
 		/**
 		 * When DataTables calculates the column widths to assign to each column,
 		 * it finds the longest string in each column and then constructs a
@@ -47144,8 +47144,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"sContentPadding": "",
-	
-	
+
+
 		/**
 		 * Allows a default value to be given for a column's data, and will be used
 		 * whenever a null data source is encountered (this can be because `data`
@@ -47187,8 +47187,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"sDefaultContent": null,
-	
-	
+
+
 		/**
 		 * This parameter is only used in DataTables' server-side processing. It can
 		 * be exceptionally useful to know what columns are being displayed on the
@@ -47231,8 +47231,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"sName": "",
-	
-	
+
+
 		/**
 		 * Defines a data source type for the ordering which can be used to read
 		 * real-time information from the table (updating the internally cached
@@ -47273,8 +47273,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"sSortDataType": "std",
-	
-	
+
+
 		/**
 		 * The title of this column.
 		 *  @type string
@@ -47309,8 +47309,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"sTitle": null,
-	
-	
+
+
 		/**
 		 * The type allows you to specify how the data for this column will be
 		 * ordered. Four types (string, numeric, date and html (which will strip
@@ -47350,8 +47350,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		"sType": null,
-	
-	
+
+
 		/**
 		 * Defining the width of the column, this parameter may take any CSS value
 		 * (3em, 20px etc). DataTables applies 'smart' widths to columns which have not
@@ -47389,11 +47389,11 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 */
 		"sWidth": null
 	};
-	
+
 	_fnHungarianMap( DataTable.defaults.column );
-	
-	
-	
+
+
+
 	/**
 	 * DataTables settings object - this holds all the information needed for a
 	 * given table, including configuration, data and current application of the
@@ -47422,7 +47422,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @namespace
 		 */
 		"oFeatures": {
-	
+
 			/**
 			 * Flag to say if DataTables should automatically try to calculate the
 			 * optimum table and columns widths (true) or not (false).
@@ -47431,7 +47431,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 *  @type boolean
 			 */
 			"bAutoWidth": null,
-	
+
 			/**
 			 * Delay the creation of TR and TD elements until they are actually
 			 * needed by a driven page draw. This can give a significant speed
@@ -47442,7 +47442,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 *  @type boolean
 			 */
 			"bDeferRender": null,
-	
+
 			/**
 			 * Enable filtering on the table or not. Note that if this is disabled
 			 * then there is no filtering at all on the table, including fnFilter.
@@ -47452,7 +47452,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 *  @type boolean
 			 */
 			"bFilter": null,
-	
+
 			/**
 			 * Table information element (the 'Showing x of y records' div) enable
 			 * flag.
@@ -47461,7 +47461,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 *  @type boolean
 			 */
 			"bInfo": null,
-	
+
 			/**
 			 * Present a user control allowing the end user to change the page size
 			 * when pagination is enabled.
@@ -47470,7 +47470,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 *  @type boolean
 			 */
 			"bLengthChange": null,
-	
+
 			/**
 			 * Pagination enabled or not. Note that if this is disabled then length
 			 * changing must also be disabled.
@@ -47479,7 +47479,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 *  @type boolean
 			 */
 			"bPaginate": null,
-	
+
 			/**
 			 * Processing indicator enable flag whenever DataTables is enacting a
 			 * user request - typically an Ajax request for server-side processing.
@@ -47488,7 +47488,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 *  @type boolean
 			 */
 			"bProcessing": null,
-	
+
 			/**
 			 * Server-side processing enabled flag - when enabled DataTables will
 			 * get all data from the server for every draw - there is no filtering,
@@ -47498,7 +47498,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 *  @type boolean
 			 */
 			"bServerSide": null,
-	
+
 			/**
 			 * Sorting enablement flag.
 			 * Note that this parameter will be set by the initialisation routine. To
@@ -47506,7 +47506,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 *  @type boolean
 			 */
 			"bSort": null,
-	
+
 			/**
 			 * Multi-column sorting
 			 * Note that this parameter will be set by the initialisation routine. To
@@ -47514,7 +47514,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 *  @type boolean
 			 */
 			"bSortMulti": null,
-	
+
 			/**
 			 * Apply a class to the columns which are being sorted to provide a
 			 * visual highlight or not. This can slow things down when enabled since
@@ -47524,7 +47524,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 *  @type boolean
 			 */
 			"bSortClasses": null,
-	
+
 			/**
 			 * State saving enablement flag.
 			 * Note that this parameter will be set by the initialisation routine. To
@@ -47533,8 +47533,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 */
 			"bStateSave": null
 		},
-	
-	
+
+
 		/**
 		 * Scrolling settings for a table.
 		 *  @namespace
@@ -47548,7 +47548,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 *  @type boolean
 			 */
 			"bCollapse": null,
-	
+
 			/**
 			 * Width of the scrollbar for the web-browser's platform. Calculated
 			 * during table initialisation.
@@ -47556,7 +47556,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 *  @default 0
 			 */
 			"iBarWidth": 0,
-	
+
 			/**
 			 * Viewport width for horizontal scrolling. Horizontal scrolling is
 			 * disabled if an empty string.
@@ -47565,7 +47565,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 *  @type string
 			 */
 			"sX": null,
-	
+
 			/**
 			 * Width to expand the table to when using x-scrolling. Typically you
 			 * should not need to use this.
@@ -47575,7 +47575,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 *  @deprecated
 			 */
 			"sXInner": null,
-	
+
 			/**
 			 * Viewport height for vertical scrolling. Vertical scrolling is disabled
 			 * if an empty string.
@@ -47585,7 +47585,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 */
 			"sY": null
 		},
-	
+
 		/**
 		 * Language information for the table.
 		 *  @namespace
@@ -47600,7 +47600,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 */
 			"fnInfoCallback": null
 		},
-	
+
 		/**
 		 * Browser support parameters
 		 *  @namespace
@@ -47613,7 +47613,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 *  @default false
 			 */
 			"bScrollOversize": false,
-	
+
 			/**
 			 * Determine if the vertical scrollbar is on the right or left of the
 			 * scrolling container - needed for rtl language layout, although not
@@ -47623,11 +47623,11 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 */
 			"bScrollbarLeft": false
 		},
-	
-	
+
+
 		"ajax": null,
-	
-	
+
+
 		/**
 		 * Array referencing the nodes which are used for the features. The
 		 * parameters of this object match what is allowed by sDom - i.e.
@@ -47643,7 +47643,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default []
 		 */
 		"aanFeatures": [],
-	
+
 		/**
 		 * Store data information - see {@link DataTable.models.oRow} for detailed
 		 * information.
@@ -47651,42 +47651,42 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default []
 		 */
 		"aoData": [],
-	
+
 		/**
 		 * Array of indexes which are in the current display (after filtering etc)
 		 *  @type array
 		 *  @default []
 		 */
 		"aiDisplay": [],
-	
+
 		/**
 		 * Array of indexes for display - no filtering
 		 *  @type array
 		 *  @default []
 		 */
 		"aiDisplayMaster": [],
-	
+
 		/**
 		 * Store information about each column that is in use
 		 *  @type array
 		 *  @default []
 		 */
 		"aoColumns": [],
-	
+
 		/**
 		 * Store information about the table's header
 		 *  @type array
 		 *  @default []
 		 */
 		"aoHeader": [],
-	
+
 		/**
 		 * Store information about the table's footer
 		 *  @type array
 		 *  @default []
 		 */
 		"aoFooter": [],
-	
+
 		/**
 		 * Store the applied global search information in case we want to force a
 		 * research or compare the old search to a new one.
@@ -47696,7 +47696,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @extends DataTable.models.oSearch
 		 */
 		"oPreviousSearch": {},
-	
+
 		/**
 		 * Store the applied search for each column - see
 		 * {@link DataTable.models.oSearch} for the format that is used for the
@@ -47705,7 +47705,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default []
 		 */
 		"aoPreSearchCols": [],
-	
+
 		/**
 		 * Sorting that is applied to the table. Note that the inner arrays are
 		 * used in the following manner:
@@ -47719,7 +47719,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @todo These inner arrays should really be objects
 		 */
 		"aaSorting": null,
-	
+
 		/**
 		 * Sorting that is always applied to the table (i.e. prefixed in front of
 		 * aaSorting).
@@ -47729,7 +47729,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default []
 		 */
 		"aaSortingFixed": [],
-	
+
 		/**
 		 * Classes to use for the striping of a table.
 		 * Note that this parameter will be set by the initialisation routine. To
@@ -47738,56 +47738,56 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default []
 		 */
 		"asStripeClasses": null,
-	
+
 		/**
 		 * If restoring a table - we should restore its striping classes as well
 		 *  @type array
 		 *  @default []
 		 */
 		"asDestroyStripes": [],
-	
+
 		/**
 		 * If restoring a table - we should restore its width
 		 *  @type int
 		 *  @default 0
 		 */
 		"sDestroyWidth": 0,
-	
+
 		/**
 		 * Callback functions array for every time a row is inserted (i.e. on a draw).
 		 *  @type array
 		 *  @default []
 		 */
 		"aoRowCallback": [],
-	
+
 		/**
 		 * Callback functions for the header on each draw.
 		 *  @type array
 		 *  @default []
 		 */
 		"aoHeaderCallback": [],
-	
+
 		/**
 		 * Callback function for the footer on each draw.
 		 *  @type array
 		 *  @default []
 		 */
 		"aoFooterCallback": [],
-	
+
 		/**
 		 * Array of callback functions for draw callback functions
 		 *  @type array
 		 *  @default []
 		 */
 		"aoDrawCallback": [],
-	
+
 		/**
 		 * Array of callback functions for row created function
 		 *  @type array
 		 *  @default []
 		 */
 		"aoRowCreatedCallback": [],
-	
+
 		/**
 		 * Callback functions for just before the table is redrawn. A return of
 		 * false will be used to cancel the draw.
@@ -47795,15 +47795,15 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default []
 		 */
 		"aoPreDrawCallback": [],
-	
+
 		/**
 		 * Callback functions for when the table has been initialised.
 		 *  @type array
 		 *  @default []
 		 */
 		"aoInitComplete": [],
-	
-	
+
+
 		/**
 		 * Callbacks for modifying the settings to be stored for state saving, prior to
 		 * saving state.
@@ -47811,7 +47811,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default []
 		 */
 		"aoStateSaveParams": [],
-	
+
 		/**
 		 * Callbacks for modifying the settings that have been stored for state saving
 		 * prior to using the stored values to restore the state.
@@ -47819,7 +47819,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default []
 		 */
 		"aoStateLoadParams": [],
-	
+
 		/**
 		 * Callbacks for operating on the settings object once the saved state has been
 		 * loaded
@@ -47827,49 +47827,49 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default []
 		 */
 		"aoStateLoaded": [],
-	
+
 		/**
 		 * Cache the table ID for quick access
 		 *  @type string
 		 *  @default <i>Empty string</i>
 		 */
 		"sTableId": "",
-	
+
 		/**
 		 * The TABLE node for the main table
 		 *  @type node
 		 *  @default null
 		 */
 		"nTable": null,
-	
+
 		/**
 		 * Permanent ref to the thead element
 		 *  @type node
 		 *  @default null
 		 */
 		"nTHead": null,
-	
+
 		/**
 		 * Permanent ref to the tfoot element - if it exists
 		 *  @type node
 		 *  @default null
 		 */
 		"nTFoot": null,
-	
+
 		/**
 		 * Permanent ref to the tbody element
 		 *  @type node
 		 *  @default null
 		 */
 		"nTBody": null,
-	
+
 		/**
 		 * Cache the wrapper node (contains all DataTables controlled elements)
 		 *  @type node
 		 *  @default null
 		 */
 		"nTableWrapper": null,
-	
+
 		/**
 		 * Indicate if when using server-side processing the loading of data
 		 * should be deferred until the second draw.
@@ -47879,14 +47879,14 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default false
 		 */
 		"bDeferLoading": false,
-	
+
 		/**
 		 * Indicate if all required information has been read in
 		 *  @type boolean
 		 *  @default false
 		 */
 		"bInitialised": false,
-	
+
 		/**
 		 * Information about open rows. Each object in the array has the parameters
 		 * 'nTr' and 'nParent'
@@ -47894,7 +47894,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default []
 		 */
 		"aoOpenRows": [],
-	
+
 		/**
 		 * Dictate the positioning of DataTables' control elements - see
 		 * {@link DataTable.model.oInit.sDom}.
@@ -47904,7 +47904,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default null
 		 */
 		"sDom": null,
-	
+
 		/**
 		 * Which type of pagination should be used.
 		 * Note that this parameter will be set by the initialisation routine. To
@@ -47913,7 +47913,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default two_button
 		 */
 		"sPaginationType": "two_button",
-	
+
 		/**
 		 * The state duration (for `stateSave`) in seconds.
 		 * Note that this parameter will be set by the initialisation routine. To
@@ -47922,7 +47922,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default 0
 		 */
 		"iStateDuration": 0,
-	
+
 		/**
 		 * Array of callback functions for state saving. Each array element is an
 		 * object with the following parameters:
@@ -47937,7 +47937,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default []
 		 */
 		"aoStateSave": [],
-	
+
 		/**
 		 * Array of callback functions for state loading. Each array element is an
 		 * object with the following parameters:
@@ -47950,14 +47950,14 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default []
 		 */
 		"aoStateLoad": [],
-	
+
 		/**
 		 * State that was loaded. Useful for back reference
 		 *  @type object
 		 *  @default null
 		 */
 		"oLoadedState": null,
-	
+
 		/**
 		 * Source url for AJAX data for the table.
 		 * Note that this parameter will be set by the initialisation routine. To
@@ -47966,7 +47966,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default null
 		 */
 		"sAjaxSource": null,
-	
+
 		/**
 		 * Property from a given object from which to read the table data from. This
 		 * can be an empty string (when not server-side processing), in which case
@@ -47976,14 +47976,14 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @type string
 		 */
 		"sAjaxDataProp": null,
-	
+
 		/**
 		 * Note if draw should be blocked while getting data
 		 *  @type boolean
 		 *  @default true
 		 */
 		"bAjaxDataGet": true,
-	
+
 		/**
 		 * The last jQuery XHR object that was used for server-side data gathering.
 		 * This can be used for working with the XHR information in one of the
@@ -47992,14 +47992,14 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default null
 		 */
 		"jqXHR": null,
-	
+
 		/**
 		 * JSON returned from the server in the last Ajax request
 		 *  @type object
 		 *  @default undefined
 		 */
 		"json": undefined,
-	
+
 		/**
 		 * Function to get the server-side data.
 		 * Note that this parameter will be set by the initialisation routine. To
@@ -48007,7 +48007,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @type function
 		 */
 		"fnServerData": null,
-	
+
 		/**
 		 * Functions which are called prior to sending an Ajax request so extra
 		 * parameters can easily be sent to the server
@@ -48015,7 +48015,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default []
 		 */
 		"aoServerParams": [],
-	
+
 		/**
 		 * Send the XHR HTTP method - GET or POST (could be PUT or DELETE if
 		 * required).
@@ -48024,7 +48024,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @type string
 		 */
 		"sServerMethod": null,
-	
+
 		/**
 		 * Format numbers for display.
 		 * Note that this parameter will be set by the initialisation routine. To
@@ -48032,7 +48032,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @type function
 		 */
 		"fnFormatNumber": null,
-	
+
 		/**
 		 * List of options that can be used for the user selectable length menu.
 		 * Note that this parameter will be set by the initialisation routine. To
@@ -48041,7 +48041,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default []
 		 */
 		"aLengthMenu": null,
-	
+
 		/**
 		 * Counter for the draws that the table does. Also used as a tracker for
 		 * server-side processing
@@ -48049,35 +48049,35 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default 0
 		 */
 		"iDraw": 0,
-	
+
 		/**
 		 * Indicate if a redraw is being done - useful for Ajax
 		 *  @type boolean
 		 *  @default false
 		 */
 		"bDrawing": false,
-	
+
 		/**
 		 * Draw index (iDraw) of the last error when parsing the returned data
 		 *  @type int
 		 *  @default -1
 		 */
 		"iDrawError": -1,
-	
+
 		/**
 		 * Paging display length
 		 *  @type int
 		 *  @default 10
 		 */
 		"_iDisplayLength": 10,
-	
+
 		/**
 		 * Paging start point - aiDisplay index
 		 *  @type int
 		 *  @default 0
 		 */
 		"_iDisplayStart": 0,
-	
+
 		/**
 		 * Server-side processing - number of records in the result set
 		 * (i.e. before filtering), Use fnRecordsTotal rather than
@@ -48088,7 +48088,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @private
 		 */
 		"_iRecordsTotal": 0,
-	
+
 		/**
 		 * Server-side processing - number of records in the current display set
 		 * (i.e. after filtering). Use fnRecordsDisplay rather than
@@ -48099,7 +48099,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @private
 		 */
 		"_iRecordsDisplay": 0,
-	
+
 		/**
 		 * Flag to indicate if jQuery UI marking and classes should be used.
 		 * Note that this parameter will be set by the initialisation routine. To
@@ -48107,14 +48107,14 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @type boolean
 		 */
 		"bJUI": null,
-	
+
 		/**
 		 * The classes to use for the table
 		 *  @type object
 		 *  @default {}
 		 */
 		"oClasses": {},
-	
+
 		/**
 		 * Flag attached to the settings object so you can check in the draw
 		 * callback if filtering has been done in the draw. Deprecated in favour of
@@ -48124,7 +48124,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @deprecated
 		 */
 		"bFiltered": false,
-	
+
 		/**
 		 * Flag attached to the settings object so you can check in the draw
 		 * callback if sorting has been done in the draw. Deprecated in favour of
@@ -48134,7 +48134,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @deprecated
 		 */
 		"bSorted": false,
-	
+
 		/**
 		 * Indicate that if multiple rows are in the header and there is more than
 		 * one unique cell per column, if the top one (true) or bottom one (false)
@@ -48144,14 +48144,14 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @type boolean
 		 */
 		"bSortCellsTop": null,
-	
+
 		/**
 		 * Initialisation object that is used for the table
 		 *  @type object
 		 *  @default null
 		 */
 		"oInit": null,
-	
+
 		/**
 		 * Destroy callback functions - for plug-ins to attach themselves to the
 		 * destroy so they can clean up markup and events.
@@ -48159,8 +48159,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default []
 		 */
 		"aoDestroyCallback": [],
-	
-	
+
+
 		/**
 		 * Get the number of records in the current record set, before filtering
 		 *  @type function
@@ -48171,7 +48171,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				this._iRecordsTotal * 1 :
 				this.aiDisplayMaster.length;
 		},
-	
+
 		/**
 		 * Get the number of records in the current record set, after filtering
 		 *  @type function
@@ -48182,7 +48182,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				this._iRecordsDisplay * 1 :
 				this.aiDisplay.length;
 		},
-	
+
 		/**
 		 * Get the display end point - aiDisplay index
 		 *  @type function
@@ -48196,7 +48196,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				records  = this.aiDisplay.length,
 				features = this.oFeatures,
 				paginate = features.bPaginate;
-	
+
 			if ( features.bServerSide ) {
 				return paginate === false || len === -1 ?
 					start + records :
@@ -48208,14 +48208,14 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 					calc;
 			}
 		},
-	
+
 		/**
 		 * The DataTables object for this table
 		 *  @type object
 		 *  @default null
 		 */
 		"oInstance": null,
-	
+
 		/**
 		 * Unique identifier for each instance of the DataTables object. If there
 		 * is an ID on the table node, then it takes that value, otherwise an
@@ -48224,30 +48224,30 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default null
 		 */
 		"sInstance": null,
-	
+
 		/**
 		 * tabindex attribute value that is added to DataTables control elements, allowing
 		 * keyboard navigation of the table and its controls.
 		 */
 		"iTabIndex": 0,
-	
+
 		/**
 		 * DIV container for the footer scrolling table if scrolling
 		 */
 		"nScrollHead": null,
-	
+
 		/**
 		 * DIV container for the footer scrolling table if scrolling
 		 */
 		"nScrollFoot": null,
-	
+
 		/**
 		 * Last applied sort
 		 *  @type array
 		 *  @default []
 		 */
 		"aLastSort": [],
-	
+
 		/**
 		 * Stored plug-in instances
 		 *  @type object
@@ -48266,11 +48266,11 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 	 *  @namespace
 	 *  @extends DataTable.models.ext
 	 */
-	
-	
+
+
 	/**
 	 * DataTables extensions
-	 * 
+	 *
 	 * This namespace acts as a collection area for plug-ins that can be used to
 	 * extend DataTables capabilities. Indeed many of the build in methods
 	 * use this method to provide their own capabilities (sorting methods for
@@ -48289,11 +48289,11 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default {}
 		 */
 		classes: {},
-	
-	
+
+
 		/**
 		 * Error reporting.
-		 * 
+		 *
 		 * How should DataTables report an error. Can take the value 'alert' or
 		 * 'throw'
 		 *
@@ -48301,18 +48301,18 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default alert
 		 */
 		errMode: "alert",
-	
-	
+
+
 		/**
 		 * Feature plug-ins.
-		 * 
+		 *
 		 * This is an array of objects which describe the feature plug-ins that are
 		 * available to DataTables. These feature plug-ins are then available for
 		 * use through the `dom` initialisation option.
-		 * 
+		 *
 		 * Each feature plug-in is described by an object which must have the
 		 * following properties:
-		 * 
+		 *
 		 * * `fnInit` - function that is used to initialise the plug-in,
 		 * * `cFeature` - a character so the feature can be enabled by the `dom`
 		 *   instillation option. This is case sensitive.
@@ -48323,7 +48323,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    {@link DataTable.models.oSettings}
 		 *
 		 * And the following return is expected:
-		 * 
+		 *
 		 * * {node|null} The element which contains your feature. Note that the
 		 *   return may also be void if your plug-in does not require to inject any
 		 *   DOM elements into DataTables control (`dom`) - for example this might
@@ -48341,11 +48341,11 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    } );
 		 */
 		feature: [],
-	
-	
+
+
 		/**
 		 * Row searching.
-		 * 
+		 *
 		 * This method of searching is complimentary to the default type based
 		 * searching, and a lot more comprehensive as it allows you complete control
 		 * over the searching logic. Each element in this array is a function
@@ -48402,11 +48402,11 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    );
 		 */
 		search: [],
-	
-	
+
+
 		/**
 		 * Internal functions, exposed for used in plug-ins.
-		 * 
+		 *
 		 * Please note that you should not need to use the internal methods for
 		 * anything other than a plug-in (and even then, try to avoid if possible).
 		 * The internal function may change between releases.
@@ -48415,8 +48415,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *  @default {}
 		 */
 		internal: {},
-	
-	
+
+
 		/**
 		 * Legacy configuration options. Enable and disable legacy options that
 		 * are available in DataTables.
@@ -48433,11 +48433,11 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 */
 			ajax: null
 		},
-	
-	
+
+
 		/**
 		 * Pagination plug-in methods.
-		 * 
+		 *
 		 * Each entry in this object is a function and defines which buttons should
 		 * be shown by the pagination rendering method that is used for the table:
 		 * {@link DataTable.ext.renderer.pageButton}. The renderer addresses how the
@@ -48481,26 +48481,26 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    };
 		 */
 		pager: {},
-	
-	
+
+
 		renderer: {
 			pageButton: {},
 			header: {}
 		},
-	
-	
+
+
 		/**
 		 * Ordering plug-ins - custom data source
-		 * 
+		 *
 		 * The extension options for ordering of data available here is complimentary
 		 * to the default type based ordering that DataTables typically uses. It
 		 * allows much greater control over the the data that is being used to
 		 * order a column, but is necessarily therefore more complex.
-		 * 
+		 *
 		 * This type of ordering is useful if you want to do ordering based on data
 		 * live from the DOM (for example the contents of an 'input' element) rather
 		 * than just the static string that DataTables knows of.
-		 * 
+		 *
 		 * The way these plug-ins work is that you create an array of the values you
 		 * wish to be ordering for the column in question and then return that
 		 * array. The data in the array much be in the index order of the rows in
@@ -48530,8 +48530,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 *    }
 		 */
 		order: {},
-	
-	
+
+
 		/**
 		 * Type based plug-ins.
 		 *
@@ -48584,8 +48584,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 *    );
 			 */
 			detect: [],
-	
-	
+
+
 			/**
 			 * Type based search formatting.
 			 *
@@ -48595,7 +48595,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 *
 			 * Note that is a search is not defined for a column of a given type,
 			 * no search formatting will be performed.
-			 * 
+			 *
 			 * Pre-processing of searching data plug-ins - When you assign the sType
 			 * for a column (or have it automatically detected for you by DataTables
 			 * or a type detection plug-in), you will typically be using this for
@@ -48623,8 +48623,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 *    }
 			 */
 			search: {},
-	
-	
+
+
 			/**
 			 * Type based ordering.
 			 *
@@ -48665,7 +48665,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 *   than the second parameter, ===0 if the two parameters are equal and
 			 *   >0 if the first parameter should be sorted height than the second
 			 *   parameter.
-			 * 
+			 *
 			 *  @type object
 			 *  @default {}
 			 *
@@ -48691,7 +48691,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			 */
 			order: {}
 		},
-	
+
 		/**
 		 * Unique DataTables instance counter
 		 *
@@ -48699,39 +48699,39 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 * @private
 		 */
 		_unique: 0,
-	
-	
+
+
 		//
 		// Depreciated
 		// The following properties are retained for backwards compatiblity only.
 		// The should not be used in new projects and will be removed in a future
 		// version
 		//
-	
+
 		/**
 		 * Version check function.
 		 *  @type function
 		 *  @depreciated Since 1.10
 		 */
 		fnVersionCheck: DataTable.fnVersionCheck,
-	
-	
+
+
 		/**
 		 * Index for what 'this' index API functions should use
 		 *  @type int
 		 *  @deprecated Since v1.10
 		 */
 		iApiIndex: 0,
-	
-	
+
+
 		/**
 		 * jQuery UI class container
 		 *  @type object
 		 *  @deprecated Since v1.10
 		 */
 		oJUIClasses: {},
-	
-	
+
+
 		/**
 		 * Software version
 		 *  @type string
@@ -48739,8 +48739,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		 */
 		sVersion: DataTable.version
 	};
-	
-	
+
+
 	//
 	// Backwards compatibility. Alias to pre 1.10 Hungarian notation counter parts
 	//
@@ -48755,24 +48755,24 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		oStdClasses:  _ext.classes,
 		oPagination:  _ext.pager
 	} );
-	
-	
+
+
 	$.extend( DataTable.ext.classes, {
 		"sTable": "dataTable",
 		"sNoFooter": "no-footer",
-	
+
 		/* Paging buttons */
 		"sPageButton": "paginate_button",
 		"sPageButtonActive": "current",
 		"sPageButtonDisabled": "disabled",
-	
+
 		/* Striping classes */
 		"sStripeOdd": "odd",
 		"sStripeEven": "even",
-	
+
 		/* Empty row */
 		"sRowEmpty": "dataTables_empty",
-	
+
 		/* Features */
 		"sWrapper": "dataTables_wrapper",
 		"sFilter": "dataTables_filter",
@@ -48780,7 +48780,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		"sPaging": "dataTables_paginate paging_", /* Note that the type is postfixed */
 		"sLength": "dataTables_length",
 		"sProcessing": "dataTables_processing",
-	
+
 		/* Sorting */
 		"sSortAsc": "sorting_asc",
 		"sSortDesc": "sorting_desc",
@@ -48789,13 +48789,13 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		"sSortableDesc": "sorting_desc_disabled",
 		"sSortableNone": "sorting_disabled",
 		"sSortColumn": "sorting_", /* Note that an int is postfixed for the sorting order */
-	
+
 		/* Filtering */
 		"sFilterInput": "",
-	
+
 		/* Page length */
 		"sLengthSelect": "",
-	
+
 		/* Scrolling */
 		"sScrollWrapper": "dataTables_scroll",
 		"sScrollHead": "dataTables_scrollHead",
@@ -48803,11 +48803,11 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		"sScrollBody": "dataTables_scrollBody",
 		"sScrollFoot": "dataTables_scrollFoot",
 		"sScrollFootInner": "dataTables_scrollFootInner",
-	
+
 		/* Misc */
 		"sHeaderTH": "",
 		"sFooterTH": "",
-	
+
 		// Deprecated
 		"sSortJUIAsc": "",
 		"sSortJUIDesc": "",
@@ -48819,31 +48819,31 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		"sJUIHeader": "",
 		"sJUIFooter": ""
 	} );
-	
-	
+
+
 	(function() {
-	
+
 	// Reused strings for better compression. Closure compiler appears to have a
 	// weird edge case where it is trying to expand strings rather than use the
 	// variable version. This results in about 200 bytes being added, for very
 	// little preference benefit since it this run on script load only.
 	var _empty = '';
 	_empty = '';
-	
+
 	var _stateDefault = _empty + 'ui-state-default';
 	var _sortIcon     = _empty + 'css_right ui-icon ui-icon-';
 	var _headerFooter = _empty + 'fg-toolbar ui-toolbar ui-widget-header ui-helper-clearfix';
-	
+
 	$.extend( DataTable.ext.oJUIClasses, DataTable.ext.classes, {
 		/* Full numbers paging buttons */
 		"sPageButton":         "fg-button ui-button "+_stateDefault,
 		"sPageButtonActive":   "ui-state-disabled",
 		"sPageButtonDisabled": "ui-state-disabled",
-	
+
 		/* Features */
 		"sPaging": "dataTables_paginate fg-buttonset ui-buttonset fg-buttonset-multi "+
 			"ui-buttonset-multi paging_", /* Note that the type is postfixed */
-	
+
 		/* Sorting */
 		"sSortAsc":            _stateDefault+" sorting_asc",
 		"sSortDesc":           _stateDefault+" sorting_desc",
@@ -48858,31 +48858,31 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		"sSortJUIDescAllowed": _sortIcon+"carat-1-s",
 		"sSortJUIWrapper":     "DataTables_sort_wrapper",
 		"sSortIcon":           "DataTables_sort_icon",
-	
+
 		/* Scrolling */
 		"sScrollHead": "dataTables_scrollHead "+_stateDefault,
 		"sScrollFoot": "dataTables_scrollFoot "+_stateDefault,
-	
+
 		/* Misc */
 		"sHeaderTH":  _stateDefault,
 		"sFooterTH":  _stateDefault,
 		"sJUIHeader": _headerFooter+" ui-corner-tl ui-corner-tr",
 		"sJUIFooter": _headerFooter+" ui-corner-bl ui-corner-br"
 	} );
-	
+
 	}());
-	
-	
-	
+
+
+
 	var extPagination = DataTable.ext.pager;
-	
+
 	function _numbers ( page, pages ) {
 		var
 			numbers = [],
 			buttons = extPagination.numbers_length,
 			half = Math.floor( buttons / 2 ),
 			i = 1;
-	
+
 		if ( pages <= buttons ) {
 			numbers = _range( 0, pages );
 		}
@@ -48903,51 +48903,51 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			numbers.splice( 0, 0, 'ellipsis' );
 			numbers.splice( 0, 0, 0 );
 		}
-	
+
 		numbers.DT_el = 'span';
 		return numbers;
 	}
-	
-	
+
+
 	$.extend( extPagination, {
 		simple: function ( page, pages ) {
 			return [ 'previous', 'next' ];
 		},
-	
+
 		full: function ( page, pages ) {
 			return [  'first', 'previous', 'next', 'last' ];
 		},
-	
+
 		simple_numbers: function ( page, pages ) {
 			return [ 'previous', _numbers(page, pages), 'next' ];
 		},
-	
+
 		full_numbers: function ( page, pages ) {
 			return [ 'first', 'previous', _numbers(page, pages), 'next', 'last' ];
 		},
-	
+
 		// For testing and plug-ins to use
 		_numbers: _numbers,
 		numbers_length: 7
 	} );
-	
-	
+
+
 	$.extend( true, DataTable.ext.renderer, {
 		pageButton: {
 			_: function ( settings, host, idx, buttons, page, pages ) {
 				var classes = settings.oClasses;
 				var lang = settings.oLanguage.oPaginate;
 				var btnDisplay, btnClass;
-	
+
 				var attach = function( container, buttons ) {
 					var i, ien, node, button;
 					var clickHandler = function ( e ) {
 						_fnPageChange( settings, e.data.action, true );
 					};
-	
+
 					for ( i=0, ien=buttons.length ; i<ien ; i++ ) {
 						button = buttons[i];
-	
+
 						if ( $.isArray( button ) ) {
 							var inner = $( '<'+(button.DT_el || 'div')+'/>' )
 								.appendTo( container );
@@ -48956,43 +48956,43 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 						else {
 							btnDisplay = '';
 							btnClass = '';
-	
+
 							switch ( button ) {
 								case 'ellipsis':
 									container.append('<span>&hellip;</span>');
 									break;
-	
+
 								case 'first':
 									btnDisplay = lang.sFirst;
 									btnClass = button + (page > 0 ?
 										'' : ' '+classes.sPageButtonDisabled);
 									break;
-	
+
 								case 'previous':
 									btnDisplay = lang.sPrevious;
 									btnClass = button + (page > 0 ?
 										'' : ' '+classes.sPageButtonDisabled);
 									break;
-	
+
 								case 'next':
 									btnDisplay = lang.sNext;
 									btnClass = button + (page < pages-1 ?
 										'' : ' '+classes.sPageButtonDisabled);
 									break;
-	
+
 								case 'last':
 									btnDisplay = lang.sLast;
 									btnClass = button + (page < pages-1 ?
 										'' : ' '+classes.sPageButtonDisabled);
 									break;
-	
+
 								default:
 									btnDisplay = button + 1;
 									btnClass = page === button ?
 										classes.sPageButtonActive : '';
 									break;
 							}
-	
+
 							if ( btnDisplay ) {
 								node = $('<a>', {
 										'class': classes.sPageButton+' '+btnClass,
@@ -49004,7 +49004,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 									} )
 									.html( btnDisplay )
 									.appendTo( container );
-	
+
 								_fnBindAction(
 									node, {action: button}, clickHandler
 								);
@@ -49012,40 +49012,40 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 						}
 					}
 				};
-	
+
 				attach( $(host).empty(), buttons );
 			}
 		}
 	} );
-	
-	
-	
+
+
+
 	var __numericReplace = function ( d, decimalPlace, re1, re2 ) {
 		if ( !d || d === '-' ) {
 			return -Infinity;
 		}
-	
+
 		// If a decimal place other than `.` is used, it needs to be given to the
 		// function so we can detect it and replace with a `.` which is the only
 		// decimal place Javascript recognises - it is not locale aware.
 		if ( decimalPlace ) {
 			d = _numToDecimal( d, decimalPlace );
 		}
-	
+
 		if ( d.replace ) {
 			if ( re1 ) {
 				d = d.replace( re1, '' );
 			}
-	
+
 			if ( re2 ) {
 				d = d.replace( re2, '' );
 			}
 		}
-	
+
 		return d * 1;
 	};
-	
-	
+
+
 	// Add the numeric 'deformatting' functions for sorting. This is done in a
 	// function to provide an easy ability for the language options to add
 	// additional methods if a non-period decimal place is used.
@@ -49056,17 +49056,17 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				"num": function ( d ) {
 					return __numericReplace( d, decimalPlace );
 				},
-	
+
 				// Formatted numbers
 				"num-fmt": function ( d ) {
 					return __numericReplace( d, decimalPlace, _re_formatted_numeric );
 				},
-	
+
 				// HTML numeric
 				"html-num": function ( d ) {
 					return __numericReplace( d, decimalPlace, _re_html );
 				},
-	
+
 				// HTML numeric, formatted
 				"html-num-fmt": function ( d ) {
 					return __numericReplace( d, decimalPlace, _re_html, _re_formatted_numeric );
@@ -49077,22 +49077,22 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			}
 		);
 	}
-	
-	
+
+
 	// Default sort methods
 	$.extend( _ext.type.order, {
 		// Dates
 		"date-pre": function ( d ) {
 			return Date.parse( d ) || 0;
 		},
-	
+
 		// html
 		"html-pre": function ( a ) {
 			return a.replace ?
 				a.replace( /<.*?>/g, "" ).toLowerCase() :
 				a+'';
 		},
-	
+
 		// string
 		"string-pre": function ( a ) {
 			return typeof a === 'string' ?
@@ -49101,23 +49101,23 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 					'' :
 					a.toString();
 		},
-	
+
 		// string-asc and -desc are retained only for compatibility with the old
 		// sort methods
 		"string-asc": function ( x, y ) {
 			return ((x < y) ? -1 : ((x > y) ? 1 : 0));
 		},
-	
+
 		"string-desc": function ( x, y ) {
 			return ((x < y) ? 1 : ((x > y) ? -1 : 0));
 		}
 	} );
-	
-	
+
+
 	// Numeric sorting types - order doesn't matter here
 	_addNumericSort( '' );
-	
-	
+
+
 	// Built in type detection. See model.ext.aTypes for information about
 	// what is required from this methods.
 	$.extend( DataTable.ext.type.detect, [
@@ -49128,7 +49128,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			var decimal = settings.oLanguage.sDecimal;
 			return _isNumber( d, decimal ) ? 'num'+decimal : null;
 		},
-	
+
 		// Dates (only those recognised by the browser's Date.parse)
 		function ( d, settings )
 		{
@@ -49141,28 +49141,28 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			var parsed = Date.parse(d);
 			return (parsed !== null && !isNaN(parsed)) || _empty(d) ? 'date' : null;
 		},
-	
+
 		// Formatted numbers
 		function ( d, settings )
 		{
 			var decimal = settings.oLanguage.sDecimal;
 			return _isNumber( d, decimal, true ) ? 'num-fmt'+decimal : null;
 		},
-	
+
 		// HTML numeric
 		function ( d, settings )
 		{
 			var decimal = settings.oLanguage.sDecimal;
 			return _htmlNumeric( d, decimal ) ? 'html-num'+decimal : null;
 		},
-	
+
 		// HTML numeric, formatted
 		function ( d, settings )
 		{
 			var decimal = settings.oLanguage.sDecimal;
 			return _htmlNumeric( d, decimal, true ) ? 'html-num-fmt'+decimal : null;
 		},
-	
+
 		// HTML (this is strict checking - there must be html)
 		function ( d, settings )
 		{
@@ -49170,13 +49170,13 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				'html' : null;
 		}
 	] );
-	
-	
-	
+
+
+
 	// Filter formatting functions. See model.ext.ofnSearch for information about
 	// what is required from these methods.
-	
-	
+
+
 	$.extend( DataTable.ext.type.search, {
 		html: function ( data ) {
 			return _empty(data) ?
@@ -49187,7 +49187,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 						.replace( _re_html, "" ) :
 					'';
 		},
-	
+
 		string: function ( data ) {
 			return _empty(data) ?
 				'' :
@@ -49196,9 +49196,9 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 					data;
 		}
 	} );
-	
-	
-	
+
+
+
 	$.extend( true, DataTable.ext.renderer, {
 		header: {
 			_: function ( settings, cell, column, classes ) {
@@ -49206,7 +49206,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 				// Attach a sort listener to update on sort
 				$(settings.nTable).on( 'order.dt', function ( e, settings, sorting, columns ) {
 					var colIdx = column.idx;
-	
+
 					cell
 						.removeClass(
 							column.sSortingClass +' '+
@@ -49220,10 +49220,10 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 						);
 				} );
 			},
-	
+
 			jqueryui: function ( settings, cell, column, classes ) {
 				var colIdx = column.idx;
-	
+
 				$('<div/>')
 					.addClass( classes.sSortJUIWrapper )
 					.append( cell.contents() )
@@ -49231,7 +49231,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 						.addClass( classes.sSortIcon+' '+column.sSortingClassJUI )
 					)
 					.appendTo( cell );
-	
+
 				// Attach a sort listener to update on sort
 				$(settings.nTable).on( 'order.dt', function ( e, settings, sorting, columns ) {
 					cell
@@ -49241,7 +49241,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 								classes.sSortDesc :
 								column.sSortingClass
 						);
-	
+
 					cell
 						.find( 'span' )
 						.removeClass(
@@ -49260,14 +49260,14 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			}
 		}
 	} );
-	
-	
+
+
 	/*
 	 * This is really a good bit rubbish this method of exposing the internal methods
 	 * publicly... - To be fixed in 2.0 using methods on the prototype
 	 */
-	
-	
+
+
 	/**
 	 * Create a wrapper function for exporting an internal functions to an external API.
 	 *  @param {string} fn API function name
@@ -49283,8 +49283,8 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 			return DataTable.ext.internal[fn].apply( this, args );
 		};
 	}
-	
-	
+
+
 	/**
 	 * Reference to internal functions for use by plug-in developers. Note that
 	 * these methods are references to internal functions and are considered to be
@@ -49388,7 +49388,7 @@ jQuery.validator.addMethod("extension", function(value, element, param) {
 		                                // in 1.10, so this dead-end function is
 		                                // added to prevent errors
 	} );
-	
+
 
 	// jQuery access
 	$.fn.dataTable = DataTable;
@@ -50149,19 +50149,19 @@ Emitter.prototype.hasListeners = function(event){
 /*
 #
 # More info at [www.dropzonejs.com](http://www.dropzonejs.com)
-# 
-# Copyright (c) 2012, Matias Meno  
-# 
+#
+# Copyright (c) 2012, Matias Meno
+#
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
 # in the Software without restriction, including without limitation the rights
 # to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
-# 
+#
 # The above copyright notice and this permission notice shall be included in
 # all copies or substantial portions of the Software.
-# 
+#
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 # FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -50190,9 +50190,9 @@ Emitter.prototype.hasListeners = function(event){
 
     /*
     This is a list of all available events you can register on a dropzone object.
-    
+
     You can register an event handler like this:
-    
+
         dropzone.on("dragEnter", function() { });
     */
 
@@ -50386,7 +50386,7 @@ Emitter.prototype.hasListeners = function(event){
       error: function(file, message) {
         var node, _i, _len, _ref, _results;
         file.previewElement.classList.add("dz-error");
-        if (typeof message !== "String" && message.error) {
+        if (typeof message !== "string" && message.error) {
           message = message.error;
         }
         _ref = file.previewElement.querySelectorAll("[data-dz-errormessage]");
@@ -51580,7 +51580,7 @@ Emitter.prototype.hasListeners = function(event){
   Dropzone.SUCCESS = "success";
 
   /*
-  
+
   Bugfix for iOS 6 and 7
   Source: http://stackoverflow.com/questions/11929099/html5-canvas-drawimage-ratio-bug-ios
   based on the work of https://github.com/stomita/ios-imagefile-megapixel
@@ -51697,19 +51697,19 @@ Emitter.prototype.hasListeners = function(event){
 /*
 #
 # More info at [www.dropzonejs.com](http://www.dropzonejs.com)
-# 
-# Copyright (c) 2012, Matias Meno  
-# 
+#
+# Copyright (c) 2012, Matias Meno
+#
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
 # in the Software without restriction, including without limitation the rights
 # to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
-# 
+#
 # The above copyright notice and this permission notice shall be included in
 # all copies or substantial portions of the Software.
-# 
+#
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 # FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -51738,9 +51738,9 @@ Emitter.prototype.hasListeners = function(event){
 
     /*
     This is a list of all available events you can register on a dropzone object.
-    
+
     You can register an event handler like this:
-    
+
         dropzone.on("dragEnter", function() { });
     */
 
@@ -51934,7 +51934,7 @@ Emitter.prototype.hasListeners = function(event){
       error: function(file, message) {
         var node, _i, _len, _ref, _results;
         file.previewElement.classList.add("dz-error");
-        if (typeof message !== "String" && message.error) {
+        if (typeof(message) !== "String" && message.error) {
           message = message.error;
         }
         _ref = file.previewElement.querySelectorAll("[data-dz-errormessage]");
@@ -53128,7 +53128,7 @@ Emitter.prototype.hasListeners = function(event){
   Dropzone.SUCCESS = "success";
 
   /*
-  
+
   Bugfix for iOS 6 and 7
   Source: http://stackoverflow.com/questions/11929099/html5-canvas-drawimage-ratio-bug-ios
   based on the work of https://github.com/stomita/ios-imagefile-megapixel
@@ -53260,7 +53260,7 @@ Emitter.prototype.hasListeners = function(event){
     factory(window.jQuery, window.CodeMirror);
   }
 }(function ($, CodeMirror) {
-  
+
 
 
   if ('function' !== typeof Array.prototype.reduce) {
@@ -53402,7 +53402,7 @@ Emitter.prototype.hasListeners = function(event){
 
       return array[idx - 1];
     };
-  
+
     /**
      * get sum from a list
      * @param {Array} array - array
@@ -53414,7 +53414,7 @@ Emitter.prototype.hasListeners = function(event){
         return memo + fn(v);
       }, 0);
     };
-  
+
     /**
      * returns a copy of the collection with array type.
      * @param {Collection} collection - collection eg) node.childNodes, ...
@@ -53426,7 +53426,7 @@ Emitter.prototype.hasListeners = function(event){
       }
       return result;
     };
-  
+
     /**
      * cluster elements by predicate function.
      * @param {Array} array - array
@@ -53446,7 +53446,7 @@ Emitter.prototype.hasListeners = function(event){
         return memo;
       }, [[head(array)]]);
     };
-  
+
     /**
      * returns a copy of the array with all falsy values removed
      * @param {Array} array - array
@@ -53459,7 +53459,7 @@ Emitter.prototype.hasListeners = function(event){
       }
       return aResult;
     };
-  
+
     return { head: head, last: last, initial: initial, tail: tail,
              prev: prev, next: next, sum: sum, from: from,
              compact: compact, clusterBy: clusterBy };
@@ -53478,7 +53478,7 @@ Emitter.prototype.hasListeners = function(event){
     var isEditable = function (node) {
       return node && $(node).hasClass('note-editable');
     };
-  
+
     var isControlSizing = function (node) {
       return node && $(node).hasClass('note-control-sizing');
     };
@@ -53516,12 +53516,12 @@ Emitter.prototype.hasListeners = function(event){
         return node && node.nodeName === sNodeName;
       };
     };
-  
+
     var isPara = function (node) {
       // Chrome(v31.0), FF(v25.0.1) use DIV for paragraph
       return node && /^DIV|^P|^LI|^H[1-7]/.test(node.nodeName);
     };
-  
+
     var isList = function (node) {
       return node && /^UL|^OL/.test(node.nodeName);
     };
@@ -53529,7 +53529,7 @@ Emitter.prototype.hasListeners = function(event){
     var isCell = function (node) {
       return node && /^TD|^TH/.test(node.nodeName);
     };
-  
+
     /**
      * find nearest ancestor predicate hit
      *
@@ -53545,7 +53545,7 @@ Emitter.prototype.hasListeners = function(event){
       }
       return null;
     };
-  
+
     /**
      * returns new array of ancestor nodes (until predicate hit).
      *
@@ -53554,7 +53554,7 @@ Emitter.prototype.hasListeners = function(event){
      */
     var listAncestor = function (node, pred) {
       pred = pred || func.fail;
-  
+
       var aAncestor = [];
       ancestor(node, function (el) {
         aAncestor.push(el);
@@ -53562,7 +53562,7 @@ Emitter.prototype.hasListeners = function(event){
       });
       return aAncestor;
     };
-  
+
     /**
      * returns common ancestor node between two nodes.
      *
@@ -53576,7 +53576,7 @@ Emitter.prototype.hasListeners = function(event){
       }
       return null; // difference document area
     };
-  
+
     /**
      * listing all Nodes between two nodes.
      * FIXME: nodeA and nodeB must be sorted, use comparePoints later.
@@ -53586,7 +53586,7 @@ Emitter.prototype.hasListeners = function(event){
      */
     var listBetween = function (nodeA, nodeB) {
       var aNode = [];
-  
+
       var bStart = false, bEnd = false;
 
       // DFS(depth first search) with commonAcestor.
@@ -53600,10 +53600,10 @@ Emitter.prototype.hasListeners = function(event){
           fnWalk(node.childNodes[idx]);
         }
       })(commonAncestor(nodeA, nodeB));
-  
+
       return aNode;
     };
-  
+
     /**
      * listing all previous siblings (until predicate hit).
      * @param {Element} node
@@ -53611,7 +53611,7 @@ Emitter.prototype.hasListeners = function(event){
      */
     var listPrev = function (node, pred) {
       pred = pred || func.fail;
-  
+
       var aNext = [];
       while (node) {
         aNext.push(node);
@@ -53620,7 +53620,7 @@ Emitter.prototype.hasListeners = function(event){
       }
       return aNext;
     };
-  
+
     /**
      * listing next siblings (until predicate hit).
      *
@@ -53629,7 +53629,7 @@ Emitter.prototype.hasListeners = function(event){
      */
     var listNext = function (node, pred) {
       pred = pred || func.fail;
-  
+
       var aNext = [];
       while (node) {
         aNext.push(node);
@@ -53661,7 +53661,7 @@ Emitter.prototype.hasListeners = function(event){
 
       return aDescendant;
     };
-  
+
     /**
      * insert node after preceding
      *
@@ -53677,7 +53677,7 @@ Emitter.prototype.hasListeners = function(event){
       }
       return node;
     };
-  
+
     /**
      * append elements.
      *
@@ -53690,9 +53690,9 @@ Emitter.prototype.hasListeners = function(event){
       });
       return node;
     };
-  
+
     var isText = makePredByNodeName('#text');
-  
+
     /**
      * returns #text's text size or element's childNodes size
      *
@@ -53702,7 +53702,7 @@ Emitter.prototype.hasListeners = function(event){
       if (isText(node)) { return node.nodeValue.length; }
       return node.childNodes.length;
     };
-  
+
     /**
      * returns offset from parent.
      *
@@ -53713,7 +53713,7 @@ Emitter.prototype.hasListeners = function(event){
       while ((node = node.previousSibling)) { offset += 1; }
       return offset;
     };
-  
+
     /**
      * return offsetPath(array of offset) from ancestor
      *
@@ -53724,7 +53724,7 @@ Emitter.prototype.hasListeners = function(event){
       var aAncestor = list.initial(listAncestor(node, func.eq(ancestor)));
       return $.map(aAncestor, position).reverse();
     };
-  
+
     /**
      * return element from offsetPath(array of offset)
      *
@@ -53738,7 +53738,7 @@ Emitter.prototype.hasListeners = function(event){
       }
       return current;
     };
-  
+
     /**
      * split element or #text
      *
@@ -53748,16 +53748,16 @@ Emitter.prototype.hasListeners = function(event){
     var splitData = function (node, offset) {
       if (offset === 0) { return node; }
       if (offset >= length(node)) { return node.nextSibling; }
-  
+
       // splitText
       if (isText(node)) { return node.splitText(offset); }
-  
+
       // splitElement
       var child = node.childNodes[offset];
       node = insertAfter(node.cloneNode(false), node);
       return appends(node, listNext(child));
     };
-  
+
     /**
      * split dom tree by boundaryPoint(pivot and offset)
      *
@@ -53778,7 +53778,7 @@ Emitter.prototype.hasListeners = function(event){
         return clone;
       });
     };
-  
+
     /**
      * remove node, (bRemoveChild: remove child or not)
      * @param {Element} node
@@ -53787,7 +53787,7 @@ Emitter.prototype.hasListeners = function(event){
     var remove = function (node, bRemoveChild) {
       if (!node || !node.parentNode) { return; }
       if (node.removeNode) { return node.removeNode(bRemoveChild); }
-  
+
       var elParent = node.parentNode;
       if (!bRemoveChild) {
         var aNode = [];
@@ -53795,19 +53795,19 @@ Emitter.prototype.hasListeners = function(event){
         for (i = 0, sz = node.childNodes.length; i < sz; i++) {
           aNode.push(node.childNodes[i]);
         }
-  
+
         for (i = 0, sz = aNode.length; i < sz; i++) {
           elParent.insertBefore(aNode[i], node);
         }
       }
-  
+
       elParent.removeChild(node);
     };
-  
+
     var html = function ($node) {
       return dom.isTextarea($node[0]) ? $node.val() : $node.html();
     };
-  
+
     return {
       blank: agent.bMSIE ? '&nbsp;' : '<br/>',
       emptyPara: '<p><br/></p>',
@@ -54026,7 +54026,7 @@ Emitter.prototype.hasListeners = function(event){
         }).readAsDataURL(file);
       }).promise();
     };
-  
+
     /**
      * load image from url string
      *
@@ -54185,7 +54185,7 @@ Emitter.prototype.hasListeners = function(event){
    */
   var range = (function () {
     var bW3CRangeSupport = !!document.createRange;
-     
+
     /**
      * return boundaryPoint from TextRange, inspired by Andy Na's HuskyRange.js
      * @param {TextRange} textRange
@@ -54194,7 +54194,7 @@ Emitter.prototype.hasListeners = function(event){
      */
     var textRange2bp = function (textRange, bStart) {
       var elCont = textRange.parentElement(), nOffset;
-  
+
       var tester = document.body.createTextRange(), elPrevCont;
       var aChild = list.from(elCont.childNodes);
       for (nOffset = 0; nOffset < aChild.length; nOffset++) {
@@ -54203,39 +54203,39 @@ Emitter.prototype.hasListeners = function(event){
         if (tester.compareEndPoints('StartToStart', textRange) >= 0) { break; }
         elPrevCont = aChild[nOffset];
       }
-  
+
       if (nOffset !== 0 && dom.isText(aChild[nOffset - 1])) {
         var textRangeStart = document.body.createTextRange(), elCurText = null;
         textRangeStart.moveToElementText(elPrevCont || elCont);
         textRangeStart.collapse(!elPrevCont);
         elCurText = elPrevCont ? elPrevCont.nextSibling : elCont.firstChild;
-  
+
         var pointTester = textRange.duplicate();
         pointTester.setEndPoint('StartToStart', textRangeStart);
         var nTextCount = pointTester.text.replace(/[\r\n]/g, '').length;
-  
+
         while (nTextCount > elCurText.nodeValue.length && elCurText.nextSibling) {
           nTextCount -= elCurText.nodeValue.length;
           elCurText = elCurText.nextSibling;
         }
-  
+
         /* jshint ignore:start */
         var sDummy = elCurText.nodeValue; //enforce IE to re-reference elCurText, hack
         /* jshint ignore:end */
-  
+
         if (bStart && elCurText.nextSibling && dom.isText(elCurText.nextSibling) &&
             nTextCount === elCurText.nodeValue.length) {
           nTextCount -= elCurText.nodeValue.length;
           elCurText = elCurText.nextSibling;
         }
-  
+
         elCont = elCurText;
         nOffset = nTextCount;
       }
-  
+
       return {cont: elCont, offset: nOffset};
     };
-    
+
     /**
      * return TextRange from boundary point (inspired by google closure-library)
      * @param {BoundaryPoint} bp
@@ -54244,7 +54244,7 @@ Emitter.prototype.hasListeners = function(event){
     var bp2textRange = function (bp) {
       var textRangeInfo = function (elCont, nOffset) {
         var elNode, bCollapseToStart;
-  
+
         if (dom.isText(elCont)) {
           var aPrevText = dom.listPrev(elCont, func.not(dom.isText));
           var elPrevCont = list.last(aPrevText).previousSibling;
@@ -54256,23 +54256,23 @@ Emitter.prototype.hasListeners = function(event){
           if (dom.isText(elNode)) {
             return textRangeInfo(elNode, nOffset);
           }
-  
+
           nOffset = 0;
           bCollapseToStart = false;
         }
-  
+
         return {cont: elNode, collapseToStart: bCollapseToStart, offset: nOffset};
       };
-  
+
       var textRange = document.body.createTextRange();
       var info = textRangeInfo(bp.cont, bp.offset);
-  
+
       textRange.moveToElementText(info.cont);
       textRange.collapse(info.collapseToStart);
       textRange.moveStart('character', info.offset);
       return textRange;
     };
-    
+
     /**
      * Wrapped Range
      *
@@ -54286,7 +54286,7 @@ Emitter.prototype.hasListeners = function(event){
       this.so = so;
       this.ec = ec;
       this.eo = eo;
-  
+
       // nativeRange: get nativeRange from sc, so, ec, eo
       var nativeRange = function () {
         if (bW3CRangeSupport) {
@@ -54336,7 +54336,7 @@ Emitter.prototype.hasListeners = function(event){
       this.commonAncestor = function () {
         return dom.commonAncestor(sc, ec);
       };
-      
+
       /**
        * makeIsOn: return isOn(pred) function
        */
@@ -54346,7 +54346,7 @@ Emitter.prototype.hasListeners = function(event){
           return !!elAncestor && (elAncestor === dom.ancestor(ec, pred));
         };
       };
-  
+
       // isOnEditable: judge whether range is on editable or not
       this.isOnEditable = makeIsOn(dom.isEditable);
       // isOnList: judge whether range is on list node or not
@@ -54370,12 +54370,12 @@ Emitter.prototype.hasListeners = function(event){
           nativeRng.pasteHTML(node.outerHTML); // NOTE: missing node reference.
         }
       };
-  
+
       this.toString = function () {
         var nativeRng = nativeRange();
         return bW3CRangeSupport ? nativeRng.toString() : nativeRng.text;
       };
-  
+
       // bookmark: offsetPath bookmark
       this.bookmark = function (elEditable) {
         return {
@@ -54384,7 +54384,7 @@ Emitter.prototype.hasListeners = function(event){
         };
       };
     };
-  
+
     return {
       /**
        * create Range Object From arguments or Browser Selection
@@ -54399,7 +54399,7 @@ Emitter.prototype.hasListeners = function(event){
           if (bW3CRangeSupport) { // webkit, firefox
             var selection = document.getSelection();
             if (selection.rangeCount === 0) { return null; }
-  
+
             var nativeRng = selection.getRangeAt(0);
             sc = nativeRng.startContainer;
             so = nativeRng.startOffset;
@@ -54411,10 +54411,10 @@ Emitter.prototype.hasListeners = function(event){
             textRangeEnd.collapse(false);
             var textRangeStart = textRange;
             textRangeStart.collapse(true);
-  
+
             var bpStart = textRange2bp(textRangeStart, true),
             bpEnd = textRange2bp(textRangeEnd, false);
-  
+
             sc = bpStart.cont;
             so = bpStart.offset;
             ec = bpEnd.cont;
@@ -54580,7 +54580,7 @@ Emitter.prototype.hasListeners = function(event){
     /* jshint ignore:end */
 
     /**
-     * @param {jQuery} $editable 
+     * @param {jQuery} $editable
      * @param {WrappedRange} rng
      * @param {Number} nTabsize
      */
@@ -54596,7 +54596,7 @@ Emitter.prototype.hasListeners = function(event){
 
     /**
      * handle tab key
-     * @param {jQuery} $editable 
+     * @param {jQuery} $editable
      * @param {Number} nTabsize
      * @param {Boolean} bShift
      */
@@ -55174,7 +55174,7 @@ Emitter.prototype.hasListeners = function(event){
   };
 
   /**
-   * Dialog 
+   * Dialog
    *
    * @class
    */
@@ -55198,8 +55198,8 @@ Emitter.prototype.hasListeners = function(event){
      * show image dialog
      *
      * @param {jQuery} $dialog
-     * @param {Function} fnInsertImages 
-     * @param {Function} fnInsertImage 
+     * @param {Function} fnInsertImages
+     * @param {Function} fnInsertImage
      */
     this.showImageDialog = function ($editable, $dialog, fnInsertImages, fnInsertImage) {
       var $imageDialog = $dialog.find('.note-image-dialog');
@@ -55238,9 +55238,9 @@ Emitter.prototype.hasListeners = function(event){
     /**
      * Show video dialog and set event handlers on dialog controls.
      *
-     * @param {jQuery} $dialog 
-     * @param {Object} videoInfo 
-     * @param {Function} callback 
+     * @param {jQuery} $dialog
+     * @param {Object} videoInfo
+     * @param {Function} callback
      */
     this.showVideoDialog = function ($editable, $dialog, videoInfo, callback) {
       var $videoDialog = $dialog.find('.note-video-dialog');
@@ -55492,7 +55492,7 @@ Emitter.prototype.hasListeners = function(event){
             scrollTop = $(document).scrollTop();
 
         $editor.on('mousemove', function (event) {
-          
+
           editor.resizeTo({
             x: event.clientX - posStart.left,
             y: event.clientY - (posStart.top - scrollTop)
@@ -56485,7 +56485,7 @@ Emitter.prototype.hasListeners = function(event){
 
       return this;
     },
-    // 
+    //
 
     /**
      * get the HTML contents of note or set the HTML contents of note.
@@ -58162,7 +58162,7 @@ function merge_text_nodes( jsonml ) {
  */
 
 var toMarkdown = function(string) {
-  
+
   var ELEMENTS = [
     {
       patterns: 'p',
@@ -58227,7 +58227,7 @@ var toMarkdown = function(string) {
       }
     }
   ];
-  
+
   for(var i = 0, len = ELEMENTS.length; i < len; i++) {
     if(typeof ELEMENTS[i].patterns === 'string') {
       string = replaceEls(string, { tag: ELEMENTS[i].patterns, replacement: ELEMENTS[i].replacement, type:  ELEMENTS[i].type });
@@ -58238,7 +58238,7 @@ var toMarkdown = function(string) {
       }
     }
   }
-  
+
   function replaceEls(html, elProperties) {
     var pattern = elProperties.type === 'void' ? '<' + elProperties.tag + '\\b([^>]*)\\/?>' : '<' + elProperties.tag + '\\b([^>]*)>([\\s\\S]*?)<\\/' + elProperties.tag + '>',
         regex = new RegExp(pattern, 'gi'),
@@ -58253,26 +58253,26 @@ var toMarkdown = function(string) {
     }
     return markdown;
   }
-  
+
   function attrRegExp(attr) {
     return new RegExp(attr + '\\s*=\\s*["\']?([^"\']*)["\']?', 'i');
   }
-  
+
   // Pre code blocks
-  
+
   string = string.replace(/<pre\b[^>]*>`([\s\S]*)`<\/pre>/gi, function(str, innerHTML) {
     innerHTML = innerHTML.replace(/^\t+/g, '  '); // convert tabs to spaces (you know it makes sense)
     innerHTML = innerHTML.replace(/\n/g, '\n    ');
     return '\n\n    ' + innerHTML + '\n';
   });
-  
+
   // Lists
 
   // Escape numbers that could trigger an ol
   // If there are more than three spaces before the code, it would be in a pre tag
   // Make sure we are escaping the period not matching any character
   string = string.replace(/^(\s{0,3}\d+)\. /g, '$1\\. ');
-  
+
   // Converts lists that have no child lists (of same type) first, then works it's way up
   var noChildrenRegex = /<(ul|ol)\b[^>]*>(?:(?!<ul|<ol)[\s\S])*?<\/\1>/gi;
   while(string.match(noChildrenRegex)) {
@@ -58280,18 +58280,18 @@ var toMarkdown = function(string) {
       return replaceLists(str);
     });
   }
-  
+
   function replaceLists(html) {
-    
+
     html = html.replace(/<(ul|ol)\b[^>]*>([\s\S]*?)<\/\1>/gi, function(str, listType, innerHTML) {
       var lis = innerHTML.split('</li>');
       lis.splice(lis.length - 1, 1);
-      
+
       for(i = 0, len = lis.length; i < len; i++) {
         if(lis[i]) {
           var prefix = (listType === 'ol') ? (i + 1) + ".  " : "*   ";
           lis[i] = lis[i].replace(/\s*<li[^>]*>([\s\S]*)/i, function(str, innerHTML) {
-            
+
             innerHTML = innerHTML.replace(/^\s+/, '');
             innerHTML = innerHTML.replace(/\n\n/g, '\n\n    ');
             // indent nested lists
@@ -58304,7 +58304,7 @@ var toMarkdown = function(string) {
     });
     return '\n\n' + html.replace(/[ \t]+\n|\s+$/g, '');
   }
-  
+
   // Blockquotes
   var deepest = /<blockquote\b[^>]*>((?:(?!<blockquote)[\s\S])*?)<\/blockquote>/gi;
   while(string.match(deepest)) {
@@ -58312,7 +58312,7 @@ var toMarkdown = function(string) {
       return replaceBlockquotes(str);
     });
   }
-  
+
   function replaceBlockquotes(html) {
     html = html.replace(/<blockquote\b[^>]*>([\s\S]*?)<\/blockquote>/gi, function(str, inner) {
       inner = inner.replace(/^\s+|\s+$/g, '');
@@ -58323,14 +58323,14 @@ var toMarkdown = function(string) {
     });
     return html;
   }
-  
+
   function cleanUp(string) {
     string = string.replace(/^[\t\r\n]+|[\t\r\n]+$/g, ''); // trim leading/trailing whitespace
     string = string.replace(/\n\s+\n/g, '\n\n');
     string = string.replace(/\n{3,}/g, '\n\n'); // limit consecutive linebreaks to 2
     return string;
   }
-  
+
   return cleanUp(string);
 };
 
@@ -58821,7 +58821,7 @@ if (typeof exports === 'object') {
         this.$nextTab.push(function(){
           return that.findSelection(start)
         })
-      } else if (typeof start == 'numeric' && typeof end == 'numeric') {
+      } else if (typeof start == 'number' && typeof end == 'number') {
         var oldSelection = this.getSelection()
 
         this.setSelection(start,end)
@@ -63752,9 +63752,9 @@ Licensed under the MIT license.
                 radius = series.points.radius,
                 symbol = series.points.symbol;
 
-            // If the user sets the line width to 0, we change it to a very 
+            // If the user sets the line width to 0, we change it to a very
             // small value. A line width of 0 seems to force the default of 1.
-            // Doing the conditional here allows the shadow setting to still be 
+            // Doing the conditional here allows the shadow setting to still be
             // optional even with a lineWidth of 0.
 
             if( lw == 0 )
