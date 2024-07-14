@@ -48,3 +48,5 @@ DB.json
 
 # Local Netlify folder
 .netlify
+
+.vercel
