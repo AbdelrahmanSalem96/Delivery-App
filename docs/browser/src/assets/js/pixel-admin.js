@@ -50386,7 +50386,7 @@ Emitter.prototype.hasListeners = function(event){
       error: function(file, message) {
         var node, _i, _len, _ref, _results;
         file.previewElement.classList.add("dz-error");
-        if (typeof message !== "string" && message.error) {
+        if (typeof(message) !== "string" && message.error) {
           message = message.error;
         }
         _ref = file.previewElement.querySelectorAll("[data-dz-errormessage]");
@@ -51934,7 +51934,7 @@ Emitter.prototype.hasListeners = function(event){
       error: function(file, message) {
         var node, _i, _len, _ref, _results;
         file.previewElement.classList.add("dz-error");
-        if (typeof(message) !== "String" && message.error) {
+        if (typeof(message) !== "string" && message.error) {
           message = message.error;
         }
         _ref = file.previewElement.querySelectorAll("[data-dz-errormessage]");

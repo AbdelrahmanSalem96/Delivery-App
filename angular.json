@@ -142,6 +142,9 @@
               "src/assets/js/initialopenclose.js"
             ]
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }
