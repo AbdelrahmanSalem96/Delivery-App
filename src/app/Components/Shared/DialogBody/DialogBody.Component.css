@@ -1,0 +1,12 @@
+button {
+  margin-right: 8px;
+}
+
+.mat-mdc-dialog-content>:last-child{
+  margin-bottom: 1px;
+
+}
+
+p{
+  font-size: small;
+}

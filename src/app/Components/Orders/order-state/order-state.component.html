@@ -1,0 +1,93 @@
+<div class="note note-success">
+    <h4 class="note-title"> <span class="fa fa-asterisk page-header-icon text-success"></span> Order State</h4>
+  </div>
+  <ul id="tab-page" class="nav nav-tabs">
+      <li [class.active]="tabactive === 1" (click)="tabactive=1">
+          <a href="#edit" data-toggle="tab">{{tabtitle1}}</a>
+      </li>
+      <li [class.active]="tabactive === 2" (click)="tabactive=2">
+        <a href="#list" data-toggle="tab">{{tabtitle2}}</a>
+    </li>
+  </ul>
+  <div class="tab-content tab-content-bordered"  style="margin-top: 5px;">
+      <div class="tab-pane fade active in" [class.active]="tabactive === 1" [class.in]="tabactive === 1" id="edit">
+          <div class="row">
+              <form #addForm="ngForm" (ngSubmit)="onSubmit(addForm)" novalidate autocomplete="off" class="panel panel-success form-horizontal">
+                  <div class="panel-heading text-center">
+                      <span class="panel-title h4">Order State Information</span>
+                  </div>
+                  <div class="panel-body">
+                      <div class="row">
+                          <div class="col-md-6">
+                              <div class="form-group no-margin-hr">
+                                  <label class="control-label">Name<span style="color: red;"> * </span></label>
+                                  <input type="text" id="name" name="name" [(ngModel)]="orderState.name" #name="ngModel" required min="0" maxlength="50" class="form-control">
+                              </div>
+                          </div>
+                          <div class="col-md-6">
+                            <label class="control-label"></label>
+                            <div class="alert-error-message alert-danger " *ngIf="name.errors && (name.dirty || name.touched)">
+                                <span *ngIf="name.errors['required']">This Field Required</span>
+                                <span *ngIf="name.errors['maxlength']">This Field Has MaxLenght 50 character</span>
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="panel-footer text-center">
+                      <button class="btn btn-labeled btn-success" type="submit" *ngIf="this.isshowbuttonsave" [disabled]="!addForm.form.valid ||isdisabledbutton "><span class="btn-label icon fa fa-save"></span>Save</button>
+                      <button class="btn btn-labeled btn-info" type="submit" *ngIf="!this.isshowbuttonsave" [disabled]="!addForm.form.valid ||isdisabledbutton"><span class="btn-label icon fa fa-edit"></span>Update</button>
+                      <button class="btn btn-labeled btn-warning" (click)="onResetAddForm(addForm)" type="button" style="margin-left: 5px;" ><span class="btn-label icon fa fa-refresh"></span>Cancel</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+      <div class="tab-pane fade" [class.active]="tabactive === 2" [class.in]="tabactive === 2" id="list">
+          <div class="tab-content panel-body">
+            <form action="" class="panel form-horizontal">
+                <div class="panel-heading">
+                    <span class="panel-title">Search Form Information</span>
+                </div>
+                <div class="panel-body">
+                    <div class="row form-group">
+                        <div class="col-sm-1"></div>
+                        <label class="col-sm-1 control-label">Name:</label>
+                        <div class="col-sm-6">
+                            <input type="text" id="namesearchfield" name="namesearchfield" [(ngModel)]="namesearchfield" class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <button class="btn btn-labeled btn-teal" (click)="onSearch()" type="submit" style="margin-right: 5px;"><span class="btn-label icon fa fa-search"></span>Search</button>
+                            <button class="btn btn-labeled btn-maroon" (click)="onResetSearchForm()" type="button" style="margin-right: 5px;"><span class="btn-label icon fa fa-rotate-left"></span>Clear</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+          </div>
+          <div class="table-primary">
+              <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th style="text-align: center;">Name</th>
+                        <th style="text-align: center;">#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let objdata of previousdata.items | paginate: {itemsPerPage: previousdata.pagerInfo.pageSize,currentPage: previousdata.pagerInfo.currentPage,totalItems: previousdata.pagerInfo.totalNumberOfItems};">
+                        <td>{{objdata.name}}</td>
+                        <td>
+                            <button class="btn btn-xs btn-labeled btn-warning" style="margin-left: 3px;" (click)="onEdit(objdata.id)"><span class="btn-label icon fa fa-pencil"></span>Edit</button>
+                            <button class="btn btn-xs btn-labeled btn-danger" style="margin-left: 3px;" (click)="onOpenDialog(objdata.id,objdata.name)"><span class="btn-label icon fa fa-trash-o"></span>Delete</button>
+                        </td>
+                    </tr>
+                    <tr *ngIf="previousdata.pagerInfo.totalNumberOfItems <= 0">
+                      <td colspan="2">
+                          <div class="note note-primary text-center">
+                            <h4 class="note-title">No Previous Records</h4>
+                          </div>
+                      </td>
+                  </tr>
+                </tbody>
+            </table>
+          </div>
+      </div>
+  </div>
+  

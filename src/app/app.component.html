@@ -1,0 +1,13 @@
+<div id="main-wrapper" *ngIf="!isloginPage()">
+  <app-navmenu></app-navmenu>
+  <app-rightsidemenu></app-rightsidemenu>
+  <div id="content-wrapper">
+    <router-outlet></router-outlet>
+  </div>
+  <div id="main-menu-bg"></div>
+</div>
+
+<!-- <app-login></app-login> -->
+<div *ngIf="isloginPage()">
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,152 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "DeliveryPortalWeb": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "standalone": false
+        },
+        "@schematics/angular:directive": {
+          "standalone": false
+        },
+        "@schematics/angular:pipe": {
+          "standalone": false
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/delivery-portal-web",
+            "index": "src/index.html",
+            "browser": "src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "src/assets",
+                "output":"src/assets"
+              }
+            ],
+            "styles": [
+              "@angular/material/prebuilt-themes/azure-blue.css",
+              "src/assets/css/bootstrap.css",
+              "src/assets/css/pixel-admin.css",
+              "src/assets/css/widgets.css",
+              "src/assets/css/pages.css",
+              "src/assets/css/rtl.css",
+              "src/assets/css/themes.css",
+              "src/assets/css/screen.css",
+              "src/assets/css/font-awesome.min.css",
+              "node_modules/ngx-toastr/toastr.css",
+              "src/styles.css"
+            ],
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "src/assets/js/initopenclose.js",
+              "src/assets/js/demo.js",
+              "src/assets/js/jquery-1.8.3.min.js",
+              "src/assets/js/bootstrap.min.js",
+              "src/assets/js/pixel-admin.js",
+              "src/assets/js/custome.js",
+              "src/assets/js/initialopenclose.js"
+            ],
+            "server": "src/main.server.ts",
+            "prerender": true,
+            "ssr": {
+              "entry": "server.ts"
+            }
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "4mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kB",
+                  "maximumError": "4kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "DeliveryPortalWeb:build:production"
+            },
+            "development": {
+              "buildTarget": "DeliveryPortalWeb:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "tsconfig.spec.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "src/assets"
+              }
+            ],
+            "styles": [
+              "@angular/material/prebuilt-themes/azure-blue.css",
+              "src/assets/css/bootstrap.css",
+              "src/assets/css/pixel-admin.css",
+              "src/assets/css/widgets.css",
+              "src/assets/css/pages.css",
+              "src/assets/css/rtl.css",
+              "src/assets/css/themes.css",
+              "src/assets/css/screen.css",
+              "src/assets/css/font-awesome.min.css",
+              "node_modules/ngx-toastr/toastr.css",
+              "src/styles.css"
+            ],
+            "scripts": [
+              "src/assets/js/initopenclose.js",
+              "src/assets/js/demo.js",
+              "src/assets/js/jquery-1.8.3.min.js",
+              "src/assets/js/bootstrap.min.js",
+              "src/assets/js/pixel-admin.js",
+              "src/assets/js/custome.js",
+              "src/assets/js/initialopenclose.js"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": false
+  }
+}

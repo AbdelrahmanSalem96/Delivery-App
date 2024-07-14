@@ -1,0 +1,366 @@
+<div class="note note-success">
+  <h4 class="note-title"> <span class="fa fa-indent page-header-icon text-success"></span>Create Branch</h4>
+</div>
+
+<form #addForm="ngForm" (ngSubmit)="onSubmit(addForm)" novalidate autocomplete="off" class="panel panel-success form-horizontal">
+  <div class="panel-heading text-center">
+    <span class="panel-title h4">Branch Information</span>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">Client<span style="color: red"> * </span></label>
+          <input type="text" id="clientId" name="clientId" required
+            [value]="clientName" [disabled]="checkID" class="form-control" />
+        </div>
+      </div>
+
+      <!-- <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">Client<span style="color: red"> * </span></label>
+          <select id="clientId" name="clientId" class="form-control form-select"
+            [(ngModel)]="branch.clientId" #clientId="ngModel" required>
+            <option *ngFor="let client of clients" [ngValue]="client.id" selected>
+              {{ client.name }}
+            </option>
+          </select>
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div class="alert-error-message alert-danger" *ngIf="
+              clientId.errors &&
+              (clientId.dirty || clientId.touched)
+            ">
+            <span *ngIf="clientId.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div> -->
+
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">Client Branch Area<span style="color: red"> * </span></label>
+          <select id="clientBranchAreaId" name="clientBranchAreaId" class="form-control form-select"
+            [(ngModel)]="branch.clientBranchAreaId" #clientBranchAreaId="ngModel" required>
+            <option *ngFor="let area of areas" [ngValue]="area.id" selected>
+              {{ area.name }}
+            </option>
+          </select>
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div class="alert-error-message alert-danger" *ngIf="
+              clientBranchAreaId.errors && (clientBranchAreaId.dirty || clientBranchAreaId.touched)
+            ">
+            <span *ngIf="clientBranchAreaId.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">Branch State<span style="color: red"> * </span></label>
+          <select id="clientBranchState" name="clientBranchState" class="form-control form-select"
+            [(ngModel)]="branch.clientBranchState" #clientBranchState="ngModel" required>
+            <option *ngFor="let state of clientBranchStates" [value]="state.value" selected>
+              {{ state.label }}
+            </option>
+          </select>
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div class="alert-error-message alert-danger" *ngIf="
+              clientBranchState.errors &&
+              (clientBranchState.dirty || clientBranchState.touched)
+            ">
+            <span *ngIf="clientBranchState.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">Name<span style="color: red"> * </span></label>
+          <input type="text" id="name" name="name" required [(ngModel)]="branch.name" #name="ngModel"
+            class="form-control" />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div class="alert-error-message alert-danger" *ngIf="name.errors && (name.dirty || name.touched)">
+            <span *ngIf="name.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"> Email<span style="color: red"> * </span></label>
+          <input type="email" id="email" name="email" required [(ngModel)]="branch.email" #email="ngModel"
+            class="form-control" />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div class="alert-error-message alert-danger" *ngIf="
+              email.errors &&
+              (email.dirty || email.touched)
+            ">
+            <span *ngIf="email.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">Password<span style="color: red;"> * </span></label>
+          <div class="password-input-wrapper">
+            <input type="{{showPassword? 'text' : 'password'}}" id="password" placeholder="Enter Your Password"
+              name="password" minlength="8" required [(ngModel)]="branch.password" #password="ngModel"
+              class="form-control">
+            <span class="glyphicon">
+              <i class="fa" [ngClass]="{'fa-eye': !showPassword ,'fa-eye-slash' : showPassword}"
+                (click)="toggllePassword()"></i>
+            </span>
+          </div>
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div class="alert-error-message alert-danger" *ngIf="
+              password.errors &&
+              (password.dirty || password.touched)
+            ">
+            <span *ngIf="password.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"> Mobile<span style="color: red"> * </span></label>
+          <input type="text" id="phoneNumber" name="phoneNumber" required [(ngModel)]="branch.phoneNumber"
+            #phoneNumber="ngModel" class="form-control" />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div class="alert-error-message alert-danger" *ngIf="
+              phoneNumber.errors &&
+              (phoneNumber.dirty || phoneNumber.touched)
+            ">
+            <span *ngIf="phoneNumber.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">Branch Location<span style="color: red"> * </span></label>
+          <input type="text" id="branchLocation" name="branchLocation" required
+            [(ngModel)]="location" #branchLocation="ngModel" required
+            class="form-control" />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div class="alert-error-message alert-danger" *ngIf="
+              branchLocation.errors &&
+              (branchLocation.dirty || branchLocation.touched)
+            ">
+            <span *ngIf="branchLocation.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">Start Work Date</label>
+          <input id="startWorkDate" type="date" name="startWorkDate" [(ngModel)]="branch.startWorkDate"
+            #startWorkDate="ngModel" class="form-control" />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div class="alert-error-message alert-danger" *ngIf="
+              startWorkDate.errors &&
+              (startWorkDate.dirty || startWorkDate.touched)
+            ">
+            <span *ngIf="startWorkDate.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">Branch Adress</label>
+          <input type="text" id="branchAddress" name="branchAddress" [(ngModel)]="branch.branchAddress"
+            #branchAddress="ngModel" class="form-control" />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div class="alert-error-message alert-danger"
+            *ngIf="branchAddress.errors && (branchAddress.dirty || branchAddress.touched)">
+            <span *ngIf="branchAddress.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">CR Registeration Number</label>
+          <input type="text" id="crRegisterationNumber" name="crRegisterationNumber"
+            [(ngModel)]="branch.crRegisterationNumber" #crRegisterationNumber="ngModel" class="form-control" />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div class="alert-error-message alert-danger" *ngIf="
+                crRegisterationNumber.errors &&
+                (crRegisterationNumber.dirty || crRegisterationNumber.touched)
+              ">
+            <span *ngIf="crRegisterationNumber.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">CR Registeration Number Image</label>
+          <input type="file" id="crRegisterationNumberImage"
+            (change)="onFileChange($event, 'crRegisterationNumberImage')" name="crRegisterationNumberImage"
+            class="form-control" />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <!-- <div class="alert-error-message alert-danger" *ngIf="
+                crRegisterationNumberImage.errors &&
+                (crRegisterationNumberImage.dirty ||
+                crRegisterationNumberImage.touched)
+              ">
+              <span *ngIf="crRegisterationNumberImage.errors['required']">This Field Required</span>
+            </div> -->
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">Vat Registeration Number</label>
+          <input type="text" id="vatRegisterationNumber" name="vatRegisterationNumber"
+            [(ngModel)]="branch.vatRegisterationNumber" #vatRegisterationNumber="ngModel" class="form-control" />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div class="alert-error-message alert-danger" *ngIf="
+                vatRegisterationNumber.errors &&
+                (vatRegisterationNumber.dirty || vatRegisterationNumber.touched)
+              ">
+            <span *ngIf="vatRegisterationNumber.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">Vat Registeration Number Image</label>
+          <input type="file" id="vatRegisterationNumberImage"
+            (change)="onFileChange($event, 'vatRegisterationNumberImage')" name="vatRegisterationNumberImage"
+            class="form-control" />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <!-- <div class="alert-error-message alert-danger" *ngIf="
+                vatRegisterationNumberImage.errors &&
+                (vatRegisterationNumberImage.dirty ||
+                  vatRegisterationNumberImage.touched)
+              ">
+              <span *ngIf="vatRegisterationNumberImage.errors['required']">This Field Required</span>
+            </div> -->
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">Branch Admin Name</label>
+          <input type="text" id="branchAdminName" name="branchAdminName"
+            [(ngModel)]="branch.branchAdminName" #branchAdminName="ngModel" class="form-control" />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div class="alert-error-message alert-danger"
+            *ngIf="branchAdminName.errors && (branchAdminName.dirty || branchAdminName.touched)">
+            <span *ngIf="branchAdminName.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">Auto Assign</label>
+          <select id="autoAssign" name="autoAssign" class="form-control form-select"
+            [(ngModel)]="branch.autoAssign" #autoAssign="ngModel">
+            <option *ngFor="let r of booleanValue" [ngValue]="r">
+              {{ r }}
+            </option>
+          </select>
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div class="alert-error-message alert-danger"
+            *ngIf="autoAssign.errors && (autoAssign.dirty || autoAssign.touched)">
+            <span *ngIf="autoAssign.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">Verify Captin Reached Shop</label>
+          <select id="verifyCaptinReatchShop" name="verifyCaptinReatchShop" class="form-control form-select"
+            [(ngModel)]="branch.verifyCaptinReatchShop" #verifyCaptinReatchShop="ngModel">
+            <option *ngFor="let r of booleanValue" [ngValue]="r">
+              {{ r }}
+            </option>
+          </select>
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div class="alert-error-message alert-danger"
+            *ngIf="verifyCaptinReatchShop.errors && (verifyCaptinReatchShop.dirty || verifyCaptinReatchShop.touched)">
+            <span *ngIf="verifyCaptinReatchShop.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">Verify Captin Reached Location</label>
+          <select id="verifyCaptinReatchLocation" name="verifyCaptinReatchLocation" class="form-control form-select"
+            [(ngModel)]="branch.verifyCaptinReatchLocation" #verifyCaptinReatchLocation="ngModel">
+            <option *ngFor="let r of booleanValue" [ngValue]="r">
+              {{ r }}
+            </option>
+          </select>
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div class="alert-error-message alert-danger"
+            *ngIf="verifyCaptinReatchLocation.errors && (verifyCaptinReatchLocation.dirty || verifyCaptinReatchLocation.touched)">
+            <span *ngIf="verifyCaptinReatchLocation.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">Application Identity User<span style="color: red"> * </span></label>
+          <input type="text" id="applicationIdentityUserId" name="applicationIdentityUserId" required
+            [(ngModel)]="branch.applicationIdentityUserId" #applicationIdentityUserId="ngModel" class="form-control" />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div class="alert-error-message alert-danger" *ngIf="
+              applicationIdentityUserId.errors && (applicationIdentityUserId.dirty || applicationIdentityUserId.touched)
+            ">
+            <span *ngIf="applicationIdentityUserId.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div> -->
+
+    </div>
+  </div>
+  <div class="panel-footer text-center">
+    <button class="btn btn-labeled btn-success" type="submit">
+      <span class="btn-label icon fa fa-save"></span>Save
+    </button>
+    <button class="btn btn-labeled btn-warning" type="button" (click)="onCancel()" style="margin-left: 5px">
+      <span class="btn-label icon fa fa-refresh"></span>Cancel
+    </button>
+  </div>
+</form>

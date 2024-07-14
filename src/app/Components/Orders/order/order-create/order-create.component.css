@@ -1,0 +1,12 @@
+.panel-footer button{
+  font-size: 17px;
+  padding: 10px 20px;
+}
+
+::ng-deep .mat-mdc-snack-bar-label{
+  font-size: 12px !important;
+}
+
+::ng-deep .mdc-button__label{
+  font-size: 12px !important;
+}

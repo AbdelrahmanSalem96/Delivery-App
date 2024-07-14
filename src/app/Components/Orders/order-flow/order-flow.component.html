@@ -1,0 +1,103 @@
+<div class="note note-success">
+  <h4 class="note-title"> <span class="fa fa-asterisk page-header-icon text-success"></span> Order Flow</h4>
+</div>
+<div class="row">
+  <div class="col-md-5 col-md-offset-6 btns">
+    <button class="btn btn-labeled btn-primary" (click)="captinInfo()">Captin Info</button>
+    <button class="btn btn-labeled btn-info">Tickets <span>{{ticketNumbers}}</span></button>
+    <button class="btn btn-labeled btn-primary" (click)="updateOrderState()">Order State</button>
+    <button class="btn btn-labeled btn-success" (click)="assignCaptin()">Reassign</button>
+
+    <!-- Captin Info Dialog Template -->
+    <ng-template #captinDialog>
+      <div mat-dialog-content>
+        <p class="dailogP">Captin Name: <span>{{captinName}}</span></p>
+        <p class="dailogP">Captin Mobile: <span>{{captinMobile}}</span></p>
+      </div>
+      <div mat-dialog-actions>
+        <button class="dailogB" mat-flat-button color="primary" (click)="onDialogNoClick()">Cancel</button>
+      </div>
+    </ng-template>
+
+    <!-- Update Order State Dialog Template -->
+    <ng-template #stateDialog>
+      <form #updateState="ngForm" (ngSubmit)="onSubmitState(updateState)" class="row">
+          <div mat-dialog-content>
+          <div class="col-md-12">
+            <div class="form-group no-margin-hr">
+              <label class="control-label" style="font-size: 11px;">Select State</label>
+              <select id="orderLastState" name="orderLastState" class="form-control form-select"
+                [(ngModel)]="order.orderLastState" #orderLastState="ngModel">
+                <option selected *ngFor="let state of orderStates" [ngValue]="state.value">
+                  {{ state.label }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div mat-dialog-actions>
+          <button class="btn btn-labeled btn-success" [disabled]="!updateState.valid" type="submit">
+            <span class="btn-label icon fa fa-save"></span>Save
+          </button>
+          <button class="btn btn-labeled btn-warning" style="margin-left: 10px;" type="button" (click)="onDialogNoClick()">
+            <span class="btn-label icon fa fa-refresh"></span>Cancel
+          </button>
+        </div>
+      </form>
+    </ng-template>
+
+    <!-- Assign Captin Dialog Template -->
+    <ng-template #assignDialog>
+      <form #assignCaptin="ngForm" (ngSubmit)="onSubmit(assignCaptin)" class="row">
+          <div mat-dialog-content>
+          <div class="col-md-12">
+            <div class="form-group no-margin-hr">
+              <label class="control-label" style="font-size: 11px;">Select Captin</label>
+              <select id="captinId" name="captinId" class="form-control form-select"
+                [(ngModel)]="assignForm.captinId" #captinId="ngModel">
+                <option selected *ngFor="let captin of captins" [ngValue]="captin.applicationIdentityUserId">
+                  {{ captin.name }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div mat-dialog-actions>
+          <button class="btn btn-labeled btn-success" [disabled]="!assignCaptin.valid" type="submit">
+            <span class="btn-label icon fa fa-save"></span>Save
+          </button>
+          <button class="btn btn-labeled btn-warning" style="margin-left: 10px;" type="button" (click)="onDialogNoClick()">
+            <span class="btn-label icon fa fa-refresh"></span>Cancel
+          </button>
+        </div>
+      </form>
+    </ng-template>
+
+  </div>
+  <div class="col-md-12"><app-ticket-list (ticketCount)="handleTicketCount($event)" ></app-ticket-list></div>
+  <div class="col-md-12"><app-order-logs></app-order-logs></div>
+  <div class="col-md-6 col-md-offset-3"><app-order-tracking></app-order-tracking></div>
+</div>
+
+<!-- <ul id="tab-page" class="nav nav-tabs">
+    <li [class.active]="tabactive === 1" (click)="tabactive=1">
+        <a href="#track" data-toggle="tab">{{tabtitle1}}</a>
+    </li>
+    <li [class.active]="tabactive === 2" (click)="tabactive=2">
+      <a href="#log" data-toggle="tab">{{tabtitle2}}</a>
+    </li>
+    <li [class.active]="tabactive === 3" (click)="tabactive=3">
+      <a href="#ticket" data-toggle="tab">{{tabtitle3}}</a>
+    </li>
+</ul>
+<div class="tab-content tab-content-bordered"  style="margin: 10px 0px;">
+    <div class="tab-pane fade active in" [class.active]="tabactive === 1" [class.in]="tabactive === 1" id="track">
+        <app-order-tracking></app-order-tracking>
+    </div>
+    <div class="tab-pane fade" [class.active]="tabactive === 2" [class.in]="tabactive === 2" id="log">
+          <app-order-logs></app-order-logs>
+    </div>
+    <div class="tab-pane fade" [class.active]="tabactive === 3" [class.in]="tabactive === 3" id="ticket">
+        <app-ticket-list></app-ticket-list>
+  </div>
+</div> -->

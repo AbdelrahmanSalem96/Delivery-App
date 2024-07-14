@@ -1,0 +1,222 @@
+<div class="note note-success">
+  <h4 class="note-title"> <span class="fa fa-indent page-header-icon text-success"></span>Update Vehicle</h4>
+</div>
+<form #addForm="ngForm" (ngSubmit)="onSubmit(addForm)" novalidate autocomplete="off"
+  class="panel panel-success form-horizontal">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">Name<span style="color: red"> * </span></label>
+          <input type="text" id="name" name="name" required [(ngModel)]="vehicle.name" #name="ngModel"
+            class="form-control" />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div class="alert-error-message alert-danger" *ngIf="name.errors && (name.dirty || name.touched)">
+            <span *ngIf="name.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">Brand<span style="color: red"> * </span></label>
+          <input type="text" id="brand" name="brand" required [(ngModel)]="vehicle.brand" #brand="ngModel"
+            class="form-control" />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div class="alert-error-message alert-danger" *ngIf="brand.errors && (brand.dirty || brand.touched)">
+            <span *ngIf="brand.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"> Number<span style="color: red"> * </span></label>
+          <input type="text" id="number" name="number" required [(ngModel)]="vehicle.number"
+            #number="ngModel" class="form-control" />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div class="alert-error-message alert-danger" *ngIf="
+              number.errors &&
+              (number.dirty || number.touched)
+            ">
+            <span *ngIf="number.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">rc Book Expiry Date<span style="color: red"> * </span></label>
+          <input id="rcBookExpiryDate" type="date" name="rcBookExpiryDate" required
+            [(ngModel)]="vehicle.rcBookExpiryDate" #rcBookExpiryDate="ngModel" class="form-control" />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div class="alert-error-message alert-danger" *ngIf="
+              rcBookExpiryDate.errors &&
+              (rcBookExpiryDate.dirty || rcBookExpiryDate.touched)
+            ">
+            <span *ngIf="rcBookExpiryDate.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">Insurance Expiry Date</label>
+          <input id="insuranceExpiryDate" type="date" name="insuranceExpiryDate"
+            [(ngModel)]="vehicle.insuranceExpiryDate" #insuranceExpiryDate="ngModel" class="form-control" />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div class="alert-error-message alert-danger" *ngIf="
+              insuranceExpiryDate.errors &&
+              (insuranceExpiryDate.dirty || insuranceExpiryDate.touched)
+            ">
+            <span *ngIf="insuranceExpiryDate.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">Currant Running In KM</label>
+          <input type="tel" id="currantRunningKM" name="currantRunningKM" [(ngModel)]="vehicle.currantRunningKM"
+            #currantRunningKM="ngModel" class="form-control" />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div class="alert-error-message alert-danger" *ngIf="
+              currantRunningKM.errors &&
+              (currantRunningKM.dirty || currantRunningKM.touched)
+            ">
+            <span *ngIf="currantRunningKM.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">Area<span style="color: red"> * </span></label>
+          <select id="areaId" name="areaId" class="form-control form-select"
+            [(ngModel)]="vehicle.areaId" #areaId="ngModel" required selected>
+            <option selected *ngFor="let area of WorkingRejoins" [ngValue]="area.id">
+              {{ area.name }}
+            </option>
+          </select>
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div class="alert-error-message alert-danger" *ngIf="
+            areaId.errors &&
+            (areaId.dirty || areaId.touched)
+          ">
+            <span *ngIf="areaId.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">Vehicle Type</label>
+          <select id="vehicleTypeId" name="vehicleTypeId" class="form-control form-select"
+            [(ngModel)]="vehicle.vehicleTypeId" #vehicleTypeId="ngModel">
+            <option selected *ngFor="let vehicleType of vehicleTypes" [ngValue]="vehicleType.id">
+              {{ vehicleType.name }}
+            </option>
+          </select>
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div class="alert-error-message alert-danger" *ngIf="
+              vehicleTypeId.errors &&
+              (vehicleTypeId.dirty || vehicleTypeId.touched)
+            ">
+            <span *ngIf="vehicleTypeId.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">Vehicle State<span style="color: red"> * </span></label>
+          <select id="vehicleStateId" name="vehicleStateId" class="form-control form-select"
+            [(ngModel)]="vehicle.vehicleStateId" #vehicleStateId="ngModel" required>
+            <option *ngFor="let vehicleState of vehicleStates" [ngValue]="vehicleState.id" selected>
+              {{ vehicleState.name }}
+            </option>
+          </select>
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div class="alert-error-message alert-danger" *ngIf="
+              vehicleStateId.errors &&
+              (vehicleStateId.dirty || vehicleStateId.touched)
+            ">
+            <span *ngIf="vehicleStateId.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+
+      </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">Vehicle Owner Type<span style="color: red"> * </span></label>
+          <div class="row">
+            <div *ngFor="let option of vehicleOwnerTypes" class="form-check col-md-6 parent">
+                <input class="form-check-input radio" type="radio" name="vehicleOwnerType" required id="vehicleOwnerType"
+                  [(ngModel)]="vehicle.vehicleOwnerType" [value]="option.value">
+                <label class="form-check-label labelR" for="vehicleOwnerType">
+                  {{ option.label }}
+                </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <div *ngIf="vehicle.vehicleOwnerType === 11">
+              <label class="control-label">Select Owner<span style="color: red"> * </span></label>
+              <select id="userId" name="userId" class="form-control form-select"
+                [(ngModel)]="vehicle.applicationOwnerIdentityUserId" required>
+                <option *ngFor="let owner of vehicleOwners" [ngValue]="owner.id" selected>
+                  {{ owner.name }}
+                </option>
+              </select>
+          </div>
+        </div>
+
+        <div class="form-group no-margin-hr">
+          <div *ngIf="vehicle.vehicleOwnerType === 22">
+              <label class="control-label">Select Captain<span style="color: red"> * </span></label>
+              <select id="userId" name="userId" class="form-control form-select"
+                [(ngModel)]="vehicle.applicationOwnerIdentityUserId" required>
+                <option *ngFor="let captain of captains" [ngValue]="captain.id" selected>
+                  {{ captain.name }}
+                </option>
+              </select>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="panel-footer text-center">
+      <button class="btn btn-labeled btn-success" type="submit">
+        <span class="btn-label icon fa fa-save"></span>Save
+      </button>
+      <button class="btn btn-labeled btn-warning" type="button" (click)="onCancel()" style="margin-left: 5px">
+        <span class="btn-label icon fa fa-refresh"></span>Cancel
+      </button>
+    </div>
+  </div>
+</form>

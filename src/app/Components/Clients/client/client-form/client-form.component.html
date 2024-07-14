@@ -1,0 +1,1045 @@
+<form
+  #addForm="ngForm"
+  novalidate
+  autocomplete="off"
+  class="panel panel-success form-horizontal"
+>
+  <div class="panel-heading text-center">
+    <span class="panel-title h4">Client Information</span>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"
+            >Arabic Name<span style="color: red"> * </span></label
+          >
+          <input
+            type="text"
+            id="nameAr"
+            name="nameAr"
+            required
+            [(ngModel)]="client.nameAr"
+            #nameAr="ngModel"
+            class="form-control"
+          />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div
+            class="alert-error-message alert-danger"
+            *ngIf="nameAr.errors && (nameAr.dirty || nameAr.touched)"
+          >
+            <span *ngIf="nameAr.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"
+            >Add Logo<span style="color: red"> * </span></label
+          >
+          <input
+            type="file"
+            name="logoPath"
+            accept="image/png, image/jpeg"
+            id="logoPath"
+            required
+            [(ngModel)]="client.logoPath"
+            #logoPath="ngModel"
+            class="form-control"
+          />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div
+            class="alert-error-message alert-danger"
+            *ngIf="logoPath.errors && (logoPath.dirty || logoPath.touched)"
+          >
+            <span *ngIf="logoPath.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"
+            >Client State<span style="color: red"> * </span></label
+          >
+          <input
+            type="text"
+            id="clientState"
+            name="clientState"
+            required
+            [(ngModel)]="client.clientState"
+            #clientState="ngModel"
+            class="form-control"
+          />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div
+            class="alert-error-message alert-danger"
+            *ngIf="
+              clientState.errors && (clientState.dirty || clientState.touched)
+            "
+          >
+            <span *ngIf="clientState.errors['required']"
+              >This Field Required</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"
+            >Client Address<span style="color: red"> * </span></label
+          >
+          <input
+            type="text"
+            id="clientAdress"
+            name="clientAdress"
+            required
+            [(ngModel)]="client.clientAddress"
+            #clientAdress="ngModel"
+            class="form-control"
+          />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div
+            class="alert-error-message alert-danger"
+            *ngIf="
+              clientAdress.errors &&
+              (clientAdress.dirty || clientAdress.touched)
+            "
+          >
+            <span *ngIf="clientAdress.errors['required']"
+              >This Field Required</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"
+            >Contact Name<span style="color: red"> * </span></label
+          >
+          <input
+            type="text"
+            id="contactName"
+            name="contactName"
+            required
+            [(ngModel)]="client.contactName"
+            #contactName="ngModel"
+            class="form-control"
+          />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div
+            class="alert-error-message alert-danger"
+            *ngIf="
+              contactName.errors && (contactName.dirty || contactName.touched)
+            "
+          >
+            <span *ngIf="contactName.errors['required']"
+              >This Field Required</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"
+            >Contact Email<span style="color: red"> * </span></label
+          >
+          <input
+            type="email"
+            id="contactEmail"
+            name="contactEmail"
+            required
+            [(ngModel)]="client.contactEmail"
+            #contactEmail="ngModel"
+            class="form-control"
+          />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div
+            class="alert-error-message alert-danger"
+            *ngIf="
+              contactEmail.errors &&
+              (contactEmail.dirty || contactEmail.touched)
+            "
+          >
+            <span *ngIf="contactEmail.errors['required']"
+              >This Field Required</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"
+            >Contact Mobile<span style="color: red"> * </span></label
+          >
+          <input
+            type="tel"
+            id="contactMobile"
+            name="contactMobile"
+            required
+            [(ngModel)]="client.contactMobil"
+            #contactMobile="ngModel"
+            class="form-control"
+          />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div
+            class="alert-error-message alert-danger"
+            *ngIf="
+              contactMobile.errors &&
+              (contactMobile.dirty || contactMobile.touched)
+            "
+          >
+            <span *ngIf="contactMobile.errors['required']"
+              >This Field Required</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"
+            >Owner Name<span style="color: red"> * </span></label
+          >
+          <input
+            type="text"
+            id="ownerName"
+            name="ownerName"
+            required
+            [(ngModel)]="client.ownerName"
+            #ownerName="ngModel"
+            class="form-control"
+          />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div
+            class="alert-error-message alert-danger"
+            *ngIf="ownerName.errors && (ownerName.dirty || ownerName.touched)"
+          >
+            <span *ngIf="ownerName.errors['required']"
+              >This Field Required</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"
+            >OWner Email<span style="color: red"> * </span></label
+          >
+          <input
+            type="email"
+            id="ownerEmail"
+            name="ownerEmail"
+            required
+            [(ngModel)]="client.ownerEmail"
+            #ownerEmail="ngModel"
+            class="form-control"
+          />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div
+            class="alert-error-message alert-danger"
+            *ngIf="
+              ownerEmail.errors && (ownerEmail.dirty || ownerEmail.touched)
+            "
+          >
+            <span *ngIf="ownerEmail.errors['required']"
+              >This Field Required</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"
+            >Owner Id<span style="color: red"> * </span></label
+          >
+          <input
+            type="number"
+            id="ownerId"
+            name="ownerId"
+            required
+            [(ngModel)]="client.ownerId"
+            #ownerId="ngModel"
+            class="form-control"
+          />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div
+            class="alert-error-message alert-danger"
+            *ngIf="ownerId.errors && (ownerId.dirty || ownerId.touched)"
+          >
+            <span *ngIf="ownerId.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"
+            >Owner Image<span style="color: red"> * </span></label
+          >
+          <input
+            type="file"
+            name="ownerImage"
+            accept="image/png, image/jpeg"
+            id="ownerImage"
+            required
+            [(ngModel)]="client.ownerIdImagePath"
+            #ownerImage="ngModel"
+            class="form-control"
+          />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div
+            class="alert-error-message alert-danger"
+            *ngIf="
+              ownerImage.errors && (ownerImage.dirty || ownerImage.touched)
+            "
+          >
+            <span *ngIf="ownerImage.errors['required']"
+              >This Field Required</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"
+            >CR Registeration Number<span style="color: red"> * </span></label
+          >
+          <input
+            type="number"
+            id="crRegisterationNumber"
+            name="crRegisterationNumber"
+            required
+            [(ngModel)]="client.crRegisterationNumber"
+            #crRegisterationNumber="ngModel"
+            class="form-control"
+          />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div
+            class="alert-error-message alert-danger"
+            *ngIf="
+              crRegisterationNumber.errors &&
+              (crRegisterationNumber.dirty || crRegisterationNumber.touched)
+            "
+          >
+            <span *ngIf="crRegisterationNumber.errors['required']"
+              >This Field Required</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"
+            >CR Registeration Number Image<span style="color: red">
+              *
+            </span></label
+          >
+          <input
+            type="file"
+            name="crRegisterationNumberImage"
+            accept="image/png, image/jpeg"
+            id="crRegisterationNumberImage"
+            required
+            [(ngModel)]="client.crRegisterationNumberImagePath"
+            #crRegisterationNumberImage="ngModel"
+            class="form-control"
+          />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div
+            class="alert-error-message alert-danger"
+            *ngIf="
+              crRegisterationNumberImage.errors &&
+              (crRegisterationNumberImage.dirty ||
+                crRegisterationNumberImage.touched)
+            "
+          >
+            <span *ngIf="crRegisterationNumberImage.errors['required']"
+              >This Field Required</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"
+            >Vat Registeration Number<span style="color: red"> * </span></label
+          >
+          <input
+            type="number"
+            id="vatRegisterationNumber"
+            name="vatRegisterationNumber"
+            required
+            [(ngModel)]="client.vatRegisterationNumber"
+            #vatRegisterationNumber="ngModel"
+            class="form-control"
+          />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div
+            class="alert-error-message alert-danger"
+            *ngIf="
+              vatRegisterationNumber.errors &&
+              (vatRegisterationNumber.dirty || vatRegisterationNumber.touched)
+            "
+          >
+            <span *ngIf="vatRegisterationNumber.errors['required']"
+              >This Field Required</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"
+            >Vat Registeration Number Image<span style="color: red">
+              *
+            </span></label
+          >
+          <input
+            type="file"
+            name="vatRegisterationNumberImage"
+            accept="image/png, image/jpeg"
+            id="vatRegisterationNumberImage"
+            required
+            [(ngModel)]="client.vatRegisterationNumberImagePath"
+            #vatRegisterationNumberImage="ngModel"
+            class="form-control"
+          />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div
+            class="alert-error-message alert-danger"
+            *ngIf="
+              vatRegisterationNumberImage.errors &&
+              (vatRegisterationNumberImage.dirty ||
+                vatRegisterationNumberImage.touched)
+            "
+          >
+            <span *ngIf="vatRegisterationNumberImage.errors['required']"
+              >This Field Required</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"
+            >Account Name<span style="color: red"> * </span></label
+          >
+          <input
+            type="text"
+            id="accountName"
+            name="accountName"
+            required
+            [(ngModel)]="client.accountName"
+            #accountName="ngModel"
+            class="form-control"
+          />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div
+            class="alert-error-message alert-danger"
+            *ngIf="
+              accountName.errors && (accountName.dirty || accountName.touched)
+            "
+          >
+            <span *ngIf="accountName.errors['required']"
+              >This Field Required</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"
+            >Account Number<span style="color: red"> * </span></label
+          >
+          <input
+            type="tel"
+            pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+            id="accountNumber"
+            name="accountNumber"
+            required
+            [(ngModel)]="client.accountNumber"
+            #accountNumber="ngModel"
+            class="form-control"
+          />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div
+            class="alert-error-message alert-danger"
+            *ngIf="
+              accountNumber.errors &&
+              (accountNumber.dirty || accountNumber.touched)
+            "
+          >
+            <span *ngIf="accountNumber.errors['required']"
+              >This Field Required</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"
+            >IBAN Number<span style="color: red"> * </span></label
+          >
+          <input
+            type="tel"
+            pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+            id="iBANNumber"
+            name="iBANNumber"
+            required
+            [(ngModel)]="client.ibanNumber"
+            #iBANNumber="ngModel"
+            class="form-control"
+          />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div
+            class="alert-error-message alert-danger"
+            *ngIf="
+              iBANNumber.errors && (iBANNumber.dirty || iBANNumber.touched)
+            "
+          >
+            <span *ngIf="iBANNumber.errors['required']"
+              >This Field Required</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"
+            >Business Start Date<span style="color: red"> * </span></label
+          >
+          <input
+            id="businessStart"
+            type="date"
+            name="businessStart"
+            required
+            [(ngModel)]="client.businessStart"
+            #businessStart="ngModel"
+            class="form-control"
+          />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div
+            class="alert-error-message alert-danger"
+            *ngIf="
+              businessStart.errors &&
+              (businessStart.dirty || businessStart.touched)
+            "
+          >
+            <span *ngIf="businessStart.errors['required']"
+              >This Field Required</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"
+            >Business End Date<span style="color: red"> * </span></label
+          >
+          <input
+            id="businessEnd"
+            type="date"
+            name="businessEnd"
+            required
+            [(ngModel)]="client.businessEnd"
+            #businessEnd="ngModel"
+            class="form-control"
+          />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div
+            class="alert-error-message alert-danger"
+            *ngIf="
+              businessEnd.errors && (businessEnd.dirty || businessEnd.touched)
+            "
+          >
+            <span *ngIf="businessEnd.errors['required']"
+              >This Field Required</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"
+            >Agreement Image<span style="color: red"> * </span></label
+          >
+          <input
+            type="file"
+            name="agreementImage"
+            accept="image/png, image/gif, image/jpeg"
+            id="agreementImage"
+            required
+            [(ngModel)]="client.agreementImagePath"
+            #agreementImage="ngModel"
+            class="form-control"
+          />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div
+            class="alert-error-message alert-danger"
+            *ngIf="
+              agreementImage.errors &&
+              (agreementImage.dirty || agreementImage.touched)
+            "
+          >
+            <span *ngIf="agreementImage.errors['required']"
+              >This Field Required</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"
+            >Agreement Effictive Date<span style="color: red"> * </span></label
+          >
+          <input
+            id="agreementEffictiveDate"
+            type="date"
+            name="agreementEffictiveDate"
+            required
+            [(ngModel)]="client.agreementEffictiveDate"
+            #agreementEffictiveDate="ngModel"
+            class="form-control"
+          />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div
+            class="alert-error-message alert-danger"
+            *ngIf="
+              agreementEffictiveDate.errors &&
+              (agreementEffictiveDate.dirty || agreementEffictiveDate.touched)
+            "
+          >
+            <span *ngIf="agreementEffictiveDate.errors['required']"
+              >This Field Required</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"
+            >Agreement Expiry Date<span style="color: red"> * </span></label
+          >
+          <input
+            id="agreementExpiryDate"
+            type="date"
+            name="agreementExpiryDate"
+            required
+            [(ngModel)]="client.agreementExpiryDate"
+            #agreementExpiryDate="ngModel"
+            class="form-control"
+          />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div
+            class="alert-error-message alert-danger"
+            *ngIf="
+              agreementExpiryDate.errors &&
+              (agreementExpiryDate.dirty || agreementExpiryDate.touched)
+            "
+          >
+            <span *ngIf="agreementExpiryDate.errors['required']"
+              >This Field Required</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"
+            >Application Identity User<span style="color: red"> * </span></label
+          >
+          <input
+            type="text"
+            id="appIdentity"
+            name="appIdentity"
+            required
+            [(ngModel)]="client.applicationIdentityUserId"
+            #appIdentity="ngModel"
+            class="form-control"
+          />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div
+            class="alert-error-message alert-danger"
+            *ngIf="
+              appIdentity.errors && (appIdentity.dirty || appIdentity.touched)
+            "
+          >
+            <span *ngIf="appIdentity.errors['required']"
+              >This Field Required</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"
+            >Client Industry<span style="color: red"> * </span></label
+          >
+          <input
+            type="text"
+            id="clientIndustry"
+            name="clientIndustry"
+            required
+            [(ngModel)]="client.clientIndustryId"
+            #clientIndustry="ngModel"
+            class="form-control"
+          />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div
+            class="alert-error-message alert-danger"
+            *ngIf="
+              clientIndustry.errors &&
+              (clientIndustry.dirty || clientIndustry.touched)
+            "
+          >
+            <span *ngIf="clientIndustry.errors['required']"
+              >This Field Required</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"
+            >Client Area<span style="color: red"> * </span></label
+          >
+          <input
+            type="text"
+            id="clientArea"
+            name="clientArea"
+            required
+            [(ngModel)]="client.clientAreaId"
+            #clientArea="ngModel"
+            class="form-control"
+          />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div
+            class="alert-error-message alert-danger"
+            *ngIf="
+              clientArea.errors && (clientArea.dirty || clientArea.touched)
+            "
+          >
+            <span *ngIf="clientArea.errors['required']"
+              >This Field Required</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"
+            >Client Contact Postion<span style="color: red"> * </span></label
+          >
+          <input
+            type="text"
+            id="clientContactPostion"
+            name="clientContactPostion"
+            required
+            [(ngModel)]="client.clientContactPositionId"
+            #clientContactPostion="ngModel"
+            class="form-control"
+          />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div
+            class="alert-error-message alert-danger"
+            *ngIf="
+              clientContactPostion.errors &&
+              (clientContactPostion.dirty || clientContactPostion.touched)
+            "
+          >
+            <span *ngIf="clientContactPostion.errors['required']"
+              >This Field Required</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"
+            >Bank<span style="color: red"> * </span></label
+          >
+          <input
+            type="number"
+            id="bankId"
+            name="bankId"
+            required
+            [(ngModel)]="client.bankId"
+            #bankId="ngModel"
+            class="form-control"
+          />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div
+            class="alert-error-message alert-danger"
+            *ngIf="bankId.errors && (bankId.dirty || bankId.touched)"
+          >
+            <span *ngIf="bankId.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"
+            >Created By<span style="color: red"> * </span></label
+          >
+          <input
+            type="text"
+            id="createdBy"
+            name="createdBy"
+            required
+            [(ngModel)]="client.createdById"
+            #createdBy="ngModel"
+            class="form-control"
+          />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div
+            class="alert-error-message alert-danger"
+            *ngIf="createdBy.errors && (createdBy.dirty || createdBy.touched)"
+          >
+            <span *ngIf="createdBy.errors['required']"
+              >This Field Required</span
+            >
+          </div>
+        </div>
+      </div>
+      <!-- <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"
+            >Created On<span style="color: red"> * </span></label
+          >
+          <input
+            id="createdOn"
+            type="date"
+            name="createdOn"
+            required
+            [(ngModel)]="client.createdOn"
+            #createdOn="ngModel"
+            class="form-control"
+          />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div
+            class="alert-error-message alert-danger"
+            *ngIf="createdOn.errors && (createdOn.dirty || createdOn.touched)"
+          >
+            <span *ngIf="createdOn.errors['required']"
+              >This Field Required</span
+            >
+          </div>
+        </div>
+      </div> -->
+      <!-- <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"
+            >Last Update By<span style="color: red"> * </span></label
+          >
+          <input
+            type="text"
+            id="lastUpdatedBy"
+            name="lastUpdatedBy"
+            required
+            [(ngModel)]="client.lastUpdatedById"
+            #lastUpdatedBy="ngModel"
+            class="form-control"
+          />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div
+            class="alert-error-message alert-danger"
+            *ngIf="
+              lastUpdatedBy.errors &&
+              (lastUpdatedBy.dirty || lastUpdatedBy.touched)
+            "
+          >
+            <span *ngIf="lastUpdatedBy.errors['required']"
+              >This Field Required</span
+            >
+          </div>
+        </div>
+      </div> -->
+      <!-- <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"
+            >last Updated On<span style="color: red"> * </span></label
+          >
+          <input
+            id="lastUpdatedOn"
+            type="date"
+            name="lastUpdatedOn"
+            required
+            [(ngModel)]="client.lastUpdatedOn"
+            #lastUpdatedOn="ngModel"
+            class="form-control"
+          />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div
+            class="alert-error-message alert-danger"
+            *ngIf="
+              lastUpdatedOn.errors &&
+              (lastUpdatedOn.dirty || lastUpdatedOn.touched)
+            "
+          >
+            <span *ngIf="lastUpdatedOn.errors['required']"
+              >This Field Required</span
+            >
+          </div>
+        </div>
+      </div> -->
+      <!-- <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"
+            >Is Deleted<span style="color: red"> * </span></label
+          >
+          <select
+            id="isDeleted"
+            name="isDeleted"
+            class="form-control form-select"
+            [(ngModel)]="client.isDeleted"
+            #isDeleted="ngModel"
+            required
+          >
+            <option *ngFor="let r of deleted" [ngValue]="r">
+              {{ r }}
+            </option>
+          </select>
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div
+            class="alert-error-message alert-danger"
+            *ngIf="isDeleted.errors && (isDeleted.dirty || isDeleted.touched)"
+          >
+            <span *ngIf="isDeleted.errors['required']"
+              >This Field Required</span
+            >
+          </div>
+        </div>
+      </div> -->
+      <!-- <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"
+            >Deleted By<span style="color: red"> * </span></label
+          >
+          <input
+            type="text"
+            id="deletedBy"
+            name="deletedBy"
+            required
+            [(ngModel)]="client.deletedById"
+            #deletedBy="ngModel"
+            class="form-control"
+          />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div
+            class="alert-error-message alert-danger"
+            *ngIf="deletedBy.errors && (deletedBy.dirty || deletedBy.touched)"
+          >
+            <span *ngIf="deletedBy.errors['required']"
+              >This Field Required</span
+            >
+          </div>
+        </div>
+      </div> -->
+      <!-- <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label"
+            >Deleted On<span style="color: red"> * </span></label
+          >
+          <input
+            id="deletedOn"
+            type="date"
+            name="deletedOn"
+            required
+            [(ngModel)]="client.deletedOn"
+            #deletedOn="ngModel"
+            class="form-control"
+          />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div
+            class="alert-error-message alert-danger"
+            *ngIf="deletedOn.errors && (deletedOn.dirty || deletedOn.touched)"
+          >
+            <span *ngIf="deletedOn.errors['required']"
+              >This Field Required</span
+            >
+          </div>
+        </div>
+      </div> -->
+    </div>
+    <div class="panel-footer text-center">
+      <button class="btn btn-labeled btn-success" type="submit">
+        <span class="btn-label icon fa fa-save"></span>Save
+      </button>
+      <button
+        class="btn btn-labeled btn-warning"
+        type="button"
+        style="margin-left: 5px"
+      >
+        <span class="btn-label icon fa fa-refresh"></span>Cancel
+      </button>
+    </div>
+  </div>
+</form>

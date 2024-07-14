@@ -1,0 +1,138 @@
+<div class="note note-success">
+    <h4 class="note-title"> <span class="fa fa-ellipsis-h page-header-icon text-success"></span> Zone</h4>
+  </div>
+  <ul id="tab-page" class="nav nav-tabs">
+      <li [class.active]="tabactive === 1" (click)="tabactive=1">
+          <a href="#edit" data-toggle="tab">{{tabtitle1}}</a>
+      </li>
+      <li [class.active]="tabactive === 2" (click)="tabactive=2">
+        <a href="#list" data-toggle="tab">{{tabtitle2}}</a>
+    </li>
+  </ul>
+  <div class="tab-content tab-content-bordered"  style="margin-top: 5px;">
+      <div class="tab-pane fade active in" [class.active]="tabactive === 1" [class.in]="tabactive === 1" id="edit">
+          <div class="row">
+              <form #addForm="ngForm"  (ngSubmit)="onSubmit(addForm)" novalidate autocomplete="off" class="panel panel-success form-horizontal">
+                  <div class="panel-heading text-center">
+                      <span class="panel-title h4">Zone Information</span>
+                  </div>
+                  <div class="panel-body">
+                      <div class="row">
+                          <div class="col-md-6">
+                              <div class="form-group no-margin-hr">
+                                  <label class="control-label">Name<span style="color: red;"> * </span></label>
+                                  <input type="text" id="name" name="name" [(ngModel)]="area.name" #name="ngModel" required min="0" maxlength="100" class="form-control">
+                                  <div class="alert-error-message alert-danger " *ngIf="name.errors && (name.dirty || name.touched)">
+                                    <span *ngIf="name.errors['required']">This Field Required</span>
+                                    <span *ngIf="name.errors['maxlength']">This Field Has MaxLenght 100 character</span>
+                                </div>
+                              </div>
+                          </div>
+                          <div class="col-md-6">
+                            <label class="control-label">Area <span style="color: red;"> * </span></label>
+                            <select class="form-control form-group-margin" id="parentId" name="parentId" [(ngModel)]="area.parentId" #parentId="ngModel">
+                              <option [value]="-1">Choose Area</option>
+                              <option *ngFor="let c of areasLite" [value]=c.id>{{c.name}}</option>
+                            </select>
+                          </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group no-margin-hr">
+                                <label class="control-label">Description</label>
+                                <textarea type="text" id="description" name="description" rows="3" [(ngModel)]="area.description" #description="ngModel" min="0" maxlength="250" class="form-control"></textarea>
+                                <div class="alert-error-message alert-danger " *ngIf="description.errors && (description.dirty || description.touched)">
+                                    <span *ngIf="description.errors['maxlength']">This Field Has MaxLenght 250 character</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="panel-footer text-center">
+                      <button class="btn btn-labeled btn-success" type="submit" *ngIf="this.isshowbuttonsave" [disabled]="!addForm.form.valid ||isdisabledbutton "><span class="btn-label icon fa fa-save"></span>Save</button>
+                      <button class="btn btn-labeled btn-info" type="submit" *ngIf="!this.isshowbuttonsave" [disabled]="!addForm.form.valid ||isdisabledbutton"><span class="btn-label icon fa fa-edit"></span>Update</button>
+                      <button class="btn btn-labeled btn-warning" (click)="onResetAddForm(addForm)" type="button" style="margin-left: 5px;" ><span class="btn-label icon fa fa-refresh"></span>Cancel</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+      <div class="tab-pane fade" [class.active]="tabactive === 2" [class.in]="tabactive === 2" id="list">
+          <div class="tab-content panel-body">
+            <form action="" class="panel form-horizontal">
+                <div class="panel-heading">
+                    <span class="panel-title">Search Form Information</span>
+                </div>
+                <div class="panel-body">
+                    <div class="row form-group">
+                        <div class="col-sm-4">
+                            <label class="control-label">Name</label>
+                            <input type="text" id="namesearchfield" name="namesearchfield" [(ngModel)]="namesearchfield" class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <label class="control-label">Country</label>
+                            <select class="form-control form-group-margin" id="areaidsearchfield" name="areaidsearchfield" [(ngModel)]="areaidsearchfield">
+                                <option [value]="-1">Choose Area</option>
+                                <option *ngFor="let c of areasLite" [value]=c.id>{{c.name}}</option>
+                              </select>
+                        </div>
+                        <div class="col-sm-4" style="margin-top: 8px;">
+                            <br/>
+                            <button class="btn btn-labeled btn-teal" (click)="onSearch()" type="submit" style="margin-right: 5px;"><span class="btn-label icon fa fa-search"></span>Search</button>
+                            <button class="btn btn-labeled btn-maroon" (click)="onResetSearchForm()" type="button" style="margin-right: 5px;"><span class="btn-label icon fa fa-rotate-left"></span>Clear</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+          </div>
+          <div class="table-primary">
+              <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="th-previousdata" style="width: 45%;">Name</th>
+                        <th class="th-previousdata" style="width: 42%;">Description</th>
+                        <th class="th-previousdata-btn">#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let objdata of previousdata.items | paginate: {itemsPerPage: previousdata.pagerInfo.pageSize,currentPage: previousdata.pagerInfo.currentPage,totalItems: previousdata.pagerInfo.totalNumberOfItems};">
+                        <td class="th-previousdata" style="width: 45%;">{{objdata.name}}</td>
+                        <td class="th-previousdata" style="width: 42%;">{{objdata.description}}</td>
+                        <td class="th-previousdata-btn">
+                            <button class="btn btn-xs btn-labeled btn-warning" style="margin-left: 3px;" (click)="onEdit(objdata.id)"><span class="btn-label icon fa fa-pencil"></span>Edit</button>
+                            <button class="btn btn-xs btn-labeled btn-danger" style="margin-left: 3px;" (click)="onOpenDialog(objdata.id,objdata.name)"><span class="btn-label icon fa fa-trash-o"></span>Delete</button>
+                        </td>
+                    </tr>
+                    <tr *ngIf="previousdata.pagerInfo.totalNumberOfItems <= 0">
+                      <td colspan="3">
+                          <div class="note note-primary text-center">
+                            <h4 class="note-title">No Previous Records</h4>
+                          </div>
+                      </td>
+                  </tr>
+                </tbody>
+            </table>
+            <div class="table-footer text-center" *ngIf="previousdata.pagerInfo.totalNumberOfItems > 0">
+                <div class="row text-center" style="border: 1px #e4e4e4 solid;padding-top: 7px;">
+                    <pagination-controls class="text-center pagination" previousLabel="Previous" nextLabel="Next" (pageChange)="onPageChanged($event.toString())"></pagination-controls>
+                </div>
+                <div class="row" style="border: 1px #e4e4e4 solid;padding-top: 10px;padding-bottom: 10px;">
+                    <label class="col-md-2"></label>
+                    <label class="col-md-1" style="padding-top:5px;">Items Per Page</label>
+                    <div class="col-md-1">
+                        <select class="form-control input-sm" #dllitemsPerPage [(ngModel)]="previousdata.pagerInfo.pageSize" (change)='onItemsPerPageChange(dllitemsPerPage.value)'>
+                            <option *ngFor="let itemperpage of itemsPerPages" [value]="itemperpage">{{itemperpage}}</option>
+                        </select>
+                    </div>
+                    <label class="col-md-1" style="padding-top:5px;">Go To Page</label>
+                    <div class="col-md-1">
+                        <select class="form-control input-sm" #dllpages [(ngModel)]="previousdata.pagerInfo.currentPage" (change)='onPageChanged(dllpages.value)'>
+                            <option *ngFor="let page of totalpages" [value]="page">{{page}}</option>
+                        </select>
+                    </div>
+                    <label class="col-md-4" style="padding-top:5px;"> Total Number Of Items : {{previousdata.pagerInfo.totalNumberOfItems}} , Show From  {{((previousdata.pagerInfo.currentPage - 1) * previousdata.pagerInfo.pageSize) + 1}} To {{((previousdata.pagerInfo.currentPage - 1) * previousdata.pagerInfo.pageSize) + previousdata.items.length}}</label>
+                </div>
+            </div>
+          </div>
+      </div>
+  </div>
+  

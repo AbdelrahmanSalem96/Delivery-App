@@ -1,0 +1,58 @@
+<div class="note note-success">
+  <h4 class="note-title">
+    <span class="fa fa-indent page-header-icon text-success"></span>Add Ticket
+  </h4>
+</div>
+
+<form #addForm="ngForm" (ngSubmit)="onSubmit(addForm)" novalidate autocomplete="off"
+  class="panel panel-success form-horizontal">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">Ticket Type<span style="color: red"> * </span></label>
+          <select id="ticketTypeId" name="ticketTypeId" class="form-control form-select" [(ngModel)]="ticket.ticketTypeId"
+            #ticketTypeId="ngModel" required>
+            <option selected *ngFor="let type of types" [ngValue]="type.id">
+              {{ type.name }}
+            </option>
+          </select>
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div class="alert-error-message alert-danger"
+            *ngIf="ticketTypeId.errors && (ticketTypeId.dirty || ticketTypeId.touched)">
+            <span *ngIf="ticketTypeId.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">Ticket Details</label>
+          <textarea id="ticketDetail" name="ticketDetail" class="form-control" [(ngModel)]="ticket.ticketDetail"
+            #ticketDetail="ngModel" rows="3"></textarea>
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div class="alert-error-message alert-danger"
+            *ngIf="ticketDetail.errors && (ticketDetail.dirty || ticketDetail.touched)">
+            <span *ngIf="ticketDetail.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="panel-footer text-center">
+    <button class="btn btn-labeled btn-success" type="submit">
+      <span class="btn-label icon fa fa-save"></span>Save
+    </button>
+    <button class="btn btn-labeled btn-warning" type="button" (click)="onCancel()" style="margin-left: 5px">
+      <span class="btn-label icon fa fa-refresh"></span>Cancel
+    </button>
+  </div>
+</form>

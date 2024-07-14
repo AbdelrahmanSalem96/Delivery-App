@@ -1,0 +1,572 @@
+<div class="note note-success">
+  <h4 class="note-title"> <span class="fa fa-indent page-header-icon text-success"></span>Create Captin</h4>
+</div>
+<form #addForm="ngForm" (ngSubmit)="onSubmit(addForm)" novalidate autocomplete="off" class="form-horizontal">
+  <div class="panel-body">
+    <div class="row">
+      <fieldset class="col-md-12">
+        <legend><span style="color: red"> * </span>Basic Info</legend>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="col-md-4">
+              <div class="form-group no-margin-hr">
+                <label class="control-label">Name<span style="color: red"> * </span></label>
+                <input type="text" id="name" name="name" required [(ngModel)]="captin.name" #name="ngModel"
+                  class="form-control" />
+              </div>
+              <div class="valid-feedback">
+                <label class="control-label"></label>
+                <div class="alert-error-message alert-danger" *ngIf="name.errors && (name.dirty || name.touched)">
+                  <span *ngIf="name.errors['required']">This Field Required</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group no-margin-hr">
+                <label class="control-label">Email<span style="color: red"> * </span></label>
+                <input type="email" id="email" name="email" required [(ngModel)]="captin.email" #email="ngModel"
+                  class="form-control" />
+              </div>
+              <div class="valid-feedback">
+                <label class="control-label"></label>
+                <div class="alert-error-message alert-danger" *ngIf="email.errors && (email.dirty || email.touched)">
+                  <span *ngIf="email.errors['required']">This Field Required</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group no-margin-hr">
+                <label class="control-label">Mobile Number<span style="color: red"> * </span></label>
+                <input type="text" id="mobile" name="phoneNumber" required [(ngModel)]="captin.phoneNumber"
+                  #phoneNumber="ngModel" class="form-control" />
+              </div>
+              <div class="valid-feedback">
+                <label class="control-label"></label>
+                <div class="alert-error-message alert-danger"
+                  *ngIf="phoneNumber.errors && (phoneNumber.dirty || phoneNumber.touched)">
+                  <span *ngIf="phoneNumber.errors['required']">This Field Required</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group no-margin-hr">
+                <label class="control-label">Telephone Number</label>
+                <input type="text" id="telephone" name="telephone" [(ngModel)]="captin.telephone" #telephone="ngModel"
+                  class="form-control" />
+              </div>
+              <div class="valid-feedback">
+                <label class="control-label"></label>
+                <div class="alert-error-message alert-danger" *ngIf="
+                    telephone.errors && (telephone.dirty || telephone.touched)
+                  ">
+                  <span *ngIf="telephone.errors['required']">This Field Required</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group no-margin-hr">
+                <label class="control-label">Password<span style="color: red;"> * </span></label>
+                <div class="password-input-wrapper">
+                  <input type="{{showPassword? 'text' : 'password'}}" id="password" placeholder="Enter Your Password"
+                    name="password" minlength="8" required [(ngModel)]="captin.password" #password="ngModel"
+                    class="form-control">
+                  <span class="glyphicon">
+                    <i class="fa" [ngClass]="{'fa-eye': !showPassword ,'fa-eye-slash' : showPassword}"
+                      (click)="toggllePassword()"></i>
+                  </span>
+                </div>
+              </div>
+              <div class="valid-feedback">
+                <label class="control-label"></label>
+                <div class="alert-error-message alert-danger" *ngIf="
+                    password.errors &&
+                    (password.dirty || password.touched)
+                  ">
+                  <span *ngIf="password.errors['required']">This Field Required</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group no-margin-hr">
+                <label class="control-label">Nationality<span style="color: red"> * </span></label>
+                <select id="nationalityId" name="nationalityId" class="form-control form-select"
+                  [(ngModel)]="captin.nationalityId" #nationalityId="ngModel" required>
+                  <option *ngFor="let natonality of natonalities" [ngValue]="natonality.id" selected>
+                    {{ natonality.name }}
+                  </option>
+                </select>
+              </div>
+              <div class="valid-feedback">
+                <label class="control-label"></label>
+                <div class="alert-error-message alert-danger" *ngIf="
+                    nationalityId.errors &&
+                    (nationalityId.dirty || nationalityId.touched)
+                  ">
+                  <span *ngIf="nationalityId.errors['required']">This Field Required</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group no-margin-hr">
+                <label class="control-label">National Id<span style="color: red"> * </span></label>
+                <input type="text" id="nationalId" name="nationalId" required [(ngModel)]="captin.nationalId"
+                  #nationalId="ngModel" class="form-control" />
+              </div>
+              <div class="valid-feedback">
+                <label class="control-label"></label>
+                <div class="alert-error-message alert-danger" *ngIf="
+                    nationalId.errors && (nationalId.dirty || nationalId.touched)
+                  ">
+                  <span *ngIf="nationalId.errors['required']">This Field Required</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group no-margin-hr">
+                <label class="control-label">National Id Image<span style="color: red"> * </span></label>
+                <input type="file" name="nationalIdImage" id="nationalIdImage"
+                  (change)="onFileChange($event, 'nationalIdImage')" required #nationalIdImage class="form-control" />
+              </div>
+              <div class="valid-feedback">
+                <label class="control-label"></label>
+                <!-- <div class="alert-error-message alert-danger" *ngIf="
+                    nationalIdImage.errors &&
+                    (nationalIdImage.dirty || nationalIdImage.touched)
+                  ">
+                  <span *ngIf="nationalIdImage.errors['required']">This Field Required</span>
+                </div> -->
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group no-margin-hr">
+                <label class="control-label">National Id Expiry Date<span style="color: red">
+                    *
+                  </span></label>
+                <input id="nationalIdExpiryDate" type="date" name="nationalIdExpiryDate" required
+                  [(ngModel)]="captin.nationalIdExpiryDate" #nationalIdExpiryDate="ngModel" class="form-control" />
+              </div>
+              <div class="valid-feedback">
+                <label class="control-label"></label>
+                <div class="alert-error-message alert-danger" *ngIf="
+                    nationalIdExpiryDate.errors &&
+                    (nationalIdExpiryDate.dirty || nationalIdExpiryDate.touched)
+                  ">
+                  <span *ngIf="nationalIdExpiryDate.errors['required']">This Field Required</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group no-margin-hr">
+                <label class="control-label">Captin State<span style="color: red"> * </span></label>
+                <select id="captinState" name="captinState" class="form-control form-select"
+                  [(ngModel)]="captin.captinState" #captinState="ngModel" required>
+                  <option *ngFor="let state of captinStates" [value]="state.value" selected>
+                    {{ state.label }}
+                  </option>
+                </select>
+              </div>
+              <div class="valid-feedback">
+                <label class="control-label"></label>
+                <div class="alert-error-message alert-danger" *ngIf="
+                    captinState.errors &&
+                    (captinState.dirty || captinState.touched)
+                  ">
+                  <span *ngIf="captinState.errors['required']">This Field Required</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group no-margin-hr">
+                <label class="control-label">Priority Assign<span style="color: red"> * </span></label>
+                <select id="priorityAssign" name="priorityAssign" class="form-control form-select"
+                  [(ngModel)]="captin.priorityAssign" #priorityAssign="ngModel" required>
+                  <option *ngFor="let state of priorityAssigns" [value]="state.value" selected>
+                    {{ state.label }}
+                  </option>
+                </select>
+              </div>
+              <div class="valid-feedback">
+                <label class="control-label"></label>
+                <div class="alert-error-message alert-danger" *ngIf="
+                    priorityAssign.errors &&
+                    (priorityAssign.dirty || priorityAssign.touched)
+                  ">
+                  <span *ngIf="priorityAssign.errors['required']">This Field Required</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group no-margin-hr">
+                <label class="control-label">Activation State<span style="color: red"> * </span></label>
+                <select id="activationStateId" name="activationStateId" class="form-control form-select"
+                  [(ngModel)]="captin.activationStateId" #activationStateId="ngModel" required>
+                  <option selected *ngFor="let activationState of activationStates" [ngValue]="activationState.id">
+                    {{ activationState.name }}
+                  </option>
+                </select>
+              </div>
+              <div class="valid-feedback">
+                <label class="control-label"></label>
+                <div class="alert-error-message alert-danger" *ngIf="
+                    activationStateId.errors &&
+                    (activationStateId.dirty || activationStateId.touched)
+                  ">
+                  <span *ngIf="activationStateId.errors['required']">This Field Required</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="col-md-12">
+        <legend>License Info</legend>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="col-md-4">
+              <div class="form-group no-margin-hr">
+                <label class="control-label">Driver Licensce</label>
+                <input type="text" id="driverLicense" name="driverLicense" [(ngModel)]="captin.driverLicense"
+                  #driverLicense="ngModel" class="form-control" />
+              </div>
+              <div class="valid-feedback">
+                <label class="control-label"></label>
+                <div class="alert-error-message alert-danger" *ngIf="
+                    driverLicense.errors &&
+                    (driverLicense.dirty || driverLicense.touched)
+                  ">
+                  <span *ngIf="driverLicense.errors['required']">This Field Required</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group no-margin-hr">
+                <label class="control-label">Driver Licensce Image</label>
+                <input type="file" name="driverLicenseImage" id="driverLicenseImage"
+                  (change)="onFileChange($event, 'driverLicenseImage')" #driverLicenseImage
+                  class="form-control" />
+              </div>
+              <div class="valid-feedback">
+                <label class="control-label"></label>
+                <!-- <div class="alert-error-message alert-danger" *ngIf="
+                    driverLicenseImage.errors &&
+                    (driverLicenseImage.dirty || driverLicenseImage.touched)
+                  ">
+                  <span *ngIf="driverLicenseImage.errors['required']">This Field Required</span>
+                </div> -->
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group no-margin-hr">
+                <label class="control-label">Driver License Expiry Date</label>
+                <input id="driverLicenseExpiryDate" type="date" name="driverLicenseExpiryDate"
+                  [(ngModel)]="captin.driverLicenseExpiryDate" #driverLicenseExpiryDate="ngModel"
+                  class="form-control" />
+              </div>
+              <div class="valid-feedback">
+                <label class="control-label"></label>
+                <div class="alert-error-message alert-danger" *ngIf="
+                    driverLicenseExpiryDate.errors &&
+                    (driverLicenseExpiryDate.dirty ||
+                      driverLicenseExpiryDate.touched)
+                  ">
+                  <span *ngIf="driverLicenseExpiryDate.errors['required']">This Field Required</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group no-margin-hr">
+                <label class="control-label">Driving Licensce</label>
+                <input type="text" id="drivingLicense" name="drivingLicense"
+                  [(ngModel)]="captin.drivingLicense" #drivingLicense="ngModel" class="form-control" />
+              </div>
+              <div class="valid-feedback">
+                <label class="control-label"></label>
+                <div class="alert-error-message alert-danger" *ngIf="
+                    drivingLicense.errors &&
+                    (drivingLicense.dirty || drivingLicense.touched)
+                  ">
+                  <span *ngIf="drivingLicense.errors['required']">This Field Required</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group no-margin-hr">
+                <label class="control-label">Driving Licensce Image</label>
+                <input type="file" name="drivingLicenseImage" id="drivingLicenseImage"
+                  (change)="onFileChange($event, 'drivingLicenseImage')" #drivingLicenseImage
+                  class="form-control" />
+              </div>
+              <div class="valid-feedback">
+                <label class="control-label"></label>
+                <!-- <div class="alert-error-message alert-danger" *ngIf="
+                    drivingLicenseImage.errors &&
+                    (drivingLicenseImage.dirty || drivingLicenseImage.touched)
+                  ">
+                  <span *ngIf="drivingLicenseImage.errors['required']">This Field Required</span>
+                </div> -->
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group no-margin-hr">
+                <label class="control-label">Driving License Expiry Date</label>
+                <input id="drivingLicensceExpiryDate" type="date" name="drivingLicensceExpiryDate"
+                  [(ngModel)]="captin.drivingLicenseExpiryDate" #drivingLicensceExpiryDate="ngModel"
+                  class="form-control" />
+              </div>
+              <div class="valid-feedback">
+                <label class="control-label"></label>
+                <div class="alert-error-message alert-danger" *ngIf="
+                    drivingLicensceExpiryDate.errors &&
+                    (drivingLicensceExpiryDate.dirty ||
+                      drivingLicensceExpiryDate.touched)
+                  ">
+                  <span *ngIf="drivingLicensceExpiryDate.errors['required']">This Field Required</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="col-md-12">
+        <legend><span style="color: red"> * </span>Contract Info</legend>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="col-md-4">
+              <div class="form-group no-margin-hr">
+                <label class="control-label">Contract Image<span style="color: red"> * </span></label>
+                <input type="file" name="contractFile" id="contractFile" (change)="onFileChange($event, 'contractFile')"
+                  required #contractFile class="form-control" />
+              </div>
+              <div class="valid-feedback">
+                <label class="control-label"></label>
+                <!-- <div class="alert-error-message alert-danger" *ngIf="
+                    contractFile.errors &&
+                    (contractFile.dirty || contractFile.touched)
+                  ">
+                  <span *ngIf="contractFile.errors['required']">This Field Required</span>
+                </div> -->
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group no-margin-hr">
+                <label class="control-label">Joined Date<span style="color: red"> * </span></label>
+                <input id="joinedDate" type="date" name="joinedDate" required [(ngModel)]="captin.joinedDate"
+                  #joinedDate="ngModel" class="form-control" />
+              </div>
+              <div class="valid-feedback">
+                <label class="control-label"></label>
+                <div class="alert-error-message alert-danger" *ngIf="
+                    joinedDate.errors && (joinedDate.dirty || joinedDate.touched)
+                  ">
+                  <span *ngIf="joinedDate.errors['required']">This Field Required</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group no-margin-hr">
+                <label class="control-label">Order Amount<span style="color: red"> * </span></label>
+                <input type="number" id="orderAmount" name="orderAmount" required [(ngModel)]="captin.orderAmount"
+                  #orderAmount="ngModel" class="form-control" />
+              </div>
+              <div class="valid-feedback">
+                <label class="control-label"></label>
+                <div class="alert-error-message alert-danger" *ngIf="
+                    orderAmount.errors &&
+                    (orderAmount.dirty || orderAmount.touched)
+                  ">
+                  <span *ngIf="orderAmount.errors['required']">This Field Required</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group no-margin-hr">
+                <label class="control-label">Monthly Salary<span style="color: red"> * </span></label>
+                <input type="number" id="monthlySalary" name="monthlySalary" required [(ngModel)]="captin.monthlySalary"
+                  #monthlySalary="ngModel" class="form-control" />
+              </div>
+              <div class="valid-feedback">
+                <label class="control-label"></label>
+                <div class="alert-error-message alert-danger"
+                  *ngIf="monthlySalary.errors && (monthlySalary.dirty || monthlySalary.touched)">
+                  <span *ngIf="monthlySalary.errors['required']">This Field Required</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group no-margin-hr">
+                <label class="control-label">Commission Role<span style="color: red"> * </span></label>
+                <select id="commissionRuleId" name="commissionRuleId" class="form-control form-select"
+                  [(ngModel)]="captin.commissionRuleId" #commissionRuleId="ngModel" required>
+                  <option selected *ngFor="let role of commissionRoles" [ngValue]="role.id">
+                    {{ role.name }}
+                  </option>
+                </select>
+              </div>
+              <div class="valid-feedback">
+                <label class="control-label"></label>
+                <div class="alert-error-message alert-danger"
+                  *ngIf="commissionRuleId.errors && (commissionRuleId.dirty || commissionRuleId.touched)">
+                  <span *ngIf="commissionRuleId.errors['required']">This Field Required</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="col-md-4">
+              <div class="form-group no-margin-hr">
+                <label class="control-label">Captin State<span style="color: red"> * </span></label>
+                <input type="number" id="captinState" name="captinState" required [(ngModel)]="captin.captinState"
+                  #captinState="ngModel" class="form-control" />
+              </div>
+              <div class="valid-feedback">
+                <label class="control-label"></label>
+                <div class="alert-error-message alert-danger" *ngIf="
+                    captinState.errors &&
+                    (captinState.dirty || captinState.touched)
+                  ">
+                  <span *ngIf="captinState.errors['required']">This Field Required</span>
+                </div>
+              </div>
+            </div> -->
+
+            <!-- <div class="col-md-4">
+            <div class="form-group no-margin-hr">
+              <label class="control-label">Priority Assign<span style="color: red"> * </span></label>
+              <select id="priorityAssign" name="priorityAssign" class="form-control form-select"
+                [(ngModel)]="captin.priorityAssign" #priorityAssign="ngModel" required>
+                <option selected *ngFor="let p of periority" [ngValue]="p">
+                  {{ p }}
+                </option>
+              </select>
+            </div>
+            <div class="valid-feedback">
+              <label class="control-label"></label>
+              <div class="alert-error-message alert-danger" *ngIf="
+                  priorityAssign.errors &&
+                  (priorityAssign.dirty || priorityAssign.touched)
+                ">
+                <span *ngIf="priorityAssign.errors['required']">This Field Required</span>
+              </div>
+            </div>
+          </div> -->
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="col-md-12">
+        <legend><span style="color: red"> * </span>Area Info</legend>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="col-md-4">
+              <div class="form-group no-margin-hr">
+                <label class="control-label">Captin Working Area<span style="color: red"> * </span></label>
+                <select id="captainAreas" name="captainAreas" class="form-control form-select"
+                  [(ngModel)]="selectedAreaId" #captainAreas="ngModel" (change)="addArea($event)" required>
+                  <option selected *ngFor="let area of WorkingRejoins" [ngValue]="area.id">
+                    {{ area.name }}
+                  </option>
+                </select>
+              </div>
+              <div class="chips mt-2">
+                <span class="badge badge-primary mr-1" *ngFor="let chip of chips">
+                    {{ chip.name }}
+                    <span class="ml-1 close-btn" style="cursor: pointer;" (click)="removeChip(chip)">×</span>
+                </span>
+              </div>
+              <div class="valid-feedback">
+                <label class="control-label"></label>
+                <div class="alert-error-message alert-danger" *ngIf="
+                  captainAreas.errors &&
+                  (captainAreas.dirty || captainAreas.touched)
+                ">
+                  <span *ngIf="captainAreas.errors['required']">This Field Required</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="col-md-12">
+        <legend><span style="color: red"> * </span>Vehicle Info</legend>
+        <div class="panel panel-default">
+          <div class="panel-body">
+
+            <div class="col-md-4">
+              <div class="form-group no-margin-hr">
+                <label class="control-label">Employment Type</label>
+                <select id="employmentTypeId" name="employmentTypeId" class="form-control form-select"
+                  [(ngModel)]="captin.employmentTypeId" #employmentTypeId="ngModel">
+                  <option selected *ngFor="let empType of empTypes" [ngValue]="empType.id">
+                    {{ empType.name }}
+                  </option>
+                </select>
+              </div>
+              <div class="valid-feedback">
+                <label class="control-label"></label>
+                <div class="alert-error-message alert-danger" *ngIf="
+                  employmentTypeId.errors &&
+                  (employmentTypeId.dirty || employmentTypeId.touched)
+                ">
+                  <span *ngIf="employmentTypeId.errors['required']">This Field Required</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="form-group no-margin-hr">
+                <label class="control-label">Vehicle Type</label>
+                <select id="vehicleTypeId" name="vehicleTypeId" class="form-control form-select"
+                  [(ngModel)]="captin.vehicleTypeId" #vehicleTypeId="ngModel">
+                  <option selected *ngFor="let vehicleType of vehicleTypes" [ngValue]="vehicleType.id">
+                    {{ vehicleType.name }}
+                  </option>
+                </select>
+              </div>
+              <div class="valid-feedback">
+                <label class="control-label"></label>
+                <div class="alert-error-message alert-danger" *ngIf="
+                  vehicleTypeId.errors &&
+                  (vehicleTypeId.dirty || vehicleTypeId.touched)
+                ">
+                  <span *ngIf="vehicleTypeId.errors['required']">This Field Required</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="form-group no-margin-hr">
+                <label class="control-label">Vehicle Assign</label>
+                <select id="assignVehicleId" name="assignVehicleId" class="form-control form-select"
+                  [(ngModel)]="captin.assignVehicleId" #assignVehicleId="ngModel">
+                  <option selected *ngFor="let vehicle of vehicles" [ngValue]="vehicle.id">
+                    {{ vehicle.name }}
+                  </option>
+                </select>
+              </div>
+              <div class="valid-feedback">
+                <label class="control-label"></label>
+                <div class="alert-error-message alert-danger" *ngIf="
+                  assignVehicleId.errors &&
+                  (assignVehicleId.dirty || assignVehicleId.touched)
+                ">
+                  <span *ngIf="assignVehicleId.errors['required']">This Field Required</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+    </div>
+  </div>
+  <div class="panel-footer text-center">
+    <button class="btn btn-labeled btn-success" [disabled]="!addForm.valid" type="submit">
+      <span class="btn-label icon fa fa-save"></span>Save
+    </button>
+    <button class="btn btn-labeled btn-warning" type="button" (click)="onCancel()" style="margin-left: 5px">
+      <span class="btn-label icon fa fa-refresh"></span>Cancel
+    </button>
+  </div>
+</form>

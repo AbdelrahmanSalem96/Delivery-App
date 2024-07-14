@@ -1,0 +1,16 @@
+export enum OrderStateEnum {
+  Created = 9,
+  FailedToAssign = 18,
+  OrderAssigned = 27,
+  CaptainAccepted = 36,
+  CaptainRejected = 45,
+  CaptainMoveToBranch = 54,
+  CaptainArrivedToBranch = 63,
+  CaptainRecievedOrder = 72,
+  CaptainMovedToCustomer = 81,
+  CustomerAccepted = 90,
+  CustomerRejected = 99,
+  CustomerChangeLocation = 108,
+  OrderCashed = 117,
+  OrderCancel = 126,
+}

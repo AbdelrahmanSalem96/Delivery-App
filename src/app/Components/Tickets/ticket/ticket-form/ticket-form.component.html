@@ -1,0 +1,49 @@
+<!-- <form #addForm="ngForm" novalidate autocomplete="off" class="panel panel-success form-horizontal">
+  <div class="panel-heading text-center">
+    <span class="panel-title h4">Ticket Information</span>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">Ticket Type<span style="color: red;"> * </span></label>
+          <select id="type" name="type" class="form-control form-select" required [(ngModel)]="ticket" #type="ngModel">
+            <option *ngFor="let t of ticketType" [ngValue]="t.name">{{ t.name }}</option>
+            <option [ngValue]="ticket.ticketType.id">{{ ticket.ticketType.id }}</option>
+            <option [ngValue]="ticket.ticketType.name">{{ ticket.ticketType.name }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label class="control-label"></label>
+        <div class="alert-error-message alert-danger" *ngIf="type.errors && (type.dirty || type.touched)">
+          <span *ngIf="type.errors['required']">This Field Required</span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">Ticket Details<span style="color: red;"> * </span></label>
+          <textarea class="form-control" id="details" name="details" [(ngModel)]="ticket" #details="ngModel" rows="3"></textarea>
+          <input type="text" id="details" name="details" [(ngModel)]="  ticket.name" #details="ngModel" required min="0"
+            maxlength="50" class="form-control">
+
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label class="control-label"></label>
+        <div class="alert-error-message alert-danger " *ngIf="details.errors && (details.dirty || details.touched)">
+          <span *ngIf="details.errors['required']">This Field Required</span>
+          <span *ngIf="details.errors['maxlength']">This Field Has MaxLenght 50 character</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel-footer text-center">
+    <button class="btn btn-labeled btn-success" type="submit"><span
+        class="btn-label icon fa fa-save"></span>Save</button>
+    <button class="btn btn-labeled btn-warning" type="button" style="margin-left: 5px;"><span
+        class="btn-label icon fa fa-refresh"></span>Cancel</button>
+  </div>
+</form> -->

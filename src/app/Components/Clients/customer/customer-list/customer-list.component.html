@@ -1,0 +1,32 @@
+<table class="table table-bordered">
+  <thead>
+      <tr>
+        <th style="text-align: center;">Order Id</th>
+        <th style="text-align: center;">Email</th>
+        <th style="text-align: center;">Mobile</th>
+        <th style="text-align: center;">Adress</th>
+        <th style="text-align: center;">Location</th>
+        <th style="text-align: center;">Actions</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let objdata of previousdata.items | paginate: {itemsPerPage: previousdata.pagerInfo.pageSize,currentPage: previousdata.pagerInfo.currentPage,totalItems: previousdata.pagerInfo.totalNumberOfItems};">
+          <td>{{objdata.orderId}}</td>
+          <td>{{objdata.customerName}}</td>
+          <td>{{objdata.customerMobile}}</td>
+          <td>{{objdata.customerAdress}}</td>
+          <td>{{objdata.customerLocation}}</td>
+          <td>
+              <button class="btn btn-xs btn-labeled btn-warning" style="margin-left: 3px;"><span class="btn-label icon fa fa-pencil"></span>Edit</button>
+              <button class="btn btn-xs btn-labeled btn-danger" style="margin-left: 3px;"><span class="btn-label icon fa fa-trash-o"></span>Delete</button>
+          </td>
+      </tr>
+      <tr *ngIf="previousdata.pagerInfo.totalNumberOfItems <= 0">
+        <td colspan="2">
+            <div class="note note-primary text-center">
+              <h4 class="note-title">No Previous Records</h4>
+            </div>
+        </td>
+    </tr>
+  </tbody>
+</table>

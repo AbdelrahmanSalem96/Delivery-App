@@ -1,0 +1,124 @@
+::ng-deep .mdc-text-field__input {
+  font-size: 14px !important;
+}
+
+table {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+mat-label{
+  font-size: 13px;
+}
+
+mat-grid-list{
+  padding-bottom: 20px !important;
+  margin: 40px 10px 60px 10px !important;
+}
+
+mat-grid-list mat-grid-title{
+  height: 20px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+::ng-deep .mat-grid-tile {
+  overflow: visible !important;
+}
+
+mat-grid-list mat-grid-tile button{
+border-radius: 10px;
+height: 50px;
+margin-top: -13px;
+font-size: 13px;
+}
+
+mat-grid-list mat-grid-tile button a{
+  text-decoration: none !important;
+  color: #fff;
+}
+
+::ng-deep .mat-mdc-snack-bar-label{
+  font-size: 12px !important;
+}
+
+::ng-deep .mdc-button__label{
+  font-size: 12px !important;
+}
+
+.mat-mdc-form-field {
+  width: 100%;
+}
+
+th{
+  font-size: 13px;
+  font-weight: bold;
+}
+
+td{
+  font-size: 13px;
+}
+
+td button{
+  padding: 10px !important;
+  margin-right: 10px;
+  font-size: 13px;
+}
+
+td button a{
+  font-size: 13px;
+}
+
+.mat-headline-medium{
+  margin-top: 40px !important;
+}
+
+::ng-deep .mat-mdc-paginator-container{
+  justify-content: center !important;
+}
+
+.result{
+  font-size: 17px;
+  text-align: right;
+  padding-top: 20px;
+}
+
+::ng-deep .mat-mdc-select-value-text{
+  font-size: 13px !important;
+  font-weight: 400 !important;
+}
+
+::ng-deep .mdc-list-item__primary-text{
+  font-size: 13px !important;
+}
+
+::ng-deep .mat-grid-tile-content{
+  height: 20% !important;
+  margin-bottom: 20px !important;
+}
+
+::ng-deep .mat-mdc-header-cell{
+  width:14% !important;
+}
+
+::ng-deep .cdk-header-cell{
+  width:14% !important;
+}
+
+::ng-deep .mat-mdc-snack-bar-label{
+  font-size: 12px !important;
+}
+
+::ng-deep .mdc-button__label{
+  font-size: 12px !important;
+}
+
+.dailogP{
+  font-size: 17px ;
+  padding: 20px;
+}
+
+.dailogB{
+  font-size: 14px ;
+}

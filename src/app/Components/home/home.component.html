@@ -1,0 +1,319 @@
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="container bootstrap snippets bootdey">
+    <div class="col-md-12">
+        <div class="page-header">
+            <div class="row">
+                <h1 class="col-xs-12 col-sm-4 text-center text-left-sm">&nbsp;&nbsp;Home&nbsp;&nbsp;<i class="fa fa-dashboard page-header-icon"></i></h1>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="panel panel-info ">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <i class="fa fa-inbox fa-5x"></i>
+                            </div>
+                            <div class="col-xs-6 text-right">
+                                <p class="announcement-heading">&nbsp;</p>
+                                <p class="announcement-text">Orders</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a routerLink="/order">
+                        <div class="panel-footer announcement-bottom">
+                            <div class="row">
+                                <div class="col-xs-6">View</div>
+                                <div class="col-xs-6 text-right">
+                                    <i class="fa fa-arrow-circle-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div *ngIf="showAll">
+              <div class="col-md-3">
+                  <div class="panel panel-success ">
+                      <div class="panel-heading">
+                          <div class="row">
+                              <div class="col-xs-6">
+                                  <i class="fa fa-ticket fa-5x"></i>
+                              </div>
+                              <div class="col-xs-6 text-right">
+                                  <p class="announcement-heading">&nbsp;</p>
+                                  <p class="announcement-text">Ticket</p>
+                              </div>
+                          </div>
+                      </div>
+                      <a routerLink="/ticket">
+                          <div class="panel-footer announcement-bottom">
+                              <div class="row">
+                                  <div class="col-xs-6">View</div>
+                                  <div class="col-xs-6 text-right">
+                                      <i class="fa fa-arrow-circle-right"></i>
+                                  </div>
+                              </div>
+                          </div>
+                      </a>
+                  </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="panel panel-warning ">
+                      <div class="panel-heading">
+                          <div class="row">
+                              <div class="col-xs-6">
+                                  <i class="fa fa-user fa-5x"></i>
+                              </div>
+                              <div class="col-xs-6 text-right">
+                                  <p class="announcement-heading">&nbsp;</p>
+                                  <p class="announcement-text">Employee</p>
+                              </div>
+                          </div>
+                      </div>
+                      <a routerLink="/employee">
+                          <div class="panel-footer announcement-bottom">
+                              <div class="row">
+                                  <div class="col-xs-6">View</div>
+                                  <div class="col-xs-6 text-right">
+                                      <i class="fa fa-arrow-circle-right"></i>
+                                  </div>
+                              </div>
+                          </div>
+                      </a>
+                  </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="panel panel-danger ">
+                      <div class="panel-heading">
+                          <div class="row">
+                              <div class="col-xs-6">
+                                  <i class="fa fa-truck fa-5x"></i>
+                              </div>
+                              <div class="col-xs-6 text-right">
+                                  <p class="announcement-heading">&nbsp;</p>
+                                  <p class="announcement-text">Vehicles</p>
+                              </div>
+                          </div>
+                      </div>
+                      <a routerLink="/vehicle">
+                          <div class="panel-footer announcement-bottom">
+                              <div class="row">
+                                  <div class="col-xs-6">View</div>
+                                  <div class="col-xs-6 text-right">
+                                      <i class="fa fa-arrow-circle-right"></i>
+                                  </div>
+                              </div>
+                          </div>
+                      </a>
+                  </div>
+              </div>
+
+              <div class="col-md-3">
+                      <div class="panel panel-danger ">
+                          <div class="panel-heading">
+                              <div class="row">
+                                  <div class="col-xs-6">
+                                      <i class="fa fa-building fa-5x"></i>
+                                  </div>
+                                  <div class="col-xs-6 text-right">
+                                      <p class="announcement-heading">&nbsp;</p>
+                                      <p class="announcement-text">Clients</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <a routerLink="/client">
+                              <div class="panel-footer announcement-bottom">
+                                  <div class="row">
+                                      <div class="col-xs-6">View</div>
+                                      <div class="col-xs-6 text-right">
+                                          <i class="fa fa-arrow-circle-right"></i>
+                                      </div>
+                                  </div>
+                              </div>
+                          </a>
+                      </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="panel panel-warning ">
+                      <div class="panel-heading">
+                          <div class="row">
+                              <div class="col-xs-6">
+                                  <i class="fa fa-money fa-5x"></i>
+                              </div>
+                              <div class="col-xs-6 text-right">
+                                  <p class="announcement-heading">&nbsp;</p>
+                                  <p class="announcement-text">Commission Rule</p>
+                              </div>
+                          </div>
+                      </div>
+                      <a routerLink="/commissionrule">
+                          <div class="panel-footer announcement-bottom">
+                              <div class="row">
+                                  <div class="col-xs-6">View</div>
+                                  <div class="col-xs-6 text-right">
+                                      <i class="fa fa-arrow-circle-right"></i>
+                                  </div>
+                              </div>
+                          </div>
+                      </a>
+                  </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="panel panel-success ">
+                      <div class="panel-heading">
+                          <div class="row">
+                              <div class="col-xs-6">
+                                  <i class="fa fa-motorcycle fa-5x"></i>
+                              </div>
+                              <div class="col-xs-6 text-right">
+                                  <p class="announcement-heading">&nbsp;</p>
+                                  <p class="announcement-text">Captains</p>
+                              </div>
+                          </div>
+                      </div>
+                      <a routerLink="/captin">
+                          <div class="panel-footer announcement-bottom">
+                              <div class="row">
+                                  <div class="col-xs-6">View</div>
+                                  <div class="col-xs-6 text-right">
+                                      <i class="fa fa-arrow-circle-right"></i>
+                                  </div>
+                              </div>
+                          </div>
+                      </a>
+                  </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="panel panel-info ">
+                      <div class="panel-heading">
+                          <div class="row">
+                              <div class="col-xs-6">
+                                  <i class="fa fa-calendar-o fa-5x"></i>
+                              </div>
+                              <div class="col-xs-6 text-right">
+                                  <p class="announcement-heading">&nbsp;</p>
+                                  <p class="announcement-text">Captin Earning Time</p>
+                              </div>
+                          </div>
+                      </div>
+                      <a routerLink="/captinearningtime">
+                          <div class="panel-footer announcement-bottom">
+                              <div class="row">
+                                  <div class="col-xs-6">View</div>
+                                  <div class="col-xs-6 text-right">
+                                      <i class="fa fa-arrow-circle-right"></i>
+                                  </div>
+                              </div>
+                          </div>
+                      </a>
+                  </div>
+              </div>
+
+              <div class="col-md-3">
+                      <div class="panel panel-success">
+                          <div class="panel-heading">
+                              <div class="row">
+                                  <div class="col-xs-6">
+                                      <i class="fa fa-group fa-5x"></i>
+                                  </div>
+                                  <div class="col-xs-6 text-right">
+                                      <p class="announcement-heading">&nbsp;</p>
+                                      <p class="announcement-text">Vehicle Owner</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <a routerLink="/vehicleowner">
+                              <div class="panel-footer announcement-bottom">
+                                  <div class="row">
+                                      <div class="col-xs-6">View</div>
+                                      <div class="col-xs-6 text-right">
+                                          <i class="fa fa-arrow-circle-right"></i>
+                                      </div>
+                                  </div>
+                              </div>
+                          </a>
+                      </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="panel panel-info ">
+                      <div class="panel-heading">
+                          <div class="row">
+                              <div class="col-xs-6">
+                                  <i class="fa fa-code-fork fa-5x"></i>
+                              </div>
+                              <div class="col-xs-6 text-right">
+                                  <p class="announcement-heading">&nbsp;</p>
+                                  <p class="announcement-text">Region</p>
+                              </div>
+                          </div>
+                      </div>
+                      <a routerLink="/region">
+                          <div class="panel-footer announcement-bottom">
+                              <div class="row">
+                                  <div class="col-xs-6">View</div>
+                                  <div class="col-xs-6 text-right">
+                                      <i class="fa fa-arrow-circle-right"></i>
+                                  </div>
+                              </div>
+                          </div>
+                      </a>
+                  </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="panel panel-danger ">
+                      <div class="panel-heading">
+                          <div class="row">
+                              <div class="col-xs-6">
+                                  <i class="fa fa-building-o fa-5x"></i>
+                              </div>
+                              <div class="col-xs-6 text-right">
+                                  <p class="announcement-heading">&nbsp;</p>
+                                  <p class="announcement-text">Banks</p>
+                              </div>
+                          </div>
+                      </div>
+                      <a routerLink="/bank">
+                          <div class="panel-footer announcement-bottom">
+                              <div class="row">
+                                  <div class="col-xs-6">View</div>
+                                  <div class="col-xs-6 text-right">
+                                      <i class="fa fa-arrow-circle-right"></i>
+                                  </div>
+                              </div>
+                          </div>
+                      </a>
+                  </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="panel panel-warning ">
+                      <div class="panel-heading">
+                          <div class="row">
+                              <div class="col-xs-6">
+                                  <i class="fa fa-map fa-5x"></i>
+                              </div>
+                              <div class="col-xs-6 text-right">
+                                  <p class="announcement-heading">&nbsp;</p>
+                                  <p class="announcement-text">Captin Map</p>
+                              </div>
+                          </div>
+                      </div>
+                      <a routerLink="/captintracking">
+                          <div class="panel-footer announcement-bottom">
+                              <div class="row">
+                                  <div class="col-xs-6">View</div>
+                                  <div class="col-xs-6 text-right">
+                                      <i class="fa fa-arrow-circle-right"></i>
+                                  </div>
+                              </div>
+                          </div>
+                      </a>
+                  </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>

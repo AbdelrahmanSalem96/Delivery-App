@@ -1,0 +1,37 @@
+<div class="note note-success">
+  <h4 class="note-title"> <span class="fa fa-calendar-o page-header-icon text-success"></span> Captain Earning Time</h4>
+  </div>
+  <div class="tab-content tab-content-nobordered">
+    <div class="tab-pane fade active in">
+      <div class="row">
+          <div class="panel-heading text-center">
+              <span class="panel-title h4">Captain Earning Time</span>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-md-5">
+                <label class="control-label">Date From<span style="color: red;"> * </span></label>
+                <mat-form-field style="width: 100%; height: 60px;">
+                  <input matInput [matDatepicker]="dpfrom" [(ngModel)]="captinEarningTime.startDate" disabled>
+                  <mat-datepicker-toggle matIconSuffix [for]="dpfrom"></mat-datepicker-toggle>
+                  <mat-datepicker #dpfrom disabled="false"></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div class="col-md-5">
+                <label class="control-label">Date To<span style="color: red;"> * </span></label>
+                <mat-form-field style="width: 100%; height: 60px;">
+                  <input matInput [matDatepicker]="dpto" [(ngModel)]="captinEarningTime.endDate"  disabled>
+                  <mat-datepicker-toggle matIconSuffix [for]="dpto"></mat-datepicker-toggle>
+                  <mat-datepicker #dpto disabled="false"></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div class="col-md-2" style="margin-top: 8px;">
+                <br/>
+                <button class="btn btn-labeled btn-info" type="button" (click)="onSubmit()" [disabled]="isdisabledbutton"><span class="btn-label icon fa fa-edit"></span>Update</button>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  

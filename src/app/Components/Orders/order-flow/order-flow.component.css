@@ -1,0 +1,52 @@
+.row .btns{
+  margin-bottom: 20px;
+}
+
+.btns button{
+  font-size: 13px;
+  font-weight: bold;
+  padding: 10px 20px;
+  margin-right: 20px;
+  border-radius: 4px;
+}
+
+.btns button span{
+  background-color: #e66454;
+    width: 20px;
+    padding: 3px;
+    text-align: center;
+    border-radius: 15px;
+    position: absolute;
+    top: -10px;
+    right: -6px;
+}
+
+.dailogP{
+  font-size: 17px ;
+  padding: 20px;
+}
+
+.dailogB{
+  font-size: 14px ;
+}
+
+form{
+  height: 150px;
+  width: 400px;
+}
+
+::ng-deep .mat-mdc-dialog-surface{
+  overflow-y: unset !important;
+}
+
+::ng-deep .mat-mdc-dialog-actions{
+  justify-content:center !important;
+}
+
+::ng-deep .mat-mdc-snack-bar-label{
+  font-size: 12px !important;
+}
+
+::ng-deep .mdc-button__label{
+  font-size: 12px !important;
+}

@@ -1,0 +1,22 @@
+<fieldset>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <google-map height="400px" width="100%" [center]="mapCenter" [zoom]="mapZoom">
+        <map-circle [center]="center" [radius]="5">
+          <map-marker *ngFor="let marker of markers"
+            [position]="marker.position"
+            [label]="marker.label">
+          </map-marker>
+        </map-circle>
+      </google-map>
+
+      <hr>
+
+      <!-- <google-map height="400px" width="750px" [center]="center" [zoom]="zoom">
+        <ng-container *ngIf="directionsResults$ | async as directionsResults">
+          <map-directions-renderer [directions]="directionsResults"></map-directions-renderer>
+        </ng-container>
+      </google-map> -->
+    </div>
+  </div>
+</fieldset>

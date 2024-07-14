@@ -1,0 +1,149 @@
+<div id="main-menu" role="navigation" style="background: #edf0f1;">
+  <div id="main-menu-inner">
+    <div class="menu-content top" id="menu-content-demo">
+      <div>
+        <div class="text-bg"><span class="text-slim"></span> <span class="text-semibold">S p <p
+              style="color: #d65246; display: inline;">e e</p> d</span></div>
+        <img src="/src/assets/images/delivery_logo.png" alt="" class="">
+        <div class="btn-group">
+          <a routerLink="/home" class="btn btn-xs btn-success btn-outline dark" matTooltip="Home"><i
+              class="fa fa-dashboard"></i></a>
+          <a routerLink="/dashboard" class="btn btn-xs btn-success btn-outline dark" matTooltip="Dashboard"><i
+              class="fa fa-bar-chart-o"></i></a>
+          <a routerLink="/employeeprofile" class="btn btn-xs btn-success btn-outline dark" matTooltip="profile"><i
+              class="fa fa-user"></i></a>
+          <button (click)="logOut()" class="btn btn-xs btn-danger btn-outline dark" matTooltip="LogOut"><i
+              class="fa fa-power-off"></i></button>
+        </div>
+      </div>
+    </div>
+    <ul class="navigation">
+      <li routerLink="/home" routerLinkActive="active">
+        <a><i class="menu-icon fa fa-dashboard"></i><span class="mm-text">Home</span></a>
+      </li>
+      <li *ngIf="showAll" routerLink="/dashboard" routerLinkActive="active">
+        <a><i class="menu-icon fa fa-bar-chart-o"></i><span class="mm-text">Dashboard</span></a>
+      </li>
+      <li routerLink="/order" routerLinkActive="active">
+        <a><i class="menu-icon fa fa-inbox"></i><span class="mm-text">Orders</span></a>
+      </li>
+      <div *ngIf="showAll">
+        <li routerLink="/captin" routerLinkActive="active">
+          <a><i class="menu-icon fa fa-motorcycle"></i><span class="mm-text">Captains</span></a>
+        </li>
+        <li routerLink="/employee" routerLinkActive="active">
+          <a><i class="menu-icon fa fa-user"></i><span class="mm-text">Employees</span></a>
+        </li>
+        <li routerLink="/client" routerLinkActive="active">
+          <a><i class="menu-icon fa fa-building"></i><span class="mm-text">Clients</span></a>
+        </li>
+        <li class="mm-dropdown">
+          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown"><i class="menu-icon fa fa-cogs"></i><span
+              class="mm-text">Settings</span></a>
+          <ul>
+            <li routerLink="/bank" routerLinkActive="active">
+              <a tabindex="-1"><span class="btn-label icon fa fa-building-o"></span><span
+                  class="mm-text">Banks</span></a>
+            </li>
+            <li routerLink="/nationality" routerLinkActive="active">
+              <a tabindex="-1"><span class="btn-label icon fa fa-barcode"></span><span
+                  class="mm-text">Nationality</span></a>
+            </li>
+            <li routerLink="/commissionrule" routerLinkActive="active">
+              <a><i class="menu-icon fa fa-money"></i><span class="mm-text">Commission Rules</span></a>
+            </li>
+            <li routerLink="/vehicle" routerLinkActive="active">
+              <a><i class="menu-icon fa fa-truck"></i><span class="mm-text">Vehicles</span></a>
+            </li>
+            <li class="mm-dropdown">
+              <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown"><i class="menu-icon fa fa-gear"></i><span
+                  class="mm-text">Captains Setting</span></a>
+              <ul>
+                <li routerLink="/employmenttype" routerLinkActive="active">
+                  <a tabindex="-1"><span class="btn-label icon fa fa-sun-o"></span><span class="mm-text">Employment
+                      Type</span></a>
+                </li>
+                <li routerLink="/activationstate" routerLinkActive="active">
+                  <a tabindex="-1"><span class="btn-label icon fa fa-thumb-tack"></span><span class="mm-text">Activation
+                      State</span></a>
+                </li>
+                <li routerLink="/captinearningtime" routerLinkActive="active">
+                  <a tabindex="-1"><span class="btn-label icon fa fa-calendar-o"></span><span class="mm-text">Captin
+                      Earning Time</span></a>
+                </li>
+              </ul>
+            </li>
+            <li class="mm-dropdown">
+              <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown"><i class="menu-icon fa fa-tasks"></i><span
+                  class="mm-text">Tickets Setting</span></a>
+              <ul>
+                <li routerLink="/tickettype" routerLinkActive="active">
+                  <a tabindex="-1"><span class="btn-label icon fa fa-shield"></span><span class="mm-text">Ticket
+                      Type</span></a>
+                </li>
+              </ul>
+            </li>
+            <li class="mm-dropdown">
+              <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown"><i
+                  class="menu-icon fa fa-align-center"></i><span class="mm-text">Clients Setting</span></a>
+              <ul>
+                <li routerLink="/clientcontactposition" routerLinkActive="active">
+                  <a tabindex="-1"><span class="btn-label icon fa fa-list-ol"></span><span class="mm-text">Client
+                      Contact Position</span></a>
+                </li>
+                <li routerLink="/clientindustry" routerLinkActive="active">
+                  <a tabindex="-1"><span class="btn-label icon fa fa-th-list"></span><span class="mm-text">Client
+                      Industry</span></a>
+                </li>
+              </ul>
+            </li>
+            <li class="mm-dropdown">
+              <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown"><i class="menu-icon fa fa-wrench"></i><span
+                  class="mm-text">Vehicles Setting</span></a>
+              <ul>
+                <li routerLink="/vehiclestate" routerLinkActive="active">
+                  <a tabindex="-1"><span class="btn-label icon fa fa-certificate"></span><span class="mm-text">Vehicle
+                      State</span></a>
+                </li>
+                <li routerLink="/vehicletype" routerLinkActive="active">
+                  <a tabindex="-1"><span class="btn-label icon fa fa-indent"></span><span class="mm-text">Vehicle
+                      Type</span></a>
+                </li>
+                <li routerLink="/vehicleowner" routerLinkActive="active">
+                  <a tabindex="-1"><span class="btn-label icon fa fa-group"></span><span class="mm-text">Vehicle
+                      Owner</span></a>
+                </li>
+              </ul>
+            </li>
+            <li class="mm-dropdown">
+              <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown"><i
+                  class="menu-icon fa fa-arrows-alt"></i><span class="mm-text">Areas Setting</span></a>
+              <ul>
+                <li routerLink="/country" routerLinkActive="active">
+                  <a tabindex="-1"><span class="btn-label icon fa fa-external-link-square"></span><span
+                      class="mm-text">Country</span></a>
+                </li>
+                <li routerLink="/region" routerLinkActive="active">
+                  <a tabindex="-1"><span class="btn-label icon fa fa-code-fork"></span><span
+                      class="mm-text">Region</span></a>
+                </li>
+                <li routerLink="/area" routerLinkActive="active">
+                  <a tabindex="-1"><span class="btn-label icon fa fa-dot-circle-o"></span><span
+                      class="mm-text">Area</span></a>
+                </li>
+                <li routerLink="/zone" routerLinkActive="active">
+                  <a tabindex="-1"><span class="btn-label icon fa fa-ellipsis-h"></span><span
+                      class="mm-text">Zone</span></a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </div>
+    </ul>
+    <div class="menu-content">
+      <a (click)="logOut()" class="btn btn-danger btn-block btn-outline dark"><i class="tn-label icon fa fa-power-off"
+          style="margin-right: 5px;"></i>LogOut</a>
+    </div>
+  </div>
+</div>

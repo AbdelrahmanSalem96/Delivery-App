@@ -1,0 +1,26 @@
+<div class="note note-success">
+  <h4 class="note-title"> <span class="fa fa-indent page-header-icon text-success"></span>Customer</h4>
+</div>
+<ul id="tab-page" class="nav nav-tabs">
+    <li [class.active]="tabactive === 1" (click)="tabactive=1">
+        <a href="#edit" data-toggle="tab">{{tabtitle1}}</a>
+    </li>
+    <li [class.active]="tabactive === 2" (click)="tabactive=2">
+      <a href="#list" data-toggle="tab">{{tabtitle2}}</a>
+  </li>
+</ul>
+<div class="tab-content tab-content-bordered"  style="margin-top: 5px;">
+    <div class="tab-pane fade active in" [class.active]="tabactive === 1" [class.in]="tabactive === 1" id="edit">
+        <div class="row">
+            <app-customer-form></app-customer-form>
+        </div>
+    </div>
+    <div class="tab-pane fade" [class.active]="tabactive === 2" [class.in]="tabactive === 2" id="list">
+        <div class="tab-content panel-body">
+          <app-customer-search></app-customer-search>
+        </div>
+        <div class="table-primary">
+            <app-customer-list></app-customer-list>
+        </div>
+    </div>
+</div>

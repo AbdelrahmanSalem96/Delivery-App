@@ -1,0 +1,77 @@
+<mat-grid-list cols="5">
+  <mat-grid-tile [colspan]="4" [rowspan]="1">
+    <mat-form-field>
+    <mat-label style="font-size: 12px;">Filter</mat-label>
+    <input matInput class="headline" (keyup)="applyFilter($event)" placeholder="Search items" #input>
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="1" [rowspan]="1">
+    <button mat-flat-button color="accent" color="accent" routerLink="/client/create">Create Client</button>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="clients" matSort>
+
+    <ng-container matColumnDef="clientName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td mat-cell *matCellDef="let row">{{ row.clientName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="clientEmail">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+      <td mat-cell *matCellDef="let row">{{ row.clientEmail }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="clientState">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>State</th>
+      <td mat-cell *matCellDef="let row">{{ getStateLabel(row.clientState) }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="clientMobil">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Mobile</th>
+      <td mat-cell *matCellDef="let row">{{ row.clientMobil }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="branch">
+      <th mat-header-cell *matHeaderCellDef>Branch</th>
+      <td mat-cell *matCellDef="let element" style="width: 1%; white-space: nowrap">
+        <button mat-raised-button color="primary" [routerLink]="[element.applicationIdentityUserId,'branch','create']">Add Branch</button>
+        <button mat-raised-button color="primary" [routerLink]="[element.applicationIdentityUserId,'clientbranch']">Branches</button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let element" style="width: 1%; white-space: nowrap">
+        <button mat-flat-button color="primary" [routerLink]="['/client/update', element.id]">Edit</button>
+        <button mat-flat-button color="warn" (click)="deleteClient(element.id)">Delete</button>
+      </td>
+    </ng-container>
+
+    <ng-template #confirmDialog>
+      <div mat-dialog-content>
+        <p class="dailogP">Are you sure you want to delete this client?</p>
+      </div>
+      <div mat-dialog-actions>
+        <button class="dailogB" mat-flat-button color="primary" (click)="onDialogNoClick()">Cancel</button>
+        <button class="dailogB" mat-flat-button color="warn" (click)="onDialogYesClick()"
+          cdkFocusInitial>Confirm</button>
+      </div>
+    </ng-template>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator
+  class="mat-headline-medium"
+  showFirstLastButtons
+  [length]="totalNumberOfItems"
+  [pageSize]="8"
+  [pageSizeOptions]="[8, 12, 14]"
+  aria-label="Select page"
+  (page)="onPageChange($event)"
+>
+</mat-paginator>
+</div>

@@ -1,0 +1,196 @@
+<div class="note note-success">
+    <h4 class="note-title"> <span class="fa fa-money page-header-icon text-success"></span> Commission Rule</h4>
+  </div>
+  <ul id="tab-page" class="nav nav-tabs">
+      <li [class.active]="tabactive === 1" (click)="tabactive=1">
+          <a href="#edit" data-toggle="tab">{{tabtitle1}}</a>
+      </li>
+      <li [class.active]="tabactive === 2" (click)="tabactive=2">
+        <a href="#list" data-toggle="tab">{{tabtitle2}}</a>
+    </li>
+  </ul>
+  <div class="tab-content tab-content-bordered"  style="margin-top: 5px;">
+      <div class="tab-pane fade active in" [class.active]="tabactive === 1" [class.in]="tabactive === 1" id="edit">
+          <div class="row">
+              <form #addForm="ngForm"  (ngSubmit)="onSubmit(addForm)" novalidate autocomplete="off" class="panel panel-success form-horizontal">
+                  <div class="panel-heading text-center">
+                      <span class="panel-title h4">Commission Rule Information</span>
+                  </div>
+                  <div class="panel-body">
+                      <div class="row">
+                          <div class="col-md-6">
+                              <div class="form-group no-margin-hr">
+                                  <label class="control-label">Name<span style="color: red;"> * </span></label>
+                                  <input type="text" id="name" name="name" [(ngModel)]="commissionRule.name" #name="ngModel" required min="0" maxlength="100" class="form-control">
+                                  <div class="alert-error-message alert-danger " *ngIf="name.errors && (name.dirty || name.touched)">
+                                    <span *ngIf="name.errors['required']">This Field Required</span>
+                                    <span *ngIf="name.errors['maxlength']">This Field Has MaxLenght 100 character</span>
+                                </div>
+                              </div>
+                          </div>
+                          <div class="col-md-2">
+                            <div class="form-group no-margin-hr">
+                                <label class="control-label">From (KM)<span style="color: red;"> * </span></label>
+                                <input type="number" id="fromKM" name="fromKM" [(ngModel)]="commissionRule.fromKM" #fromKM="ngModel" min="0" required class="form-control">
+                                <div class="alert-error-message alert-danger " *ngIf="fromKM.errors && (fromKM.dirty || fromKM.touched)">
+                                  <span *ngIf="fromKM.errors['required']">This Field Required</span>
+                                  <span *ngIf="fromKM.errors['min']">This Field has min value 0</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-2">
+                            <div class="form-group no-margin-hr">
+                                <label class="control-label">To (KM)<span style="color: red;"> * </span></label>
+                                <input type="number" id="toKM" name="toKM" [(ngModel)]="commissionRule.toKM" #toKM="ngModel" min="0" required class="form-control">
+                                <div class="alert-error-message alert-danger " *ngIf="toKM.errors && (toKM.dirty || toKM.touched)">
+                                  <span *ngIf="toKM.errors['required']">This Field Required</span>
+                                  <span *ngIf="toKM.errors['min']">This Field has min value 0</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-2">
+                            <div class="form-group no-margin-hr">
+                                <label class="control-label">Value<span style="color: red;"> * </span></label>
+                                <input type="number" id="value" name="value" [(ngModel)]="commissionRule.value" #value="ngModel" min="0" required class="form-control">
+                                <div class="alert-error-message alert-danger " *ngIf="value.errors && (value.dirty || value.touched)">
+                                  <span *ngIf="value.errors['required']">This Field Required</span>
+                                  <span *ngIf="value.errors['min']">This Field has min value 0</span>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-6">
+                            <br>
+                            <div class="form-group no-margin-hr">
+                                <label>
+                                    <input type="checkbox" id="haveExtraKM" name="haveExtraKM" [checked]="extrashow" [(ngModel)]="extrashow" #haveExtraKM="ngModel">
+                                    <span style="padding: 5px;font-size: small;">have Extra (KM)</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-2" *ngIf="extrashow">
+                            <div class="form-group no-margin-hr">
+                                <label class="control-label">Extra (KM)<span style="color: red;"> * </span></label>
+                                <input type="number" id="extraKM" name="extraKM" [(ngModel)]="commissionRule.extraKM" #extraKM="ngModel" class="form-control">
+                                <div class="alert-error-message alert-danger " *ngIf="extraKM.errors && (extraKM.dirty || extraKM.touched)">
+                                  <span *ngIf="extraKM.errors['required']">This Field Required</span>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2" *ngIf="extrashow">
+                            <div class="form-group no-margin-hr">
+                                <label class="control-label">Extra Value<span style="color: red;"> * </span></label>
+                                <input type="number" id="extraValue" name="extraValue" [(ngModel)]="commissionRule.extraValue" #extraValue="ngModel" required class="form-control">
+                                <div class="alert-error-message alert-danger " *ngIf="extraValue.errors && (extraValue.dirty || extraValue.touched)">
+                                  <span *ngIf="extraValue.errors['required']">This Field Required</span>
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="panel-footer text-center">
+                      <button class="btn btn-labeled btn-success" type="submit" *ngIf="this.isshowbuttonsave" [disabled]="!addForm.form.valid ||isdisabledbutton "><span class="btn-label icon fa fa-save"></span>Save</button>
+                      <button class="btn btn-labeled btn-info" type="submit" *ngIf="!this.isshowbuttonsave" [disabled]="!addForm.form.valid ||isdisabledbutton"><span class="btn-label icon fa fa-edit"></span>Update</button>
+                      <button class="btn btn-labeled btn-warning" (click)="onResetAddForm(addForm)" type="button" style="margin-left: 5px;" ><span class="btn-label icon fa fa-refresh"></span>Cancel</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+      <div class="tab-pane fade" [class.active]="tabactive === 2" [class.in]="tabactive === 2" id="list">
+          <div class="tab-content panel-body">
+            <form action="" class="panel form-horizontal">
+                <div class="panel-heading">
+                    <span class="panel-title">Search Form Information</span>
+                </div>
+                <div class="panel-body">
+                    <div class="row form-group">
+                        <div class="col-sm-6">
+                            <label class="control-label">Name</label>
+                            <input type="text" id="namesearchfield" name="namesearchfield" [(ngModel)]="namesearchfield" class="form-control">
+                        </div>
+                        <div class="col-sm-1">
+                        <label class="control-label">From (KM)</label>
+                            <input type="text" id="fromKMsearchfield" name="fromKMsearchfield" [(ngModel)]="fromKMsearchfield" class="form-control">
+                        </div>
+                        <div class="col-sm-1">
+                        <label class="control-label">To (KM)</label>
+                            <input type="text" id="toKMsearchfield" name="toKMsearchfield" [(ngModel)]="toKMsearchfield" class="form-control">
+                        </div>
+                        <div class="col-sm-1">
+                            <label class="control-label">Value</label>
+                                <input type="text" id="valuesearchfield" name="valuesearchfield" [(ngModel)]="valuesearchfield" class="form-control">
+                            </div>
+                        <div class="col-sm-3" style="margin-top: 8px;">
+                            <br/>
+                            <button class="btn btn-labeled btn-teal" (click)="onSearch()" type="submit" style="margin-right: 5px;"><span class="btn-label icon fa fa-search"></span>Search</button>
+                            <button class="btn btn-labeled btn-maroon" (click)="onResetSearchForm()" type="button" style="margin-right: 5px;"><span class="btn-label icon fa fa-rotate-left"></span>Clear</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+          </div>
+          <div class="table-primary">
+              <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="th-previousdata" style="width: 40%;">Name</th>
+                        <th class="th-previousdata" style="width: 5%;">From (KM)</th>
+                        <th class="th-previousdata" style="width: 5%;">To (KM)</th>
+                        <th class="th-previousdata" style="width: 5%;">Value</th>
+                        <th class="th-previousdata" style="width: 7%;">Have Extra (KM)</th>
+                        <th class="th-previousdata" style="width: 5%;">Extra (KM)</th>
+                        <th class="th-previousdata" style="width: 5%;">Extra Value</th>
+                        <th class="th-previousdata-btn">#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let objdata of previousdata.items | paginate: {itemsPerPage: previousdata.pagerInfo.pageSize,currentPage: previousdata.pagerInfo.currentPage,totalItems: previousdata.pagerInfo.totalNumberOfItems};">
+                        <td class="td-previousdata" style="width: 40%;">{{objdata.name}}</td>
+                        <td class="td-previousdata" style="width: 5%;">{{objdata.fromKM}}</td>
+                        <td class="td-previousdata" style="width: 5%;">{{objdata.toKM}}</td>
+                        <td class="td-previousdata" style="width: 5%;">{{objdata.value}}</td>
+                        <td *ngIf="objdata.haveExtraKM" class="td-previousdata" style="width: 7%;"><span class="label label-success ticket-label">Yes</span></td>
+                        <td *ngIf="!objdata.haveExtraKM" class="td-previousdata" style="width: 7%;"><span class="label label-warning ticket-label">No</span></td>
+                        <td class="td-previousdata" style="width: 5%;">{{objdata.extraKM}}</td>
+                        <td class="td-previousdata" style="width: 5%;">{{objdata.extraValue}}</td>
+                        <td class="th-previousdata-btn">
+                            <button class="btn btn-xs btn-labeled btn-warning" style="margin-left: 3px;" (click)="onEdit(objdata.id)"><span class="btn-label icon fa fa-pencil"></span>Edit</button>
+                            <button class="btn btn-xs btn-labeled btn-danger" style="margin-left: 3px;" (click)="onOpenDialog(objdata.id,objdata.name)"><span class="btn-label icon fa fa-trash-o"></span>Delete</button>
+                        </td>
+                    </tr>
+                    <tr *ngIf="previousdata.pagerInfo.totalNumberOfItems <= 0">
+                        <td colspan="7">
+                          <div class="note note-primary text-center">
+                            <h4 class="note-title">No Previous Records</h4>
+                          </div>
+                      </td>
+                  </tr>
+                </tbody>
+            </table>
+            <div class="table-footer text-center" *ngIf="previousdata.pagerInfo.totalNumberOfItems > 0">
+                <div class="row text-center" style="border: 1px #e4e4e4 solid;padding-top: 7px;">
+                    <pagination-controls class="text-center pagination" previousLabel="Previous" nextLabel="Next" (pageChange)="onPageChanged($event.toString())"></pagination-controls>
+                </div>
+                <div class="row" style="border: 1px #e4e4e4 solid;padding-top: 10px;padding-bottom: 10px;">
+                    <label class="col-md-2"></label>
+                    <label class="col-md-1" style="padding-top:5px;">Items Per Page</label>
+                    <div class="col-md-1">
+                        <select class="form-control input-sm" #dllitemsPerPage [(ngModel)]="previousdata.pagerInfo.pageSize" (change)='onItemsPerPageChange(dllitemsPerPage.value)'>
+                            <option *ngFor="let itemperpage of itemsPerPages" [value]="itemperpage">{{itemperpage}}</option>
+                        </select>
+                    </div>
+                    <label class="col-md-1" style="padding-top:5px;">Go To Page</label>
+                    <div class="col-md-1">
+                        <select class="form-control input-sm" #dllpages [(ngModel)]="previousdata.pagerInfo.currentPage" (change)='onPageChanged(dllpages.value)'>
+                            <option *ngFor="let page of totalpages" [value]="page">{{page}}</option>
+                        </select>
+                    </div>
+                    <label class="col-md-4" style="padding-top:5px;"> Total Number Of Items : {{previousdata.pagerInfo.totalNumberOfItems}} , Show From  {{((previousdata.pagerInfo.currentPage - 1) * previousdata.pagerInfo.pageSize) + 1}} To {{((previousdata.pagerInfo.currentPage - 1) * previousdata.pagerInfo.pageSize) + previousdata.items.length}}</label>
+                </div>
+            </div>
+          </div>
+      </div>
+  </div>
+  

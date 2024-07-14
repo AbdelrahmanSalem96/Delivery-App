@@ -1,0 +1,155 @@
+<div class="note note-success">
+  <h4 class="note-title"> <span class="fa fa-indent page-header-icon text-success"></span>Update Order</h4>
+</div>
+<form #addForm="ngForm" (ngSubmit)="onSubmit(addForm)" novalidate autocomplete="off"
+  class="panel panel-success form-horizontal">
+  <div class="panel-heading text-center">
+    <span class="panel-title h4">Order Information</span>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">Order Code<span style="color: red"> * </span></label>
+          <input type="text" id="orderCode" name="orderCode" required [(ngModel)]="order.orderCode"
+            #orderCode="ngModel" class="form-control" />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div class="alert-error-message alert-danger"
+            *ngIf="orderCode.errors && (orderCode.dirty || orderCode.touched)">
+            <span *ngIf="orderCode.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">Customer Name</label>
+          <input type="text" id="customerName" name="customerName" [(ngModel)]="order.customerName"
+            #customerName="ngModel" class="form-control" />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div class="alert-error-message alert-danger"
+            *ngIf="customerName.errors && (customerName.dirty || customerName.touched)">
+            <span *ngIf="customerName.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">Customer Mobile<span style="color: red"> * </span></label>
+          <input type="tel" id="customerMobile" name="customerMobile" required [(ngModel)]="order.customerMobile"
+            #customerMobile="ngModel" class="form-control" />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div class="alert-error-message alert-danger" *ngIf="
+              customerMobile.errors &&
+              (customerMobile.dirty || customerMobile.touched)
+            ">
+            <span *ngIf="customerMobile.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">Customer Adress</label>
+          <input type="text" id="customerAddress" name="customerAddress" [(ngModel)]="order.customerAddress"
+            #customerAddress="ngModel" class="form-control" />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div class="alert-error-message alert-danger"
+            *ngIf="customerAddress.errors && (customerAddress.dirty || customerAddress.touched)">
+            <span *ngIf="customerAddress.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">Customer Latitude</label>
+          <input type="tel" id="customerLatitude" name="customerLatitude" [(ngModel)]="order.customerLatitude"
+            #customerLatitude="ngModel" class="form-control" />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div class="alert-error-message alert-danger" *ngIf="
+              customerLatitude.errors &&
+              (customerLatitude.dirty || customerLatitude.touched)
+            ">
+            <span *ngIf="customerLatitude.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">Customer Longitude</label>
+          <input type="tel" id="customerLongitude" name="customerLongitude" [(ngModel)]="order.customerLongitude"
+            #customerLongitude="ngModel" class="form-control" />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div class="alert-error-message alert-danger" *ngIf="
+              customerLongitude.errors &&
+              (customerLongitude.dirty || customerLongitude.touched)
+            ">
+            <span *ngIf="customerLongitude.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">Order Distance in KM</label>
+          <input type="tel" id="orderDistanceKM" name="orderDistanceKM" [(ngModel)]="order.orderDistanceKM"
+            #orderDistanceKM="ngModel" class="form-control" />
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div class="alert-error-message alert-danger" *ngIf="
+              orderDistanceKM.errors &&
+              (orderDistanceKM.dirty || orderDistanceKM.touched)
+            ">
+            <span *ngIf="orderDistanceKM.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group no-margin-hr">
+          <label class="control-label">Branches<span style="color: red"> * </span></label>
+          <select id="branchId" name="branchId" class="form-control form-select"
+            [(ngModel)]="order.branchId" #branchId="ngModel" required>
+            <option *ngFor="let branch of branches" [ngValue]="branch.id" selected>
+              {{ branch.name }}
+            </option>
+          </select>
+        </div>
+        <div class="valid-feedback">
+          <label class="control-label"></label>
+          <div class="alert-error-message alert-danger" *ngIf="
+              branchId.errors &&
+              (branchId.dirty || branchId.touched)
+            ">
+            <span *ngIf="branchId.errors['required']">This Field Required</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="panel-footer text-center">
+    <button class="btn btn-labeled btn-success" type="submit">
+      <span class="btn-label icon fa fa-save"></span>Save
+    </button>
+    <button class="btn btn-labeled btn-warning" type="button" (click)="onCancel()" style="margin-left: 5px">
+      <span class="btn-label icon fa fa-refresh"></span>Cancel
+    </button>
+  </div>
+</form>
