@@ -15,7 +15,7 @@ export class Order {
   orderDistanceKM?: number;
   branchId?: string;
   orderLastState?: number;
-  orderCreationDate!: Date;
+  createdOn!: Date;
   orderLastUpdatedDate?:Date;
   orderPice?: number;
   deliverPrice?:number;
@@ -37,6 +37,10 @@ export class OrderService {
 
   getOrders(data: any): Observable<Order[]> {
     return this.http.post<any>(`${this.apiUrl}/GetPaggedResult`, data);
+  }
+
+  getOrdersPageView(data: any): Observable<Order[]> {
+    return this.http.post<any>(`${this.apiUrl}/GetPaggedResultOrderView`, data);
   }
 
   getOrdersGetLite(searchObj: any): Observable<Order[]> {
@@ -63,7 +67,7 @@ export class OrderService {
 
   getElapsedTime(order: Order): SafeHtml  {
     const now = new Date().getTime();
-    const creationTime = new Date(order.orderCreationDate).getTime();
+    const creationTime = new Date(order.createdOn).getTime();
     const elapsed = now - creationTime;
 
     // const seconds = Math.floor((elapsed / 1000) % 60);

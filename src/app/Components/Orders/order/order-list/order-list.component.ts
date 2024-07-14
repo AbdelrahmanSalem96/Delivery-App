@@ -37,14 +37,16 @@ export class OrderListComponent
 
   displayedColumns: string[] = [
     'orderCode',
+    'clientName',
+    'branchName',
     'orderLastState',
     'customerName',
     'customerMobile',
     'customerAddress',
     'orderPice',
     'captainName',
-    'orderLastUpdatedDate',
-    'orderCreationDate',
+    'lastUpdatedOn',
+    'createdOn',
     'elapsedTime',
     'actions',
   ];
@@ -113,7 +115,7 @@ export class OrderListComponent
         expressionCombinationOperator: 1,
       },
     };
-    this.orderService.getOrders(input).subscribe((response: any) => {
+    this.orderService.getOrdersPageView(input).subscribe((response: any) => {
       this.orders.data = response.data.items;
       this.totalNumberOfItems = response.data.pagerInfo.totalNumberOfItems;
       this.pageSize = response.data.pagerInfo.pageSize;

@@ -14,12 +14,12 @@
 }
 
 .card-header{
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-.card-header span{
-  margin-left: 30px;
-  font-size: 70px !important;
+.card-header img{
+  width: 40%
 }
 
 .card-body button{

@@ -33,7 +33,7 @@ export class OrderCreateComponent implements OnInit{
 
   order: Order = {
     branchId:'',
-    orderCreationDate: new Date(),
+    createdOn: new Date(),
     orderLastState: 9,
     createdById : "8c037a32-68d7-4c38-913e-311ce44fa16e"
   };
