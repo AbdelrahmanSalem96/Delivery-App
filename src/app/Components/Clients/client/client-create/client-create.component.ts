@@ -18,6 +18,7 @@ import { SearchTypeEnum } from '../../../../Core/SearchControls/Common/SearchTyp
 import { CriteriaSearch } from '../../../../Core/SearchControls/PaggedCriteriaInfo/CriteriaSearch';
 import { AreaTypeEnum } from '../../../../Enum/Area.Enum';
 import { DataServiceService } from '../../../../Service/Shared/DataService.Service';
+import { AuthService } from '../../../../Service/Test Service/auth.service';
 
 export interface ClientState{
   label: string;
@@ -41,6 +42,7 @@ export class ClientCreateComponent implements OnInit {
   clientStates: ClientState[] = [];
   location: string ="";
   regionType = 4;
+  userId !:any ;
 
   client: ClientModel = {
     id: '',
@@ -94,11 +96,13 @@ export class ClientCreateComponent implements OnInit {
     private industryService: IndustryService,
     private clientContactPositionService: ClientContactPositionService,
     private _dataServiceService:DataServiceService,
+    private authService:AuthService,
     private router: Router,
     private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
+    this.userId = this.authService.getUserId();
     this.getBanks();
     this.getPsitions();
     this.getiIndustries();
@@ -247,7 +251,7 @@ export class ClientCreateComponent implements OnInit {
     this.client.clientLocationLatitude = latitude;
     this.client.clientLocationLongitude = longitude;
 
-    this.client.createdById = '8c037a32-68d7-4c38-913e-311ce44fa16e';
+    this.client.createdById = this.userId;
     if (form.valid) {
       this.clientService.createClient(this.client).subscribe((data) => {
         this.router.navigate(['/client']);

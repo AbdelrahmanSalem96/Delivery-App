@@ -9,6 +9,7 @@ import { CaptinService } from '../../../Service/Test Service/captin.service';
 import { NgForm } from '@angular/forms';
 import { OrderStateEnum } from '../../../Enum/OrderStete.Enum';
 import { OrderLogModel, OrderLogService } from '../../../Service/Test Service/order-log.service';
+import { AuthService } from '../../../Service/Test Service/auth.service';
 
 export class Assign{
   id?:string;
@@ -32,13 +33,14 @@ export class OrderFlowComponent {
   captinMobile!:string;
   captinId!:string;
   captins!:any[];
+  userId!: any;
   order:Order = new Order;
   orderId!:string;
   orderLogs!:any[];
   assignForm: Assign ={
     id:"",
     captinId:"",
-    lastUpdatedById:"8c037a32-68d7-4c38-913e-311ce44fa16e"
+    lastUpdatedById:""
   };
   orderStates: State[] = [];
   serchObj:OrderLogModel={};
@@ -53,12 +55,14 @@ export class OrderFlowComponent {
     private orderService: OrderService,
     private orderLog: OrderLogService,
     private captinService:CaptinService,
+    private authService:AuthService,
     private router: Router,
     private route: ActivatedRoute,
     private snackBar: MatSnackBar,
   ){}
 
   ngOnInit(): void {
+    this.userId = this.authService.getUserId();
     this.orderStates = this.getOrderStates();
     let idParam = this.route.snapshot.paramMap.get('id');
     if (idParam !== null) {
@@ -146,7 +150,7 @@ export class OrderFlowComponent {
   }
 
   onSubmitState(form: NgForm): void{
-    this.serchObj.createdById = "8c037a32-68d7-4c38-913e-311ce44fa16e";
+    this.serchObj.createdById = this.userId;
     this.serchObj.orderId = this.orderId;
     this.serchObj.orderState = form.value.orderLastState;
     debugger;
@@ -169,6 +173,7 @@ export class OrderFlowComponent {
   }
 
   onSubmit(form: NgForm): void {
+    this.assignForm.lastUpdatedById = this.userId;
     this.assignForm.captinId = form.value.captinId;
     if (form.valid) {
       this.orderService.assignCaptin(this.assignForm).subscribe((res) => {

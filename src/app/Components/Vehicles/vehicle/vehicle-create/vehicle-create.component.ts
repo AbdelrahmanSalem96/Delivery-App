@@ -14,6 +14,7 @@ import { VehicleOwnerService } from '../../../../Service/Test Service/vehicle-ow
 import { VehicleOwnerLiteModel } from '../../../../Models/VehicleOwner/VehicleOwner.Model';
 import { CaptinService } from '../../../../Service/Test Service/captin.service';
 import { CaptinDtoModel } from '../../../../Models/Captin/Captin.Model';
+import { AuthService } from '../../../../Service/Test Service/auth.service';
 
 export interface State{
   label: string;
@@ -34,6 +35,7 @@ export class VehicleCreateComponent implements OnInit{
   vehicleOwnerTypes:State[]=[];
   vehicleOwners:VehicleOwnerLiteModel[]=[];
   captains:CaptinDtoModel[]=[];
+  userId!: any;
 
   vehicle:Vehicle = {
     name: '' ,
@@ -61,11 +63,13 @@ export class VehicleCreateComponent implements OnInit{
     private vehicleStateService:VehicleStateService,
     private vehicleOwnerService:VehicleOwnerService,
     private captinService:CaptinService,
+    private authService:AuthService,
     private router: Router,
     private snackBar: MatSnackBar,
   ){}
 
   ngOnInit(): void {
+    this.userId = this.authService.getUserId();
     this.getAreaByType(this.regionType);
     this.getVehicleState();
     this.getVehicleTypes();
@@ -177,7 +181,7 @@ export class VehicleCreateComponent implements OnInit{
   }
 
   onSubmit(form: NgForm): void {
-    this.vehicle.createdById = '8c037a32-68d7-4c38-913e-311ce44fa16e';
+    this.vehicle.createdById = this.userId;
     if (form.valid) {
       this.vehicleService.createVehicle(this.vehicle).subscribe(() => {
         this.router.navigate(['/vehicle']);

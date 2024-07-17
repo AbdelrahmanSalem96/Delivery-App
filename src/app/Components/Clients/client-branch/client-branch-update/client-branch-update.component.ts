@@ -12,6 +12,7 @@ import { AreaService } from '../../../../Service/Test Service/area.service';
 import { SearchObj } from '../../../../Core/SearchControls/Common/SearchObj';
 import { ClientBranchStateEnum } from '../../../../Enum/ClientBranchState.Enum';
 import { ClientBranchState } from '../client-branch-create/client-branch-create.component';
+import { AuthService } from '../../../../Service/Test Service/auth.service';
 
 @Component({
   selector: 'app-client-branch-update',
@@ -34,6 +35,7 @@ export class ClientBranchUpdateComponent {
   selectedClientBranchState!: ClientBranchStateEnum;
   location: string ="";
   regionType = 4;
+  userId!: any;
 
   branch: ClientBranchModel = {
     id:'',
@@ -65,6 +67,7 @@ export class ClientBranchUpdateComponent {
   constructor(
     private clientBranchService: ClientBranchService,
     private clientService: ClientService,
+    private authService:AuthService,
     private router: Router,
     private snackBar: MatSnackBar,
     private areaService :AreaService,
@@ -74,6 +77,7 @@ export class ClientBranchUpdateComponent {
   ) {}
 
   ngOnInit(): void {
+    this.userId = this.authService.getUserId();
     this.clientBranchStates = this.getClientBranchStates()
     this.getAreaByType(this.regionType);
     let idParam = this.route.snapshot.paramMap.get('id');
@@ -124,6 +128,7 @@ export class ClientBranchUpdateComponent {
     this.clientBranchService.getClientBranchById(branchId).subscribe(
       (branch: any) => {
         this.branch = branch.data;
+        this.clientId = branch.data.clientId;
         this.getClients(branch.data.clientId);
         this.updateFormWithLocation();
         if (this.branch.startWorkDate ) {
@@ -150,18 +155,18 @@ export class ClientBranchUpdateComponent {
     const { latitude, longitude } = this.splitLocation(this.location);
     this.branch.branchLocationLatitude = latitude;
     this.branch.branchLocationLongitude = longitude;
-    this.branch.lastUpdatedById= "8c037a32-68d7-4c38-913e-311ce44fa16e"
+    this.branch.lastUpdatedById= this.userId;
 
     if (form.valid && this.branchId !== null) {
       this.branch.clientId = this.clientId;
       this.clientBranchService.updateClientBranch(this.branch).subscribe(() => {
-        this.router.navigate(['/clientbranch']);
+        this.router.navigate(['client',this.clientId,'clientbranch']);
         this.snackBar.open('Branch updated', 'Close', { duration: 2000 });
       });
     }
   }
 
   onCancel(){
-    this._location.back();
+    this.router.navigate(['client',this.clientId,'clientbranch']);
   }
 }

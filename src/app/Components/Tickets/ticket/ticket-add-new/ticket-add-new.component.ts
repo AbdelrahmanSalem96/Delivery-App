@@ -7,6 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TicketTypeService } from '../../../../Service/Test Service/ticket-type.service';
 import { Location } from '@angular/common';
+import { AuthService } from '../../../../Service/Test Service/auth.service';
 
 @Component({
   selector: 'app-ticket-add-new',
@@ -16,6 +17,7 @@ import { Location } from '@angular/common';
 export class TicketAddNewComponent {
   orderId!:string;
   searchObj={};
+  userId!: any;
   types: TicketTypeDtoModel[] = [];
 
   ticket:TicketModel = {
@@ -27,6 +29,7 @@ export class TicketAddNewComponent {
   constructor(
     private ticketService:TicketService,
     private ticketTypeService:TicketTypeService,
+    private authService:AuthService,
     private router: Router,
     private snackBar: MatSnackBar,
     private route: ActivatedRoute,
@@ -34,6 +37,7 @@ export class TicketAddNewComponent {
   ){}
 
   ngOnInit(): void {
+    this.userId = this.authService.getUserId();
     this.getTicketType();
     let idParam = this.route.snapshot.paramMap.get('id');
     if (idParam !== null) {
@@ -58,7 +62,7 @@ export class TicketAddNewComponent {
 
   onSubmit(form: NgForm): void {
     this.ticket.orderId = this.orderId;
-    this.ticket.createdById = '8c037a32-68d7-4c38-913e-311ce44fa16e';
+    this.ticket.createdById = this.userId;
     if (form.valid && this.orderId !== null) {
       this.ticketService.createTicket(this.ticket).subscribe(() => {
         this.location.back();

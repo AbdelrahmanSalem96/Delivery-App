@@ -10,6 +10,7 @@ import { ClientService } from '../../../../Service/Test Service/client.service';
 import { ClientModel, getLightClientModel } from '../../../../Models/Client/Client.Model';
 import { SearchObj } from '../../../../Core/SearchControls/Common/SearchObj';
 import { ClientBranchStateEnum } from '../../../../Enum/ClientBranchState.Enum';
+import { AuthService } from '../../../../Service/Test Service/auth.service';
 
 export interface ClientBranchState{
   label: string;
@@ -38,6 +39,7 @@ export class ClientBranchCreateComponent implements OnInit{
   selectedClientBranchState!: ClientBranchStateEnum;
   location: string ="";
   regionType = 4;
+  userId!:any;
   branch: ClientBranchModel = {
     id:'',
     name : '',
@@ -68,6 +70,7 @@ export class ClientBranchCreateComponent implements OnInit{
   constructor(
     private clientBranchService: ClientBranchService,
     private clientService: ClientService,
+    private authService:AuthService,
     private router: Router,
     private route: ActivatedRoute,
     private snackBar: MatSnackBar,
@@ -75,6 +78,7 @@ export class ClientBranchCreateComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
+    this.userId = this.authService.getUserId();
     this.clientBranchStates = this.getClientBranchStates()
     this.getAreaByType(this.regionType);
     let paramId = this.route.snapshot.paramMap.get('id');
@@ -170,7 +174,7 @@ export class ClientBranchCreateComponent implements OnInit{
       const { latitude, longitude } = this.splitLocation(this.location);
       this.branch.branchLocationLatitude = latitude;
       this.branch.branchLocationLongitude = longitude;
-      this.branch.createdById = "8c037a32-68d7-4c38-913e-311ce44fa16e";
+      this.branch.createdById = this.userId;
       if(this.clientId !== null){
         this.branch.clientId = this.clientId;
         this.clientBranchService.createClientBranch(this.branch).subscribe(() => {

@@ -35,7 +35,7 @@ export class OrderCreateComponent implements OnInit{
     branchId:'',
     createdOn: new Date(),
     orderLastState: 9,
-    createdById : "8c037a32-68d7-4c38-913e-311ce44fa16e"
+    createdById : ''
   };
 
   constructor(
@@ -74,9 +74,16 @@ export class OrderCreateComponent implements OnInit{
   }
 
   onClientChange(){
-    const input = {
+    let input:any;
+    if(this.userRole === "Client") {
+      input = {
+          "clientId":this.userId
+      };
+    }else{
+      input = {
         "clientId":this.selectedClient
-    };
+      };
+    }
     this.clientBranchService.getBranchesGetLite(input).subscribe((response: any) => {
       console.log(response.data == null);
       if(response.data == null || response.data.length === 0){
@@ -98,7 +105,7 @@ export class OrderCreateComponent implements OnInit{
       const { latitude, longitude } = this.splitLocation(this.location);
       this.order.customerLatitude = latitude;
       this.order.customerLongitude = longitude;
-      this.order.branchId = this.userId;
+      this.order.createdById = this.userId;
       this.orderService.createOrder(this.order).subscribe(() => {
         this.router.navigate(['/order']);
         this.snackBar.open('Order created', 'Close', { duration: 2000 });

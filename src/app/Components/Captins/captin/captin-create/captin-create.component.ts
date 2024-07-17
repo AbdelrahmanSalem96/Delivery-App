@@ -1,3 +1,4 @@
+import { AuthService } from './../../../../Service/Test Service/auth.service';
 import { PriorityAssignEnum } from './../../../../Enum/PriorityAssign.Enum';
 import { Component } from '@angular/core';
 import { CaptinService } from '../../../../Service/Test Service/captin.service';
@@ -44,7 +45,7 @@ export class CaptinCreateComponent {
   searchObj={};
   captinStates: State[] = [];
   showPassword: boolean = false;
-
+  userId !:any ;
   priorityAssigns: State[] = [];
   regionType = 6;
 
@@ -94,11 +95,13 @@ export class CaptinCreateComponent {
     private vehicleTypeService:VehicleTypeService,
     private vehicleService:VehicleService,
     private captinActivationStateService:CaptinActivationStateService,
+    private authService:AuthService,
     private router: Router,
     private snackBar: MatSnackBar,
   ) {}
 
   ngOnInit(): void {
+    this.userId = this.authService.getUserId();
     this.getNatonalities();
     // this.getAreas();
     this.getAreaByType(this.regionType);
@@ -283,7 +286,7 @@ export class CaptinCreateComponent {
     const selectedAreaIds = this.chips.map(chip => chip.id);
     // Handle form submission and pass the selectedAreaIds
     this.captin.captainAreas =  selectedAreaIds;
-    this.captin.createdById = '8c037a32-68d7-4c38-913e-311ce44fa16e';
+    this.captin.createdById = this.userId;
     if (form.valid) {
       let value = form.value;
       this.captinService.createCaptin(this.captin).subscribe(() => {

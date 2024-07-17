@@ -21,7 +21,8 @@ export class Vehicle{
   vehicleOwnerType!: number;
   vehicleStateId!: string;
   applicationOwnerIdentityUserId!: string;
-  createdById!: string;
+  createdById?: string;
+  lastUpdatedById?: string;
 }
 
 export class DeleteVehicleDtoModel{

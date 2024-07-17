@@ -20,6 +20,7 @@ import { ActivationStateDtoModel } from '../../../../Models/ActivationState/Acti
 import { CaptinStateEnum } from '../../../../Enum/CaptinStete.Enum';
 import { PriorityAssignEnum } from '../../../../Enum/PriorityAssign.Enum';
 import { CaptinActivationStateService } from '../../../../Service/Test Service/captin-activation-state.service';
+import { AuthService } from '../../../../Service/Test Service/auth.service';
 
 export interface State{
   label: string;
@@ -38,7 +39,7 @@ export class CaptinUpdateComponent implements OnInit {
   WorkingRejoins:AreaDtoModel [] = [];
   selectedAreaId: string | null = null;
   chips: Area[] = [];
-  existingData!: string[];
+  existingData!: any[];
 
   commissionRoles:CommissionRuleDtoModel[]=[];
   empTypes:EmployeeModel[]=[];
@@ -50,6 +51,7 @@ export class CaptinUpdateComponent implements OnInit {
   priorityAssigns: State[] = [];
   showPassword: boolean = false;
   regionType = 6;
+  userId !:any ;
 
   captin: Captin = {
     id:'',
@@ -93,6 +95,7 @@ export class CaptinUpdateComponent implements OnInit {
     private vehicleTypeService:VehicleTypeService,
     private vehicleService:VehicleService,
     private captinActivationStateService:CaptinActivationStateService,
+    private authService:AuthService,
     private router: Router,
     private snackBar: MatSnackBar,
     private route: ActivatedRoute,
@@ -100,13 +103,14 @@ export class CaptinUpdateComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.userId = this.authService.getUserId();
     this.getNatonalities();
     this.getAreaByType(this.regionType);
     this.getCommissionRoles();
     this.getEmplyeeTypes();
     this.getVehicleTypes();
     this.getVehicles();
-    // this.initializeChips();
+    this.initializeChips();
     this.captinStates = this.getCaptinStates();
     this.priorityAssigns = this.getpriorityAssign();
     this.getActivationState();
@@ -189,7 +193,13 @@ export class CaptinUpdateComponent implements OnInit {
   }
 
   initializeChips() {
-    this.chips = this.WorkingRejoins.filter(area => this.existingData.includes(area.id));
+    // this.chips = this.WorkingRejoins.filter(area => this.existingData.includes(area.id));
+    if (this.existingData && this.WorkingRejoins) {
+      this.chips = this.WorkingRejoins.filter(area => this.existingData.includes(area.id));
+      console.log('Initialized chips:', this.chips); // Debugging line
+    } else {
+        console.warn('Areas or existingData is not defined');
+    }
   }
 
   getCommissionRoles(){
@@ -257,7 +267,7 @@ export class CaptinUpdateComponent implements OnInit {
   }
 
   onSubmit(form: NgForm): void {
-    this.captin.lastUpdatedById= "8c037a32-68d7-4c38-913e-311ce44fa16e"
+    this.captin.lastUpdatedById= this.userId;
     if (form.valid && this.captinId !== null) {
       // form.value.captinWorkingRegionId = this.chips.map(chip => chip.id);
       this.captinService.updateCaptin(this.captin).subscribe(() => {

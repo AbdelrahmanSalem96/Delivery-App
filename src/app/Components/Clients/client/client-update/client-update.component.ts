@@ -17,6 +17,7 @@ import { SearchObj } from '../../../../Core/SearchControls/Common/SearchObj';
 import { MatTableDataSource } from '@angular/material/table';
 import { ClientState } from '../client-create/client-create.component';
 import { ClientStateEnum } from '../../../../Enum/ClientState.Enum';
+import { AuthService } from '../../../../Service/Test Service/auth.service';
 
 @Component({
   selector: 'app-client-update',
@@ -35,6 +36,7 @@ export class ClientUpdateComponent {
   searchObj={};
   location: string ="";
   regionType = 4;
+  userId!: any;
 
   client: ClientModel = new ClientModel();
 
@@ -44,6 +46,7 @@ export class ClientUpdateComponent {
     private areaService :AreaService,
     private industryService :IndustryService,
     private clientContactPositionService :ClientContactPositionService,
+    private authService:AuthService,
     private router: Router,
     private snackBar: MatSnackBar,
     private route: ActivatedRoute,
@@ -51,6 +54,7 @@ export class ClientUpdateComponent {
   ) {}
 
   ngOnInit(): void {
+    this.userId = this.authService.getUserId();
     this.getBanks();
     this.getAreaByType(this.regionType);
     this.getPsitions();
@@ -157,7 +161,7 @@ export class ClientUpdateComponent {
     this.client.clientLocationLatitude = latitude;
     this.client.clientLocationLongitude = longitude;
 
-    this.client.lastUpdatedById= "8c037a32-68d7-4c38-913e-311ce44fa16e"
+    this.client.lastUpdatedById= this.userId;
     if (form.valid && this.clientId !== null) {
       this.clientService.updateClient(this.client).subscribe(() => {
         this.router.navigate(['/client']);

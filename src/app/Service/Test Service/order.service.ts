@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Configs } from '../../Core/Utility/Config';
+import { OrderStateEnum } from '../../Enum/OrderStete.Enum';
 
 export class Order {
   id?: string;
@@ -29,7 +30,6 @@ export class Order {
 })
 export class OrderService {
   private apiUrl = Configs.apiUrl+"/v1/Order"; // Mock API endpoint
-
   private ordersSubject = new BehaviorSubject<Order[]>([]);
   public orders$ = this.ordersSubject.asObservable();
   private orders: Order[] = [];
@@ -75,7 +75,11 @@ export class OrderService {
     const minutes = Math.floor((elapsed / (1000 * 60)) % 60);
     const hours = Math.floor((elapsed / (1000 * 60 * 60)) % 24);
 
-    if (elapsed > 2 * 60 * 60 * 1000) {
+    if(order.orderLastState == 117 || order.orderLastState == 90){
+      return this.sanitizer.bypassSecurityTrustHtml('<p style="font-size: 11px; font-weight: bold; color:green;">Done</p>');
+    }else if(order.orderLastState == 126){
+      return this.sanitizer.bypassSecurityTrustHtml('<p style="font-size: 11px; font-weight: bold; color:yellow;">Not Done</p>');
+    }else if (elapsed > 2 * 60 * 60 * 1000) {
       return this.sanitizer.bypassSecurityTrustHtml('<p style="font-size: 11px; font-weight: bold; color:red;">Delayed</p>');
     }else{
       // return `${hours}h ${minutes}m`;

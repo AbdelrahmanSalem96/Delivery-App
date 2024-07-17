@@ -15,6 +15,7 @@ import { VehicleOwnerLiteModel } from '../../../../Models/VehicleOwner/VehicleOw
 import { CaptinDtoModel } from '../../../../Models/Captin/Captin.Model';
 import { VehicleOwnerService } from '../../../../Service/Test Service/vehicle-owner.service';
 import { CaptinService } from '../../../../Service/Test Service/captin.service';
+import { AuthService } from '../../../../Service/Test Service/auth.service';
 
 export interface State{
   label: string;
@@ -36,6 +37,7 @@ export class VehicleUpdateComponent {
   vehicleId!:string;
   vehicleOwners:VehicleOwnerLiteModel[]=[];
   captains:CaptinDtoModel[]=[];
+  userId!: any;
 
   vehicle:Vehicle = {
     name: '' ,
@@ -53,7 +55,7 @@ export class VehicleUpdateComponent {
     vehicleOwnerType: 0,
     vehicleStateId: '' ,
     applicationOwnerIdentityUserId: '' ,
-    createdById: '' ,
+    lastUpdatedById: '' ,
   }
 
   constructor(
@@ -63,6 +65,7 @@ export class VehicleUpdateComponent {
     private vehicleStateService:VehicleStateService,
     private vehicleOwnerService:VehicleOwnerService,
     private captinService:CaptinService,
+    private authService:AuthService,
     private router: Router,
     private snackBar: MatSnackBar,
     private route: ActivatedRoute,
@@ -70,6 +73,7 @@ export class VehicleUpdateComponent {
   ){}
 
   ngOnInit(): void {
+    this.userId = this.authService.getUserId();
     this.getAreaByType(this.regionType);
     this.getVehicleState();
     this.getVehicleTypes();
@@ -167,6 +171,7 @@ export class VehicleUpdateComponent {
   }
 
   onSubmit(form: NgForm): void {
+    this.vehicle.lastUpdatedById = this.userId;
     if (form.valid && this.vehicleId !== null) {
       this.vehicleService.updateVehicle(this.vehicle).subscribe(() => {
         this.router.navigate(['/vehicle']);
