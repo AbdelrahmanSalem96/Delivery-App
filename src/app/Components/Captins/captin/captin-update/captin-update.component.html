@@ -475,7 +475,7 @@
             <div class="form-group no-margin-hr">
               <label class="control-label">Captin Working Area<span style="color: red"> * </span></label>
               <select id="captainAreas" name="captainAreas" class="form-control form-select"
-                [(ngModel)]="selectedAreaId" #captainAreas="ngModel" (change)="addArea($event)" required>
+                [(ngModel)]="selectedAreaId" #captainAreas="ngModel" (change)="addArea($event)" [required]="chips.length === 0">
                 <option selected *ngFor="let area of WorkingRejoins" [ngValue]="area.id">
                   {{ area.name }}
                 </option>

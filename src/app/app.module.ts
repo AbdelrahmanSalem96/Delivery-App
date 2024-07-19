@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule, PLATFORM_ID } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
@@ -96,7 +96,7 @@ import { OrderUpdateComponent } from './Components/Orders/order/order-update/ord
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CaptinCreateComponent } from './Components/Captins/captin/captin-create/captin-create.component';
 import { CaptinUpdateComponent } from './Components/Captins/captin/captin-update/captin-update.component';
-import { DatePipe } from '@angular/common';
+import { DatePipe, isPlatformBrowser } from '@angular/common';
 import { ClientCreateComponent } from './Components/Clients/client/client-create/client-create.component';
 import { ClientUpdateComponent } from './Components/Clients/client/client-update/client-update.component';
 import { ClientBranchCreateComponent } from './Components/Clients/client-branch/client-branch-create/client-branch-create.component';
@@ -112,6 +112,19 @@ import { AuthInterceptor } from './Gard/auth.interceptor';
 import { AuthService } from './Service/Test Service/auth.service';
 import { NavmenuComponent } from './Components/Shared/NavMenu/NavMenu.Component';
 import { RightSideMenuComponent } from './Components/Shared/RightSideMenu/RightSideMenu.Component';
+import { Configs } from './Core/Utility/Config';
+
+// export function loadGoogleMapsScript(platformId: Object) {
+//   return () => {
+//     if (isPlatformBrowser(platformId)) {
+//       const script = document.createElement('script');
+//       script.src = `https://maps.googleapis.com/maps/api/js?key=${Configs.googleMapsApiKey}`;
+//       script.async = true;
+//       script.defer = true;
+//       document.head.appendChild(script);
+//     }
+//   };
+// }
 
 @NgModule({
   declarations: [
@@ -229,7 +242,13 @@ import { RightSideMenuComponent } from './Components/Shared/RightSideMenu/RightS
     DatePipe,
     DateConvertPipe,
     AuthService,
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    // {
+    //   provide: APP_INITIALIZER,
+    //   useFactory: loadGoogleMapsScript,
+    //   deps: [PLATFORM_ID],
+    //   multi: true
+    // }
   ],
   exports:[
     DateConvertPipe

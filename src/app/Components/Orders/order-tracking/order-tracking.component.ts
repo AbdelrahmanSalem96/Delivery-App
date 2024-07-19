@@ -5,7 +5,7 @@ import { Order, OrderService } from '../../../Service/Test Service/order.service
 import { ClientBranchService } from '../../../Service/Test Service/client-branch.service';
 import { ClientBranchModel } from '../../../Models/Client Branch/ClientBranch.Model';
 import { MapDirectionsService} from '@angular/google-maps';
-import { Observable, map } from 'rxjs';
+import { Observable, map, of } from 'rxjs';
 import { OrderTrackingService } from '../../../Service/Test Service/order-tracking.service';
 
 
@@ -26,14 +26,13 @@ export class OrderTrackingComponent {
   branchLocationLongitude!:number;
   orderLastLatitude!:number;
   orderLastLongitude!:number;
-
-  title = 'my-google-maps-project';
-  center = { lat: 30.04457558410753, lng: 31.235073174639126 };
-  zoom = 10;
-  // readonly directionsResults$: Observable<google.maps.DirectionsResult|undefined>;
+  markerPosition:any = {lat: 30.5503169342002 ,lng: 31.02324393801057};
+  // title = 'my-google-maps-project';
+  // center = { lat: 30.04457558410753, lng: 31.235073174639126 };
+  // zoom = 10;
 
   // markers = [
-  //   { position: { lat: this.branchLocationLatitude, lng: this.branchLocationLongitude }, label: 'Branch' },
+    //   { position: { lat: this.branchLocationLatitude, lng: this.branchLocationLongitude }, label: 'Branch' },
   //   { position: { lat: this.customerLatitude, lng: this.customerLongitude }, label: 'Customer' },
   // ];
 
@@ -44,6 +43,18 @@ export class OrderTrackingComponent {
 
   mapCenter!: google.maps.LatLngLiteral;
   mapZoom: number = 13;
+  directionsResults$!: Observable<google.maps.DirectionsResult | null>;
+
+  originPosition!: google.maps.LatLngLiteral;
+  destinationPosition!: google.maps.LatLngLiteral;
+  orderPosition!: google.maps.LatLng;
+  originLabel = { text: 'Customer Location', color: 'white' };
+  destinationLabel = { text: 'Branch Location', color: 'white' };
+  orderLabel = { text: 'Order Location', color: 'white' };
+  originIcon = { url: 'path_to_customer_icon.png', scaledSize: new google.maps.Size(30, 30) };
+  destinationIcon = { url: 'path_to_branch_icon.png', scaledSize: new google.maps.Size(30, 30) };
+  orderIcon = { url: '../../../../assets/images/delivery.gif', scaledSize: new google.maps.Size(30, 30) };
+
 
   constructor(
     private orderService: OrderService,
@@ -52,14 +63,9 @@ export class OrderTrackingComponent {
     private router: Router,
     private snackBar: MatSnackBar,
     private route: ActivatedRoute,
-    mapDirectionsService: MapDirectionsService
+    private mapDirectionsService: MapDirectionsService
   ){
-    // const request: google.maps.DirectionsRequest = {
-    //   destination: {lat: 12, lng: 4},
-    //   origin: {lat: 14, lng: 8},
-    //   travelMode: google.maps.TravelMode.DRIVING
-    // };
-    // this.directionsResults$ = mapDirectionsService.route(request).pipe(map(response => response.result));
+
   }
 
 
@@ -76,6 +82,28 @@ export class OrderTrackingComponent {
     }
   }
 
+  getDirections(){
+    const request: google.maps.DirectionsRequest = {
+      destination: {lat: this.branchLocationLatitude, lng: this.branchLocationLongitude},
+      origin: {lat: this.customerLatitude, lng: this.customerLongitude},
+      travelMode: google.maps.TravelMode.DRIVING
+    };
+    // this.directionsResults$ = this.mapDirectionsService.route(request).pipe(map(response => response.result));
+    this.calculateRoute(request);
+  }
+
+  calculateRoute(request: google.maps.DirectionsRequest) {
+    const directionsService = new google.maps.DirectionsService();
+
+    directionsService.route(request, (result, status) => {
+      if (status === google.maps.DirectionsStatus.OK) {
+        this.directionsResults$ = of(result);
+      } else {
+        this.directionsResults$ = of(null);
+        console.error(`Directions request failed due to ${status}`);
+      }
+    });
+  }
 
   getOrderDetails(orderId: string): void {
     this.orderService.getOrderById(orderId).subscribe(
@@ -85,6 +113,8 @@ export class OrderTrackingComponent {
         this.customerLatitude = order.data.customerLatitude;
         this.customerLongitude = order.data.customerLongitude;
         this.updateMarkers();
+        this.getDirections();
+
         // get branch by id
         this.branchId = order.data.branchId;
         this.getClientBranchDetails(this.branchId)
@@ -103,6 +133,7 @@ export class OrderTrackingComponent {
         this.branchLocationLatitude = branch.data.branchLocationLatitude;
         this.branchLocationLongitude = branch.data.branchLocationLongitude;
         this.updateMarkers();
+        this.getDirections();
       },
       (error: any) => {
         console.error('Error Fetching Branch:', error);
@@ -117,6 +148,7 @@ export class OrderTrackingComponent {
         this.orderLastLocation = orderLocation.data[orderLocation.data.length - 1];
         this.orderLastLatitude = this.orderLastLocation.locationLatitude;
         this.orderLastLongitude = this.orderLastLocation.locationLongitude;
+        this.orderPosition = new google.maps.LatLng(this.orderLastLatitude,this.orderLastLongitude);
         this.updateMarkers();
       }
     )
@@ -126,12 +158,6 @@ export class OrderTrackingComponent {
     if (this.branchLocationLatitude && this.branchLocationLongitude &&
         this.customerLatitude && this.customerLongitude &&
         this.orderLastLatitude &&  this.orderLastLongitude) {
-          this.markers = [
-            { position: { lat: this.branchLocationLatitude, lng: this.branchLocationLongitude }, label: 'Branch' },
-            { position: { lat: this.customerLatitude, lng: this.customerLongitude }, label: 'Customer' },
-            { position: { lat: this.orderLastLatitude, lng: this.orderLastLongitude }, label: 'Order' },
-          ];
-
           this.mapCenter = {
             lat: (this.branchLocationLatitude + this.customerLatitude + this.orderLastLatitude) / 3,
             lng: (this.branchLocationLongitude + this.customerLongitude + this.orderLastLongitude) / 3

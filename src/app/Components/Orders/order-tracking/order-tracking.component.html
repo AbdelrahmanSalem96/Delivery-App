@@ -1,22 +1,24 @@
 <fieldset>
   <div class="panel panel-default">
     <div class="panel-body">
-      <google-map height="400px" width="100%" [center]="mapCenter" [zoom]="mapZoom">
-        <map-circle [center]="center" [radius]="5">
-          <map-marker *ngFor="let marker of markers"
-            [position]="marker.position"
-            [label]="marker.label">
-          </map-marker>
-        </map-circle>
-      </google-map>
 
-      <hr>
-
-      <!-- <google-map height="400px" width="750px" [center]="center" [zoom]="zoom">
+      <!-- <google-map height="400px" width="750px" [center]="mapCenter" [zoom]="mapZoom">
         <ng-container *ngIf="directionsResults$ | async as directionsResults">
           <map-directions-renderer [directions]="directionsResults"></map-directions-renderer>
+          <map-marker *ngIf="markerPosition" [position]="markerPosition" label="Order"></map-marker>
         </ng-container>
       </google-map> -->
+
+    <google-map height="400px" width="830px" [center]="mapCenter" [zoom]="mapZoom">
+      <ng-container *ngIf="directionsResults$ | async as directionsResults">
+        <map-directions-renderer [directions]="directionsResults"></map-directions-renderer>
+        <map-marker *ngIf="originPosition" [position]="originPosition" [label]="originLabel" [icon]="originIcon"></map-marker>
+        <map-marker *ngIf="destinationPosition" [position]="destinationPosition" [label]="destinationLabel" [icon]="destinationIcon"></map-marker>
+        <map-marker [position]="orderPosition" [label]="orderLabel" ></map-marker>
+      </ng-container>
+      <!-- <map-marker [position]="orderPosition" [label]="orderLabel" [icon]="orderIcon"></map-marker> -->
+    </google-map>
+
     </div>
   </div>
 </fieldset>

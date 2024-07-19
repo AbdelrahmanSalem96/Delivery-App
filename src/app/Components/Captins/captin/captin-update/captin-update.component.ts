@@ -39,7 +39,7 @@ export class CaptinUpdateComponent implements OnInit {
   WorkingRejoins:AreaDtoModel [] = [];
   selectedAreaId: string | null = null;
   chips: Area[] = [];
-  existingData!: any[];
+  existingData!: string[];
 
   commissionRoles:CommissionRuleDtoModel[]=[];
   empTypes:EmployeeModel[]=[];
@@ -110,7 +110,6 @@ export class CaptinUpdateComponent implements OnInit {
     this.getEmplyeeTypes();
     this.getVehicleTypes();
     this.getVehicles();
-    this.initializeChips();
     this.captinStates = this.getCaptinStates();
     this.priorityAssigns = this.getpriorityAssign();
     this.getActivationState();
@@ -193,13 +192,7 @@ export class CaptinUpdateComponent implements OnInit {
   }
 
   initializeChips() {
-    // this.chips = this.WorkingRejoins.filter(area => this.existingData.includes(area.id));
-    if (this.existingData && this.WorkingRejoins) {
-      this.chips = this.WorkingRejoins.filter(area => this.existingData.includes(area.id));
-      console.log('Initialized chips:', this.chips); // Debugging line
-    } else {
-        console.warn('Areas or existingData is not defined');
-    }
+    this.chips = this.WorkingRejoins.filter(area => this.existingData.includes(area.id));
   }
 
   getCommissionRoles(){
@@ -252,6 +245,7 @@ export class CaptinUpdateComponent implements OnInit {
         this.captin = data.data;
         console.log("cap", this.captin);
         this.existingData = this.captin.captainAreas;
+        this.initializeChips();
         if (this.captin.nationalIdExpiryDate || this.captin.driverLicenseExpiryDate || this.captin.drivingLicenseExpiryDate || this.captin.joinedDate ) {
           this.captin.nationalIdExpiryDate = this.datePipe.transform(this.captin.nationalIdExpiryDate, 'yyyy-MM-dd') || undefined;
           this.captin.driverLicenseExpiryDate = this.datePipe.transform(this.captin.driverLicenseExpiryDate, 'yyyy-MM-dd') || undefined;
@@ -267,6 +261,8 @@ export class CaptinUpdateComponent implements OnInit {
   }
 
   onSubmit(form: NgForm): void {
+    const selectedAreaIds = this.chips.map(chip => chip.id);
+    this.captin.captainAreas =  selectedAreaIds;
     this.captin.lastUpdatedById= this.userId;
     if (form.valid && this.captinId !== null) {
       // form.value.captinWorkingRegionId = this.chips.map(chip => chip.id);
