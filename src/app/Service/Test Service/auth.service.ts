@@ -1,12 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Configs } from '../../Core/Utility/Config';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import firebase from 'firebase/compat/app';
 
 export interface LoginModel{
   email:string;
   password:string;
+  DeviceId: string
 }
 
 @Injectable({
@@ -20,10 +23,11 @@ export class AuthService {
   private tokenKey = 'authToken';
   private roleKey = 'userRole';
   private userKey = 'userId';
+  currentMessage = new BehaviorSubject<any>(null);
   // private userId!: string;
   // private userRole!: string;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private afAuth: AngularFireAuth) {}
 
   login(loginData:LoginModel): Observable<any> {
     return this.http.post(`${this.apiUrl}/authenticate`, loginData).pipe(

@@ -96,7 +96,7 @@ import { OrderUpdateComponent } from './Components/Orders/order/order-update/ord
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CaptinCreateComponent } from './Components/Captins/captin/captin-create/captin-create.component';
 import { CaptinUpdateComponent } from './Components/Captins/captin/captin-update/captin-update.component';
-import { DatePipe, isPlatformBrowser } from '@angular/common';
+import { AsyncPipe, DatePipe, isPlatformBrowser } from '@angular/common';
 import { ClientCreateComponent } from './Components/Clients/client/client-create/client-create.component';
 import { ClientUpdateComponent } from './Components/Clients/client/client-update/client-update.component';
 import { ClientBranchCreateComponent } from './Components/Clients/client-branch/client-branch-create/client-branch-create.component';
@@ -113,6 +113,14 @@ import { AuthService } from './Service/Test Service/auth.service';
 import { NavmenuComponent } from './Components/Shared/NavMenu/NavMenu.Component';
 import { RightSideMenuComponent } from './Components/Shared/RightSideMenu/RightSideMenu.Component';
 import { Configs } from './Core/Utility/Config';
+
+import { firebaseConfig } from '.././environment';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { initializeApp } from 'firebase/app';
+import { AngularFireMessagingModule } from '@angular/fire/compat/messaging';
+import { MessagingService } from './Service/Test Service/messaging.service';
+initializeApp(firebaseConfig);
 
 // export function loadGoogleMapsScript(platformId: Object) {
 //   return () => {
@@ -234,13 +242,18 @@ import { Configs } from './Core/Utility/Config';
     NgxSpinnerModule,
     NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
     GoogleMapsModule,
-    MapDirectionsRenderer
+    MapDirectionsRenderer,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule,
+    AngularFireMessagingModule
   ],
   providers: [
     provideClientHydration(),
     provideAnimationsAsync(),
     DatePipe,
     DateConvertPipe,
+    MessagingService,
+    AsyncPipe,
     AuthService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     // {
