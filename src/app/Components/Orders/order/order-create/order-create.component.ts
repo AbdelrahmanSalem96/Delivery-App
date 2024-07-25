@@ -49,6 +49,7 @@ export class OrderCreateComponent implements OnInit{
 
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
+    console.log("id => ",this.userId)
     this.userRole = this.authService.getRole();
     if(this.userRole === 'ClientBranch'){
       this.showClients = false;
@@ -106,10 +107,18 @@ export class OrderCreateComponent implements OnInit{
       this.order.customerLatitude = latitude;
       this.order.customerLongitude = longitude;
       this.order.createdById = this.userId;
-      this.orderService.createOrder(this.order).subscribe(() => {
-        this.router.navigate(['/order']);
-        this.snackBar.open('Order created', 'Close', { duration: 2000 });
-      });
+      if(this.userRole === 'ClientBranch'){
+        this.order.branchId = this.userId;
+        this.orderService.createOrder(this.order).subscribe(() => {
+          this.router.navigate(['/order']);
+          this.snackBar.open('Order created', 'Close', { duration: 2000 });
+        });
+      }else{
+        this.orderService.createOrder(this.order).subscribe(() => {
+          this.router.navigate(['/order']);
+          this.snackBar.open('Order created', 'Close', { duration: 2000 });
+        });
+      }
     }
   }
 
