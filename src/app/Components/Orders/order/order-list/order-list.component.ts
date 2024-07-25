@@ -22,6 +22,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Observable, Subscription, interval } from 'rxjs';
 import { OrderStateEnum } from '../../../../Enum/OrderStete.Enum';
 import { SafeHtml } from '@angular/platform-browser';
+import { AuthService } from '../../../../Service/Test Service/auth.service';
 
 @Component({
   selector: 'app-order-list',
@@ -57,12 +58,15 @@ export class OrderListComponent
   totalNumberOfItems = 0;
   pageSize = 8;
   currentPage = 1;
+  userId!: any;
+  userRole!: any;
 
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild('confirmDialog') confirmDialog!: TemplateRef<any>;
 
   constructor(
     private orderService: OrderService,
+    private authService:AuthService,
     private cdref: ChangeDetectorRef,
     private ngZone: NgZone,
     @Inject(PLATFORM_ID) platformId: Object
@@ -71,6 +75,9 @@ export class OrderListComponent
   }
 
   ngOnInit(): void {
+    this.userId = this.authService.getUserId();
+    this.userRole = this.authService.getRole();
+
     this.loadOrders();
     if (this.isBrowser) {
       this.ngZone.runOutsideAngular(() => {
@@ -107,14 +114,39 @@ export class OrderListComponent
   }
 
   loadOrders(currenttPage: number = 1, pageSize: number = this.pageSize): void {
-    const input = {
-      searchObj: null,
-      criteria: {
-        currentPage: currenttPage,
-        pageSize: pageSize,
-        expressionCombinationOperator: 1,
-      },
-    };
+    let input = {};
+    if(this.userRole === 'ClientBranch'){
+      input= {
+        searchObj: {
+          "branchId":this.userId
+        },
+        criteria: {
+          currentPage: currenttPage,
+          pageSize: pageSize,
+          expressionCombinationOperator: 1,
+        },
+      };
+    } else if(this.userRole === "Client") {
+      input= {
+        searchObj: {
+          "clientId":this.userId
+        },
+        criteria: {
+          currentPage: currenttPage,
+          pageSize: pageSize,
+          expressionCombinationOperator: 1,
+        },
+      };
+    }else{
+      input= {
+        searchObj: {},
+        criteria: {
+          currentPage: currenttPage,
+          pageSize: pageSize,
+          expressionCombinationOperator: 1,
+        },
+      };
+    }
     this.orderService.getOrdersPageView(input).subscribe((response: any) => {
       this.orders.data = response.data.items;
       this.totalNumberOfItems = response.data.pagerInfo.totalNumberOfItems;

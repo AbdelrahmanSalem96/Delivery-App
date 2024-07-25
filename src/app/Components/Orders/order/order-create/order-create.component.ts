@@ -49,7 +49,6 @@ export class OrderCreateComponent implements OnInit{
 
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
-    console.log("id => ",this.userId)
     this.userRole = this.authService.getRole();
     if(this.userRole === 'ClientBranch'){
       this.showClients = false;
