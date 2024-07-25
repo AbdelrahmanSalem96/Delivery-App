@@ -19,6 +19,10 @@
       <!-- <map-marker [position]="orderPosition" [label]="orderLabel" [icon]="orderIcon"></map-marker> -->
     </google-map>
 
+    <div *ngIf="distance">
+      <p>Distance: {{ distance }}</p>
+    </div>
+
     </div>
   </div>
 </fieldset>

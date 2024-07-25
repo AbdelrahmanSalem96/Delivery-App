@@ -33,6 +33,7 @@ export class OrderService {
   private ordersSubject = new BehaviorSubject<Order[]>([]);
   public orders$ = this.ordersSubject.asObservable();
   private orders: Order[] = [];
+  private apiKey = 'AIzaSyANq7TxOu77OKB4A7p-I8H1dYl8a4-D65g'
 
   constructor(private http: HttpClient, private sanitizer: DomSanitizer) {}
 
@@ -56,6 +57,11 @@ export class OrderService {
 
   createOrder(order: Order): Observable<Order> {
     return this.http.post<Order>(`${this.apiUrl}/add`, order);
+  }
+
+  getDistance(origin: string, destination: string): Observable<any> {
+    const url = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${origin}&destinations=${destination}&key=${this.apiKey}`;
+    return this.http.get(url);
   }
 
   updateOrder(order: Order): Observable<Order> {

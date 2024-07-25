@@ -27,6 +27,7 @@ export class OrderCreateComponent implements OnInit{
   selectedClient: string = '';
   searchObj={};
   location: string ="";
+  branchLocation:string ="";
   userId!: any;
   userRole!: any;
   showClients:boolean = true
@@ -85,7 +86,7 @@ export class OrderCreateComponent implements OnInit{
       };
     }
     this.clientBranchService.getBranchesGetLite(input).subscribe((response: any) => {
-      console.log(response.data == null);
+      console.log(response.data);
       if(response.data == null || response.data.length === 0){
         this.snackBar.open('No Branches Found For this Client', 'Close', { duration: 20000, panelClass: ['custom-snackbar'] });
         this.selectedClient = ''
@@ -95,30 +96,45 @@ export class OrderCreateComponent implements OnInit{
     });
   }
 
+  onBranchChange(branchId: string): void {
+    this.clientBranchService.getClientBranchByAppUserId(branchId).subscribe((result: any) => {
+      console.log("res => ",result);
+      this.branchLocation = result.data.branchLocationLatitude + "," + result.data.branchLocationLongitude;
+    })
+  }
+
+  getDistance(){
+    this.orderService.getDistance(this.branchLocation, this.location).subscribe(response => {
+      console.log(response);
+    });
+  }
+
   splitLocation(location: string): { latitude: number, longitude: number } {
     const [latitude, longitude] = location.split(',').map(coord => parseFloat(coord.trim()));
     return { latitude, longitude };
   }
 
   onSubmit(form: NgForm): void {
-    if (form.valid) {
-      const { latitude, longitude } = this.splitLocation(this.location);
-      this.order.customerLatitude = latitude;
-      this.order.customerLongitude = longitude;
-      this.order.createdById = this.userId;
-      if(this.userRole === 'ClientBranch'){
-        this.order.branchId = this.userId;
-        this.orderService.createOrder(this.order).subscribe(() => {
-          this.router.navigate(['/order']);
-          this.snackBar.open('Order created', 'Close', { duration: 2000 });
-        });
-      }else{
-        this.orderService.createOrder(this.order).subscribe(() => {
-          this.router.navigate(['/order']);
-          this.snackBar.open('Order created', 'Close', { duration: 2000 });
-        });
-      }
-    }
+
+    this.getDistance();
+    // if (form.valid) {
+    //   const { latitude, longitude } = this.splitLocation(this.location);
+    //   this.order.customerLatitude = latitude;
+    //   this.order.customerLongitude = longitude;
+    //   this.order.createdById = this.userId;
+    //   if(this.userRole === 'ClientBranch'){
+    //     this.order.branchId = this.userId;
+    //     this.orderService.createOrder(this.order).subscribe(() => {
+    //       this.router.navigate(['/order']);
+    //       this.snackBar.open('Order created', 'Close', { duration: 2000 });
+    //     });
+    //   }else{
+    //     this.orderService.createOrder(this.order).subscribe(() => {
+    //       this.router.navigate(['/order']);
+    //       this.snackBar.open('Order created', 'Close', { duration: 2000 });
+    //     });
+    //   }
+    // }
   }
 
   startTimer() {
