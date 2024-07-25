@@ -115,26 +115,24 @@ export class OrderCreateComponent implements OnInit{
   }
 
   onSubmit(form: NgForm): void {
-
-    this.getDistance();
-    // if (form.valid) {
-    //   const { latitude, longitude } = this.splitLocation(this.location);
-    //   this.order.customerLatitude = latitude;
-    //   this.order.customerLongitude = longitude;
-    //   this.order.createdById = this.userId;
-    //   if(this.userRole === 'ClientBranch'){
-    //     this.order.branchId = this.userId;
-    //     this.orderService.createOrder(this.order).subscribe(() => {
-    //       this.router.navigate(['/order']);
-    //       this.snackBar.open('Order created', 'Close', { duration: 2000 });
-    //     });
-    //   }else{
-    //     this.orderService.createOrder(this.order).subscribe(() => {
-    //       this.router.navigate(['/order']);
-    //       this.snackBar.open('Order created', 'Close', { duration: 2000 });
-    //     });
-    //   }
-    // }
+    if (form.valid) {
+      const { latitude, longitude } = this.splitLocation(this.location);
+      this.order.customerLatitude = latitude;
+      this.order.customerLongitude = longitude;
+      this.order.createdById = this.userId;
+      if(this.userRole === 'ClientBranch'){
+        this.order.branchId = this.userId;
+        this.orderService.createOrder(this.order).subscribe(() => {
+          this.router.navigate(['/order']);
+          this.snackBar.open('Order created', 'Close', { duration: 2000 });
+        });
+      }else{
+        this.orderService.createOrder(this.order).subscribe(() => {
+          this.router.navigate(['/order']);
+          this.snackBar.open('Order created', 'Close', { duration: 2000 });
+        });
+      }
+    }
   }
 
   startTimer() {
