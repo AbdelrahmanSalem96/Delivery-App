@@ -84,7 +84,7 @@ export class OrderService {
     if(order.orderLastState == 117 || order.orderLastState == 90){
       return this.sanitizer.bypassSecurityTrustHtml('<p style="font-size: 11px; font-weight: bold; color:green;">Done</p>');
     }else if(order.orderLastState == 126){
-      return this.sanitizer.bypassSecurityTrustHtml('<p style="font-size: 11px; font-weight: bold; color:yellow;">Not Done</p>');
+      return this.sanitizer.bypassSecurityTrustHtml('<p style="font-size: 11px; font-weight: bold; color:#ed9b44;">Not Done</p>');
     }else if (elapsed > 2 * 60 * 60 * 1000) {
       return this.sanitizer.bypassSecurityTrustHtml('<p style="font-size: 11px; font-weight: bold; color:red;">Delayed</p>');
     }else{

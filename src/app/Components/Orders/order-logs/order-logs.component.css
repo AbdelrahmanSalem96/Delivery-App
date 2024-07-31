@@ -21,6 +21,20 @@ mat-grid-list{
   margin: 40px 10px 60px 10px !important;
 }
 
+::ng-deep .mat-step-text-label{
+  width: 75%;
+  display: flex;
+}
+
+::ng-deep .mat-step-label{
+  width: 100%;
+  display: flex;
+}
+
+::ng-deep .mat-step-label.mat-step-label-selected{
+  width: 100%;
+}
+
 mat-grid-list mat-grid-title{
   height: 20px !important;
   padding: 0 !important;

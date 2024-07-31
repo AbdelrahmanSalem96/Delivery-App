@@ -41,13 +41,9 @@ export class OrderListComponent
     'clientName',
     'branchName',
     'orderLastState',
-    'customerName',
-    'customerMobile',
-    'customerAddress',
     'orderPice',
     'captainName',
     'lastUpdatedOn',
-    'createdOn',
     'elapsedTime',
     'actions',
   ];
