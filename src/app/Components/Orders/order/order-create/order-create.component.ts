@@ -36,6 +36,7 @@ export class OrderCreateComponent implements OnInit{
     branchId:'',
     createdOn: new Date(),
     orderLastState: 9,
+    orderDistanceKM:0,
     createdById : ''
   };
 
