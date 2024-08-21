@@ -16,6 +16,23 @@ mat-label{
   font-size: 13px;
 }
 
+.mat-mdc-header-row {
+  background-color: #eb3756 !important;
+  color: #fff !important;
+}
+
+.mat-mdc-row:nth-child(odd) {
+  background-color: #FFFFFF;
+}
+
+.mat-mdc-row:nth-child(even) {
+  background-color: #edf0f1;
+}
+
+.mat-mdc-row:hover{
+  background-color: #87CEEB !important;
+}
+
 mat-grid-list{
   padding-bottom: 20px !important;
   margin: 70px 10px 45px 10px !important;
@@ -111,3 +128,4 @@ td button{
 .dailogB{
   font-size: 14px ;
 }
+
