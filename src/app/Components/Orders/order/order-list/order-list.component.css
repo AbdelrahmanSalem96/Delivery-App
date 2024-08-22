@@ -19,6 +19,7 @@ mat-label{
 .mat-mdc-header-row {
   background-color: #eb3756 !important;
   color: #fff !important;
+  text-align: center;
 }
 
 .mat-mdc-row:nth-child(odd) {
@@ -110,6 +111,7 @@ td button{
 
 ::ng-deep .mat-mdc-header-cell{
   width:14% !important;
+  text-align: center;
 }
 
 ::ng-deep .cdk-header-cell{
