@@ -10,6 +10,7 @@ import { ClientBranchModel } from '../../../Models/Client Branch/ClientBranch.Mo
 import { MapDirectionsService } from '@angular/google-maps';
 import { Observable, map, of } from 'rxjs';
 import { OrderTrackingService } from '../../../Service/Test Service/order-tracking.service';
+import { CaptinService } from '../../../Service/Test Service/captin.service';
 
 @Component({
   selector: 'app-order-tracking',
@@ -41,6 +42,7 @@ export class OrderTrackingComponent {
 
   markers: any[] = [];
   orderLastLocation: any;
+  serchObj = {};
 
   mapCenter!: google.maps.LatLngLiteral;
   mapZoom: number = 13;
@@ -70,6 +72,7 @@ export class OrderTrackingComponent {
     private orderService: OrderService,
     private clientBranchService: ClientBranchService,
     private orderTrackingService: OrderTrackingService,
+    private captinService:CaptinService,
     private router: Router,
     private snackBar: MatSnackBar,
     private route: ActivatedRoute,
@@ -77,6 +80,7 @@ export class OrderTrackingComponent {
   ) {}
 
   ngOnInit(): void {
+    this.getAllActiveCaptains();
     let idParam = this.route.snapshot.paramMap.get('id');
     if (idParam !== null) {
       this.orderId = idParam;
@@ -177,6 +181,12 @@ export class OrderTrackingComponent {
         );
         this.updateMarkers();
       });
+  }
+
+  getAllActiveCaptains(){
+    this.captinService.getCaptinsGetAllActiveCaptains(this.serchObj).subscribe(response => {
+      this.markers = response;
+    })
   }
 
   updateMarkers() {

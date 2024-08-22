@@ -15,6 +15,11 @@
         <map-marker *ngIf="originPosition" [position]="originPosition" [label]="originLabel" [icon]="originIcon"></map-marker>
         <map-marker *ngIf="destinationPosition" [position]="destinationPosition" [label]="destinationLabel" [icon]="destinationIcon"></map-marker>
         <map-marker [position]="orderPosition" [label]="orderLabel" ></map-marker>
+        <map-marker *ngFor="let marker of markers"
+          [position]="{ lat: marker.liveLocationLatitude, lng: marker.liveLocationLongitude }"
+          [label]="marker.captainNane"
+          location.content="beachFlag">
+        </map-marker>
       </ng-container>
       <!-- <map-marker [position]="orderPosition" [label]="orderLabel" [icon]="orderIcon"></map-marker> -->
     </google-map>
