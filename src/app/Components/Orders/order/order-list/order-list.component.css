@@ -160,7 +160,7 @@ td button{
   background-color: cyan;
 }
 .state-reached-location {
-  background-color: darkgreen;
+  background-color: rgb(212, 194, 114);
 }
 .state-customer-rejected {
   background-color: darkred;
@@ -169,7 +169,7 @@ td button{
   background-color: darkorange;
 }
 .state-delivered {
-  background-color: green;
+  background-color: darkgreen;
 }
 .state-canceled {
   background-color: red;
