@@ -40,10 +40,10 @@ export class OrderListComponent
     'orderCode',
     'clientName',
     'branchName',
-    'orderLastState',
     'orderPice',
     'captainName',
     'lastUpdatedOn',
+    'orderLastState',
     'elapsedTime',
     'actions',
   ];
