@@ -109,6 +109,41 @@ export class OrderListComponent
       });
   }
 
+  getStateClass(orderLastState: number): string {
+    switch (orderLastState) {
+      case OrderStateEnum.Created:
+        return 'state-created';
+      case OrderStateEnum.FailedToAssign:
+        return 'state-failed-to-assign';
+      case OrderStateEnum.Assigned:
+        return 'state-assigned';
+      case OrderStateEnum.Accepted:
+        return 'state-accepted';
+      case OrderStateEnum.CaptainRejected:
+        return 'state-captain-rejected';
+      case OrderStateEnum.StartRide:
+        return 'state-start-ride';
+      case OrderStateEnum.ReachedShop:
+        return 'state-reached-shop';
+      case OrderStateEnum.OrderPicked:
+        return 'state-order-picked';
+      case OrderStateEnum.Shipped:
+        return 'state-shipped';
+      case OrderStateEnum.ReachedLocation:
+        return 'state-reached-location';
+      case OrderStateEnum.CustomerRejected:
+        return 'state-customer-rejected';
+      case OrderStateEnum.CustomerChangeLocation:
+        return 'state-customer-change-location';
+      case OrderStateEnum.Delivered:
+        return 'state-delivered';
+      case OrderStateEnum.Canceled:
+        return 'state-canceled';
+      default:
+        return '';
+    }
+  }
+
   loadOrders(currenttPage: number = 1, pageSize: number = this.pageSize): void {
     let input = {};
     if(this.userRole === 'ClientBranch'){

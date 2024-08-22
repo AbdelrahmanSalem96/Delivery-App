@@ -45,7 +45,9 @@
     <!-- Status Column -->
     <ng-container matColumnDef="orderLastState">
       <th mat-header-cell *matHeaderCellDef >Last Status</th>
-      <td mat-cell *matCellDef="let row">{{getStateLabel(row.orderLastState)}}</td>
+      <td mat-cell *matCellDef="let row">
+        <p style="padding: 8px 3px; text-align: center; color: #fff;" [ngClass]="getStateClass(row.orderLastState)">{{getStateLabel(row.orderLastState)}}</p>
+      </td>
     </ng-container>
 
     <!-- <ng-container matColumnDef="customerName">

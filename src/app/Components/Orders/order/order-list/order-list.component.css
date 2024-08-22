@@ -29,10 +29,6 @@ mat-label{
   background-color: #edf0f1;
 }
 
-.mat-mdc-row:hover{
-  background-color: #87CEEB !important;
-}
-
 mat-grid-list{
   padding-bottom: 20px !important;
   margin: 70px 10px 45px 10px !important;
@@ -127,5 +123,49 @@ td button{
 
 .dailogB{
   font-size: 14px ;
+}
+
+/* Order State Color */
+.state-created {
+  background-color: #d9d909;
+}
+.state-failed-to-assign {
+  background-color: gray;
+}
+.state-assigned {
+  background-color: blue;
+}
+.state-accepted {
+  background-color: purple;
+}
+.state-captain-rejected {
+  background-color: orange;
+}
+.state-start-ride {
+  background-color: teal;
+}
+.state-reached-shop {
+  background-color: brown;
+}
+.state-order-picked {
+  background-color: navy;
+}
+.state-shipped {
+  background-color: cyan;
+}
+.state-reached-location {
+  background-color: darkgreen;
+}
+.state-customer-rejected {
+  background-color: darkred;
+}
+.state-customer-change-location {
+  background-color: darkorange;
+}
+.state-delivered {
+  background-color: green;
+}
+.state-canceled {
+  background-color: red;
 }
 
