@@ -7,7 +7,7 @@ import {
 } from '../../../Service/Test Service/order.service';
 import { ClientBranchService } from '../../../Service/Test Service/client-branch.service';
 import { ClientBranchModel } from '../../../Models/Client Branch/ClientBranch.Model';
-import { MapDirectionsService } from '@angular/google-maps';
+import { MapDirectionsService, MapMarker } from '@angular/google-maps';
 import { Observable, map, of } from 'rxjs';
 import { OrderTrackingService } from '../../../Service/Test Service/order-tracking.service';
 import { CaptinService } from '../../../Service/Test Service/captin.service';
@@ -91,6 +91,10 @@ export class OrderTrackingComponent {
       this.snackBar.open('Invalid Order ID', 'Close', { duration: 2000 });
     }
   }
+
+  // openInfoWindow(marker: MapMarker) {
+  //   if (this.infoWindow != undefined) this.infoWindow.open(marker);
+  // }
 
   getDirections() {
     const request: google.maps.DirectionsRequest = {

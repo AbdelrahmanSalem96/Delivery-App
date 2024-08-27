@@ -47,12 +47,13 @@ export class OrderListComponent
     'elapsedTime',
     'actions',
   ];
+
   orders = new MatTableDataSource<any>();
   private subscriptions: Subscription = new Subscription();
   private isBrowser!: boolean;
   searchObj = {};
   totalNumberOfItems = 0;
-  pageSize = 8;
+  pageSize = 100;
   currentPage = 1;
   userId!: any;
   userRole!: any;
@@ -105,7 +106,8 @@ export class OrderListComponent
       .filter(key => isNaN(Number(key)))
       .map(key => {
         const enumKey = key as keyof typeof OrderStateEnum;
-        return { label: key, value: OrderStateEnum[enumKey] };
+        const formattedLabel = key.replace(/([a-z])([A-Z])/g, '$1 $2');
+        return { label: formattedLabel, value: OrderStateEnum[enumKey] };
       });
   }
 

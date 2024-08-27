@@ -55,7 +55,8 @@ export class OrderLogsComponent implements OnInit, AfterViewInit{
       .filter(key => isNaN(Number(key)))
       .map(key => {
         const enumKey = key as keyof typeof OrderStateEnum;
-        return { label: key, value: OrderStateEnum[enumKey] };
+        const formattedLabel = key.replace(/([a-z])([A-Z])/g, '$1 $2');
+        return { label: formattedLabel, value: OrderStateEnum[enumKey] };
       });
   }
 

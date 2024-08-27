@@ -19,6 +19,7 @@ export class CaptinListComponent implements AfterViewInit{
   displayedColumns: string[] = ['captainName', 'captainEmail', 'captinState', 'captainMobile','priorityAssign', 'activationState', 'employmentType', 'commissionRule', 'createdOn','actions'];
   dialogRef: MatDialogRef<any> | undefined;
   captinStates = this.getCaptinStates();
+  priorityAssignStates = this.getpriorityAssign();
   captinId!: string;
   captins = new MatTableDataSource<any>();
   deleteObj = new DeleteCaptinDtoModel;
@@ -52,6 +53,11 @@ export class CaptinListComponent implements AfterViewInit{
         const enumKey = key as keyof typeof CaptinStateEnum;
         return { label: key, value: CaptinStateEnum[enumKey] };
       });
+  }
+
+  getPriorityAssignState(stateValue: number): string {
+    const state = this.priorityAssignStates.find(s => s.value === stateValue);
+    return state ? state.label : 'Unknown State';
   }
 
   getpriorityAssign() {

@@ -67,6 +67,12 @@ td button a{
   margin-top: 40px !important;
 }
 
+.mat-mdc-header-row {
+  background-color: #eb3756 !important;
+  color: #fff !important;
+  text-align: center;
+}
+
 ::ng-deep .mat-mdc-paginator-container{
   justify-content: center !important;
 }
@@ -93,6 +99,11 @@ td button a{
 
 ::ng-deep .mat-mdc-header-cell{
   width:14% !important;
+  text-align: center !important;
+}
+
+::ng-deep .mat-mdc-cell{
+  text-align: center !important;
 }
 
 ::ng-deep .cdk-header-cell{

@@ -15,22 +15,22 @@
   <table mat-table [dataSource]="branches" matSort>
 
     <ng-container matColumnDef="clientBranchName">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Branch Name</th>
+      <th mat-header-cell *matHeaderCellDef>Branch Name</th>
       <td mat-cell *matCellDef="let row">{{ row.clientBranchName }}</td>
     </ng-container>
 
     <ng-container matColumnDef="clientBranchEmail">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Branch Email</th>
+      <th mat-header-cell *matHeaderCellDef>Branch Email</th>
       <td mat-cell *matCellDef="let row">{{ row.clientBranchEmail }}</td>
     </ng-container>
 
     <ng-container matColumnDef="clientBranchState">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>State</th>
+      <th mat-header-cell *matHeaderCellDef>State</th>
       <td mat-cell *matCellDef="let row">{{getStateLabel(row.clientBranchState)}}</td>
     </ng-container>
 
     <ng-container matColumnDef="clientBranchMobil">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Branch Mobile</th>
+      <th mat-header-cell *matHeaderCellDef>Branch Mobile</th>
       <td mat-cell *matCellDef="let row">{{ row.clientBranchMobil }}</td>
     </ng-container>
 

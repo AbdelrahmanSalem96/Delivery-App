@@ -6,7 +6,13 @@
     </mat-form-field>
   </mat-grid-tile>
   <mat-grid-tile [colspan]="1" [rowspan]="1">
-    <button mat-flat-button color="accent" color="accent" routerLink="/captin/create">Create Captin</button>
+    <button
+      mat-flat-button
+      style="background-color: #eb3756;"
+      color="accent"
+      color="accent"
+      routerLink="/captin/create"
+      >Create Captin</button>
   </mat-grid-tile>
 </mat-grid-list>
 
@@ -14,47 +20,47 @@
   <table mat-table [dataSource]="captins" matSort>
 
     <ng-container matColumnDef="captainName">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Captain Name</th>
+      <th mat-header-cell *matHeaderCellDef>Captain Name</th>
       <td mat-cell *matCellDef="let row">{{ row.captainName }}</td>
     </ng-container>
 
     <ng-container matColumnDef="captainEmail">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Captain Email</th>
+      <th mat-header-cell *matHeaderCellDef>Captain Email</th>
       <td mat-cell *matCellDef="let row">{{ row.captainEmail }}</td>
     </ng-container>
 
     <ng-container matColumnDef="captinState">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Captain State</th>
+      <th mat-header-cell *matHeaderCellDef>Captain State</th>
       <td mat-cell *matCellDef="let row">{{getStateLabel(row.captinState)}}</td>
     </ng-container>
 
     <ng-container matColumnDef="captainMobile">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Captain Mobile</th>
+      <th mat-header-cell *matHeaderCellDef>Captain Mobile</th>
       <td mat-cell *matCellDef="let row">{{ row.captainMobile }}</td>
     </ng-container>
 
     <ng-container matColumnDef="priorityAssign">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Periority Assine</th>
-      <td mat-cell *matCellDef="let row">{{ getStateLabel(row.priorityAssign) }}</td>
+      <th mat-header-cell *matHeaderCellDef>Periority Assine</th>
+      <td mat-cell *matCellDef="let row">{{ getPriorityAssignState(row.priorityAssign) }}</td>
     </ng-container>
 
     <ng-container matColumnDef="activationState">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Activation State</th>
+      <th mat-header-cell *matHeaderCellDef>Activation State</th>
       <td mat-cell *matCellDef="let row">{{ row.activationState }}</td>
     </ng-container>
 
     <ng-container matColumnDef="employmentType">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Emplyee Type</th>
+      <th mat-header-cell *matHeaderCellDef>Emplyee Type</th>
       <td mat-cell *matCellDef="let row">{{ row.employmentType }}</td>
     </ng-container>
 
     <ng-container matColumnDef="commissionRule">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Commision Role</th>
+      <th mat-header-cell *matHeaderCellDef>Commision Role</th>
       <td mat-cell *matCellDef="let row">{{ row.commissionRule }}</td>
     </ng-container>
 
     <ng-container matColumnDef="createdOn">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Created On</th>
+      <th mat-header-cell *matHeaderCellDef>Created On</th>
       <td mat-cell *matCellDef="let row">{{ row.createdOn | date }}</td>
     </ng-container>
 
