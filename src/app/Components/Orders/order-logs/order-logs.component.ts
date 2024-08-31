@@ -71,6 +71,9 @@ export class OrderLogsComponent implements OnInit, AfterViewInit{
       });
   }
 
+  refreshLogs(){
+    this.getOrderLogByOrderId(this.orderId);
+  }
 
   applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;

@@ -1,4 +1,7 @@
 <fieldset>
+  <div class="refresh-container" (click)="refreshOrderTracking()">
+    <span class="refresh-icon btn-lablel icon fa fa-refresh"></span>
+  </div>
   <div class="panel panel-default">
     <div class="panel-body">
 
@@ -12,18 +15,15 @@
     <google-map height="400px" width="830px" [center]="mapCenter" [zoom]="mapZoom">
       <ng-container *ngIf="directionsResults$ | async as directionsResults">
         <map-directions-renderer [directions]="directionsResults"></map-directions-renderer>
-        <map-marker *ngIf="originPosition" [position]="originPosition" [label]="originLabel" [icon]="originIcon"></map-marker>
-        <map-marker *ngIf="destinationPosition" [position]="destinationPosition" [label]="destinationLabel" [icon]="destinationIcon"></map-marker>
-        <map-marker [position]="orderPosition" [label]="orderLabel" icon=""></map-marker>
+        <map-marker *ngIf="originPosition" [position]="originPosition" [label]="originLabel"></map-marker>
+        <map-marker *ngIf="destinationPosition" [position]="destinationPosition" [label]="destinationLabel"></map-marker>
+        <map-marker [position]="orderPosition" [label]="orderLabel"></map-marker>
         <map-marker *ngFor="let marker of markers"
           [position]="{ lat: marker.liveLocationLatitude, lng: marker.liveLocationLongitude }"
-          [label]="marker.captainNane"
-
-          location.content="beachFlag">
+          (mapClick)="openInfoWindow(marker)">
         </map-marker>
-        <!-- <map-info-window>{{marker.captainNane}}</map-info-window> -->
+        <map-info-window *ngFor="let marker of markers">{{marker.captainNane}}</map-info-window>
       </ng-container>
-      <!-- <map-marker [position]="orderPosition" [label]="orderLabel" [icon]="orderIcon"></map-marker> -->
     </google-map>
 
     <div *ngIf="distance">

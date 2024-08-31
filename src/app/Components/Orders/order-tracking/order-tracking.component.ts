@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
@@ -7,7 +7,7 @@ import {
 } from '../../../Service/Test Service/order.service';
 import { ClientBranchService } from '../../../Service/Test Service/client-branch.service';
 import { ClientBranchModel } from '../../../Models/Client Branch/ClientBranch.Model';
-import { MapDirectionsService, MapMarker } from '@angular/google-maps';
+import { MapDirectionsService, MapInfoWindow, MapMarker } from '@angular/google-maps';
 import { Observable, map, of } from 'rxjs';
 import { OrderTrackingService } from '../../../Service/Test Service/order-tracking.service';
 import { CaptinService } from '../../../Service/Test Service/captin.service';
@@ -28,17 +28,6 @@ export class OrderTrackingComponent {
   branchLocationLongitude!: number;
   orderLastLatitude!: number;
   orderLastLongitude!: number;
-  markerPosition: any = { lat: 30.5503169342002, lng: 31.02324393801057 };
-  // title = 'my-google-maps-project';
-  // center = { lat: 30.04457558410753, lng: 31.235073174639126 };
-  // zoom = 10;
-
-  // markers = [
-  //   { position: { lat: this.branchLocationLatitude, lng: this.branchLocationLongitude }, label: 'Branch' },
-  //   { position: { lat: this.customerLatitude, lng: this.customerLongitude }, label: 'Customer' },
-  // ];
-
-  // markers: Array<{ position: { lat: number, lng: number }, label: string }> = [];
 
   markers: any[] = [];
   orderLastLocation: any;
@@ -48,25 +37,15 @@ export class OrderTrackingComponent {
   mapZoom: number = 13;
   directionsResults$!: Observable<google.maps.DirectionsResult | null>;
   distance: string = '';
+  @ViewChild(MapInfoWindow, { static: false }) infoWindow?: MapInfoWindow;
 
   originPosition!: google.maps.LatLngLiteral;
   destinationPosition!: google.maps.LatLngLiteral;
   orderPosition!: google.maps.LatLng;
   originLabel = { text: 'Customer Location', color: 'white' };
   destinationLabel = { text: 'Branch Location', color: 'white' };
-  orderLabel = { text: 'Order Location', color: 'white' };
-  originIcon = {
-    url: 'path_to_customer_icon.png',
-    scaledSize: new google.maps.Size(30, 30),
-  };
-  destinationIcon = {
-    url: 'path_to_branch_icon.png',
-    scaledSize: new google.maps.Size(30, 30),
-  };
-  orderIcon = {
-    url: '../../../../assets/images/delivery.gif',
-    scaledSize: new google.maps.Size(30, 30),
-  };
+  orderLabel = { text: 'Order Location', color: 'blue' };
+
 
   constructor(
     private orderService: OrderService,
@@ -92,9 +71,9 @@ export class OrderTrackingComponent {
     }
   }
 
-  // openInfoWindow(marker: MapMarker) {
-  //   if (this.infoWindow != undefined) this.infoWindow.open(marker);
-  // }
+  openInfoWindow(marker: MapMarker) {
+    if (this.infoWindow != undefined) this.infoWindow.open(marker);
+  }
 
   getDirections() {
     const request: google.maps.DirectionsRequest = {
@@ -187,6 +166,10 @@ export class OrderTrackingComponent {
       });
   }
 
+  refreshOrderTracking(){
+    this.getOrderTracking(this.orderId);
+  }
+
   getAllActiveCaptains(){
     this.captinService.getCaptinsGetAllActiveCaptains(this.serchObj).subscribe(response => {
       this.markers = response;
@@ -216,4 +199,5 @@ export class OrderTrackingComponent {
       };
     }
   }
+
 }
